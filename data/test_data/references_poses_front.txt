@@ -1,0 +1,338 @@
+CAMERA POSE REAL --> 1.17, 0.0, 0.8 )
+WRIST!!! (real -> 0.216, 0.175, -0.292)
+-----------------
+[DEBUG] [1463055866.606451407]: Callback pose: 0.263508,0.114236,0.975691 with confidence of 0.662069
+[ INFO] [1463055866.606726728]: Pose object on frame camera_rgb_optical_frame found at:
+position: 
+  x: 0.263508
+  y: 0.114236
+  z: 0.975691
+orientation: 
+  x: 0.506157
+  y: 0.561248
+  z: -0.454813
+  w: 0.471117
+
+[DEBUG] [1463055866.967967756]: Callback pose: 0.265372,0.112336,0.975899 with confidence of 0.708046
+[DEBUG] [1463055867.417184022]: Creating model of reference
+[ INFO] [1463055867.427460798]: Creating ModeledObject with name: modeled_reference from model: ref_tea_box
+[ INFO] [1463055867.438956276]: Folder of models: /home/lluis/catkin_ws/src/romeo_grasper/data/models/
+[ INFO] [1463055867.554624573]: MetaBlock created with type: 3 and sizes: 0.035/0.15
+[DEBUG] [1463055867.554804360]: Transform tr_0 - from camera_frame to pose without offset:
+position: 
+  x: 0.263508
+  y: 0.114236
+  z: 0.975691
+orientation: 
+  x: 0.506157
+  y: 0.561248
+  z: -0.454813
+  w: 0.471117
+
+[DEBUG] [1463055867.554960681]: Transform tr_1 - from pose without offset to the one with offset:
+position: 
+  x: -0.045
+  y: -0.08
+  z: 0
+orientation: 
+  x: 0
+  y: 0
+  z: 0
+  w: 1
+
+[DEBUG] [1463055867.555647414]: Eigen:
+position: 
+  x: 0.185739
+  y: 0.102041
+  z: 1.0229
+orientation: 
+  x: 0.506157
+  y: 0.561248
+  z: -0.454813
+  w: 0.471117
+
+[DEBUG] [1463055867.555787455]: Eigen_0:
+position: 
+  x: 0.263508
+  y: 0.114236
+  z: 0.975691
+orientation: 
+  x: 0.506157
+  y: 0.561248
+  z: -0.454813
+  w: 0.471117
+
+[DEBUG] [1463055867.555928394]: Eigen_1:
+position: 
+  x: -0.045
+  y: -0.08
+  z: 0
+orientation: 
+  x: 0
+  y: 0
+  z: 0
+  w: 1
+
+[DEBUG] [1463055867.556075982]: Transform from camera_frame to pose with offset:
+position: 
+  x: 0.185739
+  y: 0.102041
+  z: 1.0229
+orientation: 
+  x: 0.506157
+  y: 0.561248
+  z: -0.454813
+  w: 0.471117
+
+[ INFO] [1463055867.556188714]: Position of reference founded
+[ INFO] [1463055867.556270042]: Pose of reference /l_wrist on frame camera_rgb_optical_frame found at:
+position: 
+  x: 0.185739
+  y: 0.102041
+  z: 1.0229
+orientation: 
+  x: 0.506157
+  y: 0.561248
+  z: -0.454813
+  w: 0.471117
+
+[DEBUG] [1463055867.809916541]: Look up for a transform between base_link and /l_wrist
+[DEBUG] [1463055867.810131007]: Look up for a transform between camera_rgb_optical_frame and camera_link
+[DEBUG] [1463055867.810341842]: Positioning camera in front
+[ INFO] [1463055867.810591641]: Pose camera on frame base_link found at:
+position: 
+  x: 1.23667
+  y: -0.0556325
+  z: -0.189888
+orientation: 
+  x: 0
+  y: 0
+  z: 1
+  w: 6.12323e-17
+
+--------------------------------------------------------------------------------------------------------------
+
+
+
+ELBOW!!! (real --> 0.13, 0.185, -0.122)
+---------------------
+[DEBUG] [1463056656.731196359]: Callback pose: 0.231390,-0.074867,0.940031 with confidence of 0.397380
+[ INFO] [1463056656.731436834]: Pose object on frame camera_rgb_optical_frame found at:
+position: 
+  x: 0.23139
+  y: -0.0748674
+  z: 0.940031
+orientation: 
+  x: 0.47398
+  y: -0.514662
+  z: 0.551389
+  w: 0.454352
+
+[DEBUG] [1463056657.044325598]: Creating model of reference
+[ INFO] [1463056657.050990669]: Creating ModeledObject with name: modeled_reference from model: ref_tea_box
+[ INFO] [1463056657.084004480]: Folder of models: /home/lluis/catkin_ws/src/romeo_grasper/data/models/
+[ INFO] [1463056657.149009969]: MetaBlock created with type: 3 and sizes: 0.035/0.15
+[DEBUG] [1463056657.149231484]: Transform tr_0 - from camera_frame to pose without offset:
+position: 
+  x: 0.23139
+  y: -0.0748674
+  z: 0.940031
+orientation: 
+  x: 0.47398
+  y: -0.514662
+  z: 0.551389
+  w: 0.454352
+
+[DEBUG] [1463056657.149381731]: Transform tr_1 - from pose without offset to the one with offset:
+position: 
+  x: -0.045
+  y: -0.08
+  z: 0
+orientation: 
+  x: 0
+  y: 0
+  z: 0
+  w: 1
+
+[DEBUG] [1463056657.149597831]: Eigen:
+position: 
+  x: 0.316706
+  y: -0.0708701
+  z: 0.906412
+orientation: 
+  x: 0.47398
+  y: -0.514662
+  z: 0.551389
+  w: 0.454352
+
+[DEBUG] [1463056657.149742422]: Eigen_0:
+position: 
+  x: 0.23139
+  y: -0.0748674
+  z: 0.940031
+orientation: 
+  x: 0.47398
+  y: -0.514662
+  z: 0.551389
+  w: 0.454352
+
+[DEBUG] [1463056657.149884273]: Eigen_1:
+position: 
+  x: -0.045
+  y: -0.08
+  z: 0
+orientation: 
+  x: 0
+  y: 0
+  z: 0
+  w: 1
+
+[DEBUG] [1463056657.150031213]: Transform from camera_frame to pose with offset:
+position: 
+  x: 0.316706
+  y: -0.0708701
+  z: 0.906412
+orientation: 
+  x: 0.47398
+  y: -0.514662
+  z: 0.551389
+  w: 0.454352
+
+[ INFO] [1463056657.150138997]: Position of reference founded
+[ INFO] [1463056657.150269008]: Pose of reference LElbow on frame camera_rgb_optical_frame found at:
+position: 
+  x: 0.316706
+  y: -0.0708701
+  z: 0.906412
+orientation: 
+  x: 0.47398
+  y: -0.514662
+  z: 0.551389
+  w: 0.454352
+
+[DEBUG] [1463056657.390177521]: Look up for a transform between base_link and LElbow
+[DEBUG] [1463056657.390358264]: Look up for a transform between camera_rgb_optical_frame and camera_link
+[DEBUG] [1463056657.390480193]: Positioning camera in front
+[ INFO] [1463056657.390688576]: Pose camera on frame base_link found at:
+position: 
+  x: 1.03418
+  y: -0.17632
+  z: -0.193058
+orientation: 
+  x: 0
+  y: 0
+  z: 1
+  w: 6.12323e-17
+--------------------------------------------------------------------------------------------------------------------
+
+
+SHOULDER!!!! es trobava a uns 7-8 cm per davall lo que tocava (real -> 0.051, 0.19, 0.0739)
+-----------------------
+[DEBUG] [1463057200.709736922]: Callback pose: 0.227687,-0.229101,0.875596 with confidence of 0.385572
+[ INFO] [1463057200.709914909]: Pose object on frame camera_rgb_optical_frame found at:
+position: 
+  x: 0.227687
+  y: -0.229101
+  z: 0.875596
+orientation: 
+  x: 0.585085
+  y: -0.334777
+  z: 0.389422
+  w: 0.627655
+
+[DEBUG] [1463057200.892992605]: Creating model of reference
+[ INFO] [1463057200.899433706]: Creating ModeledObject with name: modeled_reference from model: ref_tea_box
+[ INFO] [1463057200.908459130]: Folder of models: /home/lluis/catkin_ws/src/romeo_grasper/data/models/
+[ INFO] [1463057201.008181619]: MetaBlock created with type: 3 and sizes: 0.035/0.15
+[DEBUG] [1463057201.008460484]: Transform tr_0 - from camera_frame to pose without offset:
+position: 
+  x: 0.227687
+  y: -0.229101
+  z: 0.875596
+orientation: 
+  x: 0.585085
+  y: -0.334777
+  z: 0.389422
+  w: 0.627655
+
+[DEBUG] [1463057201.008733580]: Transform tr_1 - from pose without offset to the one with offset:
+position: 
+  x: -0.045
+  y: -0.08
+  z: 0
+orientation: 
+  x: 0
+  y: 0
+  z: 0
+  w: 1
+
+[DEBUG] [1463057201.009510103]: Eigen:
+position: 
+  x: 0.27687
+  y: -0.234435
+  z: 0.798281
+orientation: 
+  x: 0.585085
+  y: -0.334777
+  z: 0.389422
+  w: 0.627655
+
+[DEBUG] [1463057201.009782166]: Eigen_0:
+position: 
+  x: 0.227687
+  y: -0.229101
+  z: 0.875596
+orientation: 
+  x: 0.585085
+  y: -0.334777
+  z: 0.389422
+  w: 0.627655
+
+[DEBUG] [1463057201.010029176]: Eigen_1:
+position: 
+  x: -0.045
+  y: -0.08
+  z: 0
+orientation: 
+  x: 0
+  y: 0
+  z: 0
+  w: 1
+
+[DEBUG] [1463057201.010294524]: Transform from camera_frame to pose with offset:
+position: 
+  x: 0.27687
+  y: -0.234435
+  z: 0.798281
+orientation: 
+  x: 0.585085
+  y: -0.334777
+  z: 0.389422
+  w: 0.627655
+
+[ INFO] [1463057201.010512438]: Position of reference founded
+[ INFO] [1463057201.010655930]: Pose of reference LShoulder on frame camera_rgb_optical_frame found at:
+position: 
+  x: 0.27687
+  y: -0.234435
+  z: 0.798281
+orientation: 
+  x: 0.585085
+  y: -0.334777
+  z: 0.389422
+  w: 0.627655
+
+[DEBUG] [1463057201.241016280]: Look up for a transform between base_link and LShoulder
+[DEBUG] [1463057201.241188784]: Look up for a transform between camera_rgb_optical_frame and camera_link
+[DEBUG] [1463057201.241273647]: Positioning camera in front
+[ INFO] [1463057201.241417610]: Pose camera on frame base_link found at:
+position: 
+  x: 0.848143
+  y: -0.13187
+  z: -0.160584
+orientation: 
+  x: 0
+  y: 0
+  z: 1
+  w: 6.12323e-17
+

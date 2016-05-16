@@ -2,16 +2,16 @@
 <package>
   <name>romeo_grasper</name>
   <version>0.0.1</version>
-  <description>The romeo_grasper package</description>
+  <description>The romeo_grasper package has the aim to allow the Romeo robot to grasp objects recognised by the V4R software</description>
 
   <author email="l.salord.quetglas@gmail.com">Lluis Salord Quetglas</author>
   <maintainer email="l.salord.quetglas@gmail.com">Lluis Salord Quetglas</maintainer>
 
-  <license>Apache 2.0</license>
-<!--
-  <url type="bugtracker">https://github.com/ros-naoqi/nao_virtual/issues</url>
-  <url type="repository">https://github.com/ros-naoqi/nao_virtual.git</url>
--->
+  <license>MIT</license>
+
+  <url type="bugtracker">https://github.com/lluissalord/romeo_grasper/issues</url>
+  <url type="repository">https://github.com/lluissalord/romeo_grasper.git</url>
+
 
   <build_depend>roscpp</build_depend>
   <build_depend>rospy</build_depend>

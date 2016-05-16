@@ -23,7 +23,7 @@
   <build_depend>moveit_visual_tools</build_depend>
   <build_depend>object_tracker_msg_definitions</build_depend>
   <build_depend>naoqi_bridge_msgs</build_depend>
-  <build_depend>moveit</build_depend>
+<!--  <build_depend>moveit</build_depend> -->
   <build_depend>message_generation</build_depend>
 
 <build_depend>moveit_simple_grasps</build_depend>
@@ -41,7 +41,7 @@
   <run_depend>object_tracker_srv_definitions</run_depend>
   <run_depend>object_tracker_msg_definitions</run_depend>
   <run_depend>naoqi_bridge_msgs</run_depend>
-  <run_depend>moveit</run_depend>
+<!--  <run_depend>moveit</run_depend> -->
   <run_depend>message_runtime</run_depend>
 
 <run_depend>moveit_simple_grasps</run_depend>
