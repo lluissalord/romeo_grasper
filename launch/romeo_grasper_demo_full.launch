@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<launch>
+
+  <!-- By default, we connect to a local naoqi -->
+  <arg name="nao_ip" default="$(optenv NAO_IP 127.0.0.1)" />
+  <arg name="nao_port" default="$(optenv NAO_PORT 9559)" />
+
+  <!-- By default, we do not start a database (it can be large) -->
+  <arg name="db" default="false" />
+
+  <!-- By default, we are not in debug mode also not with verbose -->
+  <arg name="debug" 		default="false" />
+  <arg name="verbose" 		default="false" />
+
+  <!-- By default, we are using the tracking of the object, so without knowing where is the camera exactly -->
+  <arg name="tracking"				default="true" />
+  <arg name="pose_camera_preknown"  default="false" />
+  <arg name="simulation"  			default="true" />
+  <arg name="automatic_execution"  	default="false" />
+
+  <include file="$(find romeo_bringup)/launch/romeo_full_py.launch" >
+ 	<arg name="nao_ip" value="$(arg nao_ip)" />
+	<arg name="nao_port" value="$(arg nao_port)" />
+  </include>
+
+  <include file="$(find romeo_grasper)/launch/rviz_demo.launch" >
+	<arg name="db" value="$(arg db)" />
+	<arg name="debug" value="$(arg debug)" />
+  </include>
+
+  <include file="$(find romeo_grasper)/launch/romeo_grasper_demo.launch" >
+	<arg name="launch_full" 				value="true" />
+	<arg name="verbose" 					value="$(arg verbose)" />
+	<arg name="tracking"					value="$(arg tracking)" />
+	<arg name="pose_camera_preknown"		value="$(arg pose_camera_preknown)" />
+	<arg name="simulation"					value="$(arg simulation)" />
+	<arg name="automatic_execution"			value="$(arg automatic_execution)" />
+  </include>
+
+</launch>

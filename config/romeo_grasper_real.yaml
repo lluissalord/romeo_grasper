@@ -1,0 +1,36 @@
+move_group: arm_hand_left
+
+models_directory: /home/lluis/catkin_ws/src/romeo_grasper/data/models/
+model_object_name: dino
+model_reference_name: ref_tea_box
+
+pose_threshold: 0.05
+confidence_threshold: 0.25
+
+#max_acceleration_scaling_factor: 0.5
+max_velocity_scaling_factor: 0.1
+tolerance_step: 0.1
+tolerance_min: 0.1
+planning_time: 10
+attempts_max: 3
+
+base_link_frame_id: base_link
+camera_in_front: false
+camera_reference_frame_id: l_wrist
+camera_frame_id: camera_rgb_optical_frame
+camera_link: camera_link
+object_frame_id: object_frame
+camera_pose_x: -0.11
+camera_pose_y: 0.62
+camera_pose_z: 0.14
+
+# IMPORTANT This should be the same as romeo_dcm_bringup/config/romeo_dcm.yaml
+# Robot-Connection related parameters
+RobotPort: 9559
+#RobotIP: 127.0.0.1
+RobotIP: 198.18.0.1
+#RobotIP: 10.0.128.81
+DriverBrokerPort: 54000
+DriverBrokerIP: 0.0.0.0
+CameraBrokerPort: 54001
+CameraBrokerIP: 0.0.0.0

@@ -1,0 +1,421 @@
+#!/usr/bin/env python
+
+# Software License Agreement (BSD License)
+#
+# Copyright (c) 2013, SRI International
+# All rights reserved.
+#
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions
+# are met:
+#
+#  * Redistributions of source code must retain the above copyright
+#    notice, this list of conditions and the following disclaimer.
+#  * Redistributions in binary form must reproduce the above
+#    copyright notice, this list of conditions and the following
+#    disclaimer in the documentation and/or other materials provided
+#    with the distribution.
+#  * Neither the name of SRI International nor the names of its
+#    contributors may be used to endorse or promote products derived
+#    from this software without specific prior written permission.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+# "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+# LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+# FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE
+# COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
+# INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+# BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+# LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
+# ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+# Author: Acorn Pooley
+
+## BEGIN_SUB_TUTORIAL imports
+##
+## To use the python interface to move_group, import the moveit_commander
+## module.  We also import rospy,sys and copy.
+import sys
+import copy
+import rospy
+import moveit_commander
+import math
+
+# Only used for execute the rosrun function (if it's remove then delete this too)
+from subprocess import call
+
+# Messages imports
+import moveit_msgs.msg
+import geometry_msgs.msg
+import std_msgs.msg
+
+# Services imports
+from camera_srv_definitions.srv import *
+
+## END_SUB_TUTORIAL
+
+class RomeoGraspingObject:
+
+	def __init__(self):
+		self.move_group = rospy.get_param('~move_group', 'arm_hand_left')
+		self.model_object_filename = rospy.get_param('~model_object_filename', '/path/to/your/model/data/object_name/tracking_model.ao')
+		self.simulated = rospy.get_param('~simulated', False)		
+
+		# Init pose features
+		self.pose_threshold = rospy.get_param('~pose_threshold', 0.02)
+		self.confidence_threshold = rospy.get_param('~confidence_threshold', 0.2)
+		self.has_object_pose = False
+		self.changed_pose = False		
+		self.pose_target_stamped = geometry_msgs.msg.PoseStamped()
+  		self.pose_target_stamped.header.frame_id = frame_id
+  		pose_target = geometry_msgs.msg.Pose()
+		self.pose_target_stamped.pose = pose_target
+
+		self.is_busy = False
+
+		self.setup()
+
+		self.printRobotInfo()
+
+		self.run()
+
+	def run(self):
+		rate = rospy.Rate(5)
+		count = 1
+		while not rospy.is_shutdown():
+			if self.has_object_pose and self.changed_pose and not self.is_busy:
+				self.planningAndExecutePoseGoal()
+			rate.sleep()
+				
+
+	def setup(self):
+		## SETUP
+		## ^^^^^
+		print "============ Starting setup"
+		moveit_commander.roscpp_initialize(sys.argv)
+		rospy.init_node('romeo_grasping_object',
+				          anonymous=True)
+
+		self.moveitSetup()
+
+		self.objectTrackerSetup()
+
+
+	def moveitSetup(self):
+		print "============ MoveIt Setup"
+		## Instantiate a RobotCommander object.  This object is an interface to
+		## the robot as a whole.
+		self.robot = moveit_commander.RobotCommander()
+
+		## Instantiate a PlanningSceneInterface object.  This object is an interface
+		## to the world surrounding the robot.
+		self.scene = moveit_commander.PlanningSceneInterface()
+
+		## Instantiate a MoveGroupCommander object.  This object is an interface
+		## to one group of joints.  In this case the group is the joints in the left
+		## arm.  This interface can be used to plan and execute motions on the left
+		## arm.
+		self.group = moveit_commander.MoveGroupCommander(self.move_group)
+		
+		## We create this DisplayTrajectory publisher which is used below to publish
+  		## trajectories for RVIZ to visualize.
+		## Now is not used because I don't want to see the same plane twice
+  		self.display_trajectory_publisher = rospy.Publisher(
+                                        '/move_group/display_planned_path',
+                                        moveit_msgs.msg.DisplayTrajectory)
+
+  		## Wait for RVIZ to initialize. This sleep is ONLY to allow Rviz to come up.
+  		print "============ Waiting for RVIZ..."
+  		rospy.sleep(1)
+
+
+	def objectTrackerSetup(self):
+		## Object Tracker (v4r_ros_wrappers)
+  		## ^^^^^^^^^^^^^^^^^^^^^^^^^
+		print "============ Object Tracker Setup"
+		
+		# In the simulation we introduce on your own the object_pose and the confidence
+		# and you don't need the Object Tracker
+		if not self.simulated:
+		  	# To execute the Object tracking with rosrun
+		  	# TODO: Replace it first part for a roslaunch file with all the program
+		  	ros_package = " object_tracker"
+		  	ros_service = " object_tracker_service"
+		  	ros_parameters = " -m " + self.model_object_filename
+		  	command = "rosrun" + ros_package + ros_service + ros_parameters
+		  	call(command, shell=True)
+
+		  	# Start recording for the Object Tracker function of v4r_ros_wrappers
+		  	rospy.wait_for_service('/object_tracker/start_recording')
+		  	try:
+				start_tracking_service = rospy.ServiceProxy('/object_tracker/start_recording', start_tracker)
+			  	start_tracking_succes = start_tracking_service()
+			  	if not start_tracking_succes:
+					print "============ Start recording service not executed"
+					print "============ STOPPING"
+			except rospy.ServiceException, e:
+					print "============ Start recording service call failed: %s"%e
+
+	  	# Package v4r_ros_wrappers with Object Tracker publish this topics
+	  	# the first with the position of the object and the second with the 
+	  	# confidence of the tracking 
+	  	object_pose_suscriber = rospy.Subscriber(
+						  				'/object_tracker/object_pose',
+	  				      				geometry_msgs.msg.Transform,
+										self.callbackObjectPose)
+	  	confidence_suscriber = rospy.Subscriber(
+						  				'/object_tracker/object_tracker_confidence',
+	  				      				std_msgs.msg.Float32,
+										self.callbackConfidence)
+
+	def printRobotInfo(self):
+		## Getting Basic Information
+  		## ^^^^^^^^^^^^^^^^^^^^^^^^^
+	  	##
+	  	## We can get the name of the reference frame for this robot
+	  	print "============ Reference frame: %s" % self.group.get_planning_frame()
+
+	  	print "============ Pose reference frame: %s" % self.group.get_pose_reference_frame()
+
+	  	#group.set_pose_reference_frame('/CameraDepth_frame')
+	  	#print "============ New pose reference frame: %s" % self.group.get_pose_reference_frame()
+
+	  	## We can also print the name of the end-effector link for this group
+	  	print "============ End-effector link: %s" % self.group.get_end_effector_link()
+
+	  	## We can get a list of all the groups in the robot
+	  	print "============ Robot Groups:"
+	  	print self.robot.get_group_names()
+
+	  	## Sometimes for debugging it is useful to print the entire state of the
+	  	## robot.
+	  	print "============ Printing robot state"
+	  	print self.robot.get_current_state()
+	  	print "============"
+
+	  	print "============ Printing group pose"
+	  	print self.group.get_current_pose()
+	  	print "============"
+
+
+	def planningAndExecutePoseGoal(self):
+		## Planning to a Pose goal
+		## ^^^^^^^^^^^^^^^^^^^^^^^
+		print "============ Generating plan"
+		# While is doing calculating the planning is busy
+		self.is_busy = True
+
+		# Reducing the factor of maxAcceleration and maxVelocity
+		# It seems that this type of function it is only in C++
+		# self.group.set_max_acceleration_scaling_factor(self.maxAccelerationScalingFactor)
+		# self.group.set_max_velocity_scaling_factor(self.maxVelocityScalingFactor)
+
+		print self.pose_target_stamped		
+
+		## We can plan a motion for this group to a desired pose for the 
+		## end-effector
+		#self.group.set_pose_target(pose_target_stamped)
+		self.group.set_joint_value_target(self.pose_target_stamped,True)
+
+		# The pose has been used yet, so now don't replan till the pose has changed again
+		self.changed_pose = False
+
+		## Now, we call the planner to compute the plan
+		## and visualize it if successful
+		## Note that we are just planning, not asking move_group 
+		## to actually move the robot
+		plan = self.group.plan()
+		# print plan
+
+		print "============ Waiting while RVIZ displays plan..."
+		rospy.sleep(6)
+
+		self.group.clear_pose_targets()
+		self.is_busy = False
+		print "============ Waiting for a new pose"
+		## Moving to a pose goal
+		## ^^^^^^^^^^^^^^^^^^^^^
+		##
+		## Moving to a pose goal is similar to the step above
+		## except we now use the go() function. Note that
+		## the pose goal we had set earlier is still active 
+		## and so the robot will try to move to that goal. We will
+		## not use that function in this tutorial since it is 
+		## a blocking function and requires a controller to be active
+		## and report success on execution of a trajectory.
+
+		# Start state should be the current state always
+		self.group.set_start_state_to_current_state()
+
+		# Uncomment below line when working with a real robot
+		self.group.go(wait=True)
+
+	 
+		## You can ask RVIZ to visualize a plan (aka trajectory) for you.  But the
+		## group.plan() method does this automatically so this is not that useful
+		## here (it just displays the same trajectory again).
+		# print "============ Visualizing plan"
+		# display_trajectory = moveit_msgs.msg.DisplayTrajectory()
+
+		# display_trajectory.trajectory_start = robot.get_current_state()
+		# display_trajectory.trajectory.append(plan)
+		# display_trajectory_publisher.publish(display_trajectory);
+
+		# print "============ Waiting while plan is visualized (again)..."
+		# rospy.sleep(5)
+
+		## Planning to a joint-space goal 
+		## ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+		##
+		## Let's set a joint space goal and move towards it. 
+		## First, we will clear the pose target we had just set.
+
+    	
+
+
+	def callbackObjectPose(self,data):
+		self.has_object_pose = True
+
+		x_data = data.translation.x
+		y_data = data.translation.y
+		z_data = data.translation.z
+		
+		x_pose = self.pose_target_stamped.pose.position.x
+		y_pose = self.pose_target_stamped.pose.position.y
+		z_pose = self.pose_target_stamped.pose.position.z
+		print "============ Pose in %f,%f,%f"%(x_data,y_data,z_data)
+
+		# Only change pose if the difference between new and old pose is larger than the pose_threshold
+		if(math.sqrt(pow(x_data - x_pose,2)+pow(z_data - z_pose,2)+pow(z_data - z_pose,2)) > self.pose_threshold): 
+			self.pose_target_stamped.pose.position.x = x_data
+			self.pose_target_stamped.pose.position.y = y_data
+			self.pose_target_stamped.pose.position.z = z_data
+		
+			self.changed_pose = True
+
+
+	def callbackConfidence(self,data):
+		confidence = data.data
+		print "============ Confidence of %f"%confidence
+		
+		# Only can go on the planning if the confidence of the pose is bigger than the confidence_threshold
+		if(confidence < self.confidence_threshold):
+			self.has_object_pose = False
+
+	def exit():
+		## When finished shut down moveit_commander.
+	  	moveit_commander.roscpp_shutdown()
+	  
+		# Only use the Object Tracker when is with the real robot
+		if not self.simulated:
+		  	# Stop recording for the Object Tracker function of v4r_ros_wrappers
+		  	rospy.wait_for_service('/object_tracker/stop_recording')
+		  	try:
+			  	stop_tracking_service = rospy.ServiceProxy('/object_tracker/stop_recording', stop_tracker)
+			  	stop_tracking_succes = stop_tracking_service()
+			  	if not stop_tracking_succes:
+				  	print "============ Stop recording service not executed"
+		  	except rospy.ServiceException, e:
+				  	print "============ Stop recording service call failed: %s"%e
+
+		  	# Clean up for the Object Tracker function of v4r_ros_wrappers
+		  	rospy.wait_for_service('/object_tracker/cleanup')
+		  	try:
+			  	cleanup_service = rospy.ServiceProxy('/object_tracker/cleanup', cleanup)
+			  	cleanup_succes = cleanup_service()
+			  	if not cleanup_succes:
+				  	print "============ Cleanup service not executed"
+		  	except rospy.ServiceException, e:
+				  	print "============ Cleanup service call failed: %s"%e
+	  	print "============ STOPPING"
+
+		'''   
+		## Cartesian Paths
+		## ^^^^^^^^^^^^^^^
+		## You can plan a cartesian path directly by specifying a list of waypoints 
+		## for the end-effector to go through.
+		waypoints = []
+
+		# start with the current pose
+		waypoints.append(group.get_current_pose().pose)
+
+		wpose = geometry_msgs.msg.Pose()
+		wpose.orientation.w = 0.0
+		wpose.position.x = 0.2
+		wpose.position.y = 0.0
+		wpose.position.z = 0.0
+		waypoints.append(copy.deepcopy(wpose))
+		
+		## We want the cartesian path to be interpolated at a resolution of 1 cm
+		## which is why we will specify 0.01 as the eef_step in cartesian
+		## translation.  We will specify the jump threshold as 0.0, effectively
+		## disabling it.
+		(plan3, fraction) = group.compute_cartesian_path(
+									 waypoints,   # waypoints to follow
+									 0.01,        # eef_step
+									 0.0)         # jump_threshold
+									 
+		print "============ Waiting while RVIZ displays plan3..."
+		rospy.sleep(5)
+
+		## Then, we will get the current set of joint values for the group
+		group_variable_values = group.get_current_joint_values()
+		print "============ Joint values: ", group_variable_values
+
+		## Now, let's modify one of the joints, plan to the new joint
+		## space goal and visualize the plan
+		group_variable_values[0] = 1.0
+		group.set_joint_value_target(group_variable_values)
+
+		plan2 = group.plan()
+
+		print "============ Waiting while RVIZ displays plan2..."
+		rospy.sleep(5)
+
+
+		## Cartesian Paths
+		## ^^^^^^^^^^^^^^^
+		## You can plan a cartesian path directly by specifying a list of waypoints 
+		## for the end-effector to go through.
+		waypoints = []
+
+		# start with the current pose
+		waypoints.append(group.get_current_pose().pose)
+
+		# first orient gripper and move forward (+x)
+		wpose = geometry_msgs.msg.Pose()
+		wpose.orientation.w = 1.0
+		wpose.position.x = waypoints[0].position.x + 0.2
+		wpose.position.y = waypoints[0].position.y 
+		wpose.position.z = waypoints[0].position.z
+		waypoints.append(copy.deepcopy(wpose))
+
+		# second move down
+		wpose.position.z -= 0.10
+		waypoints.append(copy.deepcopy(wpose))
+
+		# third move to the side
+		wpose.position.y += 0.1
+		waypoints.append(copy.deepcopy(wpose))
+
+		## We want the cartesian path to be interpolated at a resolution of 1 cm
+		## which is why we will specify 0.01 as the eef_step in cartesian
+		## translation.  We will specify the jump threshold as 0.0, effectively
+		## disabling it.
+		(plan3, fraction) = group.compute_cartesian_path(
+									 waypoints,   # waypoints to follow
+									 0.01,        # eef_step
+									 0.0)         # jump_threshold
+									 
+		print "============ Waiting while RVIZ displays plan3..."
+		rospy.sleep(5)
+
+										 
+		## Adding/Removing Objects and Attaching/Detaching Objects
+		## ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+		## First, we will define the collision object message
+		collision_object = moveit_msgs.msg.CollisionObject()
+		'''

@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- By default, launch is not with launch_full, and if it is the case should enter the arg -->
+  <arg name="launch_full" 	default="false" />
+  <arg name="verbose"  		default="false" />
+  <arg name="debug" 		default="false" />
+
+  <!-- By default, we are using the tracking of the object, so without knowing where is the camera exactly -->
+  <arg name="tracking"				default="true" />
+  <arg name="pose_camera_preknown"  default="false" />
+  <arg name="simulation"  			default="true" />
+  <arg name="automatic_execution"  	default="true" />
+
+  <!-- TODO: Use or not output="screen" ??? A lot of messages of tracking confidence -->
+  <!-- RealSense camera use camera topic /camera/depth instead the default /camera/depth_registered -->
+  <!-- So to run this node it depends on if we use the RealSense camera or not -->
+  <arg name="use_realsense"			default="false" />
+  <group if="$(arg use_realsense)">
+    <include if="$(arg tracking)" file="$(find realsense_camera)/launch/realsense_sr300.launch" />
+  	<node if="$(arg tracking)" pkg="object_tracker" type="object_tracker_service" name="object_tracker" respawn="true" args="-t /camera/depth" />
+  </group>
+  <group unless="$(arg use_realsense)">
+    <!-- Not used because this launch is dying all the time and then there is no way to respawn it -->
+	<!-- <include if="$(arg tracking)" file="$(find openni_launch)/launch/openni.launch" >
+		<arg name="depth_registration"			value="true" />
+	</include> -->
+  	<node if="$(arg tracking)" pkg="object_tracker" type="object_tracker_service" name="object_tracker" respawn="true" />
+  </group>
+
+  <node pkg="romeo_grasper" type="romeo_grasper_object" name="romeo_grasper_object" output="screen" respawn="true" >
+		<param name="launch_full" 				value="$(arg launch_full)" />
+		<param name="verbose" 					value="$(arg verbose)" />
+		<param name="debug"						value="$(arg debug)" />
+		<param name="tracking"					value="$(arg tracking)" />
+		<param name="pose_camera_preknown"		value="$(arg pose_camera_preknown)" />
+		<param name="simulation"				value="$(arg simulation)" />
+		<param name="automatic_execution"		value="$(arg automatic_execution)" />
+		<rosparam command="load" file="$(find romeo_grasper)/config/romeo_grasper_demo.yaml" />
+		<!-- To use the move_group it needs the kinematics in the node's namespace -->
+		<rosparam command="load" file="$(find romeo_moveit_config)/config/kinematics.yaml"/>
+
+	    <rosparam command="load" file="$(find moveit_simple_grasps)/config/romeo_grasp_data.yaml"/>
+
+		<!-- Configuration of the models -->
+		<rosparam command="load" ns="models/tea_box" file="$(find romeo_grasper)/data/models/tea_box/model_config.yaml" />
+		<rosparam command="load" ns="models/ref_tea_box" file="$(find romeo_grasper)/data/models/ref_tea_box/model_config.yaml" />
+		<rosparam command="load" ns="models/dino" file="$(find romeo_grasper)/data/models/dino/model_config.yaml" />
+
+  </node>
+</launch>
