@@ -400,7 +400,7 @@ void RomeoGrasperObject::run()
 
         if(modeled_object_->getHasObjectPose() && enough_confidence_ && changed_pose_ && !is_busy_)
         {
-            PlanningAndExecutePoseGoal();
+            planningAndExecutePoseGoal();
             ROS_INFO("Waiting for a new goal...");
         }
 
@@ -409,7 +409,7 @@ void RomeoGrasperObject::run()
     }
 }
 
-void RomeoGrasperObject::PlanningAndExecutePoseGoal()
+void RomeoGrasperObject::planningAndExecutePoseGoal()
 {
     //TODO: TEST!!!!!!!!!!!!!!!!!!!!!!
     // For now is not printing any object. So something is wrong
@@ -505,7 +505,7 @@ void RomeoGrasperObject::PlanningAndExecutePoseGoal()
             }
             // Now restart function to do the picking
             preGraspVsPick = false;
-            PlanningAndExecutePoseGoal();
+            planningAndExecutePoseGoal();
         }else if(success)
         {
             if (verbose_)
@@ -522,7 +522,7 @@ void RomeoGrasperObject::PlanningAndExecutePoseGoal()
         break;
 
     case ANSWER_SRV_REPLAN:
-        PlanningAndExecutePoseGoal();
+        planningAndExecutePoseGoal();
         break;
 
     case ANSWER_SRV_ABORT:
@@ -1162,8 +1162,7 @@ void RomeoGrasperObject::exit()
     stop_tracking_service_client.call(srv);
 
     ros::ServiceClient cleanup_service_client = node_handle_.serviceClient<std_srvs::Empty>("/object_tracker/cleanup");
-    std_srvs::Empty srv;
-    stop_tracking_service_client.call(srv);
+    cleanup_service_client.call(srv);
 
     visual_tools_->deleteAllMarkers();
     visual_tools_->removeAllCollisionObjects();
