@@ -885,29 +885,38 @@ void RomeoGrasperObject::findCameraReference()
             // In case of pose_preknown say in the message that you need to put the info in the pertinent param
             // In case of tracking remember to initialise change_tracker_modeling service
             ROS_WARN_STREAM("Some of the following params doesn't exist:\n/romeo_grasper_object/camera_pose_x \n/romeo_grasper_object/camera_pose_y \n/romeo_grasper_object/camera_pose_z");
-            ROS_WARN_STREAM("Waiting for having these params or change to tracking mode");
-            bool have_all_params = false;
-            while(ros::ok && (!have_all_params || !tracking_))
+            if(!tracking_)
             {
-                loadParam("tracking",
-                          &tracking_,
-                          false,
-                          PARAM_TRACKING);
-
-                if(node_handle_.getParam("camera_pose_x", camera_pose_.pose.position.x) &&
-                        node_handle_.getParam("camera_pose_y", camera_pose_.pose.position.y) &&
-                        node_handle_.getParam("camera_pose_z", camera_pose_.pose.position.z))
+                ROS_INFO_STREAM("Waiting for having these params or change to tracking mode");
+                bool have_all_params = false;
+                while(ros::ok && (!have_all_params || !tracking_))
                 {
-                    have_all_params = true;
-                }
-            }
+                    loadParam("tracking",
+                              &tracking_,
+                              false,
+                              PARAM_TRACKING);
 
-            // If tracking start again but loading the change model service
-            // and if have_all_params only continue with these new values
-            if(tracking_)
-            {
-                ROS_INFO("Configuring services with objectTracker node");
-                change_model_service_client_ = node_handle_.serviceClient<object_tracker_srv_definitions::change_tracking_model>("/object_tracker/change_tracking_model");
+                    if(node_handle_.getParam("camera_pose_x", camera_pose_.pose.position.x) &&
+                            node_handle_.getParam("camera_pose_y", camera_pose_.pose.position.y) &&
+                            node_handle_.getParam("camera_pose_z", camera_pose_.pose.position.z))
+                    {
+                        have_all_params = true;
+                    }
+                }
+
+                // If tracking start again but loading the change model service
+                // and if have_all_params only continue with these new values
+                if(tracking_)
+                {
+                    ROS_INFO("Changing to tracking mode");
+                    ROS_INFO("Configuring services with objectTracker node");
+                    change_model_service_client_ = node_handle_.serviceClient<object_tracker_srv_definitions::change_tracking_model>("/object_tracker/change_tracking_model");
+                    findCameraReference();
+                    return;
+                }
+            }else{
+                ROS_WARN("Preknown camera pose failed, so starting positioning with tracking mode");
+                pose_camera_preknown_ = false;
                 findCameraReference();
                 return;
             }
