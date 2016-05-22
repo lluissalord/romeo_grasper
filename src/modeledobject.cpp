@@ -33,8 +33,7 @@ ModeledObject::ModeledObject(ros::NodeHandle *nh_, moveit_visual_tools::MoveItVi
     {
         models_directory_.append("/");
     }
-    //    if(models_directory_[models_directory_.size()-1].compare(compare) != 0)
-    //        models_directory_ += "/";
+
     if(verbose_)
         ROS_INFO_STREAM("Folder of models: " << models_directory_);
 
@@ -123,29 +122,7 @@ void ModeledObject::updatePose(geometry_msgs::PoseStamped pose)
         // Transformation from base_link to the camera_link
         tf::StampedTransform transform;
         tf::TransformListener tf_listener;
-        //ros::Time now = ros::Time::now();
         try{                      
-//            tf_listener.waitForTransform(base_link_, "LShoulder",
-//                                         ros::Time(0), ros::Duration(10.0));
-//            tf_listener.lookupTransform(base_link_, "LShoulder",
-//                                        ros::Time(0), transform);
-
-//            ROS_INFO_STREAM("Transform from " << base_link_ << " to " << "LShoulder" << ":\n" << transformToPose(transform));
-
-//            tf_listener.waitForTransform(base_link_, "LElbow",
-//                                         ros::Time(0), ros::Duration(10.0));
-//            tf_listener.lookupTransform(base_link_, "LElbow",
-//                                        ros::Time(0), transform);
-
-//            ROS_INFO_STREAM("Transform from " << base_link_ << " to " << "LElbow" << ":\n" << transformToPose(transform));
-
-//            tf_listener.waitForTransform(base_link_, "l_wrist",
-//                                         ros::Time(0), ros::Duration(10.0));
-
-//            ROS_INFO_STREAM("Transform from " << base_link_ << " to " << "l_wrist" << ":\n" << transformToPose(transform));
-//            tf_listener.lookupTransform(base_link_, "l_wrist",
-//                                        ros::Time(0), transform);
-
             ROS_DEBUG_STREAM("Look up for a transform between " << base_link_ << " and " <<  object_frame_id_);
             tf_listener.waitForTransform(base_link_, object_frame_id_,
                                          ros::Time(0), ros::Duration(60.0));
@@ -162,12 +139,11 @@ void ModeledObject::updatePose(geometry_msgs::PoseStamped pose)
 
         has_object_pose_ = true;
 
-        // TODO: publish in visual_tools
+        // TODO: support more shapeType
         visual_tools_->cleanupCO(rviz_name_);
         visual_tools_->cleanupACO(rviz_name_);
 
         visual_tools_->publishCollisionCylinder(block_->start_pose, block_->name, block_->size, block_->size_l);
-        //visual_tools_->publishCylinder(block_->start_pose, rviz_visual_tools::RAND, block_->size_l, block_->size, block_->name);
     }else
     {
         pose_from_camera_ = pose.pose;
@@ -180,7 +156,7 @@ void ModeledObject::updatePose(geometry_msgs::PoseStamped pose)
 // Thread to publish constantly the transform from camera_frame to object_frame
 void ModeledObject::publishTransforms()
 {
-    ROS_INFO_STREAM("RomeoGrasperObject - Publishing transforms");
+    ROS_INFO_STREAM("ModeledObject - Publishing transforms");
     tf::TransformBroadcaster tf_broadcaster;
 
     ros::Duration sleeper(0.1); // 100ms

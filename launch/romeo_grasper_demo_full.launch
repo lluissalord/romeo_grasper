@@ -23,6 +23,9 @@
 	<arg name="nao_port" value="$(arg nao_port)" />
   </include>
 
+  <!-- In simulation we need the pose_controller to move Romeo -->
+  <node pkg="naoqi_pose" type="pose_controller" name="romeo/pose_controller" output="screen" respawn="true" />
+
   <include file="$(find romeo_grasper)/launch/rviz_demo.launch" >
 	<arg name="db" value="$(arg db)" />
 	<arg name="debug" value="$(arg debug)" />
