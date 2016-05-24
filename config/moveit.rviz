@@ -1355,7 +1355,7 @@ Visualization Manager:
       Value: true
     - Class: rviz/MarkerArray
       Enabled: true
-      Marker Topic: /romeo_grasper_object/moveit_visual_tools
+      Marker Topic: /romeo_grasper/moveit_visual_tools
       Name: MarkerArray
       Namespaces:
         Cuboid: true

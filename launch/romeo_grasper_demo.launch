@@ -27,7 +27,7 @@
   	<node if="$(arg tracking)" pkg="object_tracker" type="object_tracker_service" name="object_tracker" respawn="true" />
   </group>
 
-  <node pkg="romeo_grasper" type="romeo_grasper_object" name="romeo_grasper_object" output="screen" respawn="true" >
+  <node pkg="romeo_grasper" type="romeo_grasper" name="romeo_grasper" output="screen" respawn="true" >
 		<param name="launch_full" 				value="$(arg launch_full)" />
 		<param name="verbose" 					value="$(arg verbose)" />
 		<param name="debug"						value="$(arg debug)" />

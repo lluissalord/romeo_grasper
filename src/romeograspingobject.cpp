@@ -126,15 +126,15 @@ void RomeoGrasperObject::loadParams(int flag)
                   &models_directory_,
                   "/home/lluis/catkin_ws/src/romeo_grasper/data/models/",
                   PARAM_MODELS_DIRECTORY);
-    }
 
-    if(flag == LOAD_PARAMS_ALL)
-    {
         loadParam("automatic_execution",
                   &automatic_execution_,
                   false,
                   PARAM_AUTOMATIC_EXECUTION);
+    }
 
+    if(flag == LOAD_PARAMS_ALL)
+    {
         loadParam("simulation",
                   &simulation_,
                   false,
@@ -200,7 +200,7 @@ void RomeoGrasperObject::setup()
     // (Optional) Create a publisher for visualizing plans in Rviz.
     //display_publisher_ = node_handle_.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
 
-    romeo_simulator_state_.reset(new RomeoSimulatorState(node_handle_, "/trajectory", "/joint_states", "robot_state"));
+    romeo_simulator_state_.reset(new RomeoSimulatorState(node_handle_, "romeo_robot/trajectory", "/joint_states", "robot_state"));
 
     simpleGrasperSetup();
 
@@ -321,7 +321,7 @@ void RomeoGrasperObject::setupVisualTools()
     ROS_DEBUG_STREAM("Setup Visual Tools");
 
     // Load the Robot Viz Tools for publishing to rviz
-    visual_tools_.reset(new moveit_visual_tools::MoveItVisualTools(base_link_,"/romeo_grasper_object/moveit_visual_tools"));
+    visual_tools_.reset(new moveit_visual_tools::MoveItVisualTools(base_link_,"/romeo_grasper/moveit_visual_tools"));
 
     visual_tools_->setPlanningSceneTopic("/move_group/monitored_planning_scene");
     //visual_tools_->loadPlanningSceneMonitor();
@@ -350,7 +350,7 @@ void RomeoGrasperObject::setupVisualTools()
     std::vector< geometry_msgs::Point> points = tableMesuramentsToPoints(TABLE_X, TABLE_Y, TABLE_WIDTH, TABLE_HEIGHT, TABLE_DEPTH, floor_to_base_height);
     visual_tools_->publishCollisionCuboid(points.at(0),points.at(1), SUPPORT_SURFACE3_NAME, rviz_visual_tools::GREEN);
 
-    string topic = "/romeo_grasper_object/visual_table";
+    string topic = "/romeo_grasper/visual_table";
     uint32_t queue_size = 10;
     visual_table_sub_ = node_handle_.subscribe(topic, queue_size, &RomeoGrasperObject::callbackVisualTable, this);
 
@@ -501,7 +501,7 @@ void RomeoGrasperObject::planningAndExecutePoseGoal()
                 ROS_INFO_STREAM("Pregrasping " << success ? "SUCCESS" : "FAILED");
             }else
             {
-                success = romeo_simulator_state_->executeTrajectory("/joint_trajectory");
+                success = romeo_simulator_state_->executeTrajectory("romeo_robot/joint_trajectory");
             }
             // Now restart function to do the picking
             preGraspVsPick = false;
@@ -884,7 +884,7 @@ void RomeoGrasperObject::findCameraReference()
         {
             // In case of pose_preknown say in the message that you need to put the info in the pertinent param
             // In case of tracking remember to initialise change_tracker_modeling service
-            ROS_WARN_STREAM("Some of the following params doesn't exist:\n/romeo_grasper_object/camera_pose_x \n/romeo_grasper_object/camera_pose_y \n/romeo_grasper_object/camera_pose_z");
+            ROS_WARN_STREAM("Some of the following params doesn't exist:\n/romeo_grasper/camera_pose_x \n/romeo_grasper/camera_pose_y \n/romeo_grasper/camera_pose_z");
             if(!tracking_)
             {
                 ROS_INFO_STREAM("Waiting for having these params or change to tracking mode");
@@ -1124,7 +1124,7 @@ void RomeoGrasperObject::findCameraReference()
             // In case of pose_preknown say in the message that you need to put the info in the pertinent param
             // In case of tracking remember to initialise change_tracker_modeling service
             ROS_WARN_STREAM("If is not tracking I need to know where is the camera positioned");
-            ROS_WARN_STREAM("Waiting for setting mode pose_camera_preknown or tracking by one of these params:\n/romeo_grasper_object/pose_camera_preknown \n/romeo_grasper_object/tracking");
+            ROS_WARN_STREAM("Waiting for setting mode pose_camera_preknown or tracking by one of these params:\n/romeo_grasper/pose_camera_preknown \n/romeo_grasper/tracking");
             while(ros::ok && (!pose_camera_preknown_ || !tracking_))
             {
                 loadParam("tracking",
