@@ -35,7 +35,7 @@ catkin_package(
 	CATKIN_DEPENDS roscpp rospy geometry_msgs std_msgs std_srvs moveit_ros_planning_interface moveit_visual_tools object_tracker_msg_definitions moveit_simple_grasps naoqi_bridge_msgs #romeo_moveit_actions #transform
 )
 
-add_executable(romeo_grasper_object
+add_executable(romeo_grasper
 				src/romeo_grasper_driver.cpp
 				src/romeograspingobject.cpp
 				src/modeledobject.cpp
@@ -43,10 +43,10 @@ add_executable(romeo_grasper_object
 				src/romeo_moveit_actions/action.cpp
 				src/romeo_moveit_actions/metablock.cpp
 				src/romeo_moveit_actions/postures.cpp)
-add_dependencies(romeo_grasper_object ${catkin_EXPORTED_TARGETS})
-target_link_libraries(romeo_grasper_object ${catkin_LIBRARIES})
+add_dependencies(romeo_grasper ${catkin_EXPORTED_TARGETS})
+target_link_libraries(romeo_grasper ${catkin_LIBRARIES})
 
-install(TARGETS romeo_grasper_object
+install(TARGETS romeo_grasper
         RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION})
 
 install(DIRECTORY config launch

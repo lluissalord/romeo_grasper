@@ -200,7 +200,7 @@ void RomeoGrasperObject::setup()
     // (Optional) Create a publisher for visualizing plans in Rviz.
     //display_publisher_ = node_handle_.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
 
-    romeo_simulator_state_.reset(new RomeoSimulatorState(node_handle_, "romeo_robot/trajectory", "/joint_states", "robot_state"));
+    romeo_simulator_state_.reset(new RomeoSimulatorState(node_handle_, "/trajectory", "/joint_states", "robot_state"));
 
     simpleGrasperSetup();
 
