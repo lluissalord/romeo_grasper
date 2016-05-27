@@ -39,7 +39,7 @@ add_executable(romeo_grasper
 				src/romeo_grasper_driver.cpp
 				src/romeograspingobject.cpp
 				src/modeledobject.cpp
-				src/romeosimulatorstate.cpp
+				src/romeosimulator.cpp
 				src/romeo_moveit_actions/action.cpp
 				src/romeo_moveit_actions/metablock.cpp
 				src/romeo_moveit_actions/postures.cpp)

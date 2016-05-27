@@ -1,23 +1,23 @@
-#include "romeo_grasper/romeosimulatorstate.h"
+#include "romeo_grasper/romeosimulator.h"
 
 #include <actionlib/client/simple_action_client.h>
 #include <actionlib/client/terminal_state.h>
 #include <sensor_msgs/JointState.h>
 //#include <moveit/robot_state/conversions.h>
 
-RomeoSimulatorState::RomeoSimulatorState(ros::NodeHandle nh, std::string trajectory_topic, std::string joints_topic, std::string state_topic)
+RomeoSimulator::RomeoSimulator(ros::NodeHandle nh, std::string trajectory_topic, std::string joints_topic, std::string state_topic)
 {
     uint32_t queue_size = 10;
-    traj_sub_ = nh.subscribe(trajectory_topic, queue_size, &RomeoSimulatorState::callbackUpdateTrajectory, this);
-    joints_sub_ = nh.subscribe(joints_topic, queue_size, &RomeoSimulatorState::callbackUpdateState, this);
+    traj_sub_ = nh.subscribe(trajectory_topic, queue_size, &RomeoSimulator::callbackUpdateTrajectory, this);
+    joints_sub_ = nh.subscribe(joints_topic, queue_size, &RomeoSimulator::callbackUpdateState, this);
     robot_state_pub_ = nh.advertise<moveit_msgs::DisplayRobotState>(state_topic, 1, true);
 
     //have_robot_state_ = false;
 
-    //pub_thread_ = boost::shared_ptr<boost::thread>(new boost::thread (boost::bind(&RomeoSimulatorState::publishState, this)));
+    //pub_thread_ = boost::shared_ptr<boost::thread>(new boost::thread (boost::bind(&RomeoSimulator::publishState, this)));
 }
 
-//void RomeoSimulatorState::publishState()
+//void RomeoSimulator::publishState()
 //{
 //    ros::Rate loop_rate(0.5);
 //    while(ros::ok)
@@ -32,7 +32,7 @@ RomeoSimulatorState::RomeoSimulatorState(ros::NodeHandle nh, std::string traject
 //    }
 //}
 
-void RomeoSimulatorState::callbackUpdateState(sensor_msgs::JointState data)
+void RomeoSimulator::callbackUpdateState(sensor_msgs::JointState data)
 {
 /*
     moveit::core::RobotState romeo_state;
@@ -46,7 +46,7 @@ void RomeoSimulatorState::callbackUpdateState(sensor_msgs::JointState data)
     robot_state_pub_.publish(romeo_state_msg_);
 }
 
-void RomeoSimulatorState::callbackUpdateTrajectory(moveit_msgs::RobotTrajectory data)
+void RomeoSimulator::callbackUpdateTrajectory(moveit_msgs::RobotTrajectory data)
 {
     // If the first time is 0, the trajectory is not done by Romeo
     // so I increment all the time in a small step to have a delay
@@ -60,7 +60,7 @@ void RomeoSimulatorState::callbackUpdateTrajectory(moveit_msgs::RobotTrajectory 
     ROS_INFO_STREAM("Trajectory updated");
 }
 
-bool RomeoSimulatorState::executeTrajectory(std::string action_topic)
+bool RomeoSimulator::executeTrajectory(std::string action_topic)
 {
     actionlib::SimpleActionClient<naoqi_bridge_msgs::JointTrajectoryAction> trajectory_ac_(action_topic, true);
 

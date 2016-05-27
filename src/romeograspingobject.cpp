@@ -11,7 +11,8 @@
 RomeoGrasperObject::RomeoGrasperObject()
 {
     ros::NodeHandle nh("~");
-    node_handle_ = nh;
+    node_handle_ = nh;    
+    ns_ = node_handle_.getNamespace();
 
     bool debug;
     node_handle_.param("debug", debug, false);
@@ -109,7 +110,7 @@ void RomeoGrasperObject::loadParams(int flag)
 
         loadParam("planning_time",
                   &planning_time_,
-                  10.0f,
+                  20.0f,
                   PARAM_PLANNING_TIME);
 
         loadParam("attempts_max",
@@ -131,6 +132,11 @@ void RomeoGrasperObject::loadParams(int flag)
                   &automatic_execution_,
                   false,
                   PARAM_AUTOMATIC_EXECUTION);
+
+        loadParam("reachVsGrasp",
+                  &reachVsGrasp_,
+                  false,
+                  PARAM_REACH_VS_GRASP);
     }
 
     if(flag == LOAD_PARAMS_ALL)
@@ -200,7 +206,7 @@ void RomeoGrasperObject::setup()
     // (Optional) Create a publisher for visualizing plans in Rviz.
     //display_publisher_ = node_handle_.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
 
-    romeo_simulator_state_.reset(new RomeoSimulatorState(node_handle_, "/trajectory", "/joint_states", "robot_state"));
+    romeo_simulator_.reset(new RomeoSimulator(node_handle_, "/trajectory", "/joint_states", "robot_state"));
 
     simpleGrasperSetup();
 
@@ -320,6 +326,7 @@ void RomeoGrasperObject::setupVisualTools()
 {
     ROS_DEBUG_STREAM("Setup Visual Tools");
 
+    //TODO: Use ns_ for the namespace
     // Load the Robot Viz Tools for publishing to rviz
     visual_tools_.reset(new moveit_visual_tools::MoveItVisualTools(base_link_,"/romeo_grasper/moveit_visual_tools"));
 
@@ -350,6 +357,7 @@ void RomeoGrasperObject::setupVisualTools()
     std::vector< geometry_msgs::Point> points = tableMesuramentsToPoints(TABLE_X, TABLE_Y, TABLE_WIDTH, TABLE_HEIGHT, TABLE_DEPTH, floor_to_base_height);
     visual_tools_->publishCollisionCuboid(points.at(0),points.at(1), SUPPORT_SURFACE3_NAME, rviz_visual_tools::GREEN);
 
+    //TODO: Use ns_ for the namespace
     string topic = "/romeo_grasper/visual_table";
     uint32_t queue_size = 10;
     visual_table_sub_ = node_handle_.subscribe(topic, queue_size, &RomeoGrasperObject::callbackVisualTable, this);
@@ -448,8 +456,17 @@ void RomeoGrasperObject::planningAndExecutePoseGoal()
             ROS_INFO("Planing reaching pregrasp");
 
         // First made the plan
-        current_action->setFlag(FLAG_NO_MOVE);
-        success = current_action->reachPregrasp(modeled_object_->block_->start_pose, surface_name_);
+        //TODO: Decide which use
+        if(reachVsGrasp_)
+        {
+            current_action->setFlag(FLAG_NO_MOVE);
+            success = current_action->reachPregrasp(modeled_object_->block_->start_pose, surface_name_);
+        }else{
+            //TODO: Figure out if it's going to a pregrasping pose or in the grasp pose
+            //It use the function setPoseTargets for all the grasps giving the pose of the last link
+            //with pose grasp_pose of the message Grasp.
+            success = current_action->graspPlan(modeled_object_->block_, surface_name_);
+        }
     }else
         ROS_INFO("Prepared to do the picking");
 
@@ -463,8 +480,7 @@ void RomeoGrasperObject::planningAndExecutePoseGoal()
     }else
     {
         ros::Rate loop_rate(1);
-        std::string ns = node_handle_.getNamespace();
-        string service_info = ns + "/execute_plan \n" +  ns + "/replan \n" + ns + "/abort_plan";
+        string service_info = ns_ + "/execute_plan \n" +  ns_ + "/replan \n" + ns_ + "/abort_plan";
         ROS_INFO("Waiting for call of one of the followings service: \n%s", service_info.c_str());
 
         while(waiting_service_)
@@ -501,7 +517,7 @@ void RomeoGrasperObject::planningAndExecutePoseGoal()
                 ROS_INFO_STREAM("Pregrasping " << success ? "SUCCESS" : "FAILED");
             }else
             {
-                success = romeo_simulator_state_->executeTrajectory("romeo_robot/joint_trajectory");
+                success = romeo_simulator_->executeTrajectory("romeo_robot/joint_trajectory");
             }
             // Now restart function to do the picking
             preGraspVsPick = false;
@@ -882,6 +898,7 @@ void RomeoGrasperObject::findCameraReference()
                 !node_handle_.getParam("camera_pose_y", camera_pose_.pose.position.y) ||
                 !node_handle_.getParam("camera_pose_z", camera_pose_.pose.position.z))
         {
+            //TODO: Use ns_ for the namespace
             // In case of pose_preknown say in the message that you need to put the info in the pertinent param
             // In case of tracking remember to initialise change_tracker_modeling service
             ROS_WARN_STREAM("Some of the following params doesn't exist:\n/romeo_grasper/camera_pose_x \n/romeo_grasper/camera_pose_y \n/romeo_grasper/camera_pose_z");
@@ -996,6 +1013,7 @@ void RomeoGrasperObject::findCameraReference()
             // Wait to have a pose of reference to position the camera
             if(!has_pose_)
             {
+                //TODO: Use ns_ for the namespace
                 ROS_INFO_STREAM("Waiting to find the object that will be reference for the positioning of the camera");
                 ROS_INFO_STREAM("Try to move the camera or the reference object with frame id: " << camera_reference_frame_id_ << " or to change the param /romeo_grasper/reference_confidence_threshold");
             }
@@ -1121,6 +1139,7 @@ void RomeoGrasperObject::findCameraReference()
             changeTrackingModel(model_object_name_);
         }else
         {
+            //TODO: Use ns_ for the namespace
             // In case of pose_preknown say in the message that you need to put the info in the pertinent param
             // In case of tracking remember to initialise change_tracker_modeling service
             ROS_WARN_STREAM("If is not tracking I need to know where is the camera positioned");

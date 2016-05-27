@@ -7,11 +7,13 @@ model_reference_name: ref_tea_box
 pose_threshold: 0.05
 confidence_threshold: 0.25
 
+reachVsGrasp: false
+
 #max_acceleration_scaling_factor: 0.5
 max_velocity_scaling_factor: 0.1
 tolerance_step: 0.1
 tolerance_min: 0.1
-planning_time: 10
+planning_time: 20
 attempts_max: 3
 
 base_link_frame_id: base_link

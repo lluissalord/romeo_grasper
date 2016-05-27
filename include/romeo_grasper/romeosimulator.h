@@ -1,5 +1,5 @@
-#ifndef ROMEOSIMULATORSTATE_H
-#define ROMEOSIMULATORSTATE_H
+#ifndef ROMEOSIMULATOR_H
+#define ROMEOSIMULATOR_H
 
 #include <ros/ros.h>
 #include <naoqi_bridge_msgs/JointTrajectoryAction.h>
@@ -9,7 +9,7 @@
 
 // This class is a fix to be able to have the state of the robot in rviz always updated
 // and to pass the orders of moveit controller to the robot
-class RomeoSimulatorState
+class RomeoSimulator
 {
 private:
     ros::Subscriber joints_sub_;
@@ -28,9 +28,9 @@ private:
 
     //void publishState();
 public:
-    RomeoSimulatorState(ros::NodeHandle nh, std::string trajectory_topic, std::string joints_topic, std::string state_topic);
+    RomeoSimulator(ros::NodeHandle nh, std::string trajectory_topic, std::string joints_topic, std::string state_topic);
 
     bool executeTrajectory(std::string action_topic);
 };
 
-#endif // ROMEOSIMULATORSTATE_H
+#endif // ROMEOSIMULATOR_H

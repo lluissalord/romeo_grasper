@@ -26,7 +26,7 @@
 //#include <action.hpp>
 #include "romeo_grasper/modeledobject.h"
 #include "romeo_grasper/VisualTable.h"
-#include "romeo_grasper/romeosimulatorstate.h"
+#include "romeo_grasper/romeosimulator.h"
 
 #include <moveit/move_group_interface/move_group.h>
 //#include <moveit/planning_scene_interface/planning_scene_interface.h>
@@ -39,6 +39,7 @@
 #define PARAM_REFERENCE_CONFIDENCE_THRESHOLD    5
 #define PARAM_SIMULATION                        6
 #define PARAM_AUTOMATIC_EXECUTION               7
+#define PARAM_REACH_VS_GRASP                    8
 // Parameters for object recognition
 #define PARAM_MODEL_OBJECT_NAME                 10
 #define PARAM_MODELS_DIRECTORY                  11
@@ -86,6 +87,7 @@ private:
 
     //ROS Standard Variable
     ros::NodeHandle node_handle_;
+	string ns_;
 
     // ROS Topics/Messages
     ros::ServiceClient change_model_service_client_;
@@ -127,6 +129,7 @@ private:
     bool enough_confidence_;
     bool camera_positioned_;
     bool preGraspVsPick;
+    bool reachVsGrasp_;
     bool firstSetup_;
     bool waiting_service_;
     int answer_service_;
@@ -148,7 +151,7 @@ private:
     moveit_simple_actions::Action *action_right_;
     moveit_simple_actions::Action *action_left_;
 
-    boost::shared_ptr<RomeoSimulatorState> romeo_simulator_state_;
+    boost::shared_ptr<RomeoSimulator> romeo_simulator_;
 /*
     // Create your own broker
     boost::shared_ptr<AL::ALBroker> broker_;
