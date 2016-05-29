@@ -12,23 +12,23 @@
 class RomeoSimulator
 {
 private:
-    ros::Subscriber joints_sub_;
+    //ros::Subscriber joints_sub_;
     ros::Subscriber traj_sub_;
-    ros::Publisher robot_state_pub_;
+    //ros::Publisher robot_state_pub_;
 
     naoqi_bridge_msgs::JointTrajectoryGoal traj_goal_;
-    moveit_msgs::DisplayRobotState romeo_state_msg_;
+    //moveit_msgs::DisplayRobotState romeo_state_msg_;
 
     //boost::shared_ptr<boost::thread> pub_thread_;
 
     //bool have_robot_state_;
 
-    void callbackUpdateState(sensor_msgs::JointState data);
+    //void callbackUpdateState(sensor_msgs::JointState data);
     void callbackUpdateTrajectory(moveit_msgs::RobotTrajectory data);
 
     //void publishState();
 public:
-    RomeoSimulator(ros::NodeHandle nh, std::string trajectory_topic, std::string joints_topic, std::string state_topic);
+    RomeoSimulator(ros::NodeHandle nh, std::string trajectory_topic);
 
     bool executeTrajectory(std::string action_topic);
 };

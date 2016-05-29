@@ -5,12 +5,12 @@
 #include <sensor_msgs/JointState.h>
 //#include <moveit/robot_state/conversions.h>
 
-RomeoSimulator::RomeoSimulator(ros::NodeHandle nh, std::string trajectory_topic, std::string joints_topic, std::string state_topic)
+RomeoSimulator::RomeoSimulator(ros::NodeHandle nh, std::string trajectory_topic)
 {
     uint32_t queue_size = 10;
     traj_sub_ = nh.subscribe(trajectory_topic, queue_size, &RomeoSimulator::callbackUpdateTrajectory, this);
-    joints_sub_ = nh.subscribe(joints_topic, queue_size, &RomeoSimulator::callbackUpdateState, this);
-    robot_state_pub_ = nh.advertise<moveit_msgs::DisplayRobotState>(state_topic, 1, true);
+    //joints_sub_ = nh.subscribe(joints_topic, queue_size, &RomeoSimulator::callbackUpdateState, this);
+    //robot_state_pub_ = nh.advertise<moveit_msgs::DisplayRobotState>(state_topic, 1, true);
 
     //have_robot_state_ = false;
 
@@ -32,19 +32,19 @@ RomeoSimulator::RomeoSimulator(ros::NodeHandle nh, std::string trajectory_topic,
 //    }
 //}
 
-void RomeoSimulator::callbackUpdateState(sensor_msgs::JointState data)
-{
-/*
-    moveit::core::RobotState romeo_state;
-    have_robot_state_ = moveit::core::jointStateToRobotState(data, romeo_state);
-    moveit::core::robotStateToRobotStateMsg(romeo_state, romeo_state_msg_, true);
-*/
-    // TODO: With this way it cannot attach object (I think)
-    romeo_state_msg_.state.joint_state = data;
-    romeo_state_msg_.state.is_diff = true;
+//void RomeoSimulator::callbackUpdateState(sensor_msgs::JointState data)
+//{
+///*
+//    moveit::core::RobotState romeo_state;
+//    have_robot_state_ = moveit::core::jointStateToRobotState(data, romeo_state);
+//    moveit::core::robotStateToRobotStateMsg(romeo_state, romeo_state_msg_, true);
+//*/
+//    // TODO: With this way it cannot attach object (I think)
+//    romeo_state_msg_.state.joint_state = data;
+//    romeo_state_msg_.state.is_diff = true;
 
-    robot_state_pub_.publish(romeo_state_msg_);
-}
+//    robot_state_pub_.publish(romeo_state_msg_);
+//}
 
 void RomeoSimulator::callbackUpdateTrajectory(moveit_msgs::RobotTrajectory data)
 {

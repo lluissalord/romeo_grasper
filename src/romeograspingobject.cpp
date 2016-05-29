@@ -206,7 +206,7 @@ void RomeoGrasperObject::setup()
     // (Optional) Create a publisher for visualizing plans in Rviz.
     //display_publisher_ = node_handle_.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
 
-    romeo_simulator_.reset(new RomeoSimulator(node_handle_, "/trajectory", "/joint_states", "robot_state"));
+    romeo_simulator_.reset(new RomeoSimulator(node_handle_, "/trajectory"));
 
     simpleGrasperSetup();
 
@@ -517,7 +517,7 @@ void RomeoGrasperObject::planningAndExecutePoseGoal()
                 ROS_INFO_STREAM("Pregrasping " << success ? "SUCCESS" : "FAILED");
             }else
             {
-                success = romeo_simulator_->executeTrajectory("romeo_robot/joint_trajectory");
+                success = romeo_simulator_->executeTrajectory("/joint_trajectory");
             }
             // Now restart function to do the picking
             preGraspVsPick = false;
