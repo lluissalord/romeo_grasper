@@ -17,6 +17,7 @@
   <arg name="pose_camera_preknown"  default="false" />
   <arg name="simulation"  			default="false" />
   <arg name="automatic_execution"  	default="false" />
+  <arg name="use_realsense"  		default="false" />
 
   <include file="$(find romeo_bringup)/launch/romeo_full_py.launch" >
  	<arg name="nao_ip" value="$(arg nao_ip)" />
@@ -37,6 +38,7 @@
 	<arg name="pose_camera_preknown"		value="$(arg pose_camera_preknown)" />
 	<arg name="simulation"					value="$(arg simulation)" />
 	<arg name="automatic_execution"			value="$(arg automatic_execution)" />
+	<arg name="use_realsense"				value="$(arg use_realsense)" />
   </include>
 
 </launch>
