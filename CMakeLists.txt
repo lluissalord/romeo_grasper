@@ -36,8 +36,8 @@ catkin_package(
 )
 
 add_executable(romeo_grasper
-				src/romeo_grasper_driver.cpp
-				src/romeograspingobject.cpp
+				src/romeograsperdriver.cpp
+				src/romeograsper.cpp
 				src/modeledobject.cpp
 				src/romeosimulator.cpp
 				src/romeo_moveit_actions/action.cpp

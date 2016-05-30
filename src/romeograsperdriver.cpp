@@ -1,14 +1,14 @@
-#include "romeo_grasper/romeograspingobject.h"
+#include "romeo_grasper/romeograsper.h"
 
 int main(int argc, char** argv)
 {
-    ros::init(argc, argv, "romeo_grasper_object");
+    ros::init(argc, argv, "romeo_grasper");
     //ros::NodeHandle nh;
 
     ros::AsyncSpinner spinner(1);
     spinner.start();
 
-    RomeoGrasperObject romeo_grasper = RomeoGrasperObject();
+    RomeoGrasper romeo_grasper = RomeoGrasper();
     romeo_grasper.exit();
     return 0;
 }

@@ -81,7 +81,7 @@ static const double TABLE_Y = 0;
 
 static const string SUPPORT_SURFACE3_NAME = "table";
 
-class RomeoGrasperObject
+class RomeoGrasper
 {
 private:
 
@@ -195,8 +195,8 @@ private:
     bool naoqiSetup();
 */
 public:
-    RomeoGrasperObject();
-    ~RomeoGrasperObject();
+    RomeoGrasper();
+    ~RomeoGrasper();
 
     void setup();
 

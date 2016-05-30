@@ -1,4 +1,4 @@
-#include "romeo_grasper/romeograspingobject.h"
+#include "romeo_grasper/romeograsper.h"
 
 #include <ros/console.h>
 #include <math.h>
@@ -8,7 +8,7 @@
 
 #include <moveit/planning_scene_interface/planning_scene_interface.h>
 
-RomeoGrasperObject::RomeoGrasperObject()
+RomeoGrasper::RomeoGrasper()
 {
     ros::NodeHandle nh("~");
     node_handle_ = nh;    
@@ -31,7 +31,7 @@ RomeoGrasperObject::RomeoGrasperObject()
     if(launch_full)
     {
         /* This sleep is ONLY to allow Rviz to come up */
-        ROS_INFO("RomeoGrasperObject waiting for Rviz...");
+        ROS_INFO("RomeoGrasper waiting for Rviz...");
         sleep(10.0);
     }
 
@@ -47,7 +47,7 @@ RomeoGrasperObject::RomeoGrasperObject()
     // True means have to do the pregrasp and false have to do the pick
     preGraspVsPick = true;
 
-    transform_thread_ = boost::shared_ptr<boost::thread>(new boost::thread (boost::bind(&RomeoGrasperObject::publishTransforms, this)));
+    transform_thread_ = boost::shared_ptr<boost::thread>(new boost::thread (boost::bind(&RomeoGrasper::publishTransforms, this)));
 
     firstSetup_ = true;
     is_visual_tools_setup_ = false;
@@ -64,12 +64,12 @@ RomeoGrasperObject::RomeoGrasperObject()
     run();
 }
 
-RomeoGrasperObject::~RomeoGrasperObject()
+RomeoGrasper::~RomeoGrasper()
 {
     exit();
 }
 
-void RomeoGrasperObject::loadParams(int flag)
+void RomeoGrasper::loadParams(int flag)
 {
     if(flag == LOAD_PARAMS_RUN || flag == LOAD_PARAMS_ALL)
     {
@@ -194,15 +194,15 @@ void RomeoGrasperObject::loadParams(int flag)
     }
 }
 
-void RomeoGrasperObject::setup()
+void RomeoGrasper::setup()
 {
     ROS_INFO("Starting setup...");
 
     //Done in the Action class on topic /trajectory
     //plan_pub_ = node_handle_.advertise<moveit_msgs::RobotTrajectory>("trajectory", 1000);
-    execute_service_ = node_handle_.advertiseService("execute_plan", &RomeoGrasperObject::executePlan, this);
-    replan_service_ = node_handle_.advertiseService("replan", &RomeoGrasperObject::rePlan, this);
-    abort_service_ = node_handle_.advertiseService("abort_plan", &RomeoGrasperObject::abortPlan, this);
+    execute_service_ = node_handle_.advertiseService("execute_plan", &RomeoGrasper::executePlan, this);
+    replan_service_ = node_handle_.advertiseService("replan", &RomeoGrasper::rePlan, this);
+    abort_service_ = node_handle_.advertiseService("abort_plan", &RomeoGrasper::abortPlan, this);
     // (Optional) Create a publisher for visualizing plans in Rviz.
     //display_publisher_ = node_handle_.advertise<moveit_msgs::DisplayTrajectory>("/move_group/display_planned_path", 1, true);
 
@@ -236,13 +236,13 @@ void RomeoGrasperObject::setup()
     //moveit::planning_interface::MoveGroup group(move_group_);
 }
 
-void RomeoGrasperObject::simpleGrasperSetup()
+void RomeoGrasper::simpleGrasperSetup()
 {
     ROS_DEBUG_STREAM("Setup Grasper");
 
-    boost::shared_ptr<boost::thread> visual_tools_thread_ = boost::shared_ptr<boost::thread>(new boost::thread (boost::bind(&RomeoGrasperObject::setupVisualTools, this)));
+    boost::shared_ptr<boost::thread> visual_tools_thread_ = boost::shared_ptr<boost::thread>(new boost::thread (boost::bind(&RomeoGrasper::setupVisualTools, this)));
 
-    boost::shared_ptr<boost::thread> actions_thread_ = boost::shared_ptr<boost::thread>(new boost::thread (boost::bind(&RomeoGrasperObject::setupActions, this)));
+    boost::shared_ptr<boost::thread> actions_thread_ = boost::shared_ptr<boost::thread>(new boost::thread (boost::bind(&RomeoGrasper::setupActions, this)));
 
     //TODO: Start in action.poseHandInit()?
 
@@ -270,7 +270,7 @@ void RomeoGrasperObject::simpleGrasperSetup()
 */
 }
 
-void RomeoGrasperObject::poseActionsInit()
+void RomeoGrasper::poseActionsInit()
 {
     // Cartesian Paths
     // ^^^^^^^^^^^^^^^
@@ -310,7 +310,7 @@ void RomeoGrasperObject::poseActionsInit()
     //action_right_->poseHandInitWaypoints(waypoints_right);
 }
 
-void RomeoGrasperObject::setupActions()
+void RomeoGrasper::setupActions()
 {
     ROS_DEBUG_STREAM("Creating Action left");
     action_left_ = new moveit_simple_actions::Action(&node_handle_, visual_tools_, "left", "romeo");
@@ -322,7 +322,7 @@ void RomeoGrasperObject::setupActions()
     is_actions_setup_ = true;
 }
 
-void RomeoGrasperObject::setupVisualTools()
+void RomeoGrasper::setupVisualTools()
 {
     ROS_DEBUG_STREAM("Setup Visual Tools");
 
@@ -360,7 +360,7 @@ void RomeoGrasperObject::setupVisualTools()
     //TODO: Use ns_ for the namespace
     string topic = "/romeo_grasper/visual_table";
     uint32_t queue_size = 10;
-    visual_table_sub_ = node_handle_.subscribe(topic, queue_size, &RomeoGrasperObject::callbackVisualTable, this);
+    visual_table_sub_ = node_handle_.subscribe(topic, queue_size, &RomeoGrasper::callbackVisualTable, this);
 
     if(verbose_)
         ROS_INFO_STREAM("Spawned collision table with name: " << SUPPORT_SURFACE3_NAME);
@@ -368,7 +368,7 @@ void RomeoGrasperObject::setupVisualTools()
     is_visual_tools_setup_ = true;
 }
 
-void RomeoGrasperObject::setActionParams(moveit_simple_actions::Action* current_action)
+void RomeoGrasper::setActionParams(moveit_simple_actions::Action* current_action)
 {
     ROS_DEBUG_STREAM("Setup Action " << current_action->arm);
     current_action->setVerbose(verbose_);
@@ -379,7 +379,7 @@ void RomeoGrasperObject::setActionParams(moveit_simple_actions::Action* current_
     current_action->setPlanningTime(planning_time_);
 }
 
-void RomeoGrasperObject::objectTrackerSetup()
+void RomeoGrasper::objectTrackerSetup()
 {
     if(tracking_)
     {
@@ -390,14 +390,14 @@ void RomeoGrasperObject::objectTrackerSetup()
     ROS_INFO("Creating Subscribers to objectTracker...");
     string topic = "/object_tracker/object_pose";
     uint32_t queue_size = 10;
-    obj_pose_sub_ = node_handle_.subscribe(topic, queue_size, &RomeoGrasperObject::callbackObjectPose, this);
+    obj_pose_sub_ = node_handle_.subscribe(topic, queue_size, &RomeoGrasper::callbackObjectPose, this);
 
     // With the new topic we don't need the topic object_tracker_confidence
     //topic = "/object_tracker/object_tracker_confidence";
-    //tracker_confidence_sub_ = node_handle_.subscribe(topic, queue_size, &RomeoGrasperObject::callbackTrackerConfidence, this);
+    //tracker_confidence_sub_ = node_handle_.subscribe(topic, queue_size, &RomeoGrasper::callbackTrackerConfidence, this);
 }
 
-void RomeoGrasperObject::run()
+void RomeoGrasper::run()
 {
     ROS_INFO("Running...");
 
@@ -417,7 +417,7 @@ void RomeoGrasperObject::run()
     }
 }
 
-void RomeoGrasperObject::planningAndExecutePoseGoal()
+void RomeoGrasper::planningAndExecutePoseGoal()
 {
     //TODO: TEST!!!!!!!!!!!!!!!!!!!!!!
     // For now is not printing any object. So something is wrong
@@ -560,7 +560,7 @@ void RomeoGrasperObject::planningAndExecutePoseGoal()
     }
 }
 
-void RomeoGrasperObject::loadParam(string param_name, string *param, string default_value, int param_flag)
+void RomeoGrasper::loadParam(string param_name, string *param, string default_value, int param_flag)
 {
     string new_value;
     node_handle_.param(param_name, new_value, default_value);
@@ -574,7 +574,7 @@ void RomeoGrasperObject::loadParam(string param_name, string *param, string defa
     }
 }
 
-void RomeoGrasperObject::loadParam(string param_name, int *param, int default_value, int param_flag)
+void RomeoGrasper::loadParam(string param_name, int *param, int default_value, int param_flag)
 {
     int new_value;
     node_handle_.param(param_name, new_value, default_value);
@@ -588,7 +588,7 @@ void RomeoGrasperObject::loadParam(string param_name, int *param, int default_va
     }
 }
 
-void RomeoGrasperObject::loadParam(string param_name, float *param, float default_value, int param_flag)
+void RomeoGrasper::loadParam(string param_name, float *param, float default_value, int param_flag)
 {
     float new_value;
     node_handle_.param(param_name, new_value, default_value);
@@ -602,7 +602,7 @@ void RomeoGrasperObject::loadParam(string param_name, float *param, float defaul
     }
 }
 
-void RomeoGrasperObject::loadParam(string param_name, bool *param, bool default_value, int param_flag)
+void RomeoGrasper::loadParam(string param_name, bool *param, bool default_value, int param_flag)
 {
     bool new_value;
     node_handle_.param(param_name, new_value, default_value);
@@ -624,7 +624,7 @@ void RomeoGrasperObject::loadParam(string param_name, bool *param, bool default_
 // TODO: Test and try to implement
 // Not working for now, we need to compute difference between current pose and goal pose
 // and I think that the function getCurrentPose will stamped with the /base_link frame_id
-void RomeoGrasperObject::changedParam(int param_flag)
+void RomeoGrasper::changedParam(int param_flag)
 {
     moveit_simple_actions::Action* current_action = currentAction();
 
@@ -699,7 +699,7 @@ void RomeoGrasperObject::changedParam(int param_flag)
 }
 
 
-void RomeoGrasperObject::callbackObjectPose(object_tracker_msg_definitions::ObjectInfo data)
+void RomeoGrasper::callbackObjectPose(object_tracker_msg_definitions::ObjectInfo data)
 {
     float x_data = data.translation.x;
     float y_data = data.translation.y;
@@ -772,7 +772,7 @@ void RomeoGrasperObject::callbackObjectPose(object_tracker_msg_definitions::Obje
     }
 }
 
-void RomeoGrasperObject::callbackVisualTable(romeo_grasper::VisualTable data)
+void RomeoGrasper::callbackVisualTable(romeo_grasper::VisualTable data)
 {
     visual_tools_->cleanupCO(SUPPORT_SURFACE3_NAME);
     std::vector< geometry_msgs::Point> points = tableMesuramentsToPoints(data.x, data.y, data.width, data.height, data.depth, data.floor_to_base_height);
@@ -780,7 +780,7 @@ void RomeoGrasperObject::callbackVisualTable(romeo_grasper::VisualTable data)
     ROS_INFO_STREAM("Visual Table updated");
 }
 
-std::vector< geometry_msgs::Point> RomeoGrasperObject::tableMesuramentsToPoints(double x, double y, double width, double height, double depth, double floor_to_base_height)
+std::vector< geometry_msgs::Point> RomeoGrasper::tableMesuramentsToPoints(double x, double y, double width, double height, double depth, double floor_to_base_height)
 {
     std::vector< geometry_msgs::Point> points;
     geometry_msgs::Point point1;
@@ -800,7 +800,7 @@ std::vector< geometry_msgs::Point> RomeoGrasperObject::tableMesuramentsToPoints(
 }
 
 /* Not necessary with the new topic /object_tracker/object_pose
-void RomeoGrasperObject::callbackTrackerConfidence(std_msgs::Float32 data)
+void RomeoGrasper::callbackTrackerConfidence(std_msgs::Float32 data)
 {
     if(verbose_)
         ROS_INFO("Confidence of %f", data.data);
@@ -808,7 +808,7 @@ void RomeoGrasperObject::callbackTrackerConfidence(std_msgs::Float32 data)
     enough_confidence_ = data.data >= confidence_threshold_;
 }*/
 
-bool RomeoGrasperObject::executePlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp)
+bool RomeoGrasper::executePlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp)
 {
     waiting_service_ = false;
     answer_service_ = ANSWER_SRV_MOVE;
@@ -816,7 +816,7 @@ bool RomeoGrasperObject::executePlan(std_srvs::Empty::Request &req, std_srvs::Em
     return true;
 }
 
-bool RomeoGrasperObject::abortPlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp)
+bool RomeoGrasper::abortPlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp)
 {
     waiting_service_ = false;
     answer_service_ = ANSWER_SRV_ABORT;
@@ -824,7 +824,7 @@ bool RomeoGrasperObject::abortPlan(std_srvs::Empty::Request &req, std_srvs::Empt
     return true;
 }
 
-bool RomeoGrasperObject::rePlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp)
+bool RomeoGrasper::rePlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp)
 {
     waiting_service_ = false;
     answer_service_ = ANSWER_SRV_REPLAN;
@@ -832,10 +832,10 @@ bool RomeoGrasperObject::rePlan(std_srvs::Empty::Request &req, std_srvs::Empty::
     return true;
 }
 
-void RomeoGrasperObject::publishTransforms()
+void RomeoGrasper::publishTransforms()
 {
     // publish transforms
-    ROS_INFO_STREAM("RomeoGrasperObject - Publishing transforms");
+    ROS_INFO_STREAM("RomeoGrasper - Publishing transforms");
     tf::TransformBroadcaster tf_broadcaster;
 
     ros::Duration sleeper(0.1); // 100ms
@@ -885,7 +885,7 @@ void RomeoGrasperObject::publishTransforms()
     }
 }
 
-void RomeoGrasperObject::findCameraReference()
+void RomeoGrasper::findCameraReference()
 {
     ROS_INFO_STREAM("Setup of Camera");
     tf::Quaternion q;
@@ -1185,7 +1185,7 @@ void RomeoGrasperObject::findCameraReference()
     modeled_object_->setCameraPositioned(true);
 }
 
-void RomeoGrasperObject::changeTrackingModel(string model_name)
+void RomeoGrasper::changeTrackingModel(string model_name)
 {
     // Only change the tracking model if the service exists in other case will remain here till that moment
     // If this service doesn't exists it means that the camera hasn't been recognised so we can't continue
@@ -1224,7 +1224,7 @@ void RomeoGrasperObject::changeTrackingModel(string model_name)
         modeled_object_->setNotObjectPose();
 }
 
-void RomeoGrasperObject::exit()
+void RomeoGrasper::exit()
 {
     //TODO: Use smart pointers to a better performance
     ROS_INFO("Exit RomeoGraspingObject");
@@ -1245,7 +1245,7 @@ void RomeoGrasperObject::exit()
     ros::shutdown();
 }
 
-moveit_simple_actions::Action* RomeoGrasperObject::currentAction()
+moveit_simple_actions::Action* RomeoGrasper::currentAction()
 {
     bool right_arm;
     string right_str = "right";
@@ -1259,7 +1259,7 @@ moveit_simple_actions::Action* RomeoGrasperObject::currentAction()
 }
 
 /*
-bool RomeoGrasperObject::naoqiSetup()
+bool RomeoGrasper::naoqiSetup()
 {
     string broker_name = "Romeo Grasper Object Broker";
     int pport;
@@ -1299,7 +1299,7 @@ bool RomeoGrasperObject::naoqiSetup()
     }
 }
 
-void RomeoGrasperObject::headStiffness(float movement_time)
+void RomeoGrasper::headStiffness(float movement_time)
 {
     float stiffnessList[] = {0.6f, 0.6f, 0.0f};
     float timeList[] = {1.0f, movement_time, movement_time + 1.0f};
