@@ -31,9 +31,10 @@
 	<arg name="debug" value="$(arg debug)" />
   </include>
 
-  <include file="$(find romeo_grasper)/launch/romeo_grasper_real.launch" >
+  <include file="$(find romeo_grasper)/launch/romeo_grasper.launch" >
 	<arg name="launch_full" 				value="true" />
 	<arg name="verbose" 					value="$(arg verbose)" />
+	<arg name="debug" 						value="$(arg debug)" />
 	<arg name="tracking"					value="$(arg tracking)" />
 	<arg name="pose_camera_preknown"		value="$(arg pose_camera_preknown)" />
 	<arg name="simulation"					value="$(arg simulation)" />
