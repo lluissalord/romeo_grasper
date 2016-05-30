@@ -36,7 +36,9 @@
 		<param name="simulation"				value="$(arg simulation)" />
 		<param name="automatic_execution"		value="$(arg automatic_execution)" />
 
-		<rosparam command="load" file="$(find romeo_grasper)/config/romeo_grasper_real.yaml" />
+		<rosparam command="load" file="$(find romeo_grasper)/config/romeo_grasper.yaml" />
+		<!-- Not used because NAOqi setup is commented in romeograsper.cpp 		
+		<rosparam command="load" file="$(find romeo_grasper)/config/DCM_connection.yaml" unless="$(arg simulation)"/> -->
 		<!-- To use the move_group it needs the kinematics in the node's namespace -->
 		<rosparam command="load" file="$(find romeo_moveit_config)/config/kinematics.yaml"/>
 

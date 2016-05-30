@@ -1002,9 +1002,9 @@ void RomeoGrasperObject::findCameraReference()
         {
             ROS_DEBUG_STREAM("Look for a reference to pose the camera");
             // Confidence for find the reference should be high to don't have future problems
-            float reference_confidence_threshold_;
-            node_handle_.param("reference_confidence_threshold", reference_confidence_threshold_, 0.35f);
-            confidence_threshold_ = reference_confidence_threshold_;
+            float ref_confidence_threshold_;
+            node_handle_.param("ref_confidence_threshold", ref_confidence_threshold_, 0.35f);
+            confidence_threshold_ = ref_confidence_threshold_;
 
             changeTrackingModel(model_reference_name_);
 
@@ -1015,11 +1015,11 @@ void RomeoGrasperObject::findCameraReference()
             {
                 //TODO: Use ns_ for the namespace
                 ROS_INFO_STREAM("Waiting to find the object that will be reference for the positioning of the camera");
-                ROS_INFO_STREAM("Try to move the camera or the reference object with frame id: " << camera_reference_frame_id_ << " or to change the param /romeo_grasper/reference_confidence_threshold");
+                ROS_INFO_STREAM("Try to move the camera or the reference object with frame id: " << camera_reference_frame_id_ << " or to change the param /romeo_grasper/ref_confidence_threshold");
             }
             while(ros::ok && !has_pose_)
             {
-                loadParam("reference_confidence_threshold",
+                loadParam("ref_confidence_threshold",
                           &confidence_threshold_,
                           0.5f,
                           PARAM_REFERENCE_CONFIDENCE_THRESHOLD);

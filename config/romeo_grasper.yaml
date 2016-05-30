@@ -1,4 +1,4 @@
-move_group: arm_hand_left
+move_group: left_arm
 
 models_directory: /home/lluis/catkin_ws/src/romeo_grasper/data/models/
 model_object_name: tea_box
@@ -6,6 +6,7 @@ model_reference_name: ref_tea_box
 
 pose_threshold: 0.05
 confidence_threshold: 0.25
+ref_confidence_threshold: 0.35
 
 reachVsGrasp: false
 

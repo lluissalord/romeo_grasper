@@ -1,0 +1,10 @@
+# IMPORTANT This should be the same as romeo_dcm_bringup/config/romeo_dcm.yaml
+# Robot-Connection related parameters
+RobotPort: 9559
+#RobotIP: 127.0.0.1
+RobotIP: 198.18.0.1
+#RobotIP: 10.0.128.81
+DriverBrokerPort: 54000
+DriverBrokerIP: 0.0.0.0
+CameraBrokerPort: 54001
+CameraBrokerIP: 0.0.0.0
