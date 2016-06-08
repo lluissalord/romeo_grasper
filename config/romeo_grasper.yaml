@@ -8,7 +8,7 @@ pose_threshold: 0.05
 confidence_threshold: 0.25
 ref_confidence_threshold: 0.35
 
-reachVsGrasp: false
+reachVsGrasp: true
 
 #max_acceleration_scaling_factor: 0.5
 max_velocity_scaling_factor: 0.1

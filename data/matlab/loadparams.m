@@ -1,9 +1,15 @@
-function [params,p_1_real,p_1_camera,p_2_real,p_2_camera,p_3_real,p_3_camera]=loadparams(on_side)
+function [params,p_1_real,p_1_camera,p_2_real,p_2_camera,p_3_real,p_3_camera]=loadparams(on_side, param_num)
 
 %ON SIDE!
 if(on_side)
-    params = [-1 0 0;0 0 -1;0 -1 0;0.05 0.7 -0.3];
-    
+    if(param_num == 1)
+        params = [-1 0 0;0 0 -1;0 -1 0;0.05 0.7 -0.3];
+    else if(param_num == 2)
+            params = [-1 0 0;0 0 -1;0 -1 0;0.05 0.7 -0.3];
+        else
+            params = [-1 0 0;0 0 -1;0 -1 0;0.05 0.7 -0.3];
+        end
+    end
     %Wrist
     %p_1_real = [0.08329,0.2784,-0.312];
     p_1_real = [0.17225, 0.15585,-0.306];
@@ -30,7 +36,14 @@ if(on_side)
     %p_3_camera = [-0.533,-0.24,0.085]; %in front
 else
     %IN FRONT!!
-    params = [0 1 0;0 0 -1;-1 0 0;1.10 0 0.06];
+    if(param_num == 1)
+        params = [0 1 0;0 0 -1;-1 0 0;1.10 0 0.06];
+    else if(param_num == 2)
+            params = [0 1 0;0 0 -1;-1 0 0;1.10 0 0.06];
+        else
+            params = [0 1 0;0 0 -1;-1 0 0;1.10 0 0.06];
+        end
+    end
     
     %Wrist RIGHT
     %p_1_real = [0.17225,-0.15585,-0.306];

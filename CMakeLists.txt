@@ -17,6 +17,8 @@ find_package(catkin REQUIRED COMPONENTS
 #  transform
 )
 
+catkin_python_setup()
+
 add_message_files(
   FILES
 	VisualTable.msg

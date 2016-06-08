@@ -434,8 +434,6 @@ void RomeoGrasper::planningAndExecutePoseGoal()
 
     ROS_INFO("Start planning...");
 
-    answer_service_ = ANSWER_SRV_WAIT;
-    waiting_service_ = true;
     is_busy_ = true;
     moveit_simple_actions::Action* current_action = currentAction();
 
@@ -465,6 +463,16 @@ void RomeoGrasper::planningAndExecutePoseGoal()
             //TODO: Figure out if it's going to a pregrasping pose or in the grasp pose
             //It use the function setPoseTargets for all the grasps giving the pose of the last link
             //with pose grasp_pose of the message Grasp.
+            //the problem is that is not possible to know which is the pose_target.
+
+            //Trick to be able to use the experiment1.py
+            ros::Publisher pub_obj_pose = node_handle_.advertise<geometry_msgs::PoseStamped>("/pose_target", 10);
+            geometry_msgs::PoseStamped pose_target;
+            pose_target.pose = modeled_object_->block_->start_pose;
+            pose_target.header.stamp = ros::Time();
+            pose_target.header.frame_id = base_link_;
+            pub_obj_pose.publish(pose_target);
+
             success = current_action->graspPlan(modeled_object_->block_, surface_name_);
         }
     }else
@@ -479,6 +487,9 @@ void RomeoGrasper::planningAndExecutePoseGoal()
         answer_service_ = ANSWER_SRV_MOVE;
     }else
     {
+        answer_service_ = ANSWER_SRV_WAIT;
+        waiting_service_ = true;
+
         ros::Rate loop_rate(1);
         string service_info = ns_ + "/execute_plan \n" +  ns_ + "/replan \n" + ns_ + "/abort_plan";
         ROS_INFO("Waiting for call of one of the followings service: \n%s", service_info.c_str());
@@ -808,27 +819,49 @@ void RomeoGrasper::callbackTrackerConfidence(std_msgs::Float32 data)
     enough_confidence_ = data.data >= confidence_threshold_;
 }*/
 
-bool RomeoGrasper::executePlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp)
+//Only returns true if is waiting for the service, if is not don't do nothing and returns false
+bool RomeoGrasper::executePlan(std_srvs::Trigger::Request &req, std_srvs::Trigger::Response &resp)
 {
-    waiting_service_ = false;
-    answer_service_ = ANSWER_SRV_MOVE;
-
+    if(waiting_service_)
+    {
+        waiting_service_ = false;
+        answer_service_ = ANSWER_SRV_MOVE;
+        resp.success = true;
+    }else
+    {
+        resp.success = false;
+        resp.message = "RomeoGrasper is not waiting for this service call right now";
+    }
     return true;
 }
 
-bool RomeoGrasper::abortPlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp)
+bool RomeoGrasper::abortPlan(std_srvs::Trigger::Request &req, std_srvs::Trigger::Response &resp)
 {
-    waiting_service_ = false;
-    answer_service_ = ANSWER_SRV_ABORT;
-
+    if(waiting_service_)
+    {
+        waiting_service_ = false;
+        answer_service_ = ANSWER_SRV_ABORT;
+        resp.success = true;
+    }else
+    {
+        resp.success = false;
+        resp.message = "RomeoGrasper is not waiting for this service call right now";
+    }
     return true;
 }
 
-bool RomeoGrasper::rePlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp)
+bool RomeoGrasper::rePlan(std_srvs::Trigger::Request &req, std_srvs::Trigger::Response &resp)
 {
-    waiting_service_ = false;
-    answer_service_ = ANSWER_SRV_REPLAN;
-
+    if(waiting_service_)
+    {
+        waiting_service_ = false;
+        answer_service_ = ANSWER_SRV_REPLAN;
+        resp.success = true;
+    }else
+    {
+        resp.success = false;
+        resp.message = "RomeoGrasper is not waiting for this service call right now";
+    }
     return true;
 }
 
@@ -1232,11 +1265,11 @@ void RomeoGrasper::exit()
     delete action_left_;
     //delete block_;
 
-    ros::ServiceClient stop_tracking_service_client = node_handle_.serviceClient<std_srvs::Empty>("/object_tracker/stop_recording");
-    std_srvs::Empty srv;
+    ros::ServiceClient stop_tracking_service_client = node_handle_.serviceClient<std_srvs::Trigger>("/object_tracker/stop_recording");
+    std_srvs::Trigger srv;
     stop_tracking_service_client.call(srv);
 
-    ros::ServiceClient cleanup_service_client = node_handle_.serviceClient<std_srvs::Empty>("/object_tracker/cleanup");
+    ros::ServiceClient cleanup_service_client = node_handle_.serviceClient<std_srvs::Trigger>("/object_tracker/cleanup");
     cleanup_service_client.call(srv);
 
     visual_tools_->deleteAllMarkers();

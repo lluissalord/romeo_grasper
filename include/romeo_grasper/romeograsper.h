@@ -16,6 +16,7 @@
 #include <object_tracker_msg_definitions/ObjectInfo.h>
 //#include <std_msgs/Float32.h>
 //#include <moveit_msgs/DisplayTrajectory.h>
+#include <std_srvs/Trigger.h>
 #include <std_srvs/Empty.h>
 
 #include <moveit_visual_tools/moveit_visual_tools.h>
@@ -171,9 +172,9 @@ private:
 
     //void callbackTrackerConfidence(std_msgs::Float32 data);
 
-    bool executePlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp);
-    bool rePlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp);
-    bool abortPlan(std_srvs::Empty::Request &req, std_srvs::Empty::Response &resp);
+    bool executePlan(std_srvs::Trigger::Request &req, std_srvs::Trigger::Response &resp);
+    bool rePlan(std_srvs::Trigger::Request &req, std_srvs::Trigger::Response &resp);
+    bool abortPlan(std_srvs::Trigger::Request &req, std_srvs::Trigger::Response &resp);
 
     void loadParam(string param_name, float *param, float default_value, int param_flag);
     void loadParam(string param_name, int *param, int default_value, int param_flag);

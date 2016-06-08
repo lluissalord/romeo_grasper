@@ -17,3 +17,4 @@ p_3_real' - S * p_3_camera'
 
 new_p_c = (p_2_real' - S * p_2_camera' + p_2_real' - S * p_2_camera' + p_3_real' - S * p_3_camera')/3
 f
+[r1, r2, r3] = dcm2angle(S, 'ZYX')
