@@ -1,0 +1,39 @@
+\select@language {english}
+\contentsline {paragraph}{}{1}{section*.1}
+\contentsline {paragraph}{}{1}{section*.2}
+\contentsline {chapter}{Abstract}{1}{section*.2}
+\contentsline {chapter}{Acknowledgements}{2}{section*.3}
+\contentsline {chapter}{\numberline {1}Introduction}{9}{chapter.1}
+\contentsline {section}{\numberline {1.1}Presentation of the problem}{9}{section.1.1}
+\contentsline {section}{\numberline {1.2}Aim of the project}{9}{section.1.2}
+\contentsline {section}{\numberline {1.3}Extent of project}{9}{section.1.3}
+\contentsline {section}{\numberline {1.4}Structure}{9}{section.1.4}
+\contentsline {chapter}{\numberline {2}Preliminary studies}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Romeo robot}{11}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Hardware}{11}{subsection.2.1.1}
+\contentsline {subsection}{\numberline {2.1.2}NAOqi}{12}{subsection.2.1.2}
+\contentsline {section}{\numberline {2.2}Software required}{12}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}ROS packages from ros-aldebaran}{12}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}V4R (Vision for Robots)}{12}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Others}{12}{subsection.2.2.3}
+\contentsline {chapter}{\numberline {3}Design of the package}{17}{chapter.3}
+\contentsline {section}{\numberline {3.1}Configuration and launch of the package}{18}{section.3.1}
+\contentsline {section}{\numberline {3.2}Get position of the object}{18}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Positioning the camera}{18}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Calculate the object position}{19}{subsection.3.2.2}
+\contentsline {section}{\numberline {3.3}Move the hand to object position}{19}{section.3.3}
+\contentsline {chapter}{\numberline {4}Implementation}{21}{chapter.4}
+\contentsline {section}{\numberline {4.1}Model Object class}{21}{section.4.1}
+\contentsline {section}{\numberline {4.2}Approach to camera position}{22}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Use of pre-known distance}{24}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Use of visual recognition}{25}{subsection.4.2.2}
+\contentsline {subsubsection}{(1) Using only one link}{26}{section*.23}
+\contentsline {subsubsection}{(2) Using three links}{26}{section*.24}
+\contentsline {subsubsection}{(3) Using multiples transformations}{27}{section*.25}
+\contentsline {chapter}{\numberline {5}Experiments}{29}{chapter.5}
+\contentsline {chapter}{\numberline {6}Discussion}{31}{chapter.6}
+\contentsline {chapter}{\numberline {7}Half done and future works}{33}{chapter.7}
+\contentsline {chapter}{\numberline {8}Conclusion}{35}{chapter.8}
+\contentsline {chapter}{References}{37}{chapter*.26}
+\contentsline {chapter}{Appendices}{38}{section*.27}
+\contentsline {chapter}{\numberline {A}Software requirements and installation}{41}{appendix.A}

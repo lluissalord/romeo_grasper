@@ -1,0 +1,37 @@
+\select@language {english}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Aldebaran's robot family. Pepper on the left; Romeo on the right and Nao in the middle \cite {ParPaul}. \relax }}{1}{figure.caption.11}
+\contentsline {figure}{\numberline {1.2}{\ignorespaces Main functions of the necessary packages for Romeo MoveIt Actions\relax }}{5}{figure.caption.12}
+\contentsline {figure}{\numberline {1.3}{\ignorespaces Topics and service of the package \texttt {romeo\_moveit\_actions}\relax }}{6}{figure.caption.13}
+\contentsline {figure}{\numberline {1.4}{\ignorespaces Flow sequence for function \texttt {reachAction(...)}\relax }}{7}{figure.caption.14}
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Flow sequence for function \texttt {graspPlan(...)}\relax }}{8}{figure.caption.15}
+\contentsline {figure}{\numberline {1.6}{\ignorespaces Flow sequence for function \texttt {pickAction(...)}\relax }}{9}{figure.caption.16}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Romeo robot \cite {Penton}\relax }}{11}{figure.caption.17}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Links of Romeo left arm \cite {Aldebaran}\relax }}{12}{figure.caption.19}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Behaviour of DCM module \cite {Aldebaran}\relax }}{14}{figure.caption.23}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Communication between Romeo and ROS\relax }}{17}{figure.caption.26}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Overview NAOqi driver package\relax }}{17}{figure.caption.28}
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Overview Pose controller node\relax }}{18}{figure.caption.30}
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Overview Romeo DCM package\relax }}{19}{figure.caption.32}
+\contentsline {figure}{\numberline {2.8}{\ignorespaces Flow sequence of Romeo DCM package\relax }}{19}{figure.caption.33}
+\contentsline {figure}{\numberline {2.9}{\ignorespaces Comparative images from the depth camera.\relax }}{20}{figure.caption.35}
+\contentsline {figure}{\numberline {2.10}{\ignorespaces Communication between V4R - ROS - Cameras RGB-D\relax }}{21}{figure.caption.36}
+\contentsline {figure}{\numberline {2.11}{\ignorespaces Topics and services of the module Object Tracker\relax }}{22}{figure.caption.37}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Overview of the \texttt {Romeo grasper} package \relax }}{25}{figure.caption.38}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Flow sequence of ModelObject class\relax }}{32}{figure.caption.43}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Position transformation from camera reference to base reference\relax }}{33}{figure.caption.44}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Orientations of the \texttt {camera\_link} respect to the robot \texttt {base\_link}\relax }}{34}{figure.caption.45}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Process of having camera position using pre-known distance \relax }}{35}{figure.caption.46}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Position change due to the offset of the modeled object.\relax }}{36}{figure.caption.47}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Flow sequence for function responsible of the robot planning and execution\relax }}{39}{figure.caption.51}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Flow sequence for \texttt {romeo\_grasper} setup\relax }}{41}{figure.caption.52}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Flow of data from object pose to commands to NAOqi\relax }}{42}{figure.caption.53}
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Kinect problem, RGB camera sending black images\relax }}{52}{figure.caption.56}
+\addvspace {10\p@ }
+\addvspace {10\p@ }

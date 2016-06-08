@@ -1,0 +1,76 @@
+\select@language {english}
+\contentsline {paragraph}{}{1}{section*.1}
+\contentsline {paragraph}{}{1}{section*.2}
+\contentsline {chapter}{Acknowledgements}{xi}{chapter*.6}
+\contentsline {chapter}{Preface}{xiii}{chapter*.7}
+\contentsline {section}{Motivation}{xiii}{section*.8}
+\contentsline {section}{Repository}{xiii}{section*.9}
+\contentsline {section}{Structure}{xiii}{section*.10}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Presentation of the problem}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Aim of the project}{1}{section.1.2}
+\contentsline {section}{\numberline {1.3}Extent of project}{2}{section.1.3}
+\contentsline {section}{\numberline {1.4}Related works}{2}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Grasping by Romeo with visual servoing}{2}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.2}MoveIt simple grasps}{3}{subsection.1.4.2}
+\contentsline {subsection}{\numberline {1.4.3}AGILE grasp}{3}{subsection.1.4.3}
+\contentsline {subsection}{\numberline {1.4.4}Romeo MoveIt Config}{4}{subsection.1.4.4}
+\contentsline {subsection}{\numberline {1.4.5}Romeo MoveIt Actions}{4}{subsection.1.4.5}
+\contentsline {chapter}{\numberline {2}Preliminary studies}{11}{chapter.2}
+\contentsline {section}{\numberline {2.1}Romeo robot}{11}{section.2.1}
+\contentsline {subsection}{\numberline {2.1.1}Hardware}{11}{subsection.2.1.1}
+\contentsline {subsubsection}{Romeo arms}{11}{section*.18}
+\contentsline {subsubsection}{Romeo 3D vision hardware}{12}{section*.21}
+\contentsline {subsection}{\numberline {2.1.2}NAOqi}{13}{subsection.2.1.2}
+\contentsline {subsubsection}{DCM}{13}{section*.22}
+\contentsline {subsubsection}{ALMotion}{14}{section*.24}
+\contentsline {subsubsection}{ALVideoDevice}{14}{section*.25}
+\contentsline {section}{\numberline {2.2}Software required}{15}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}ROS (Robotic Operative System)}{15}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Ros packages for Romeo}{15}{subsection.2.2.2}
+\contentsline {subsubsection}{NAOqi driver}{17}{section*.27}
+\contentsline {subsubsection}{NAOqi pose}{17}{section*.29}
+\contentsline {subsubsection}{DCM driver}{18}{section*.31}
+\contentsline {subsubsection}{Romeo sensor}{18}{section*.34}
+\contentsline {subsection}{\numberline {2.2.3}V4R (Vision for Robots)}{20}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Inverse kinematic solvers}{22}{subsection.2.2.4}
+\contentsline {chapter}{\numberline {3}Design of Romeo grasper package}{25}{chapter.3}
+\contentsline {section}{\numberline {3.1}Get position of the object}{25}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Positioning the camera}{26}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Calculate the object position}{26}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Move the hand to object position}{27}{section.3.2}
+\contentsline {section}{\numberline {3.3}Configuration and launching}{27}{section.3.3}
+\contentsline {chapter}{\numberline {4}Implementation}{31}{chapter.4}
+\contentsline {section}{\numberline {4.1}Model Object class}{31}{section.4.1}
+\contentsline {section}{\numberline {4.2}Approach to camera position}{32}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Use of pre-known distance}{34}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Use of visual recognition}{35}{subsection.4.2.2}
+\contentsline {subsubsection}{(1) Using only one link}{36}{section*.48}
+\contentsline {subsubsection}{(2) Using three links}{36}{section*.49}
+\contentsline {subsubsection}{(3) Using multiples transformations}{37}{section*.50}
+\contentsline {section}{\numberline {4.3}Planning and execution of trajectory}{38}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Planning pre-grasp}{38}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {4.3.2}User answer service}{39}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Execute pre-grasp plan and picking}{40}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}RomeoSimulator class}{40}{subsection.4.3.4}
+\contentsline {section}{\numberline {4.4}Setup of romeo grasper}{41}{section.4.4}
+\contentsline {section}{\numberline {4.5}Communication between packages}{42}{section.4.5}
+\contentsline {chapter}{\numberline {5}Experiments}{45}{chapter.5}
+\contentsline {section}{\numberline {5.1}Movement in simulation}{45}{section.5.1}
+\contentsline {section}{\numberline {5.2}Implementation IKFast on Romeo}{45}{section.5.2}
+\contentsline {section}{\numberline {5.3}Get pre-known camera position}{46}{section.5.3}
+\contentsline {section}{\numberline {5.4}Visual camera positioning}{46}{section.5.4}
+\contentsline {section}{\numberline {5.5}Error produces by the camera positioning}{47}{section.5.5}
+\contentsline {chapter}{\numberline {6}Discussion}{49}{chapter.6}
+\contentsline {chapter}{\numberline {7}Future works}{51}{chapter.7}
+\contentsline {section}{\numberline {7.1}Implementation new inverse kinematics}{51}{section.7.1}
+\contentsline {section}{\numberline {7.2}Improve use of V4R}{51}{section.7.2}
+\contentsline {section}{\numberline {7.3}Dependencies of packages}{53}{section.7.3}
+\contentsline {section}{\numberline {7.4}Object identification}{53}{section.7.4}
+\contentsline {section}{\numberline {7.5}Fix the Romeo model}{53}{section.7.5}
+\contentsline {chapter}{\numberline {8}Conclusion}{55}{chapter.8}
+\contentsline {chapter}{References}{59}{chapter*.57}
+\contentsline {chapter}{Appendices}{60}{section*.58}
+\contentsline {chapter}{\numberline {A}Software requirements and installation}{63}{appendix.A}
+\contentsline {section}{\numberline {A.1}Software requirements}{63}{section.A.1}
+\contentsline {section}{\numberline {A.2}Camera drivers installation}{63}{section.A.2}

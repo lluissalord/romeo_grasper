@@ -1,0 +1,1276 @@
+\documentclass[12pt,a4paper,final,twoside,openright]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+
+\usepackage{hyperref}
+\usepackage{url}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{multirow}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{framed}
+
+\usepackage[ampersand]{easylist}
+
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{tabulary}
+
+\usepackage{float}
+
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+
+\usepackage{appendix}
+
+%\usepackage[nomain,acronym,toc]{glossaries}
+% nomain, if you define glossaries in a file, and you use 
+%\include{./Glossari/glossari}
+%\makeglossaries
+
+%Pendent el fer el glossari
+
+\usepackage{imakeidx}
+\makeindex
+
+\usepackage{wrapfig}
+
+%\usepackage{makeidx}
+%\makeindex
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhead{}
+\fancyhead[RO,LE]{\thepage}
+\fancyhead[RE,LO]{Grasping by Romeo robot using V4R}
+\fancyfoot{}
+\fancyfoot[RO,LE]{\includegraphics[width=0.065\textwidth]{images/TU_small_logo.png}}
+
+\usepackage{etoolbox}
+\patchcmd{\chapter}{\thispagestyle{plain}}{\thispagestyle{fancy}}{}{}
+
+\headheight = 15pt %Donava un warning sino
+
+\textheight = 690pt %Col·locació de l'escut a distancia que quedi be
+\footskip = 60pt
+
+\usepackage[numbers]{natbib}
+\bibliographystyle{plainnat} 
+%Poso per ordre d'pració (així) o per ordre d'autors (plainnat)?
+
+\title{Grasping by Romeo robot using V4R}
+\author{Lluís Salord Quetglas\\
+		\texttt{l.salord.quetglas@gmail.com}\\}
+\date{Technischen Universität Wien (TU Wien)\\
+Automation and Control Institute (ACIN)\\
+\paragraph{} 
+Master Thesis Project\\
+\paragraph{}
+\today} %NO FIXAR-SE AMB AIXÒ JA QUE LA PORTADA SERÀ LA DONADA PER L'ESCOLA
+
+\usepackage{chngcntr}
+\counterwithin{figure}{chapter}%Permet que el comptatge de les figures sigui segons capitol
+\counterwithin{table}{chapter}
+\counterwithin{equation}{chapter}
+\counterwithin{footnote}{chapter}
+
+%PLANTEJAR TEMA DE \autoref{} ja que així l'hiperenllaç es també per la paraula i no sols el numero.
+
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+\usepackage{parskip}
+
+\setlength{\parindent}{1em}
+\usepackage{indentfirst}
+
+\usepackage{color}
+
+\usepackage[official]{eurosym}
+
+\usepackage{epstopdf}
+
+\usepackage{footnote}
+\usepackage{cleveref}[2012/02/15]% v0.18.4; 
+% 0.16.1 of May 2010 would be sufficient, but what is the exact day?
+
+\crefformat{footnote}{#2\footnotemark[#1]#3}	
+\usepackage{tikz}
+
+% Make that a cell have a line break
+\newcommand{\specialcell}[3][c]{%
+	\begin{tabular}[#1]{@{}#2@{}}#3\end{tabular}
+	}
+\makeatletter
+\def\z#14#2!!{\def\TY@classz{#17#2}}
+\expandafter\z\TY@classz!!
+\makeatother
+
+\usepackage{listings} %To put code in the right way 
+
+% Used to make possible have matrix with format like [ccc|c]
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+\begin{document}
+\maketitle
+\thispagestyle{empty}
+
+\cleardoublepage
+
+\pagenumbering{roman} % restart page numbers at one, now in roman style
+
+\begin{abstract}
+%\addcontentsline{toc}{chapter}{Abstract}
+
+\end{abstract}
+
+\tableofcontents
+\newpage
+\listoffigures
+\newpage
+\listoftables
+\newpage
+
+\chapter*{Acknowledgements}
+\addcontentsline{toc}{chapter}{Acknowledgements}
+
+\chapter*{Preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+\section*{Motivation}
+\addcontentsline{toc}{section}{Motivation}
+
+%\section*{Definition of the project}
+%\addcontentsline{toc}{section}{Definition of the project}
+
+\section*{Repository}
+\addcontentsline{toc}{section}{Repository}
+%https://github.com/lluissalord/romeo_grasper
+
+One of the main ideas of this project is to be open source, so everybody can use and improve it. In order to accomplish this, all the code can be found in the following repository with also this document:
+
+\url{https://github.com/lluissalord/romeo_grasper}
+
+\section*{Structure}
+\addcontentsline{toc}{section}{Structure}
+
+As the idea of this document is to help people, who want to use or improve the package, to understand all the parts, the document is structures as Chapter 1 an introduction of the project with similar or complementary works. Chapter 2 explains some knowledge that should be known before to understand perfectly all the document. Chapter 3 is a brief summary of how it works the package and the most important if only wants to know how to use the package. Chapter 4 describes in detail all the parts of the package. In Chapter 5 are shown several experiments to see how precise is the package in any part. Chapter 6 explains the results from the previous chapter. Chapter 7 proposes several fields to improve the package. Finally, Chapter 8 explains the conclusions of the project.
+
+\chapter{Introduction}
+\pagenumbering{arabic} % restart page numbers at one, now in arabic style
+\section{Presentation of the problem}
+%Proposit inicial de Romeo i perque necessita de fer un grasping
+
+\begin{wrapfigure}[12]{r}{0.4\textwidth}
+	    \centering
+		\includegraphics[width=0.35\textwidth]{images/romeo_nao_pepper.jpg}
+         \caption{Aldebaran's robot family. Pepper on the left; Romeo on the right and Nao in the middle \cite{ParPaul}. \label{fig:aldebaran_family}}
+\end{wrapfigure}
+
+Romeo is an humanoid robot from Aldebaran Robotics company. Nao and Pepper are other humanoids from this company, these three belong to the Aldebaran's robot family, Figure \ref{fig:aldebaran_family}, with and specific aim for each robot. On one hand, Nao is targeted to investigation, programming and learning. On the other hand, Pepper is focused in social relations with clients or users. Finally, Romeo has the aim to help old people or people who has some kind of disability.	
+
+In order to be able to achieve this aim, Romeo has to be capable of doing several tasks, which a lot of them requires to recognize objects and grasping them. Therefore, recognition and grasp objects is a huge step forward for the development of Romeo. 
+
+\section{Aim of the project}
+
+The main goal of this project is to achieve that the Romeo robot can recognise some specific objects and if they are inside its workspace, then grasp them. It is known that this task is difficult to accomplish, due to the wide range of parts that are involve, as recognition, movement of the robot, interaction with the environment, etc. So another goal is to discern from where it comes the main error and solve it or at least propose possible solutions. Moreover, another important goal of this project is to do the task of grasping in the way of the aim of Romeo. Therefore, it has to be coherent with the idea of helping people.
+
+Furthermore, this task is not only important for Romeo, a wide range of robots need to achieve that. Therefore, share the code and make it open source could help other research programs, and other people could help to continue and improve our work. So this work is not over when the master thesis is done, but it can be continued with any restrictions. Finally, another main goal of this project is to be explained in a way that other people can understand perfectly how it works and then improve the code.
+
+\section{Extent of project}
+
+Due to the nature of the project itself there are some limitations or requirements that it should be accomplish. Firstly, it needs to be stated that this work is a first approach to make Romeo capable to recognize and grasp objects. Due to be a master thesis, which it should be done in only a few months, and it is required some time to get used with the robot, it is probably that the final result won't be totally perfect.
+
+On one hand, it is use an acknowledged software like ROS, so it can be easily implemented with other packages. On the other hand, it is also used the V4R software, which is from our institute (ACIN), due to is a novel software for the recognition.
+
+\section{Related works}
+%TODO
+%Posar una introduccio dels related works
+
+%Aqui hauria de ser que trobes colcuna cosa d'altres robots que ja fan algo per l'estil.
+%CERCAR ALGO A VEURE!!
+
+\subsection{Grasping by Romeo with visual servoing}
+
+Firstly, talk about a work previously done by another research group. The work \cite{claudio:hal-01159882} consist in grasping an object using visual servoing. The robot has to detect and to track with its gaze a box placed on a table in front of him, estimate the pose of the box with respect to one of its eye's camera, approach its arm near the box and then move the arm using visual feedback so that it is able to grasp the box accurately. Once this is achieved, it detects a human and delivers the box. A video demonstration can be found at \cite{InriaLagadicgroup}.
+
+In order to know where is the hand with respect to the eye's camera, the hand have a QR-Code. So firstly it moves the arm in a close position to the box using odometry, then with the detection of the QR-Code compute the pose and finally using visual servoing get the arm closer to the box.
+
+The approach proposed, grasping with visual servoing, is a good initial approach, but it is not appropiate to achieve the main Romeo's goal of helping old people or people who has some kind of disability. Firstly, it only can accomplish the grasp with one arm, and in a complex environment probably in several cases it should be necessary to use both arms. Secondly, to know where is the hand it needs a specific position for the head and track it all the time, however, Romeo is supposed to have a good interaction with humans, but this features doesn't help it.
+
+\subsection{MoveIt simple grasps}
+\label{sec:moveit_simple_grasps}
+
+On the ROS environment exists some packages with the aim of generate grasps, one of them and very useful to do a first approach to grasping is the \texttt{moveit\_simple\_grasps} package. This one is thought to be used with simple object as blocks or cylinders. The package generate a lot of potentials grasps taking as an input position and orientation of the object. Firstly, is needed a configuration file that describes the geometry of the robot's end effector. Currently the tested robots are Baxter and REEM, but there are some more of the mentioned configuration files for others robots such as Romeo, Pepper, Nao and Clam. For Romeo the configuration file is named \texttt{romeo\_grasp\_data.yaml}, but the most recent version of the file is in this repository \cite{gitNlyubovaGrasp}. It should be stated that this one has been designed to use the left arm to made a side grasp and the right arm for a top grasp.
+
+Finally, the way of generate grasps for this package is trying all the directions, with a given resolution, in the plains made by the X-Z axis and by the Y-Z axis. The source of the official package with this and more information can be found at \cite{gitMoveitSimpleGrasp}.
+
+%TODO
+% Posar una imatge dels posibles grasps?
+
+\subsection{AGILE grasp}
+\label{sec:agile grasp}
+
+\textit{AGILE} (\textbf{A}ntipodal \textbf{G}rasp \textbf{I}dentification and \textbf{LE}arning) grasp is a ROS package \cite{Pas} which localize antipodal grasps\footnote{In an antipodal grasp, the robot hand is able to apply opposite and co-linear forces at two points where the line connecting the contact points lies inside both friction cones \cite{DBLP:journals/corr/PasP15}.} in 3D point clouds. This work \cite{DBLP:journals/corr/PasP15} proposes a new approach to using machine learning to detect grasp poses on novel objects presented in clutter. The input to the algorithm is a point cloud and the geometric parameters of the robot hand. The output is a set of hand poses that are expected to be good grasps. According to \cite{DBLP:journals/corr/PasP15}, the grasp success rate with this algorithm is $87.8 \%$ for objects presented in isolation and $73 \%$ for objects presented in clutter. 
+
+Firstly, it is used the geometry information to reduce the size of the sample space. In order to do that the grasps have to fulfil the condition of the hand must be collision -free and part of the object surface must be contained between the two fingers. Secondly, the geometry is also used to automatically label the training set. In order to label a subset of grasp hypotheses is used the condition of having an antipodal configuration. Therefore, a large amount of training data can be used and so improving the performance.
+
+\subsection{Romeo MoveIt Config}
+\label{sec:romeo_moveit_config}
+
+At some point is necessary to use an interface and simulations to work with a robot. An option to do this, using the MoveIt platform, is the \texttt{romeo\_moveit\_config}. This package gives the necessary configuration files and launchers to use MoveIt with Romeo. Therefore, it allow to launch Rviz with a model of Romeo and interact with it. This model can represent a simulation or a real one which should be connected to ROS.
+
+There are two main launch files: (1) \texttt{demo.launch}, which run Rviz with MoveIt and a Romeo model but executing a fake joint control, so doesn't move the real joints; (2) \texttt{moveit\_planner.launch}, the same as before but this time it moves the real joints. Inside both files it also launchs the \texttt{move\_group} class which allows to use a planner for the movements of some groups of links and joints. This class is explained with more details in the next section.
+
+\subsection{Romeo MoveIt Actions}
+\label{sec:romeo_moveit_actions}
+
+%TODO
+% Explicar que és el que he fet per millorar aquest package. MIRAR COMMIT GITHUB. Creació de la funció publishPlanInfo que du a terme el càlcul de la distancia entre l'últim punt de la trajectoria del pla i la posició objectiu a més de publicar la trajectoria final. També s'ha permes que de forma externa es puguin modificar els parametres de la classe un cop creada (posar parametres). També permet tenir un flag que determina si s'ha d'executar el pla o no en fer el reachAction i executeAction. Finalment correcció de petits falls del package
+
+As the last one, the \texttt{romeo\_moveit\_action} package allow to use \texttt{moveit\_simple\_grasps} with Romeo. Moreover, it also use the \texttt{move\_group} class to make an easier use of high level commands such as reach to pose, pick or place at a pose, among others. In Figure \ref{fig:moveit_internal} can be seen the relation between these packages and their main functions. Therefore, the \texttt{romeo\_moveit\_action} package should allow the user to control Romeo to do tasks as picking or placing.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{images/moveit_internal.eps}
+\caption{Main functions of the necessary packages for Romeo MoveIt Actions\label{fig:moveit_internal}}
+\end{figure}
+
+Firstly, before start to describe \texttt{romeo\_moveit\_action}, is necessary to explain a bit the \texttt{move\_group} class. This is the class in MoveIt that controls the current state, the target state, the planner and the movement of a group of links and joints. These groups are defined in an specific \texttt{.srdf} file in \texttt{romeo\_moveit\_config}. Usually, to work with a robot like this, with 7 DoF, is used the \texttt{left\_arm} or \texttt{right\_arm} group with \texttt{left\_hand} or \texttt{right\_hand} group as end effector, this is explained in Section \ref{sec:romeo_hardware}.
+
+In order to be able to make plans and execute the movements, the \texttt{move\_group} class is working together with the simulator Rviz and the pertinent solver. Moreover, can be set a tolerance for the goal and the target state of the plan can be set as a: (1) pose on a reference or (2) joint state.
+
+%TODO
+% MIRAR A VEURE QUE CONVE MES FER FEINA AMB REACHACTION O GRASPPLAN!!!
+
+Referring to \texttt{romeo\_moveit\_action} package, the most important part is the planning and execution of the grasping. Although, there are two ways of doing that: 
+
+\begin{itemize}
+\item Using \texttt{reachAction} function, Figure \ref{fig:moveit_actions_reach_action}.
+\item Using \texttt{graspPlan} function, Figure \ref{fig:moveit_actions_grasp_plan}.
+\end{itemize}
+
+The main differences between one and other are: 
+\begin{enumerate}
+\item How to calculate the target pose 
+\begin{enumerate}
+\item \texttt{reachAction} use the geometry of the gripper given by \texttt{romeo\_moveit\_config} and put the target pose in a way that the gripper will be close to the object, but without touching it.
+\item \texttt{graspPlan} use \texttt{moveit\_simple\_grasps} to generate all the possible grasps and choose one of them to make a plan.
+\end{enumerate}
+
+\item Attempts and approximate solutions
+\begin{enumerate}
+\item \texttt{reachAction} first try with different tolerances till the plan succeeded or reach the maximum attempts. In this last case, try to get an approximate solution.
+\item \texttt{graspPlan} only try with one tolerance, but, as said before, it tries a lot of different grasps.
+\end{enumerate}
+\end{enumerate}
+
+Once the gripper is at the right position is time to make the picking. Therefore, is used the \texttt{pickAction} function to pick the object, Figure \ref{fig:moveit_actions_pick_action}. In this case is used again the grasps generated by \texttt{moveit\_simple\_grasps}, but this time in the picking stage. This function executes automatically the movement when, after testing all the pickings, there is at least one that works.
+
+Furthermore, there is another interesting function named \texttt{publishPlanInfo} which publish in \texttt{/trajectory} topic the planned trajectory and the last position of the plan. Moreover, it calculates the distance between target position and the final position of the plan. Although, the trajectory is in the joint space, using the forward kinematics can know the position of the final position. Finally, a summary of the topics and services used and provided by \texttt{romeo\_moveit\_actions} is showed in Figure \ref{fig:moveit_actions_ROS}. 
+
+\begin{figure}
+\centering
+\includegraphics[width=0.8\textwidth]{images/moveit_actions_ROS.eps}
+\caption{Topics and service of the package \texttt{romeo\_moveit\_actions}\label{fig:moveit_actions_ROS}}
+\end{figure}
+
+\begin{figure}
+\centering
+\include{images/moveit_actions_reach_action}
+\caption{Flow sequence for function \texttt{reachAction(...)}\label{fig:moveit_actions_reach_action}}
+\end{figure}
+
+\begin{figure}
+\centering
+\include{images/moveit_actions_grasp_plan}
+\caption{Flow sequence for function \texttt{graspPlan(...)}\label{fig:moveit_actions_grasp_plan}}
+\end{figure}
+
+\begin{figure}
+\centering
+\include{images/moveit_actions_pick_action}
+\caption{Flow sequence for function \texttt{pickAction(...)}\label{fig:moveit_actions_pick_action}}
+\end{figure}
+
+\chapter{Preliminary studies}
+% Idea de que es
+\section{Romeo robot}
+\begin{wrapfigure}{r}{0.4\textwidth}
+\vspace{-40pt}
+	    \centering
+		\includegraphics[width=0.35\textwidth]{images/Romeo.eps}
+         \caption{Romeo robot \cite{Penton}}
+\vspace{-40pt}
+\end{wrapfigure}
+
+A said previously, Romeo has the aim to help old people or people who has some kind of disability. Therefore, Romeo has been build with an structure which allows it to open doors, climb stairs and reach objects on a table. Moreover, it has several sensors which allow him to understand the environment and adapt him to it. Although, in order to make a good use of this hardware, it is necessary to complement it with a powerful software as is NAOqi.
+
+%TODO
+% Afegir mes coses
+
+\subsection{Hardware}
+\label{sec:romeo_hardware}
+
+Because of the aim of this package, this section is focused on the hardware related to: (1) the arms, in order to do the grasp and (2) the 3D vision of the robot, due to the object recognition and positioning.
+
+%Romeo is 1.4 m tall humanoid robot with 37 degrees of freedom:
+%
+%\begin{itemize}
+%\item \textbf{Head} has 4 DoF.
+%\item \textbf{Eyes} have 2 DoF for each eye.
+%\item \textbf{Arms} have 7 DoF for each arm.
+%\item \textbf{Legs} have 7 DoF for each leg.
+%\item \textbf{Trunk} has 1 DoF.
+%\end{itemize} 
+
+\subsubsection{Romeo arms}
+
+Each Romeo arm has 7 DoF plus 1 DoF to open and close the hand, so it has one redundancy for the movement of the arm. The links of the left arm are shown in Figure \ref{fig:romeo_arm}, the right arm is symmetric and changing the initial "L" or "l" to "R" or "r".
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{images/arm_link.eps}
+\caption{Links of Romeo left arm \cite{Aldebaran}\label{fig:romeo_arm}}
+\end{figure}
+
+Although, an arm can be seen as an entire group, in robotics is usually to split it in two groups: (1) the arm group which is the main part of the arm and (2) the end effector group which is the gripper with the joints that allow to interact with objects. In order to understand the tree of links-joints and the distribution of this groups in Romeo there is the Table \ref{tab:tree_group_links_joint} which shows the parent and child link of every joint and the group which it belongs. It should be stated that when is requested to move a group to a position, is used the position of the last link of the group. Furthermore, the \texttt{L$/$RHand} joint is special because it has the aim of open and close the hand moving all the fingers together. Moreover, there is a group for every arm, but not used any more, named \texttt{arm\_hand\_left} or \texttt{arm\_hand\_right} which takes all the joints and links of the arm and hand together.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\multirow{2}{*}{\textbf{Group}} & \multirow{2}{*}{\textbf{Joint}} & \multicolumn{2}{|c|}{\textbf{Links}} \\ \cline{3-4}\noalign{\smallskip} &  & \textbf{Parent} & \textbf{Child} \\ \hline\noalign{\smallskip}
+\multirow{6}{*}{left\_arm}
+& LShoulderPitch & torso & LShoulder \\
+& LShoulderYaw & LShoulder & LShoulderYaw\_link \\
+& LElbowRoll & LShoulderYaw\_link & LForeArm \\
+& LElbowYaw & LForeArm & LElbow \\                            
+& LWristRoll & LElbow & LWristRoll\_link \\                   
+& LWristYaw & LWristRoll\_link & LWristYaw\_link \\ \hline\noalign{\smallskip}
+\multirow{2}{*}{left\_hand}
+& LWristPitch & LWristYaw\_link & l\_wrist \\
+& LHand & l\_wrist & l\_gripper \\ \hline
+\end{tabular}
+\caption{Joints of Romeo left arm with parent and child links\label{tab:tree_group_links_joint}}
+\end{center}
+\end{table}
+
+\subsubsection{Romeo 3D vision hardware}
+
+Romeo has several vision sensors: (1) one RGB camera on each eye; (2) two more fixes above each eye and (3) an optional ASUS Xtion on the cap. Therefore, Romeo is capable of having depth data with the RGB cameras, however, some functionalities are only available with the ASUS Xtion. When this 3D sensor is connected to the robot, all the functionalities that use depth data change the source and use the information from the Xtion camera. 
+
+Referring to the ASUS Xtion camera, according to \cite{Aldebaran}, it has a color camera of 0.3 Mp and a depth camera up to 320x240 at 20 fps. Besides, the focus range is from 80 cm to 3.5 m and the field of view is 58º in horizontal and 45º in vertical.
+
+\subsection{NAOqi}
+\label{sec:naoqi}
+
+NAOqi is the name of the main software that runs on the robots control it. The NAOqi framework is \texttt{Cross plataform} and \texttt{Cross language}. Therefore, it is possible to develop in Windows, Linux or Mac and using C++ or Python. Although, below it is only explained a brief description about NAOqi proxies and NAOqi modules, more information about the framework can be found at \citep{Aldebaran}. 
+
+On one hand, the NAOqi modules are classes within libraries that contain various methods. Every module has a particular subject which it is controlling. On the other hand, the NAOqi proxies is an object that has the behaviour of the NAOqi module that represents. Therefore, the proxy from a module contain the methods of the pertinent module.
+
+Because of the aim of this project there are four main modules:
+
+\begin{itemize}
+\item \texttt{ALMemory} which handle all the key information related to the hardware configuration
+\item \texttt{DCM} in charge of the communication with almost every electronic device in the robot except sound and cameras.
+\item \texttt{ALMotion} in charge of the movement of the robot
+\item \texttt{ALVideoDevice} which provides images from the video sources in an efficient way.
+\end{itemize} 
+
+Below is explained the most important things about this modules just to have an idea and to be able to understand the following Section \ref{sec:romeo_ros}.
+
+\subsubsection{DCM}
+
+Firstly, the DCM module, it is the link between NAOqi modules and the software in electronic boards. Therefore, modules like ALMotion use the DCM to send commands to Actuators, and also get sensor information returned by the DCM in ALMemory. Therefore, using directly DCM commands to control the robot is faster and more efficient, but is more difficult to use than the NAOqi modules. An overview of how the DCM works can be seen in Figure \ref{fig:naoqi_DCM}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{images/dcm_overview.png}
+\caption{Behaviour of DCM module \cite{Aldebaran}\label{fig:naoqi_DCM}}
+\end{figure}
+
+\subsubsection{ALMotion}
+
+Secondly, the ALMotion module, it can do both get information from joints and set specific angles or trajectories. Some of the most important functions, at least for this work, are the following ones:
+
+\begin{itemize}
+\item \texttt{getStiffness()} and \texttt{setStiffness} to get or set the values of stiffness to one or more joints.
+\item \texttt{getAngles()} and \texttt{setAngles} to get or set the angle to one or more joints. Moreover, can set for every joint the fraction of maximum speed use to reach the specific angle.
+\item \texttt{angleInterpolation()} to set an interpolated trajectory for one or more joints, given the angles for specific moments. 
+\end{itemize}
+
+\subsubsection{ALVideoDevice}
+
+Finally, the ALVideoDevice module, it allows the package to get images from the sources available from the robot. As said in Section \ref{sec:romeo_hardware}, there are several cameras, so the images from one or other camera can be got depending on the camera index. For this module, there are two main functions:
+
+\begin{itemize}
+\item \texttt{subscribeCamera()} given the features of the desired image (source, resolution, colorspace and fps) returns the string handle which identify the subscriber.
+\item \texttt{getImageRemote()} given the string handle returns the container of the latest image from the video source.
+\end{itemize}
+
+
+\section{Software required}
+%TODO
+%Introduction of software required
+
+\subsection{ROS (Robotic Operative System)}
+
+\textit{\textbf{R}obot \textbf{O}perating \textbf{S}ystem} \cite{ROS} is an open-source and flexible framework to develop robot software. There are five main elements in this framework: (1) nodes which are the process; (2) messages that are used for the communication between nodes; (3) topics that is where the message is published by the node; (4) services is the where the node have to send a request message to get a response message and (5) actions which are like a service but can send a feedback while the activity is not still done. ROS allow the communication between process in two different ways: (1) publisher/subscriber system and using services. 
+
+\begin{enumerate}
+\item Publisher/subscriber system is anonymous and asynchronous. Moreover, can be more than one publisher and/or subscriber for an unique topic.
+\item Services are defined by two messages: (1) request message from the node and (2) response message. Therefore, the response message is given by the node which allocate the service depending on the information given in the request message. 
+\end{enumerate}
+
+Although, the main aim is to be able to reuse the code yet develop in robotics investigations. Also the philosophical goals of ROS can be summarized \cite{Quigley}: (1) Peer-to-Peer, (2) tools-based, (3) multi-lingual, (4) thin, (5) free and open-source. 
+
+ROS is a required software for \texttt{romeo\_grasper} because this is the framework used to communicate the process in charge with the different devices and Romeo. Therefore, it is needed for the robot and for every device a way to communicate with ROS.
+
+\subsection{Ros packages for Romeo}
+\label{sec:romeo_ros}
+
+Aldebaran company has created some packages to communicate Romeo, Nao and Pepper with ROS. At this stage are only explained some which are related with Romeo, but some of them are used also for Nao and Pepper. Although, these packages are open-source, so are continuously improving them by the community, but before the changes are released as oficial, their are revised by experimented developers on Romeo.
+
+On one hand, there are the packages used for the three robots that are in the \texttt{ros-naoqi} repository \cite{ros-naoqi}:
+\begin{itemize}
+\item \texttt{naoqi\_bridge} metapackage which include the following packages:
+\begin{itemize}
+\item \texttt{naoqi\_driver\_py} Python code in charge of getting data from joints.
+\item \texttt{naoqi\_pose} which handle the movement of the robot.
+\item \texttt{naoqi\_sensor\_py} get the information from sensors as camera, contact sensors, microphone and sonar.
+\item \texttt{naoqi\_tools} allow to generate and modify Aldebaran's robot models easily.
+\end{itemize}
+\item \texttt{naoqi\_dirver} another version of \texttt{naoqi\_driver\_py} in C++, but less developed 
+\item \texttt{naoqi\_bridge\_msgs} contains all the needed messages, services and actions to use the naoqi packages.
+\end{itemize}
+
+On the other hand, the packages used from \texttt{ros-aldebaran} repository \cite{ros-aldebaran} are the following:
+
+\begin{itemize}
+\item \texttt{romeo\_robot} metapackage which include the following packages:
+\begin{itemize}
+\item \texttt{romeo\_bringup} used to launch the essentials nodes of the metapackage.
+\item \texttt{romeo\_dcm} which handle the communication with the Romeo electronic devices.
+\item \texttt{romeo\_description} contains the model of the robot in different type of files
+\item \texttt{romeo\_sensors\_py} add the depth camera and reuse \texttt{naoqi\_sensor\_py}.
+\end{itemize}
+\item \texttt{romeo\_moveit\_config} explained in Section \ref{sec:romeo_moveit_config}.
+\item \texttt{romeo\_moveit\_actions} explained in Section \ref{sec:romeo_moveit_actions}.
+\end{itemize}
+
+As described in Section \ref{sec:naoqi}, NAOqi proxies are used to connect to a NAOqi module. Therefore, the base of all these packages is to create the pertinent proxies to send data to NAOqi or to get data from NAOqi and then publish it on ROS. This way of working is shown in Figure \ref{fig:Romeo-ROS}. Below are explained the most important packages to work with \texttt{romeo\_grasper} package.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{images/Romeo-ROS.eps}
+\caption{Communication between Romeo and ROS\label{fig:Romeo-ROS}}
+\end{figure}
+
+\subsubsection{NAOqi driver}
+
+As said previously, there are two different NAOqi driver packages: (1) \texttt{naoqi\_driver\_py} and (2) \texttt{naoqi\_driver}. Due to unknown reason \texttt{naoqi\_driver\_py} is more developed than \texttt{naoqi\_driver}, so it is better to work with the first one. In order to get the information from the robot joints, this package is connected to ALMotion module. Then, it gets and publish this data to ROS with a frequency of 25 Hz. As shown in Figure \ref{fig:naoqi_driver}, the topics where it is published are \texttt{$/$joint\_states} and \texttt{$/$joint\_stiffness}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{images/naoqi_driver.eps}
+\caption{Overview NAOqi driver package\label{fig:naoqi_driver}}
+\end{figure}
+
+\subsubsection{NAOqi pose}
+
+Although, this package uses two nodes: (1) pose controller node and (2) pose manager node; only pose controller node is important for \texttt{romeo\_grasper}. Whereas the pose controller node is in charge of sending the goal angle or goal trajectory to the joints, pose manager only is used to move the joints to a predefined posture. Therefore, below is only explained the pose controller node.
+
+Therefore, using the motion proxy it sends the pertinent commands to ALMotion module depending on from where the pose controller node take the information. There are several ways to communicate with this node, as can be seen in Figure \ref{fig:pose_controller}. Among these, the one used in \texttt{romeo\_grasper} is the action \texttt{$/$joint\_trajectory}. In order to run this action the request message has to contain the angles of the joint for each specific time from start. Then, the ALMotion function \texttt{angleInterpolation} is run in another thread and when the action is done it sends the final joint state.
+
+%\begin{itemize}
+%\item \textbf{Topics} 
+%\begin{itemize}
+%\item \texttt{$/$joint\_angles} which set the joints named in the message to a specific angle and go there with a specific factor of the maximum speed for the joint.
+%\item \texttt{$/$joint\_stiffness} which set the stiffness of the named joints to a value.
+%\end{itemize}
+%\item \textbf{Services}
+%\begin{itemize}
+%\item \texttt{$/$wake\_up}
+%\end{itemize}
+%\end{itemize}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{images/pose_controller.eps}
+\caption{Overview Pose controller node\label{fig:pose_controller}}
+\end{figure}
+
+\subsubsection{DCM driver}
+
+Although, previously is said that the DCM handle the communication with the Romeo electronic devices, till the moment of writing this, the code developed only implements the communication with the Romeo joints to set the pertinent angle at the precise moment. Despite the fact that the \texttt{naoqi\_pose} can also do this, using DCM is more efficient and more direct, as explained in Section \ref{sec:naoqi}.
+
+In robotics is needed to make a realtime control of the joints, in this case to do that is used \texttt{controller manager} from the \texttt{ROS Control} metapackage. Therefore, when someone or a package wants to send commands through DCM should communicate with \texttt{controller manager} and then this send the commands to \texttt{DCM driver} in the right way to have realtime control. An overview of this communication is shown in Figure \ref{fig:dcm_driver}. Moreover, in Figure \ref{fig:dcm_driver_flow} can be seen how it works this package.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{images/dcm_driver.eps}
+\caption{Overview Romeo DCM package\label{fig:dcm_driver}}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\include{images/dcm_driver_flow}
+\caption{Flow sequence of Romeo DCM package\label{fig:dcm_driver_flow}}
+\end{figure}
+
+\subsubsection{Romeo sensor}
+%Pensar amb si talvegada desconectant sa Xtion vagi més bé treient la info a partir de les cameres RGB.
+
+%La camera de l'esquerra a dalt esta considerada com a camera bottom i sa de la dreta dalt es com a front
+
+%TODO
+%TEST!! change encoding mono16 for 16UC1
+Because of \texttt{romeo\_sensor\_py} is an addition of \texttt{naoqi\_sensor\_py}, it should be understood how works this last one. Firstly, initialize the ROS publishers and the camera proxy. Secondly, it gets and applies the camera parameters. After that, the function \texttt{subscribeCamera} is used to then can get the image container. Finally, it transforms all the received data to image messages to publish in the pertinent ROS topic. 
+
+In order to add the depth camera is used the same code structure as in \texttt{naoqi\_sensor\_py}, but changing the camera index and adapting the image type to ROS. Unfortunately, it seems that this part is not well implemented, because at least with the test done here it gets a dark image, this fact is shown in Figure \ref{fig:ros_dark_depth_image}.  
+
+\begin{figure}[h]
+\begin{subfigure}[r]{0.48\textwidth}
+\centering
+		\includegraphics[width=\textwidth]{images/depth_camera_monitor.png}
+        \caption{Image from Monitor, which is Aldebaran official program to see the what are the cameras recording.}
+\end{subfigure}
+~
+\begin{subfigure}[r]{0.48\textwidth}
+\centering
+		\includegraphics[width=\textwidth]{images/depth_camera_ROS.jpg}
+        \caption{Image from the topic where \texttt{romeo\_sensor} publish.}
+\end{subfigure}
+\caption{Comparative images from the depth camera.\label{fig:ros_dark_depth_image}}
+\end{figure}
+
+Looking in the code one tested idea to solve it has been to change the camera index which currently is 2 (names \texttt{kDepthCamera}) which, according to \citep{Aldebaran}, to connect to ASUS Xtion should be 4 (named \texttt{kXTION}). After a lot of tests, changing the encoding and other features, it hasn't reach any good result. 
+
+\subsection{V4R (Vision for Robots)}
+\label{sec:V4R}
+
+The V4R software is only a branch of a huge project named STRANDS \cite{strands} which has the aim to enable a robot to achieve robust and intelligent behaviour in human environments through adaptation to, and the exploitation of, long-term experience. Specifically V4R has the aim to provide the robot with life-long acquisition of object knowledge, incrementally extending its expertise over time.
+
+In order to achieve this goal, V4R has several modules and apps going in that direction. Concerning to this project, two of the features which are the most interesting: (1) RGB-D object modelling for object recognition and tracking and (2) real-time object pose tracking.
+
+On one hand, V4R has RTM-Toolbox (Recognition, Tracking and Modelling Object) \cite{Prankl2015} which includes a flexible system to reconstruct 3D models of objects captured with an RGB-D sensor. A major advantage of the method is that unlike  other modelling tools, this reconstruction pipeline allows  the user to acquire a full 3D model of the object. This is  achieved by acquiring several partial 3D models in different sessions that are automatically merged together to reconstruct a full 3D model. 
+
+On the other hand, the real-time object pose tracking \cite{Prankl2013} \cite{Aldoma2013}, combines complementary interest points, for textured objects and for uniformly colored objects, in a common tracking framework which allows to handle a broad variety of objects regardless of their appearance and shape.
+
+Although, the V4R library is independent from ROS, there are wrappers for ROS \cite{gitV4RWrappers}. Therefore, the features described above can be used though ROS. However, there are some limitations. Even using a RGB-D sensor, to run RTM-Toolbox is necessary to have the sensor launched though OpenNi. The problem appears with some RGB-D cameras that are not supported by OpenNi like the Intel RealSense.\footnote{Installation of the camera drivers explained in Appendix \ref{app:camera_instal}} Therefore, it cannot use the RTM-Toolbox and only can use the modelling application the Microsoft Kinect and ASUS Xtion cameras. Except for this, in all the others features is possible to use any camera which can publish PointsClouds in a topic, see Figure \ref{fig:V4R-ROS}.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.8\textwidth]{images/V4R-ROS.eps}
+\caption{Communication between V4R - ROS - Cameras RGB-D\label{fig:V4R-ROS}}
+\end{figure}
+
+\vspace{-5pt}
+In order to use the toolbox and the tracker in \cite{gitV4RWrappers} is explained the instructions to install and a brief tutorial. However, it is good to add some information. Firstly, the way to be able to make a full 3D model of an object, for this is needed to use the multi-session modelling as explained in \cite{Prankl2015b}. Secondly, If the object itself is texture-less, the software relies on background texture in order to  successfully  model  these  kind  of  objects. So a good option is to add a textured sheet of paper on the supporting surface. Thirdly, the origin of the modeled object is posed automatically by the toolbox, so probably is not on the center of the object which is needed for the grasping process. Finally, by default the tracker is looking for the camera topic in the \texttt{/camera/depth\_registered} namespace. Although, OpenNi use this namespace, the RealSense ROS package uses \texttt{/camera/depth}.\footnote{RealSense-ROS doesn't have support for \texttt{/camera/depth\_registered} by now, but is in process \cite{gitRealSense}.} So to change it is needed to use the prefix \texttt{-t NAMESPACE} when the service is started as the following example:
+
+\vspace{-5pt}
+%\begin{lstlisting}
+%rosrun object_tracker object_tracker_service -m MODEL_PATH -t /camera/depth
+%\end{lstlisting}
+\begin{verbatim}
+rosrun object_tracker object_tracker_service -m MODEL_PATH -t /camera/depth
+\end{verbatim}
+
+Referring to the tracker and how to interact with it, see Figure \ref{fig:Object_tracker}. Firstly, it should be launched with a command like the one above, then if it finds the \texttt{.../camera\_info} topic and the model the service \texttt{start\_recording} can be called. After that, the broker is looking for the modeled object and if it has enough confidence publish a message with the pose and the confidence in \texttt{/object\_tracker/object\_pose}. Moreover, the tracker is publishing constantly images of the camera with the axis at the origin of the object, if is found, and with a bar representing the confidence in \texttt{/object\_tracker/debug}. Finally, in order to change the model use to track, it is needed to call the \texttt{change\_tracking\_model} service with the path of the new model and after that start the recording again.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{images/object_tracker.eps}
+\caption{Topics and services of the module Object Tracker\label{fig:Object_tracker}}
+\end{figure}
+
+It should be stated that the way to identify an object is done transforming the point clouds to an image and then from this are extracted a kind of SIFT features which describe the object. Then, the depth information is used to reaffirm that is the right object.
+
+\subsection{Inverse kinematic solvers}
+\label{sec:inverse_kinematic}
+
+For solving inverse kinematics problems there are two main approaches: (1) numerical solution and (2) analytical (closed forms) solutions. 
+
+On one hand, \textit{KDL} (Kinematics and Dynamics Library)\citep{KDL} is a library for computing forward and inverse kinematic queries with numeric recursive solving. This library is included in the MoveIt packages and it is the default solver if another one is not specified. However, it might be very slow or trap in local maximums due to recursive nature of numerical solutions for solving IK problems. 
+
+On the other hand, \textit{OpenRAVE} (Open Robotics Automation Virtual Environment)\cite{Diankov2010} is a software for simulating and deploying planning algorithm. It provides a tool called IKFast which can generate C++ code (independent of any library) representing the model of the manipulator for solving forward and inverse kinematic queries. The generated code is able  to solve the request on the order of 4 microseconds \cite{Diankov}. In order to generate the C++ code for the robot, it should be provided a Collada model \cite{KhronosGroup} of the robot. Besides, as stated in Section \ref{sec:romeo_hardware}, the arms have one redundancy so for the C++ code generation is needed to specify which should be the free joint. Therefore, to solve IK queries with IKFast some of the key issues is to find proper values for this free joint and which joint should be selected. 
+
+
+\chapter{Design of Romeo grasper package}
+
+The next stage introduces the general idea of the package here exposed. After this chapter, on the Implementation Chapter \ref{ch:implementation}, the package is explained in detail. 
+
+A brief overview of this package can be understood by the Figure \ref{fig:overview_design}. First of all, the position of the object is got with the camera and V4R software. Then is time to compute a pre-grasping trajectory and a picking trajectory using inverse kinematics. The next stage is using the simulation to test these trajectories. After that, we send the joint commands to NAOqi through the Romeo ROS packages to finally move the robot joints and make the grasp.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.85\textwidth]{images/package_design.eps}
+\caption{Overview of the \texttt{Romeo grasper} package \label{fig:overview_design}}
+\end{figure}
+
+\section{Get position of the object}
+
+In order to be able of grasping object which has been recognized by the camera, we need the position of the object on the robot reference. This position is got by the camera which should be positioned too. The ideal case would be using the Romeo RGB-D camera mentioned in Section \ref{sec:romeo_hardware}, because the relative position of the camera from the robot is known by the \texttt{romeo\_description} package and we don't need extra connections. But is not possible to get a good performance with it because, as mentioned in Section \ref{sec:romeo_ros}, the images of Romeo depth camera are useless. Moreover, the robot is not able to see its own arms till they are too far to work with because of the range of the camera. Seeing that we need to use an external camera to get the environment information.
+
+Although, we can use any camera that can publish \texttt{PointClouds}, explained in Section \ref{sec:V4R}, is better to use the same type of camera used for the modeling of the object. In that case, we obtain a better performance of the V4R software and so less error for the global system. Once we have the camera, we can start positioning the camera.
+
+\vspace{-10pt}
+\subsection{Positioning the camera}
+\label{sec:positioning_camera}
+
+In \texttt{Romeo grasper} package there are different ways to make known to the robot the position of the camera:
+\begin{enumerate}
+\item Use of pre-known position of the camera relative to any link of the robot.
+\item Use a reference object that the camera recognises and associates with a link of the robot.
+\end{enumerate}
+
+The first one, use the position of the link and then add the relative position to finally have the camera position on the robot reference. The second one uses the camera recognition software to know the position of the reference object. This object is associated with a link of the robot, so the position of the reference object is the position of the link. The ideal case would be that the reference object was itself the link robot. This case has been tested but without succeed because of the lack of \texttt{SIFT} points on the robot link surface, that makes difficult for the V4R software to detect the link. Because of that we use a reference object with an offset parameter to fix the error in the position, this offset parameter is explained in the following chapter, Section \ref{sec:model_object}.
+
+Once we have the position of the camera, this is published to ROS. So it can be used for the simulator and to get the position of the object relative to the robot.
+
+\vspace{-10pt}
+\subsection{Calculate the object position}
+\label{sec:design_object_position}
+
+After having the position of the camera, we can start with the process of getting the position of the object. When the V4R software gives us the position, that is presented in camera coordinates. So we need to transform from this reference to robot reference. The way to do that is represented in the equation \eqref{eq:pos_robot_object}, so using the transform from camera reference to robot, got with the position and orientation of the camera on robot reference, and with the position on the camera reference results in the position on robot reference.
+
+\begin{equation}
+P_{robot}^{object} = T_{robot}^{camera} \cdot P_{camera}^{object} \label{eq:pos_robot_object}
+\end{equation}
+
+
+\section{Move the hand to object position}
+\label{sec:design_move_hand}
+
+Once we have the position of the object on the robot reference, we need first to move the hand to a pre-grasping position to then do the picking. In order to be able of this is required an inverse kinematic solver, like the two explained in Section \ref{sec:inverse_kinematic}, with this we get the joint trajectory which will be followed by the arm. Although, before move it, we should see in the simulator if there is any collision or not with external objects (collisions with the robot itself is checked automatically). Because of checking this and seeing the arm trajectory, after planning, by default, the package waits  the answer of the user with a service call, where you can choose: (1) to move the robot with this plan; (2) make another plan or (3) abort and wait till have another position. If we want to execute automatically the planned trajectory it only needs to put the ROS parameter \texttt{automatic\_execution} to \texttt{true}. Finally, after executing the plan for the pregrasp, it starts again the function but in this case to do the picking. As explained in Section \ref{sec:romeo_moveit_actions}, after testing different pickings, if someone is right it will be execute.
+
+It should be stated that as said in Section \ref{sec:moveit_simple_grasps}, the left arm is configured to make a side grasp and the right arm for a top grasp. However, we can decide which arm use like others wide variety of parameters, as explained below. 
+
+\section{Configuration and launching}
+\label{sec:design_config}
+
+Firstly, describe every parameter loaded to ROS with the file \texttt{romeo\_grasper.yaml}. Some of the concepts are explained in detail in the following Chapter \ref{ch:implementation}% So the description with the current default value is shown in the following table:
+%TODO
+%Revisar si la taula esta ben organitzada
+\begin{table}[!h]
+\begin{center}
+\begin{tabulary}{\textwidth}{|l|c|J|}
+\hline
+\textbf{Parameter name} & \textbf{Default value} & \textbf{Description} \\ \hline
+\texttt{move\_group} & left\_arm & Defines which is the group of links and joints controlled, see Table \ref{tab:tree_group_links_joint} in Section \ref{sec:romeo_hardware}.\\ \hline
+\texttt{models\_directory} & \dots/data/models & Directory containing the modeled objects and their config files, see Section \ref{sec:model_object}\\  \hline
+\multicolumn{3}{|r|}{\small\sl continued on next page}\\
+\hline
+\end{tabulary}
+\end{center}
+\end{table}
+
+\break
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabulary}{\textwidth}{|l|c|J|}
+\hline
+\multicolumn{3}{|l|}{\small\sl continued from previous page}\\ \hline
+\textbf{Parameter name} & \textbf{Default value} & \textbf{Description} \\ \hline
+\texttt{model\_object\_name} & tea\_box & Name of the modeled object which should be grasped.\\  \hline
+\texttt{model\_reference\_name} & ref\_tea\_box & Name of the modeled object which is used to position the reference link, explained in Section \ref{sec:visual-recognition}\\  \hline
+\texttt{pose\_threshold} & 0.05 & Minimum position difference, from the old position to the current one, needed to consider that the position has changed.\\ \hline
+\texttt{confidence\_threshold} & 0.25 & Minimum tracker confidence to use a position. If the position does not pass the threshold the position is rejected.\\ \hline
+\texttt{ref\_confidence\_threshold} & 0.35 & Minimum tracker confidence to use a position to set the reference link.\\ \hline
+\texttt{reachVsGrasp} & true & Boolean to set the way to do the planning of the pre-grasp, using \texttt{reachAction} or \texttt{graspPlan}. More information in Sections \ref{sec:romeo_moveit_actions} and \ref{sec:planning_pregrasp}\\ \hline
+\texttt{max\_velocity\_scaling\_factor} & 0.1 & Maximum factor of speed for the joints.\\ \hline
+\texttt{tolerance\_step} & 0.1 & Step which increments the goal tolerance for every attempt in \texttt{reachAction} and \texttt{pickAction} function.\\ \hline
+\texttt{tolerance\_min} & 0.1 & Initial goal tolerance for planning and picking.\\ \hline
+\texttt{planning\_time} & 20 & Maximum planning time for each attempt.\\ \hline
+\texttt{attempts\_max} & 3 & Maximum number of attempts.\\ \hline
+\texttt{base\_link\_frame\_id} & base\_link & Base frame of the robot.\\ \hline
+\texttt{camera\_in\_front} & false & Boolean to know if the camera is in front of the robot or next to it. More information in Section \ref{sec:impl_camera_approach}\\ \hline
+\texttt{camera\_reference\_frame\_id} & l\_wrist & Frame of the link used as reference, see Section \ref{sec:visual-recognition}. \\ \hline
+\texttt{camera\_link} & camera\_link & Frame used to set the position of the camera.\\ \hline
+\texttt{object\_frame\_id} & object\_frame & Frame of the object that should be grasped.\\ \hline
+\multicolumn{3}{|r|}{\small\sl continued on next page}\\
+\hline
+\end{tabulary}
+\end{center}
+\end{table}
+
+\break
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabulary}{\textwidth}{|l|c|J|}
+\hline
+\multicolumn{3}{|l|}{\small\sl continued from previous page}\\ \hline
+\textbf{Parameter name} & \textbf{Default value} & \textbf{Description} \\ \hline
+\multirow{1}{*}{\texttt{camera\_pose\_x}} & \multirow{1}{*}{-0.11} & \multirow{3}{\hsize}{Coords of the camera when camera position is pre-known, more in Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
+\multirow{1}{*}{\texttt{camera\_pose\_y}} & \multirow{1}{*}{0.62} & \\ \cline{1-2}
+\multirow{1}{*}{\texttt{camera\_pose\_z}} & \multirow{1}{*}{0.14} & \\ \hline
+\texttt{camera\_frame\_id} & camera\_rgb\_optica\_frame & Frame of the camera following the ROS Enhancement Proposals (REPs) as an optical camera frame \cite{Foote}.\\ \hline
+\end{tabulary}
+\caption{Description and default value of every parameter of \texttt{romeo\_grasper.yaml}\label{tab:param_romeo_grasper}}
+\end{center}
+\end{table}
+
+Referring to the launching, in \texttt{romeo\_grasper} package, there is a main launch file which is named as \texttt{romeo\_grasper.launch}. This run the main node of the package loading the following parameter files:
+
+\begin{itemize}
+\item \texttt{romeo\_grasper.yaml}: the one explained above.
+\item \texttt{kinematics.yaml} from \texttt{romeo\_moveit\_config} package: which contain the features about the kinematic solver.
+\item \texttt{romeo\_grasper\_data.yaml} from \texttt{moveit\_simple\_grasps}: file with the geometry of the romeo gripper. 
+\item \texttt{model\_config.yaml} for every modeled object used: configuration file of the modeled object. This file should be in the following namespace: \texttt{models/MODEL\_NAME}.
+\end{itemize}
+
+Moreover, the launcher has the following arguments which are loaded as parameters for the node and these define how the package should work.
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabulary}{0.9\textwidth}{|l|c|J|}
+\hline
+\textbf{Parameter name} & \textbf{Default value} & \textbf{Description} \\ \hline
+\texttt{launch\_full} & false & In case of launch all the nodes together \texttt{romeo\_grasper} waits some seconds to give time to the other nodes to be ready.\\ \hline
+\texttt{verbose} & false & Enables verbose mode.\\ \hline
+\texttt{debug} & false & Enables debug mode.\\ \hline
+\texttt{tracking} & true & Should be enable when a real camera is used.\\ \hline
+\texttt{pose\_camera\_preknown} & false & Enable use of the parameters \texttt{camera\_pose\_x/y/z} to set camera position.\\ \hline
+\texttt{simulation} & false & Used when is not working with real Romeo\\ \hline
+\texttt{automatic\_execution} & false & Avoid waiting for user answer to execute the plan\\ \hline
+\end{tabulary}
+\caption{Description and default value of \texttt{romeo\_grasper.launch} arguments.\label{tab:arg_launch_romeo_grasper}}
+\end{center}
+\end{table}
+
+Although, a real camera were not used, so being \texttt{tracking} false, the position of the object can be given to \texttt{romeo\_grasper} though the \texttt{object\_tracker/object\_pose} topic as is done by the V4R software.
+
+However, the previously launcher cannot be run alone, it needs other nodes to work properly. Therefore, there are two more launchers which run these nodes automatically: 
+\begin{itemize}
+\item \texttt{romeo\_grasper\_full.launch} to run on the real robot.
+\item \texttt{romeo\_grasper\_demo\_full.launch} to run on a simulation or on the real robot but without moving it.
+\end{itemize}
+
+Both launchers run \texttt{romeo\_grasper.launch}, the \texttt{romeo\_full\_py.launch} launcher which is the one for \texttt{naoqi\_driver\_py} and \texttt{romeo\_sensor\_py} packages and an Rviz launcher. However, the last one for the demo launch is run with \texttt{fake\_execution}, so it doesn't move the robot. Furthermore, they need a way to move the robot, when is with the real robot is though \texttt{DCM} package and with the simulation is though \texttt{naoqi\_pose} package. Therefore, the real launcher runs the \texttt{DCM} driver and the demo launcher runs the \texttt{pose\_controller} node. For more information about these last packages and nodes see Section \ref{sec:romeo_ros}.
+
+It needs to be stated that to use a real camera is necessary to launch another node. There are two possible cases: (1) use a RealSense camera or (2) use a camera through openNi.\footnote{Installation of the camera drivers explained in Appendix \ref{app:camera_instal}.} On one hand, the RealSense camera can be launch with the \texttt{use\_realsense} argument in the launchers. On the other hand, for the openNi case, should be run the following command on a new terminal:
+
+\begin{verbatim}
+roslaunch openni_launch openni.launch depth_registration:=true
+\end{verbatim}
+
+Finally, it should be mentioned that the Rviz configuration and launching files are copied from \texttt{romeo\_moveit\_config}, but modified to have a more adapted features for this package. 
+
+
+\chapter{Implementation}
+\label{ch:implementation}
+
+At this stage the details of every process are explained. So the parts briefly exposed previously are analysed deeply. Sometimes are used knowledge described in previous chapters, but they have the corresponding reference to make easier the reading.
+
+\section{Model Object class}
+\label{sec:model_object}
+
+This class represent, in the \texttt{Romeo grasper} package, an object that has been previously modeled with the V4R Toolbox. This class allow to create, remove and update every object independently in the simulator and to calculate its own position with the pertinent correction on the robot reference, given the position on camera reference. 
+
+At the initialization of this class, it should be associated with one of the modeled object with the pertinent configuration file \texttt{model\_config.yaml} in the same folder of the modeled object.\footnote{In the package the folder for every model is placed at \texttt{data/models/MODEL\_NAME}.} The config file has the following parameters:
+
+\begin{itemize}
+\item \textbf{offset\_x$/$y$/$z}: the origin established by the V4R Toolbox may be is not the desired one for the grasp. This offset use the orientation provided by V4R Toolbox.
+\item \textbf{shapeType}: shape used in the simulator. For now only supports \texttt{cylinder}.
+\item \textbf{size}: set the radius of the cylinder.
+\item \textbf{size\_l}: set the longitude of the cylinder.
+\end{itemize}
+
+\newpage
+Every modeled object that wants to be used must have the configuration file loaded in the launch file. So the following line should be used for every model in the node namespace \textit{MODEL\_NAME} for the name of the model.
+\begin{verbatim}
+<rosparam command="load" ns="models/MODEL_NAME" 
+file="$(find romeo_grasper)/data/models/MODEL_NAME/model_config.yaml" />
+\end{verbatim}
+
+An overview of the processes done by this class is showed below, on Figure \ref{fig:flow_model_object}. Moreover, the last part of the flow sequence is explained in detail on Figure \ref{fig:model_object_transform}.
+
+\begin{figure}[h]
+\centering
+\include{images/model_object_diagram}
+\caption{Flow sequence of ModelObject class\label{fig:flow_model_object}}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\include{images/model_object_transform}
+\caption{Position transformation from camera reference to base reference\label{fig:model_object_transform}}
+\end{figure}
+
+
+\section{Approach to camera position} 
+\label{sec:impl_camera_approach}
+
+The aim of having the position and orientation of the camera is to have a transformation from camera reference to base reference. So when the position of the object is given on camera reference, we can transform this to base reference, and then do the grasp.
+
+Previously in Section \ref{sec:positioning_camera}, has been explained a summary of how to let known to the robot the camera position. As mentioned previously, we have to ways of doing that: (1) using pre-known distance between a link of the robot and the camera; (2) using the camera to know its own position. These two ways are described in detail in Section \ref{sec:pre-known_distance} and \ref{sec:visual-recognition}, respectively.
+
+Firstly, these two ways start with the assumption that we have the camera perfectly orientated at 90 degrees or 180 degrees in yaw rotation. So the camera is next to the robot or in front of the robot, as in the Figures \ref{fig:camera_side} and \ref{fig:camera_front}, respectively. Therefore, the matrix rotation from \texttt{camera\_link} to \texttt{base\_link} for this cases are expressed as Equation \eqref{eq:matrix_rot_side} for camera next to the robot and as Equation \eqref{eq:matrix_rot_front} for in front. Then, when we configure the package, with file \texttt{romeo\_grasper\_xxxx.yaml} we should indicate which case is the current orientation by the boolean parameter \texttt{camera\_in\_front}. So this estimated orientation is used, depending of the way to get the position, as the final orientation or only as a seed.
+
+\vspace{-20pt}
+\begin{eqnarray}
+S_{base}^{cam} &= \begin{pmatrix}
+-1 & 0 & 0 \\
+0 & 0 &-1 \\
+0 & -1 & 0
+\end{pmatrix} \label{eq:matrix_rot_side}\\
+S_{base}^{cam} &= \begin{pmatrix}
+0 & 0 & -1 \\
+1 & 0 & 0 \\
+0 & -1 & 0
+\end{pmatrix}\label{eq:matrix_rot_front}
+\end{eqnarray}
+
+\begin{figure}[h]
+\begin{subfigure}[r]{0.48\textwidth}
+\centering
+		\includegraphics[width=\textwidth]{images/camera_side.eps}
+        \caption{Next to the robot \label{fig:camera_side}}
+\end{subfigure}
+~
+\begin{subfigure}[r]{0.48\textwidth}
+\centering
+		\includegraphics[width=\textwidth]{images/camera_front.eps}
+        \caption{In front of the robot \label{fig:camera_front}}
+\end{subfigure}
+\caption{Orientations of the \texttt{camera\_link} respect to the robot \texttt{base\_link}}
+\end{figure}
+
+It should be stated that to let know the camera position to the simulator and others part of the package is used a separated thread. This one is in charge of publishing the position of the camera on \texttt{TF} when this is available. Moreover, if currently is not using a real camera it publishes the pose of the camera optical frame according to REP 103 \cite{Foote}, which is used to get the position of the object, as explained in \ref{sec:design_object_position}.
+
+\subsection{Use of pre-known distance}
+\label{sec:pre-known_distance}
+In an environment where we can know the position of the camera respect to a link of the robot, use this way is a good option. Therefore we only need to set the configuration in the \texttt{romeo\_grasper\_xxxx.yaml} file. So with the \texttt{camera\_reference\_frame\_id} parameter we set the link used as reference and with \texttt{camera\_pose\_x}/\texttt{y}/\texttt{z} specify the coordinates where is the camera. However, we have to take in account that the orientation for this parameters is the \texttt{base\_link} orientation. That is done in that way to facilitate the user to take the coordinates.
+
+Therefore, the process to calculate the position of the camera is, as described in Equation \eqref{eq:calc_camera_pose_pre-known}, taking position of the reference link in \texttt{base\_link} coordinates and adding the values of the parameters \texttt{camera\_pose\_x}$/$\texttt{y}$/$\texttt{z}. Finally, the transformation between \texttt{camera\_link} and \texttt{base\_link} is expressed like Equation \eqref{eq:trans_base_camera_pre-known}
+
+\begin{equation}\label{eq:calc_camera_pose_pre-known}
+P_{base}^{cam} = P_{base}^{link} + \begin{pmatrix}
+camera\_pose\_x \\
+camera\_pose\_y \\
+camera\_pose\_z \\
+\end{pmatrix} = P_{base}^{link} + \left( P_{base}^{cam} - P_{base}^{link} \right)
+\end{equation}
+
+\begin{equation}\label{eq:trans_base_camera_pre-known}
+T_{base}^{cam} = \begin{pmatrix}[ccc|c]
+ &  &  & \\
+ & S_{base}^{cam} & & P_{base}^{cam} \\
+ &  &  & \\ \hline
+0 & 0 & 0 & 1
+\end{pmatrix}
+\end{equation}
+
+An overview of the flow sequence done by the package in order to get this transformation is described in Figure \ref{fig:flow_camera_preknown}.
+
+\begin{figure}[h]
+\centering
+\include{images/pose_preknown}
+\caption{Process of having camera position using pre-known distance \label{fig:flow_camera_preknown}}
+\end{figure}
+
+\subsection{Use of visual recognition}
+\label{sec:visual-recognition}
+
+The original idea of this method is that wouldn't be necessary the help of the user to get the camera position. So the package should recognise one or more parts of the robot. Then, it should calculate the position and orientation of the camera knowing the position and orientation\footnote{The use of the orientation of a robot part depends on the approach used.} from the \texttt{camera\_link} reference and from the \texttt{base\_link} reference. For now, this initial idea is not totally implemented due to difficulties to recognise parts of the robot, as mentioned in Section \ref{sec:positioning_camera}, and for others problems explained later.
+
+In order to be able to get the pose of the links of the robot is used a modeled object with a special offset and easy to recognised for the software. This object is placed next to the link of the robot in a precise location, as showed on Figure \ref{fig:modeled_object_offset}, so the final origin of the object is established on the link origin. This modeled object, when it's initialised must have boolean \texttt{is\_reference\_object} with value \texttt{true} to work properly.
+
+\begin{figure}
+\centering
+\includegraphics[scale=1]{images/modeled_object_offset.eps}
+\caption{Position change due to the offset of the modeled object.\label{fig:modeled_object_offset}}
+\end{figure}
+
+Below are explained the three different approaches done for this method. Although, only the first one is implemented in the package, the others are prepared in the Matlab files on the directory \texttt{data$/$matlab$/$}.
+
+\vspace{-10pt}
+\subsubsection{(1) Using only one link}
+
+In this case, is used the assumption of having the camera next to or in front of the robot as a final orientation. Therefore, the only unknown variable is the camera position on base reference, $P_{base}^{cam}$. So as to solve this is needed the position of a link on camera reference, $P_{cam}^{link}$, that is known also on base reference, $P_{base}^{link}$. Finally the Equation \eqref{eq:camera_pose_visual_point} is the one to solve.
+
+\vspace{-10pt}
+\begin{equation}\label{eq:camera_pose_visual_point}
+P_{base}^{cam} - P_{base}^{link} + S_{base}^{cam} \cdot P_{cam}^{link} = 0
+\end{equation}
+
+\vspace{-20pt}
+\subsubsection{(2) Using three links}
+
+On the other hand, this case only used the assumption of the orientation to have a seed to solve the problem. The idea of this way is to implement the resolution of an optimisation problem with non-linear constraints to have an exact position and orientation of the camera.
+
+The equation that have to be minimized are Equation \eqref{eq:camera_pose_visual_point}, for every link, and Equation 
+\eqref{eq:camera_pose_visual_vector}, for two combination of the three links.\footnote{Only two combination of Equation \eqref{eq:camera_pose_visual_vector} because the third one is linear dependent of the other two.} Therefore, the error of every equation is put as absolute value and introduce in the minimization function. 
+
+Moreover, the solution have three non-linear constraints: the three axis of the orientation should be perpendicular between them. The axis of the orientation are the unitary vectors of the columns of matrix $S_{base}^{cam}$. Therefore, the constraints are Equation \eqref{eq:camera_pose_visual_perpendicular}, for every combination of the axis. 
+
+\begin{equation}\label{eq:camera_pose_visual_vector}
+\left( \overrightarrow{P_iP_j} \right)_{base} - S_{base}^{cam} \left( \overrightarrow{P_iP_j} \right)_{cam} = 0  \quad \quad \quad \forall i \neq j \quad \quad i,j=\left[ link_1,link_2,link_3 \right]
+\end{equation}
+\begin{equation}\label{eq:camera_pose_visual_perpendicular}
+<v_i , v_j > = 0 \quad \quad \quad \forall i \neq j \quad \quad i,j=\left[x,y,z\right]
+\end{equation}
+
+The reason to use three link for this case is that a minimum of 12 equation are required to determine the 12 variables (3 for the camera position and 9 for the orientation). Using three links we get 15 equations and 3 non-linear constraints. Otherwise with two link we would have 9 equation and 3 non-linear constraints, which is not enough.
+
+As said previously, the fact of having the camera in front or next to the robot is used as a seed. So the depending of the case is used the matrix from Equation \eqref{eq:matrix_rot_side} or from Equation \eqref{eq:matrix_rot_front}. Furthermore, for the position there are also seeds, these are extracted experimentally.
+
+Finally mention that in Matlab is used the algorithm \texttt{GlobalSearch} because it allows non-linear constraints and also search in a big range of solutions and is not only trying from the given seed. 
+
+\vspace{-10pt}
+\subsubsection{(3) Using multiples transformations}
+
+The V4R software, apart from giving the position of the object, gives the orientation. So instead of only using the position of the link placing the reference object at a certain place, we could use also the orientation of the object. Therefore, we could discover the position and orientation of the camera placing the object in a precise position and orientation from the known link. In order to do that we should know: (1) the transform from object to link reference, because of that reference object is placed by us; (2) the transform from link to base, provided by the model of the robot; (3) the transform from camera to object, known by using the information of the V4R software. With all this information we could have the transformation from camera to base, as showed in Equation \eqref{eq:camera_pose_trans}, so finally get position and orientation of the camera.
+
+\begin{equation}\label{eq:camera_pose_trans}
+T_{base}^{cam} = T_{base}^{link} \cdot T_{link}^{obj} \cdot T_{obj}^{cam}
+\end{equation} 
+
+\section{Planning and execution of trajectory}
+
+A brief description of this part is in Section \ref{sec:design_move_hand}. Firstly, before planning the ROS parameters named as runtime parameters are constantly updated. And secondly, is needed to accomplish the following conditions:
+
+\begin{itemize}
+\item The modeled object which should be grasp has the position updated.
+\item The position of the object is a new one which has not been processed.
+\item Be sure is not doing other processes that can effect the planning and execution
+\end{itemize}
+
+After that, is time to start with the planning and execute function, an overview can be seen in Figure \ref{fig:plan_execute_function_flow}. Therefore, below is explained in more detail some parts of this function.
+
+\begin{figure}[!h]
+\centering
+\include{images/plan_execute_function_flow}
+\caption{Flow sequence for function responsible of the robot planning and execution\label{fig:plan_execute_function_flow}}
+\end{figure}
+
+\subsection{Planning pre-grasp}
+\label{sec:planning_pregrasp}
+
+As said in Section \ref{sec:romeo_moveit_actions}, there are two ways of planning the grasp. Therefore, here depending on the parameter \texttt{reachVsGrasp} can be chosen which way. 
+
+On one hand, for the \texttt{reachAction} case, first is set the flag to not move the arm and then is called the \texttt{reachPregrasp} function. This function call \texttt{reachAction} but modifying the target pose subtracting the coords from the gripper, stored in the file \texttt{romeo\_grasp\_data.yaml} of package \texttt{moveit\_simple\_grasps}. Therefore, it goes to a position near the object but without touching it.
+
+On the other hand, for the \texttt{graspPlan} case, using the block from the modeled object generates a large number of grasps and from them takes the variable \texttt{grasp\_pose} which defines the position of the parent link of the end effector for the grasp. All these positions, from every grasp, are given to the \texttt{Action} class as target positions. Therefore, to make the plan will test them and will choose one which doesn't collide.
+
+Finally, both ways ask to the \texttt{move\_group} class for a plan. This plan contain the information of: (1) the starting state of the robot used for planning; (2) the planned trajectory for the joints of the group and (3) the amount of time it took to generate the plan.
+
+\subsection{User answer service}
+\vspace{-10pt}
+Before executing the movement there is a loop waiting for the user interaction with the package. This interaction is accomplish by a service call requesting for: (1) move the arm, (2) make the plan again, (3) abort plan. Therefore, this allows the user to see the planning trajectory before executing the movement. Moreover, the pose of the object is updated in another thread and while the loop is running it loads constantly the runtime parameters. As a result of this, the parameters or goal can be modify and then make the plan again. However, there is also the option of don't have this loop and execute directly the plan putting the parameter \texttt{automatic\_execution} to true. 
+
+The implementation in \texttt{romeo\_grasper} of this loop is waiting till one of the three following services is called:
+\begin{enumerate}
+\item \texttt{romes\_grasper/abort\_plan} change the value of the variable \texttt{pose\_changed} to false. Therefore, the planning and execute function won't start till the object position has changed again.
+\item \texttt{romes\_grasper/execute\_plan} starts with the movement of the arm to go to the pre-grasp position or to do the picking. Then, it also change the value of the variable \texttt{pose\_changed} to false.
+\item \texttt{romes\_grasper/replan} starts again the planning and execute function
+\end{enumerate}
+
+\subsection{Execute pre-grasp plan and picking}
+
+As mentioned in Section \ref{sec:design_config}, \texttt{romeo\_grasper} can be launched with simulation or with real robot. Therefore, depending on it the execution of the pre-grasp is started: (1) through the Action class of \texttt{romeo\_moveit\_action} package when is to the real robot or (2) through the \texttt{RomeoSimulator} class, explained in Section \ref{sec:romeo_simulator}, when is to a simulation. 
+
+On one hand, when the \texttt{executeAction} function from Action class is called, it runs the \texttt{execute} function of \texttt{move\_group} class with the previously created plan as a parameter. Then the MoveIt class made contact with the Controller Manager to move the robot according to the trajectory in realtime and, as explained in Section \ref{sec:romeo_ros}, it works with the DCM driver to send the proper commands to the robot. On the other hand, the execution with \texttt{RomeoSimulator} class is launched by the function \texttt{executeTrajectory}. This function and how \texttt{RomeoSimulator} class works is explained in below. Finally, the picking is launched by the \texttt{pickAction} function of the Action class, the way how it works is described in Section \ref{sec:romeo_moveit_actions}.
+
+\subsection{RomeoSimulator class}
+\label{sec:romeo_simulator}
+
+The aim of \texttt{RomeoSimulator} class is a way to move the simulated Romeo on your computer as the trajectory previously created. In order to do this, it is subscribed to the topic \texttt{/trajectory}, where the Action class publish the trajectory, see Section \ref{sec:romeo_moveit_actions}. Then, every time a new trajectory is published, \texttt{RomeoSimulator} update its internal trajectory variable. Therefore, when the \texttt{executeTrajectory} function is called, the class can use the trajectory with the most recent version. Finally, the \texttt{executeTrajectory} call the action service  \texttt{/joint\_trajectory} from \texttt{pose\_controller} node, explained in Section \ref{sec:romeo_ros}.
+
+\vspace{-20pt}
+\section{Setup of romeo grasper}
+\label{sec:impl_setup}
+\vspace{-10pt}
+Once the main idea of the \texttt{romeo\_grasper} package is described, it should be explained the required setup, an overview is shown in Figure \ref{fig:setup_romeo_grasper}. Firstly, the services for user choice after planning and the parameters detailed in Section \ref{sec:design_config} are loaded. Then the \texttt{RomeoSimulator} class is initialized. After this, two new thread are created to make the process faster. Therefore at this stage there are three threads at the same time:
+
+\begin{enumerate}
+\item Initialize the visual environment, spawn a table as a cuboid and create a subscriber to \texttt{/romeo\_grasper/visual\_table} which is used to modify the features of the table.
+\item Create the MoveIt Actions for every arm and set the current parameters to these.
+\item Create the subscriber to \texttt{/object\_tracker/object\_pose} to know where is the object and in case of \texttt{tracking} initialize the client service to change tracking model.
+\end{enumerate}
+
+Finally, it waits till all the setup processes are done and then starts getting the camera position which is summarized in Section \ref{sec:positioning_camera} and explained deeply in Section \ref{sec:impl_camera_approach}.
+
+\begin{figure}[!h]
+\centering
+\include{images/setup_romeo_grasper}
+\caption{Flow sequence for \texttt{romeo\_grasper} setup\label{fig:setup_romeo_grasper}}
+\end{figure}
+
+%TODO
+% Revisar si s'ha d'emprar es \newpage o no
+\newpage
+\section{Communication between packages}
+% Every time the object tracker has a measure of where is the object it publish in the topic and romeo grasper is subscribed to this one. 
+
+Romeo grasper depends on other packages to work properly, so it needs to sent and receive data to make Romeo achieve the grasp of the object. An overview of the communications involve in this process is shown in Figure \ref{fig:communication_all_packages}. Furthermore, the explanation of every arrow of the Figure \ref{fig:communication_all_packages} is described in the following Table \ref{tab:info_flow_packages}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.8\textwidth]{images/move_control_overview.eps}
+\caption{Flow of data from object pose to commands to NAOqi\label{fig:communication_all_packages}}
+\end{figure}
+
+%TODO
+%Revisar si la taula esta ben organitzada
+\begin{table}[!h]
+\begin{center}
+\begin{tabulary}{0.95\textwidth}{|l|l|l|p{18.5em}|}
+\hline
+\textbf{Sender} & \textbf{Receiver} & \textbf{Data} & \textbf{Description}\\ \hline
+V4R & \specialcell{l}{Romeo\\grasper} & \specialcell{l}{Object\\pose} & Information of the object position and the confidence of the tracker \\ \hline 
+\specialcell{l}{Romeo\\grasper} & \specialcell{l}{MoveIt\\Actions} & Commands & Commands to plan, execute, pick or set parameters to the \texttt{move\_group}. \\ \hline
+\specialcell{l}{MoveIt\\Actions} & \specialcell{l}{Romeo\\grasper} & Results & Returns the results of the commands sent, like if it is succeeded, the trajectory planned or the final planned pose. \\ \hline
+\specialcell{l}{Rviz\\Simulator} & \specialcell{l}{Romeo\\grasper} & Link poses & Position of some elements like the wrist or the camera are sent to calculate the camera pose or the object pose.  \\ \hline
+\specialcell{l}{Romeo\\grasper} & \specialcell{l}{Rviz\\Simulator} & Link poses & Position of the camera and of the object. \\ \hline
+\specialcell{l}{NAOqi\\driver} & \specialcell{l}{Rviz\\Simulator} & Joint state & Simulator needs the joint state to have the simulated robot as the real one. \\ \hline
+\specialcell{l}{MoveIt\\Actions} & \specialcell{l}{Rviz\\Simulator} & Commands & Commands to calculate a plan and simulate to check collisions.  \\ \hline
+\multicolumn{4}{|r|}{\small\sl continued on next page}\\
+\hline
+\end{tabulary}
+\end{center}
+\end{table}
+
+\newpage
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabulary}{0.95\textwidth}{|l|l|l|p{18.5em}|}
+\hline
+\multicolumn{4}{|l|}{\small\sl continued from previous page}\\ \hline
+\textbf{Sender} & \textbf{Receiver} & \textbf{Data} & \textbf{Description}\\ \hline
+\specialcell{l}{Rviz\\Simulator} & \specialcell{l}{MoveIt\\Actions} & Results & Returns if it is succeeded or the trajectory planned.  \\ \hline
+\specialcell{l}{MoveIt\\Actions} & \specialcell{l}{Controller\\Manager} & \specialcell{l}{Execution\\Plan} & Sends the plan which should be execute on the real robot. \\ \hline
+\specialcell{l}{Controller\\Manager} & DCM driver & Commands & Commands with the right timing to have a real-time control with the Romeo robot. \\ \hline
+DCM driver & \specialcell{l}{Controller\\Manager} & Joint state & Controller Manager should be update constantly with the Romeo state in order to be able of having a real-time control. \\ \hline
+\specialcell{l}{Romeo\\grasper} & \specialcell{l}{Pose\\controller} & Trajectory & In case of simulated robot, it sends the trajectory to be executed. \\ \hline
+Romeo ROS & NAOqi & Commands & Commands to move the robot and to get specific information. \\ \hline
+NAOqi & Romeo ROS & Data & All kind of data: joint state, camera images, variable names, etc. \\ \hline
+\end{tabulary}
+\caption{Information sent and received from and to the packages. \label{tab:info_flow_packages}}
+\end{center}
+\end{table}
+
+\chapter{Experiments}
+% Explicar els experiments que s'han anat fent durant tot el proces (talvegada nombrats anteriorment en la implementació) juntament amb les mesures que es prenen per fer les coses.
+% S'ha de mirar de que tot experiment tengui una certa mesura per veure si ha anat més bé o més malament.
+% Un test que es pot fer es per comparar els dos IK, fent proves anant a les mateixes posicions veure quin error tenen cadascun. Si IKFast no arriba a poder ser implementat a nes experiments es pot posar ses diferents coses que s'han fet per mirar d'aconseguir-ho. Primer dir amb es urdf inicial que hi havia s'han fet proves de tots es tipus tant des de torso, base_link com des de L/RShoulder. Aquesta última fins a gripper ha sigut l'única que ha funcionat pero que no té molt de sentit perque el L/RShoulderPitch no esta inclos a dins i per tant es perd aquest grau de llibertat que dona un desplaçament molt important per arribar a diferents punts.
+
+\section{Movement in simulation}
+%Experiment 1:
+% Moviment a llista de posicions determinades amb reachAction i provar mateixa llista amb graspPlan. Per això s'haura d'adaptar la forma com es calcula la diferencia amb el graspPlan. A més si es pogues tenir una referencia del temps que tarda millor (ja que el graspPlan tarda bastant). Amb aquest experiment es veu l'error que pot arribar a tenir el IK solver.
+% També pot ser que l'error es trobi en el forward kinematics que no doni exactament la posició que toca. Per això s'hauria de comprovar que el TF dona la mateixa posicio que el forward quan s'ha executat la trajectoria i veient que les joints estan en la mateixa posicio que la trajectoria. S'ha vist que l'error entre el FK i l'execució en simulació es nomes de decimes de milimetre, per tant despreciable.
+%Una posible solucio per no tenir problemes amb el graspPlan podria ser posar momentaneament que el romeo_grasp_data.yaml que no hi ha diferencia de posicio entre eef i grasp. D'aquesta forma la solució  seria exacte, l'únic problema es que no seria realista ja que Wrist aniria sobre l'objecte.
+\begin{itemize}
+\item Given a list of position where it is supposed to be the object. Test theses with \texttt{reachAction} and \texttt{graspPlan}.
+\item Try with different planning times.
+\item The problem doesn't come from the forward kinematic that calculate the difference between pose target and pose plan because it has been test to see if the calculated and the real one, with the values of the joint as the trajectory, are in the same position and yes, the difference is about of the order of $10^-4 m$.
+\item To do this experiment is used the Python program named \texttt{experiment1.py}.
+%TODO explaination of the program??
+\end{itemize}
+
+\section{Implementation IKFast on Romeo}
+%Experiment 2:
+% Dir que es vol millorar el IK solver i per tant s'ha provat d'implementar IKFast, per això explicar tots els test que s'han arribat a fer. Tant els que son logics que van amb 6 DoF de torso a WristYaw com esta amb els grups especificat, com també fet des de torso fins a l_wrist posant un free joint (i s'ha provat amb tots els free joints). Posteriorment externament han canviat la nomenclatura i els origens de les joints i amb aquesta configuració s'ha tornat a provar. Finalment s'ha vist que nomes s'ha pogut aconseguir en el cas de Shoulder fins gripper (tant right com left) amb free joint al WristPitch. El que passa es que aquesta es inutil ja que primer es perd la joint ShoulderPitch ja que es troba entre torso i Shoulder i segon que una de les joints incloses es Hand que no dona moviment, per tant realment es tenen 5 DoF controlats que no permeten portar el gripper a determinada posició i orientació. Mencionar que aquesta solució es va aconseguir en els tests inicials abans de saber exactament que s'estava provant.
+% Posar links de ses discussions que s'han obert per dur a terme això
+\begin{itemize}
+\item A way to improve the IK solver is to implement IKFast which is faster and more precise.
+\item Firstly, explain how it is suppose to implement this. Like said before generating a C++ code. This is suppose to be automatically created running a specific program giving the Collada model.
+\item Due to be a 7 DoF arm can exist several combinations. Explain all the tested combinations and which combinations should be the best.
+\item After doing theses test, get some tips from Natalia Lyubova and Mikael Arguedas and Natalia rewrite the Romeo model to change the convention of the joints, it was all retest.
+% Refer to discusion https://github.com/ros-aldebaran/romeo_robot/issues/10
+\item It should be stated that every test last at least 1 or 2 hours. So a lot of time has been spent here.
+\end{itemize}
+
+Currently, the inverse kinematic solver used is from the KDL library, explained in Section \ref{sec:inverse_kinematic}. However, it gives bad results as shown above. Therefore, a solution for this problem could be implement the IKFast solver, also explained in Section \ref{sec:inverse_kinematic}, which is faster and more precise.
+
+In order to implement the IKFast on the Romeo robot, first is needed to generate the C++ code which solve the inverse kinematics. However, this is created from a Collada model file which is not found in the \texttt{romeo\_description} package. Then, this could be created, using the command below, from an URDF model of Romeo which is contained in the previous package.
+
+\begin{verbatim}
+rosrun collada_urdf urdf_to_collada romeo.urdf romeo_raw.dae
+\end{verbatim}
+
+After that, as recommended by the author of \cite{Diankov2010}, it is good to round the values of the Collada model to make easier to find aligned axes.
+
+\section{Get pre-known camera position}
+%Experiment 3:
+% En vista que no es pot fiar de la posicio extreta a partir de la propia camera s'ha de mirar de treure la posicio de la camera de forma empirica. Mirar a veure com es pot ser es màxim d'exacte possible. Una manera podria ser com que lo més dificil de posicionar es respecte X i Z ja que esta inclinat, es podria mirar de fer que el l_wrist estigui alineat amb la camera en l'eix Y i per tant X i Z es mantenen iguals.
+\begin{itemize}
+\item Get the position of the camera respect to the robot empirically
+\item The difficulty is with X and Z axes (robot reference) because the robot is tilted. So if the Wrist is align with the camera on the Y axe, then knowing the position of Wrist (given by the simulator) we have the X and Z of the camera.
+\end{itemize}
+
+\section{Visual camera positioning}
+%Experiment 4:
+% Experiments sobre el posicionament de la camera. Pendre mesures aproximades d'on es troba la camera i orientació respecte el robot i provar els diferents algorismes a veure si funcionen. (ja es tenen es arxius amb ses dades, es mirar de treure algo en clar). Talvegada es pot jugar amb es seeds que es donen en plan provar 3 seeds un molt generic un altra mes proper i finalment es que es sa mesura que mus hauria de donar.
+% Talvegada s'hauria de repetir el testejat, ja que es cert que si esta sense Stiffness dona un cert error entre la realitat i el model
+% A més dir que les mesures que pren la camera d'on es troba cadascuna de les parts ha estat contrastada empiricament per veure que la mesura era correcte. I si era correcte amb un error de +-2cm.
+%Antes de fer aço millor mirar de tenir el valor exacte de la inclinació.
+\begin{itemize}
+\item Use the previous measures
+\item Compare this with the results of applying the proposed algorithm 
+\item Test with different seed, from a general seed to a specific one very close to the real solution.
+\item Possibles errors:
+\begin{itemize}
+\item When is measured where is the camera in robot reference (may be an error of $\pm$ 1.5 cm)
+\item Error in positioning the parts of the robot with the reference object (may be an error of $\pm$ 2 cm)
+\end{itemize}
+\end{itemize}
+
+\section{Error produces by the camera positioning}
+%Experiment 5:
+% Per comprovar l'error que es té de la posició i orientació de la camera es pot mirar d'identificar un objecte en una posició determinada, veure el valor que dona de l'objecte i finalment dur el wrist del robot a la posició de tal manera que es pugui veure en quant s'ha equivocat la càmera.
+\begin{itemize}
+\item Identify an object in a specific position, see the result in robot reference. Then compare this result with the value given by the simulator putting there the Wrist of the robot.
+\end{itemize}
+
+\chapter{Discussion}
+% Aqui s'expliquen quines interpretacions es fan des resultats obtinguts.
+% Com que es vol que es millori el conjunt per a que sigui més lliure pues s'han fet millores en els packages corresponents (NOSE ALGO).
+
+\chapter{Future works}
+% Explicar coses que s'han fet que no han acabat de funcionar o que  Posar en una posició inicial seguint un path, d'aquesta manera s'assegura que no fer-hi la taula ja que a la simulació sembla que obvia el fet que hi hagi la taula.
+% Com també per on es podria tirar per millorar tot es conjunt
+\section{Implementation new inverse kinematics}
+% Entre aquestes s'explicaria es fet de mirar d'aconseguir IKFast.
+% Falta acabar de perfeccionar com seria la part del picking que ara mateix degut a que la cinematica inversa no funciona bé, no acaba d'aconseguir fer un picking.
+\begin{itemize}
+\item Reach to finally implement the IKFast so the inverse kinematic could work much better.
+\item If it seems that IKFast is not possible there is the option of the IK use in \cite{Pas}. Is also a numerical solver, so probably it will be similar to the KDL, but only trying can be known.
+\item After that it is supposed that the picking action will work well, because currently is not finding any picking due to the problems with the inverse kinematic.
+\end{itemize}
+
+\section{Improve use of V4R}
+% Mirar de fer que la Toolbox de modelatje de V4R funciones amb RealSense ja que la camera RGB que es la que fa la major part de la feina té molt millor resolució o es podria treballar amb una Xtion que suposadament també funciona amb openNi.
+% Fer que RealSense o en general qualsevol camera RGB-D pugui ser compatible amb la RTM-Toolbox, fent que faci com els altres packages i que cerqui per un tipus de topic determinat (en aquest cas el depth_registered/points i colcun més que s'ha de mirar a veure com va)
+% També hi ha l'opcio de mirar a veure si es pot arribar a executar d'alguna forma openNi a dins el robot de tal manera que pugui arribar a publicar els topics d'openNi a ROS utilitzant la Xtion que du incorporada. Tot i que no es pugui veure els braços del tot be al menys els objecte que estiguin dins un rang determinat podran ser identificats en principi i ens estalviem l'haver de posicionar la camera que es una font d'error.
+\begin{itemize}
+\item Currently Kinect is giving some problems, like after some seconds or minutes the RGB camera starts to send black images. Therefore the V4R software cannot be used. Moreover, the OpenNi nodes after a while usually fail and they are automatically shutdown.
+\item V4R works with SIFT on the RGB image, so having a good quality in the RGB image is important. If we compare Kinect with Xtion, this last one is better; and then comparing with RealSense is the best one.
+\item Options to solve these problems are:
+\begin{itemize}
+\item Use RealSense for everything. However, to do that it needs to improve RTM-Toolbox to be able of using any RGB-D camera.
+\item Use Xtion. Could be an external one, which during this work could not be used; or the one inside Romeo. With this last one, we have seen that you don't see the arms and only the objects in a specific and small range. Moreover, in order to solve the problem with dark images may be a possibility is to try to execute ROS with OpenNi inside the robot. This option will help to remove some error produced by the camera positioning.
+\end{itemize}
+\end{itemize}
+
+\begin{figure}[h]
+\begin{center}
+\begin{subfigure}[r]{0.7\textwidth}
+		\includegraphics[width=\textwidth]{images/kinect_problem_color}
+        \caption{Normal performance}
+\end{subfigure}
+\\
+\begin{subfigure}[r]{0.7\textwidth}
+		\includegraphics[width=\textwidth]{images/kinect_problem_black}
+        \caption{While is not working}
+\end{subfigure}
+\caption{Kinect problem, RGB camera sending black images}
+\end{center}
+\end{figure}
+
+\section{Dependencies of packages}
+% També dir tema de que es codi miri de ser cada vegada més independent del software V4R 
+\begin{itemize}
+\item Try to have the code the most independent of the V4R software. So then the grasping could be used in other fields or at least with others software.
+\item Make the package as general as possible, in order to be able to be used for other robots. That could be made if the \texttt{romeo\_moveit\_actions} have the same functions of others robots, then it is supposed that it should not be very difficult.
+\end{itemize}
+
+\section{Object identification}
+% Un posible treball futur podria ser en lloc de treballar amb l'object tracker, treballar amb l'identificador d'objectes de dins la base de dades del modelatjes que es facin, d'aquesta forma agafaria cadascun dels objectes, i per a cadascun tindria un offset determinat.
+% Altre treball és el fet de trobar la forma d'extreure informació de l'objecte modelat i treure l'offset del centre geometric respecte l'origen de coordenades establert per V4R. D'aquesta forma no hi hauria error en la mesura d'on es troba el centre de l'objecte.
+% La taula podria ser identificada per la camera, cosa que ja fan diferents softwares de per si, i si es necessari perque el software no du a terme la funció de posar-ho a la simulació, la informació que es treu del software es pot enviar al topic destinat a caracteritzar la taula en la simulació.
+\begin{itemize}
+\item Instead of working with the object tracker could be useful to use the object recognition. Recognise the objects which are in a database.
+\begin{itemize}
+\item That could be very useful
+\begin{itemize}
+\item Provides the centroid of the cluster which could be used to give to the package where it have to make the grasp
+\item Provides a bounding box of the object which is how the object is represent in the simulation by now, but this would make to don't need to use a custom bounding box made by the user.
+\item Provides a point cloud of the model transformed into camera coordinates. This information could be used for the AGILE grasp to grasp the desired object in the right way.
+\item Identifying several objects at one could be used to implement a better way to use the visual positioning of the camera. Using a different identifier for every element which will help to find the camera position and orientation. 
+\end{itemize}
+\item This one is used with service, so it should call the service periodically to know every time where are the objects.
+\end{itemize}
+\end{itemize}
+
+\section{Fix the Romeo model}
+% També es pot comentar es tema de que el gripper ara mateix esta colocat en una posició que no es l'adecuada. Que s'hauria de corregir. Si es vol es poden utilitzar els valors del romeo_grasp_data.yaml pero aquests realment son presos de forma empirica.
+\begin{itemize}
+\item Currently the gripper in the Romeo model is posed in a wrong position. 
+\item However, this pose is not used because for now is used the information in \texttt{romeo\_grasp\_data.yaml} of the \texttt{moveit\_simple\_grasps} which make an offset from the WristYaw\_link to pose the grasp. This information has been empirically set.
+\item Should be good to make the model more standard and have the gripper in the right place and set the grasp from the gripper itself. 
+\end{itemize}
+\chapter{Conclusion}
+% Explicar a les conclusions que s'arriben finalment i els posible futurs treballs que se'n poden derivar.
+
+\bibliography{./library/library}
+\addcontentsline{toc}{chapter}{References}
+\label{sec:references}
+
+\appendix
+\clearpage % o \cleardoublepage
+\addappheadtotoc
+\appendixpage
+
+\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+\renewcommand{\thetable}{\thechapter.\arabic{table}}
+\renewcommand{\theequation}{\thechapter.\arabic{equation}}
+\renewcommand{\thefootnote}{\arabic{footnote}}
+
+%\newcommand{\appendixpagenumbering}{
+%  \break
+%  \pagenumbering{arabic}
+%  \renewcommand{\thepage}{\thechapter-\arabic{page}}
+%}
+%
+%\appendixpagenumbering
+\chapter{Software requirements and installation}
+\section{Software requirements}
+
+In this study there are some software that must be installed to be able to do it. Here it is explained briefly which are these software and their installation. Firstly, a table with the software required with his version \ref{tab:soft_req}.
+
+\begin{savenotes}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{l|c|}
+Software & Version\\ \hline
+Ubuntu & 14.04\\
+ROS & Indigo\\
+Choregraphe & 2.1.4.5 (1.14.5)\footnote{\label{fn:nao_version}NAO robot use version 1.14.5 and Romeo use 2.1.4.5. So if you want to test first in Nao like in this master thesis you need both versions.}\\
+C++ NAOqi SDK & 2.1.4.5 (1.14.5)\cref{fn:nao_version}\\
+QiBuild & from installation\footnote{Recommended installing using \texttt{pip} as is said in qiBuild documentation \cite{AldebaranQiBuild}}\\
+QtCreator & recent\footnote{As is said in NAO documentation \cite{AldebaranC++SDK}}\\
+\end{tabular}
+\caption{Software required with his version\label{tab:soft_req}}
+\end{center}
+\end{table}
+\end{savenotes}
+
+\section{Camera drivers installation}
+\label{app:camera_instal}
+
+In order to install the Kinect camera with openNi has been used the following url \cite{Li}. For the RealSense camera has been used this repository \cite{gitRealSense} following the installation instructions. Unfortunately, the Asus Xtion camera has not been possible to use so here there is no description about the installation.
+
+
+ 
+
+\end{document}

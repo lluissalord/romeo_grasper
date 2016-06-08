@@ -1,0 +1,186 @@
+\begin{thebibliography}{28}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Ald()]{Aldebaran}
+{Aldebaran 2.1.4.13 documentation}.
+\newblock URL \url{http://doc.aldebaran.com/2-1/}.
+
+\bibitem[Aldebaran({\natexlab{a}})]{AldebaranC++SDK}
+Aldebaran.
+\newblock {C++ SDK Installation — NAO Software 1.14.5 documentation},
+  {\natexlab{a}}.
+\newblock URL
+  \url{http://doc.aldebaran.com/1-14/dev/cpp/install_guide.html#requirements}.
+
+\bibitem[Aldebaran({\natexlab{b}})]{AldebaranQiBuild}
+Aldebaran.
+\newblock {Getting Started — qiBuild 3.11.3 documentation}, {\natexlab{b}}.
+\newblock URL
+  \url{http://doc.aldebaran.com/qibuild/beginner/getting_started.html}.
+
+\bibitem[Aldebaran({\natexlab{c}})]{ros-aldebaran}
+Aldebaran.
+\newblock {ROS-Aldebaran repository}, {\natexlab{c}}.
+\newblock URL \url{https://github.com/ros-aldebaran/}.
+
+\bibitem[Aldebaran({\natexlab{d}})]{ros-naoqi}
+Aldebaran.
+\newblock {ROS-NAOqi repository}.
+\newblock {\natexlab{d}}.
+\newblock URL \url{https://github.com/ros-naoqi}.
+
+\bibitem[Aldoma et~al.(2013)Aldoma, Tombari, Prankl, Richtsfeld, {Di Stefano},
+  and Vincze]{Aldoma2013}
+A.~Aldoma, F.~Tombari, J.~Prankl, A.~Richtsfeld, L.~{Di Stefano}, and
+  M.~Vincze.
+\newblock {Multimodal cue integration through Hypotheses Verification for RGB-D
+  object recognition and 6DOF pose estimation}.
+\newblock \emph{Proceedings - IEEE International Conference on Robotics and
+  Automation}, pages 2104--2111, 2013.
+\newblock ISSN 10504729.
+\newblock \doi{10.1109/ICRA.2013.6630859}.
+
+\bibitem[Claudio et~al.(2015)Claudio, Spindler, and
+  Chaumette]{claudio:hal-01159882}
+Giovanni Claudio, Fabien Spindler, and Fran{\c{c}}ois Chaumette.
+\newblock {Grasping by Romeo with visual servoing}.
+\newblock In \emph{Journ{{\'{e}}}es Nationales de la Robotique
+  Humano{{\"{i}}}de, JNRH}, Nantes, France, 2015.
+\newblock URL \url{https://hal.inria.fr/hal-01159882}.
+
+\bibitem[Coleman()]{gitMoveitSimpleGrasp}
+Dave Coleman.
+\newblock {MoveIt Simple Grasp}.
+\newblock URL \url{https://github.com/davetcoleman/moveit_simple_grasps}.
+
+\bibitem[Diankov()]{Diankov}
+Rosen Diankov.
+\newblock {OpenRAVE | Home}.
+\newblock URL \url{http://openrave.org/}.
+
+\bibitem[Diankov(2010)]{Diankov2010}
+Rosen Diankov.
+\newblock {Automated Construction of Robotic Manipulation Programs}.
+\newblock \emph{Architecture}, Ph.D.:\penalty0 1--263, 2010.
+\newblock ISSN 978-1-124-53547-0.
+\newblock \doi{isbn 9781124535470}.
+\newblock URL \url{http://www.programmingvision.com/rosen_diankov_thesis.pdf}.
+
+\bibitem[Foote and Purvis(2010)]{Foote}
+Tully Foote and Mike Purvis.
+\newblock {REP 103 -- Standard Units of Measure and Coordinate Conventions
+  (ROS.org)}, 2010.
+\newblock URL \url{http://www.ros.org/reps/rep-0103.html#suffix-frames}.
+
+\bibitem[{Inria Lagadic group}(2014)]{InriaLagadicgroup}
+{Inria Lagadic group}.
+\newblock {Romeo humanoid robot grasping demonstration v1}, 2014.
+\newblock URL \url{https://www.youtube.com/watch?v=kz1Ob0Ks554}.
+
+\bibitem[Intel(R) and Lemaignan(2016)]{gitRealSense}
+Intel(R) and S{\'{e}}verin Lemaignan.
+\newblock {Repository Intel{\textregistered} RealSense™ Technology - ROS
+  Integration}, 2016.
+\newblock URL
+  \url{https://github.com/severin-lemaignan/realsense/tree/indigo-devel/camera}.
+
+\bibitem[{Khronos Group}()]{KhronosGroup}
+{Khronos Group}.
+\newblock {COLLADA - 3D Asset Exchange Schema}.
+\newblock URL \url{https://www.khronos.org/collada/}.
+
+\bibitem[Li(2015)]{Li}
+Sophie Li.
+\newblock {Installing Kinect drivers on Ubuntu 14.04 and ROS Indigo –
+  sophie's blog}, 2015.
+\newblock URL
+  \url{http://blog.justsophie.com/installing-kinect-nite-drivers-on-ubuntu-14-04-and-ros-indigo/}.
+
+\bibitem[Loubi{\`{e}}re(2015)]{ParPaul}
+Par~Paul Loubi{\`{e}}re.
+\newblock {Aldebaran a fini de jouer avec Nao le petit robot}, apr 2015.
+\newblock URL
+  \url{http://www.challenges.fr/entreprise/20150402.CHA4548/aldebaran-a-fini-de-jouer-avec-nao-le-petit-robot.html}.
+
+\bibitem[Lyubova(2016)]{gitNlyubovaGrasp}
+Natalia Lyubova.
+\newblock {Moveit Simple Grasp}, 2016.
+\newblock URL
+  \url{https://github.com/nlyubova/moveit_simple_grasps/tree/romeo-dev}.
+
+\bibitem[Penton()]{Penton}
+Penton.
+\newblock {Motors and Drives Leading the Way for Robots}.
+\newblock URL
+  \url{http://machinedesign.com/motorsdrives/motors-and-drives-leading-way-robots}.
+
+\bibitem[Prankl et~al.(2013)Prankl, M{\"{o}}rwald, Zillich, and
+  Vincze]{Prankl2013}
+Johann Prankl, Thomas M{\"{o}}rwald, Michael Zillich, and Markus Vincze.
+\newblock {Probabilistic cue integration for real-time object pose tracking}.
+\newblock \emph{Lecture Notes in Computer Science (including subseries Lecture
+  Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)}, 7963
+  LNCS\penalty0 (600623):\penalty0 254--263, 2013.
+\newblock ISSN 03029743.
+\newblock \doi{10.1007/978-3-642-39402-7_26}.
+
+\bibitem[Prankl et~al.(2015{\natexlab{a}})Prankl, Aldoma, Svejda, and
+  Vincze]{Prankl2015b}
+Johann Prankl, A.~Aldoma, Alexander Svejda, and Markus Vincze.
+\newblock {Multi-session Object Modelling with an RGB-D Sensor},
+  2015{\natexlab{a}}.
+\newblock URL \url{https://www.youtube.com/watch?v=UMZJQqxHF98}.
+
+\bibitem[Prankl et~al.(2015{\natexlab{b}})Prankl, Aldoma, Svejda, and
+  Vincze]{Prankl2015}
+Johann Prankl, Aitor Aldoma, Alexander Svejda, and Markus Vincze.
+\newblock {RGB-D object modelling for object recognition and tracking}.
+\newblock \emph{IEEE International Conference on Intelligent Robots and
+  Systems}, 2015-Decem:\penalty0 96--103, 2015{\natexlab{b}}.
+\newblock ISSN 21530866.
+\newblock \doi{10.1109/IROS.2015.7353360}.
+
+\bibitem[Quigley et~al.(2009)Quigley, Gerkey, Conley, Faust, Foote, Leibs,
+  Berger, Wheeler, and Ng]{Quigley}
+Morgan Quigley, Brian Gerkey, Ken Conley, Josh Faust, Tully Foote, Jeremy
+  Leibs, Eric Berger, Rob Wheeler, and Andrew Ng.
+\newblock {ROS: an open-source Robot Operating System}.
+\newblock \emph{ICRA Workshop on Open Source Software}, 2009.
+
+\bibitem[{Robot Operating System}()]{ROS}
+{Robot Operating System}.
+\newblock {ROS.org}.
+\newblock URL \url{http://www.ros.org/core-components/}.
+
+\bibitem[Smits et~al.()Smits, Bruyninckx, and Aertbeli]{KDL}
+R.~Smits, H.~Bruyninckx, and E.~Aertbeli.
+\newblock {KDL: Kinematics and dynamics library | The Orocos Project}.
+\newblock URL \url{http://www.orocos.org/kdl}.
+
+\bibitem[STRANDS()]{strands}
+STRANDS.
+\newblock {Spatio-Temporal Representation and Activities for Cognitive Control
+  in Long-Term Scenarios}.
+\newblock URL \url{http://strands.acin.tuwien.ac.at/}.
+
+\bibitem[STRANDS(2015)]{gitV4RWrappers}
+STRANDS.
+\newblock {V4R Wrapper repository}, 2015.
+\newblock URL \url{https://github.com/strands-project/v4r_ros_wrappers}.
+
+\bibitem[ten Pas(2015)]{Pas}
+Andreas ten Pas.
+\newblock {AGILE grasp - ROS Wiki}, 2015.
+\newblock URL \url{http://wiki.ros.org/agile_grasp}.
+
+\bibitem[ten Pas and Platt(2015)]{DBLP:journals/corr/PasP15}
+Andreas ten Pas and Robert Platt.
+\newblock {Localizing antipodal grasps in point clouds}.
+\newblock \emph{CoRR}, abs/1501.03100, 2015.
+\newblock URL \url{http://arxiv.org/abs/1501.03100}.
+
+\end{thebibliography}
