@@ -5,6 +5,7 @@
 #include <sensor_msgs/JointState.h>
 //#include <moveit/robot_state/conversions.h>
 
+//TODO: As a improvment executeTrajectory could be called by a service and so this class could be used without needing to be inside the other classes code
 RomeoSimulator::RomeoSimulator(ros::NodeHandle nh, std::string trajectory_topic)
 {
     uint32_t queue_size = 10;
