@@ -148,71 +148,72 @@ Master Thesis Project\\
 \chapter*{Acknowledgements}
 \addcontentsline{toc}{chapter}{Acknowledgements}
 
-\chapter*{Preface}
-\addcontentsline{toc}{chapter}{Preface}
-
-\section*{Motivation}
-\addcontentsline{toc}{section}{Motivation}
-
-%\section*{Definition of the project}
-%\addcontentsline{toc}{section}{Definition of the project}
-
-\section*{Repository}
-\addcontentsline{toc}{section}{Repository}
-%https://github.com/lluissalord/romeo_grasper
-
-One of the main ideas of this project is to be open source, so everybody can use and improve it. In order to accomplish this, all the code can be found in the following repository with also this document:
-
-\url{https://github.com/lluissalord/romeo_grasper}
-
-\section*{Structure}
-\addcontentsline{toc}{section}{Structure}
-
-As the idea of this document is to help people, who want to use or improve the package, to understand all the parts, the document is structures as Chapter 1 an introduction of the project with similar or complementary works. Chapter 2 explains some knowledge that should be known before to understand perfectly all the document. Chapter 3 is a brief summary of how it works the package and the most important if only wants to know how to use the package. Chapter 4 describes in detail all the parts of the package. In Chapter 5 are shown several experiments to see how precise is the package in any part. Chapter 6 explains the results from the previous chapter. Chapter 7 proposes several fields to improve the package. Finally, Chapter 8 explains the conclusions of the project.
+%\chapter*{Preface}
+%\addcontentsline{toc}{chapter}{Preface}
 
 \chapter{Introduction}
 \pagenumbering{arabic} % restart page numbers at one, now in arabic style
+
+\section{Motivation}
+
+A world with humanoids robots living with people is one of the dreams of any robotic researcher. Although, these robots should be able to do a wide range of tasks as humans or even better. However, a good interaction of robots with the surrounding environment, including humans, is so difficult to accomplish due to the complexity of it. There are several ways of interaction such as: (1) learning about the environment, (2) be able to move to wherever or (3) grasping all kind of object. All these fields are being studied in any robotic research institute but not all of them can implement it on real robots. Luckily for me, in the ACIN of the TU Wien, they have an humanoid robot, Romeo robot from Aldebaran Robotics, and I have chosen to use it focusing in the grasping process. Therefore, in this dissertation, it is made an approach of the grasping part using Romeo from Aldebaran Robotics. Moreover, before the grasp the robot should analyse the surroundings, recognise the object and then grasp it. Therefore, it should know how to recognise things, which is also a very important field.  
+
+%\section{Definition of the project}
+
 \section{Presentation of the problem}
 %Proposit inicial de Romeo i perque necessita de fer un grasping
 
-\begin{wrapfigure}[12]{r}{0.4\textwidth}
+Romeo is an humanoid robot from Aldebaran Robotics company. Nao and Pepper are other humanoids from this company, these three belong to the Aldebaran's robot family, Figure \ref{fig:aldebaran_family}, with and specific aim for each robot. On one hand, Nao is targeted to investigation, programming and learning. On the other hand, Pepper is focused in social relations with clients or users. Finally, Romeo has the aim to help old people or people who has some kind of disability.	
+
+\begin{wrapfigure}[10]{r}{0.4\textwidth}
 	    \centering
 		\includegraphics[width=0.35\textwidth]{images/romeo_nao_pepper.jpg}
          \caption{Aldebaran's robot family. Pepper on the left; Romeo on the right and Nao in the middle \cite{ParPaul}. \label{fig:aldebaran_family}}
 \end{wrapfigure}
 
-Romeo is an humanoid robot from Aldebaran Robotics company. Nao and Pepper are other humanoids from this company, these three belong to the Aldebaran's robot family, Figure \ref{fig:aldebaran_family}, with and specific aim for each robot. On one hand, Nao is targeted to investigation, programming and learning. On the other hand, Pepper is focused in social relations with clients or users. Finally, Romeo has the aim to help old people or people who has some kind of disability.	
-
 In order to be able to achieve this aim, Romeo has to be capable of doing several tasks, which a lot of them requires to recognize objects and grasping them. Therefore, recognition and grasp objects is a huge step forward for the development of Romeo. 
+
+Currently, exists some approaches to grasp objects with several robots, but there is only one for Romeo  \cite{claudio:hal-01159882}, which is explained in Section \ref{sec:grasping_romeo_visual_servoing}, but it can not be used to achieve the main aim of Romeo. Therefore, it should be done a grasp approach in a way which consider this main goal.  
 
 \section{Aim of the project}
 
-The main goal of this project is to achieve that the Romeo robot can recognise some specific objects and if they are inside its workspace, then grasp them. It is known that this task is difficult to accomplish, due to the wide range of parts that are involve, as recognition, movement of the robot, interaction with the environment, etc. So another goal is to discern from where it comes the main error and solve it or at least propose possible solutions. Moreover, another important goal of this project is to do the task of grasping in the way of the aim of Romeo. Therefore, it has to be coherent with the idea of helping people.
+The main goal of this project is to achieve that the Romeo robot can recognise some specific objects and, if they are inside its workspace, then grasp them. It is known that this task is difficult to accomplish, due to the wide range of parts that are involve, as recognition, movement of the robot, interaction with the environment, etc. So another goal is to discern from where it comes the main error and solve it or at least propose possible solutions. Moreover, another important goal of this project is to do the task of grasping in the way of the aim of Romeo. Therefore, it has to be coherent with the idea of helping people.
 
-Furthermore, this task is not only important for Romeo, a wide range of robots need to achieve that. Therefore, share the code and make it open source could help other research programs, and other people could help to continue and improve our work. So this work is not over when the master thesis is done, but it can be continued with any restrictions. Finally, another main goal of this project is to be explained in a way that other people can understand perfectly how it works and then improve the code.
+Furthermore, this task is not only important for Romeo, a wide range of robots need to achieve that. Therefore, share the code and make it open source could help other research programs, and other people could help to continue and improve our work. So this work is not over when the master thesis is done, but it can be continued with any restrictions. Moreover, the code of this project should be put in a package, which should be as flexible as possible to be complemented with any kind of packages. Finally, another main goal of this project is to be explained in a way that other people can understand perfectly how it works and then improve the code.
 
 \section{Extent of project}
 
 Due to the nature of the project itself there are some limitations or requirements that it should be accomplish. Firstly, it needs to be stated that this work is a first approach to make Romeo capable to recognize and grasp objects. Due to be a master thesis, which it should be done in only a few months, and it is required some time to get used with the robot, it is probably that the final result won't be totally perfect.
 
-On one hand, it is use an acknowledged software like ROS, so it can be easily implemented with other packages. On the other hand, it is also used the V4R software, which is from our institute (ACIN), due to is a novel software for the recognition.
+Furthermore, there are some software constraints which should be accomplished. On one hand, the use of an acknowledged software like ROS, explained in Section \ref{sec:ROS}, so it can be easily implemented with other packages and it is a perfect framework for a open-source robotic project. On the other hand, the use of the V4R software, explained in Section \ref{sec:V4R}, which is from our institute (ACIN), due to is a novel software for the recognition of objects. Finally, the packages from which this project depends should be used as they are officially. So if they need to be modify, the changes should be send to the maintainer of the package and updated.
 
-\section{Related works}
+\section{Repository}
+
+One of the main ideas of this project is to be open source, so everybody can use and improve it. In order to accomplish this, all the code can be found in the following repository with also this document:
+
+\url{https://github.com/lluissalord/romeo_grasper}
+
+\section{Structure}
+
+As the idea of this document is to help people, who want to use or improve the package, to understand all the parts, the document is structures as Chapter \ref{cha:pre_studies} explains some knowledge that should be known before to understand perfectly all the document. Chapter \ref{cha:design} is a brief summary of how it works the package and the most important if only wants to know how to use the package. Chapter \ref{ch:implementation} describes in detail all the parts of the package. In Chapter \ref{cha:experiments} are shown several experiments to see how precise is the package in any part. Chapter \ref{cha:discussion} explains the results from the previous chapter. Chapter \ref{cha:future_works} proposes several fields to improve the package. Finally, Chapter \ref{cha:conclusions} explains the conclusions of the project.
+
+\chapter{Related works}
 %TODO
 %Posar una introduccio dels related works
 
 %Aqui hauria de ser que trobes colcuna cosa d'altres robots que ja fan algo per l'estil.
 %CERCAR ALGO A VEURE!!
 
-\subsection{Grasping by Romeo with visual servoing}
+\section{Grasping by Romeo with visual servoing}
+\label{sec:grasping_romeo_visual_servoing}
 
 Firstly, talk about a work previously done by another research group. The work \cite{claudio:hal-01159882} consist in grasping an object using visual servoing. The robot has to detect and to track with its gaze a box placed on a table in front of him, estimate the pose of the box with respect to one of its eye's camera, approach its arm near the box and then move the arm using visual feedback so that it is able to grasp the box accurately. Once this is achieved, it detects a human and delivers the box. A video demonstration can be found at \cite{InriaLagadicgroup}.
 
 In order to know where is the hand with respect to the eye's camera, the hand have a QR-Code. So firstly it moves the arm in a close position to the box using odometry, then with the detection of the QR-Code compute the pose and finally using visual servoing get the arm closer to the box.
 
-The approach proposed, grasping with visual servoing, is a good initial approach, but it is not appropiate to achieve the main Romeo's goal of helping old people or people who has some kind of disability. Firstly, it only can accomplish the grasp with one arm, and in a complex environment probably in several cases it should be necessary to use both arms. Secondly, to know where is the hand it needs a specific position for the head and track it all the time, however, Romeo is supposed to have a good interaction with humans, but this features doesn't help it.
+The approach proposed, grasping with visual servoing, is a good initial approach, but it is not appropriate to achieve the main Romeo's goal of helping old people or people who has some kind of disability. Firstly, it only can accomplish the grasp with one arm, and, in a complex environment, probably it should be necessary to use both arms. Secondly, to know where is the hand it needs a specific position for the head, looking at the hand, and then track it all the time. However, Romeo is supposed to have a good interaction with humans, but this features doesn't help it.
 
-\subsection{MoveIt simple grasps}
+\section{MoveIt simple grasps}
 \label{sec:moveit_simple_grasps}
 
 On the ROS environment exists some packages with the aim of generate grasps, one of them and very useful to do a first approach to grasping is the \texttt{moveit\_simple\_grasps} package. This one is thought to be used with simple object as blocks or cylinders. The package generate a lot of potentials grasps taking as an input position and orientation of the object. Firstly, is needed a configuration file that describes the geometry of the robot's end effector. Currently the tested robots are Baxter and REEM, but there are some more of the mentioned configuration files for others robots such as Romeo, Pepper, Nao and Clam. For Romeo the configuration file is named \texttt{romeo\_grasp\_data.yaml}, but the most recent version of the file is in this repository \cite{gitNlyubovaGrasp}. It should be stated that this one has been designed to use the left arm to made a side grasp and the right arm for a top grasp.
@@ -222,21 +223,21 @@ Finally, the way of generate grasps for this package is trying all the direction
 %TODO
 % Posar una imatge dels posibles grasps?
 
-\subsection{AGILE grasp}
+\section{AGILE grasp}
 \label{sec:agile grasp}
 
 \textit{AGILE} (\textbf{A}ntipodal \textbf{G}rasp \textbf{I}dentification and \textbf{LE}arning) grasp is a ROS package \cite{Pas} which localize antipodal grasps\footnote{In an antipodal grasp, the robot hand is able to apply opposite and co-linear forces at two points where the line connecting the contact points lies inside both friction cones \cite{DBLP:journals/corr/PasP15}.} in 3D point clouds. This work \cite{DBLP:journals/corr/PasP15} proposes a new approach to using machine learning to detect grasp poses on novel objects presented in clutter. The input to the algorithm is a point cloud and the geometric parameters of the robot hand. The output is a set of hand poses that are expected to be good grasps. According to \cite{DBLP:journals/corr/PasP15}, the grasp success rate with this algorithm is $87.8 \%$ for objects presented in isolation and $73 \%$ for objects presented in clutter. 
 
 Firstly, it is used the geometry information to reduce the size of the sample space. In order to do that the grasps have to fulfil the condition of the hand must be collision -free and part of the object surface must be contained between the two fingers. Secondly, the geometry is also used to automatically label the training set. In order to label a subset of grasp hypotheses is used the condition of having an antipodal configuration. Therefore, a large amount of training data can be used and so improving the performance.
 
-\subsection{Romeo MoveIt Config}
+\section{Romeo MoveIt Config}
 \label{sec:romeo_moveit_config}
 
 At some point is necessary to use an interface and simulations to work with a robot. An option to do this, using the MoveIt platform, is the \texttt{romeo\_moveit\_config}. This package gives the necessary configuration files and launchers to use MoveIt with Romeo. Therefore, it allow to launch Rviz with a model of Romeo and interact with it. This model can represent a simulation or a real one which should be connected to ROS.
 
 There are two main launch files: (1) \texttt{demo.launch}, which run Rviz with MoveIt and a Romeo model but executing a fake joint control, so doesn't move the real joints; (2) \texttt{moveit\_planner.launch}, the same as before but this time it moves the real joints. Inside both files it also launchs the \texttt{move\_group} class which allows to use a planner for the movements of some groups of links and joints. This class is explained with more details in the next section.
 
-\subsection{Romeo MoveIt Actions}
+\section{Romeo MoveIt Actions}
 \label{sec:romeo_moveit_actions}
 
 %TODO
@@ -260,8 +261,8 @@ In order to be able to make plans and execute the movements, the \texttt{move\_g
 Referring to \texttt{romeo\_moveit\_action} package, the most important part is the planning and execution of the grasping. Although, there are two ways of doing that: 
 
 \begin{itemize}
-\item Using \texttt{reachAction} function, Figure \ref{fig:moveit_actions_reach_action}.
 \item Using \texttt{graspPlan} function, Figure \ref{fig:moveit_actions_grasp_plan}.
+\item Using \texttt{reachAction} function, Figure \ref{fig:moveit_actions_reach_action}.
 \end{itemize}
 
 The main differences between one and other are: 
@@ -283,31 +284,32 @@ Once the gripper is at the right position is time to make the picking. Therefore
 
 Furthermore, there is another interesting function named \texttt{publishPlanInfo} which publish in \texttt{/trajectory} topic the planned trajectory and the last position of the plan. Moreover, it calculates the distance between target position and the final position of the plan. Although, the trajectory is in the joint space, using the forward kinematics can know the position of the final position. Finally, a summary of the topics and services used and provided by \texttt{romeo\_moveit\_actions} is showed in Figure \ref{fig:moveit_actions_ROS}. 
 
-\begin{figure}
+\begin{figure}[!h]
 \centering
 \includegraphics[width=0.8\textwidth]{images/moveit_actions_ROS.eps}
 \caption{Topics and service of the package \texttt{romeo\_moveit\_actions}\label{fig:moveit_actions_ROS}}
 \end{figure}
 
-\begin{figure}
-\centering
-\include{images/moveit_actions_reach_action}
-\caption{Flow sequence for function \texttt{reachAction(...)}\label{fig:moveit_actions_reach_action}}
-\end{figure}
-
-\begin{figure}
+\begin{figure}[!h]
 \centering
 \include{images/moveit_actions_grasp_plan}
 \caption{Flow sequence for function \texttt{graspPlan(...)}\label{fig:moveit_actions_grasp_plan}}
 \end{figure}
 
-\begin{figure}
+\begin{figure}[!h]
+\centering
+\include{images/moveit_actions_reach_action}
+\caption{Flow sequence for function \texttt{reachAction(...)}\label{fig:moveit_actions_reach_action}}
+\end{figure}
+
+\begin{figure}[!ħ]
 \centering
 \include{images/moveit_actions_pick_action}
 \caption{Flow sequence for function \texttt{pickAction(...)}\label{fig:moveit_actions_pick_action}}
 \end{figure}
 
 \chapter{Preliminary studies}
+\label{cha:pre_studies}
 % Idea de que es
 \section{Romeo robot}
 \begin{wrapfigure}{r}{0.4\textwidth}
@@ -429,6 +431,7 @@ Finally, the ALVideoDevice module, it allows the package to get images from the 
 %Introduction of software required
 
 \subsection{ROS (Robotic Operative System)}
+\label{sec:ROS}
 
 \textit{\textbf{R}obot \textbf{O}perating \textbf{S}ystem} \cite{ROS} is an open-source and flexible framework to develop robot software. There are five main elements in this framework: (1) nodes which are the process; (2) messages that are used for the communication between nodes; (3) topics that is where the message is published by the node; (4) services is the where the node have to send a request message to get a response message and (5) actions which are like a service but can send a feedback while the activity is not still done. ROS allow the communication between process in two different ways: (1) publisher/subscriber system and using services. 
 
@@ -612,8 +615,11 @@ On the other hand, \textit{OpenRAVE} (Open Robotics Automation Virtual Environme
 
 
 \chapter{Design of Romeo grasper package}
+\label{cha:design}
 
 The next stage introduces the general idea of the package here exposed. After this chapter, on the Implementation Chapter \ref{ch:implementation}, the package is explained in detail. 
+
+Before the overview of the package, it should be stated that the purpose of \texttt{romeo\_grasper} is to combine the different dependencies to achieve grasping an object recognised by the camera. There are several dependencies, such as: (1) ROS packages which communicates with Romeo; (2) simulator and kinematic solvers to move the robot to the desired position; (3) ROS packages which generates the grasps; (4) camera drivers and (5) V4R software which allow to know where is the object respect to the camera.
 
 A brief overview of this package can be understood by the Figure \ref{fig:overview_design}. First of all, the position of the object is got with the camera and V4R software. Then is time to compute a pre-grasping trajectory and a picking trajectory using inverse kinematics. The next stage is using the simulation to test these trajectories. After that, we send the joint commands to NAOqi through the Romeo ROS packages to finally move the robot joints and make the grasp.
 
@@ -1070,6 +1076,7 @@ NAOqi & Romeo ROS & Data & All kind of data: joint state, camera images, variabl
 \end{table}
 
 \chapter{Experiments}
+\label{cha:experiments}
 % Explicar els experiments que s'han anat fent durant tot el proces (talvegada nombrats anteriorment en la implementació) juntament amb les mesures que es prenen per fer les coses.
 % S'ha de mirar de que tot experiment tengui una certa mesura per veure si ha anat més bé o més malament.
 % Un test que es pot fer es per comparar els dos IK, fent proves anant a les mateixes posicions veure quin error tenen cadascun. Si IKFast no arriba a poder ser implementat a nes experiments es pot posar ses diferents coses que s'han fet per mirar d'aconseguir-ho. Primer dir amb es urdf inicial que hi havia s'han fet proves de tots es tipus tant des de torso, base_link com des de L/RShoulder. Aquesta última fins a gripper ha sigut l'única que ha funcionat pero que no té molt de sentit perque el L/RShoulderPitch no esta inclos a dins i per tant es perd aquest grau de llibertat que dona un desplaçament molt important per arribar a diferents punts.
@@ -1143,10 +1150,12 @@ After that, as recommended by the author of \cite{Diankov2010}, it is good to ro
 \end{itemize}
 
 \chapter{Discussion}
+\label{cha:discussion}
 % Aqui s'expliquen quines interpretacions es fan des resultats obtinguts.
 % Com que es vol que es millori el conjunt per a que sigui més lliure pues s'han fet millores en els packages corresponents (NOSE ALGO).
 
 \chapter{Future works}
+\label{cha:future_works}
 % Explicar coses que s'han fet que no han acabat de funcionar o que  Posar en una posició inicial seguint un path, d'aquesta manera s'assegura que no fer-hi la taula ja que a la simulació sembla que obvia el fet que hi hagi la taula.
 % Com també per on es podria tirar per millorar tot es conjunt
 \section{Implementation new inverse kinematics}
@@ -1220,11 +1229,12 @@ After that, as recommended by the author of \cite{Diankov2010}, it is good to ro
 \item Should be good to make the model more standard and have the gripper in the right place and set the grasp from the gripper itself. 
 \end{itemize}
 \chapter{Conclusion}
+\label{cha:conclusions}
 % Explicar a les conclusions que s'arriben finalment i els posible futurs treballs que se'n poden derivar.
 
 \bibliography{./library/library}
 \addcontentsline{toc}{chapter}{References}
-\label{sec:references}
+\label{cha:references}
 
 \appendix
 \clearpage % o \cleardoublepage
