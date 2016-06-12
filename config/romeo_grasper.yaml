@@ -18,7 +18,7 @@ planning_time: 20
 attempts_max: 3
 
 base_link_frame_id: base_link
-camera_in_front: false
+camera_in_front: false #For a pose pre-known this is only used if there is no camera_pose_roll/pitch/yaw
 camera_ref_frame_id: l_wrist
 camera_frame_id: camera_rgb_optical_frame
 camera_link: camera_link
@@ -26,3 +26,6 @@ object_frame_id: object_frame
 camera_pose_x: -0.11
 camera_pose_y: 0.62
 camera_pose_z: 0.14
+camera_pose_roll: 0.174533 #(pi/18) -> 10 degree aprox to fix the tilt of the robot
+camera_pose_pitch: 0
+camera_pose_yaw: -1.570796

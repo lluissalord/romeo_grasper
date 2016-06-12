@@ -654,7 +654,7 @@ In \texttt{Romeo grasper} package there are different ways to make known to the 
 \item Use a reference object that the camera recognises and associates with a link of the robot.
 \end{enumerate}
 
-The first one, use the position of the link and then add the relative position to finally have the camera position on the robot reference. The second one uses the camera recognition software to know the position of the reference object. This object is associated with a link of the robot, so the position of the reference object is the position of the link. The ideal case would be that the reference object was itself the link robot. This case has been tested but without succeed because of the lack of \texttt{SIFT} points on the robot link surface, that makes difficult for the V4R software to detect the link. Because of that we use a reference object with an offset parameter to fix the error in the position, this offset parameter is explained in the following chapter, Section \ref{sec:model_object}.
+The first one, use the position of the link and then add the relative position to have the camera position on the robot reference and optionally can be set the RPY transformation for the camera. The second one uses the camera recognition software to know the position of the reference object. This object is associated with a link of the robot, so the position of the reference object is the position of the link. The ideal case would be that the reference object was itself the link robot. This case has been tested but without succeed because of the lack of \texttt{SIFT} points on the robot link surface, that makes difficult for the V4R software to detect the link. Because of that we use a reference object with an offset parameter to fix the error in the position, this offset parameter is explained in the following chapter, Section \ref{sec:model_object}.
 
 Once we have the position of the camera, this is published to ROS. So it can be used for the simulator and to get the position of the object relative to the robot.
 
@@ -722,6 +722,9 @@ Firstly, describe every parameter loaded to ROS with the file \texttt{romeo\_gra
 \multirow{1}{*}{\texttt{camera\_pose\_x}} & \multirow{1}{*}{-0.11} & \multirow{3}{\hsize}{Coords of the camera when camera position is pre-known, more in Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_y}} & \multirow{1}{*}{0.62} & \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_z}} & \multirow{1}{*}{0.14} & \\ \hline
+\multirow{1}{*}{\texttt{camera\_pose\_roll}} & \multirow{1}{*}{$\frac{\pi}{18}$} & \multirow{3}{\hsize}{Orientation of the camera in RPY when camera position is pre-known, see Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
+\multirow{1}{*}{\texttt{camera\_pose\_pitch}} & \multirow{1}{*}{0} & \\ \cline{1-2}
+\multirow{1}{*}{\texttt{camera\_pose\_yaw}} & \multirow{1}{*}{$-\frac{\pi}{2}$} & \\ \hline
 \texttt{camera\_frame\_id} & camera\_rgb\_optical\_frame & Frame of the camera following the ROS Enhancement Proposals (REPs) as an optical camera frame \cite{Foote}.\\ \hline
 \end{tabulary}
 \caption{Description and default value of every parameter of \texttt{romeo\_grasper.yaml}\label{tab:param_romeo_grasper}}
@@ -836,7 +839,7 @@ The aim of having the position and orientation of the camera is to have a transf
 
 Previously in Section \ref{sec:positioning_camera}, has been explained a summary of how to let known to the robot the camera position. As mentioned previously, we have to ways of doing that: (1) using pre-known distance between a link of the robot and the camera; (2) using the camera to know its own position. These two ways are described in detail in Section \ref{sec:pre-known_distance} and \ref{sec:visual-recognition}, respectively.
 
-Firstly, these two ways start with the assumption that we have the camera perfectly orientated at 90 degrees or 180 degrees in yaw rotation. So the camera is next to the robot or in front of the robot, as in the Figures \ref{fig:camera_side} and \ref{fig:camera_front}, respectively. Therefore, the matrix rotation from \texttt{camera\_link} to \texttt{base\_link} for this cases are expressed as Equation \eqref{eq:matrix_rot_side} for camera next to the robot and as Equation \eqref{eq:matrix_rot_front} for in front. Then, when we configure the package, with file \texttt{romeo\_grasper\_xxxx.yaml} we should indicate which case is the current orientation by the boolean parameter \texttt{camera\_in\_front}. So this estimated orientation is used, depending of the way to get the position, as the final orientation or only as a seed.
+Firstly, these two ways start with the assumption that we have the camera perfectly orientated at 90 degrees or 180 degrees in yaw rotation. So the camera is next to the robot or in front of the robot, as in the Figures \ref{fig:camera_side} and \ref{fig:camera_front}, respectively. Therefore, the matrix rotation from \texttt{camera\_link} to \texttt{base\_link} for this cases are expressed as Equation \eqref{eq:matrix_rot_side} for camera next to the robot and as Equation \eqref{eq:matrix_rot_front} for in front. Then, when we configure the package, with file \texttt{romeo\_grasper.yaml} we should indicate which case is the current orientation by the boolean parameter \texttt{camera\_in\_front}. So this estimated orientation is used, depending of the way to get the position, as the final orientation or only as a seed.
 
 \vspace{-20pt}
 \begin{eqnarray}
@@ -871,9 +874,9 @@ It should be stated that to let know the camera position to the simulator and ot
 
 \subsection{Use of pre-known distance}
 \label{sec:pre-known_distance}
-In an environment where we can know the position of the camera respect to a link of the robot, use this way is a good option. Therefore we only need to set the configuration in the \texttt{romeo\_grasper\_xxxx.yaml} file. So with the \texttt{camera\_ref\_frame\_id} parameter we set the link used as reference and with \texttt{camera\_pose\_x}/\texttt{y}/\texttt{z} specify the coordinates where is the camera. However, we have to take in account that the orientation for this parameters is the \texttt{base\_link} orientation. That is done in that way to facilitate the user to take the coordinates.
+In an environment where we can know the position of the camera respect to a link of the robot, use this way is a good option. Therefore we only need to set the configuration in the \texttt{romeo\_grasper.yaml} file. So with the \texttt{camera\_ref\_frame\_id} parameter we set the link used as reference and with \texttt{camera\_pose\_x}/\texttt{y}/\texttt{z} specify the coordinates where is the camera. However, we have to take in account that the orientation for this parameters is the \texttt{base\_link} orientation. That is done in that way to facilitate the user to take the coordinates.
 
-Therefore, the process to calculate the position of the camera is, as described in Equation \eqref{eq:calc_camera_pose_pre-known}, taking position of the reference link in \texttt{base\_link} coordinates and adding the values of the parameters \texttt{camera\_pose\_x}$/$\texttt{y}$/$\texttt{z}. Finally, the transformation between \texttt{camera\_link} and \texttt{base\_link} is expressed like Equation \eqref{eq:trans_base_camera_pre-known}
+Therefore, the process to calculate the position of the camera is, as described in Equation \eqref{eq:calc_camera_pose_pre-known}, taking position of the reference link in \texttt{base\_link} coordinates and adding the values of the parameters \texttt{camera\_pose\_x}$/$\texttt{y}$/$\texttt{z}.
 
 \begin{equation}\label{eq:calc_camera_pose_pre-known}
 P_{base}^{cam} = P_{base}^{link} + \begin{pmatrix}
@@ -882,6 +885,8 @@ camera\_pose\_y \\
 camera\_pose\_z \\
 \end{pmatrix} = P_{base}^{link} + \left( P_{base}^{cam} - P_{base}^{link} \right)
 \end{equation}
+
+Moreover, optionally we can set the orientation transformation from \texttt{base\_link} to \texttt{camera\_link} in RPY using the parameters \texttt{camera\_pose\_roll}/\texttt{pitch}/\texttt{yaw}. Therefore the $S_{base}^{cam}$ matrix is calculated with these parameters or, in case they don't exist, use the initial assumption. Finally, the transformation between \texttt{camera\_link} and \texttt{base\_link} is expressed like Equation \eqref{eq:trans_base_camera_pre-known}
 
 \begin{equation}\label{eq:trans_base_camera_pre-known}
 T_{base}^{cam} = \begin{pmatrix}[ccc|c]

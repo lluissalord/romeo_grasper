@@ -789,6 +789,7 @@ void RomeoGrasper::callbackVisualTable(romeo_grasper::VisualTable data)
     std::vector< geometry_msgs::Point> points = tableMesuramentsToPoints(data.x, data.y, data.width, data.height, data.depth, data.floor_to_base_height);
     visual_tools_->publishCollisionCuboid(points.at(0),points.at(1), SUPPORT_SURFACE3_NAME, rviz_visual_tools::GREEN);
     ROS_INFO_STREAM("Visual Table updated");
+    //TODO: Adapt roll and pitch to be the same as camera, assuming the camera is on a horitzontal surface
 }
 
 std::vector< geometry_msgs::Point> RomeoGrasper::tableMesuramentsToPoints(double x, double y, double width, double height, double depth, double floor_to_base_height)
@@ -1006,20 +1007,30 @@ void RomeoGrasper::findCameraReference()
                             << " on reference at frame: " << base_link_);
         }
 
-        // TODO: Some way to do it but robustly with orientations
-        // Axis for cameras
-        if(!camera_in_front_)
+        float roll, pitch, yaw;
+        if(node_handle_.getParam("camera_pose_roll", roll) &&
+                node_handle_.getParam("camera_pose_pitch", pitch) &&
+                node_handle_.getParam("camera_pose_yaw", yaw))
         {
-            // When is next to the robot it means that is in an orientation perpendicular to the robot on the left side
-            // Besides, the axis for a camera are different than for a robot
-            // So with a Yaw of -90º we have the final orientation
-            q.setEuler(0, 0, -M_PI/2);
-        }else
+            q.setRPY(roll, pitch, yaw);
+        }
+        else
         {
-            // When is in front of the robot so X and Y axis are inverse from the map and Z is the same.
-            // Besides, the axis for a camera are different than for a robot
-            // TODO: Test this Quaternion // NO ENTENC AQUET TODO XD
-            q.setEuler(0, 0, M_PI);
+            // TODO: Some way to do it but robustly with orientations
+            // Axis for cameras
+            if(!camera_in_front_)
+            {
+                // When is next to the robot it means that is in an orientation perpendicular to the robot on the left side
+                // Besides, the axis for a camera are different than for a robot
+                // So with a Yaw of -90º we have the final orientation
+                q.setEuler(0, 0, -M_PI/2);
+            }else
+            {
+                // When is in front of the robot so X and Y axis are inverse from the map and Z is the same.
+                // Besides, the axis for a camera are different than for a robot
+                // TODO: Test this Quaternion // NO ENTENC AQUET TODO XD
+                q.setEuler(0, 0, M_PI);
+            }
         }
 
         camera_pose_.pose.orientation.x = q.x();
