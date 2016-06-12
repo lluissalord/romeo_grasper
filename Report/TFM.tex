@@ -116,6 +116,18 @@ Master Thesis Project\\
 \makeatother
 
 \usepackage{listings} %To put code in the right way 
+\lstset{
+	basicstyle=\footnotesize,
+    frame=single,
+    breaklines=true,
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
+}
+\lstdefinelanguage{ROS}{
+    keywords = {
+        rosrun, roslaunch, rostopic, rosparam
+    },
+    morekeywords = {command, ns, file}
+}
 
 % Used to make possible have matrix with format like [ccc|c]
 \makeatletter
@@ -573,7 +585,7 @@ In order to achieve this goal, V4R has several modules and apps going in that di
 
 On one hand, V4R has RTM-Toolbox (Recognition, Tracking and Modelling Object) \cite{Prankl2015} which includes a flexible system to reconstruct 3D models of objects captured with an RGB-D sensor. A major advantage of the method is that unlike  other modelling tools, this reconstruction pipeline allows  the user to acquire a full 3D model of the object. This is  achieved by acquiring several partial 3D models in different sessions that are automatically merged together to reconstruct a full 3D model. 
 
-On the other hand, the real-time object pose tracking \cite{Prankl2013} \cite{Aldoma2013}, combines complementary interest points, for textured objects and for uniformly colored objects, in a common tracking framework which allows to handle a broad variety of objects regardless of their appearance and shape.
+On the other hand, the real-time object pose tracking \cite{Prankl2013} \cite{Aldoma2013}, combines complementary interest points, for textured objects and for uniformly colored objects, in a common tracking framework which allows to handle a broad variety of objects regardless of their appearance and shape. Then, the point cloud around the detected object is analysed to confirm that the depth of the object is the right one.
 
 Although, the V4R library is independent from ROS, there are wrappers for ROS \cite{gitV4RWrappers}. Therefore, the features described above can be used though ROS. However, there are some limitations. Even using a RGB-D sensor, to run RTM-Toolbox is necessary to have the sensor launched though OpenNi. The problem appears with some RGB-D cameras that are not supported by OpenNi like the Intel RealSense.\footnote{Installation of the camera drivers explained in Appendix \ref{app:camera_instal}} Therefore, it cannot use the RTM-Toolbox and only can use the modelling application the Microsoft Kinect and ASUS Xtion cameras. Except for this, in all the others features is possible to use any camera which can publish PointsClouds in a topic, see Figure \ref{fig:V4R-ROS}.
 
@@ -586,13 +598,9 @@ Although, the V4R library is independent from ROS, there are wrappers for ROS \c
 \vspace{-5pt}
 In order to use the toolbox and the tracker in \cite{gitV4RWrappers} is explained the instructions to install and a brief tutorial. However, it is good to add some information. Firstly, the way to be able to make a full 3D model of an object, for this is needed to use the multi-session modelling as explained in \cite{Prankl2015b}. Secondly, If the object itself is texture-less, the software relies on background texture in order to  successfully  model  these  kind  of  objects. So a good option is to add a textured sheet of paper on the supporting surface. Thirdly, the origin of the modeled object is posed automatically by the toolbox, so probably is not on the center of the object which is needed for the grasping process. Finally, by default the tracker is looking for the camera topic in the \texttt{/camera/depth\_registered} namespace. Although, OpenNi use this namespace, the RealSense ROS package uses \texttt{/camera/depth}.\footnote{RealSense-ROS doesn't have support for \texttt{/camera/depth\_registered} by now, but is in process \cite{gitRealSense}.} So to change it is needed to use the prefix \texttt{-t NAMESPACE} when the service is started as the following example:
 
-\vspace{-5pt}
-%\begin{lstlisting}
-%rosrun object_tracker object_tracker_service -m MODEL_PATH -t /camera/depth
-%\end{lstlisting}
-\begin{verbatim}
+\begin{lstlisting}[language=ROS]
 rosrun object_tracker object_tracker_service -m MODEL_PATH -t /camera/depth
-\end{verbatim}
+\end{lstlisting}
 
 Referring to the tracker and how to interact with it, see Figure \ref{fig:Object_tracker}. Firstly, it should be launched with a command like the one above, then if it finds the \texttt{.../camera\_info} topic and the model the service \texttt{start\_recording} can be called. After that, the broker is looking for the modeled object and if it has enough confidence publish a message with the pose and the confidence in \texttt{/object\_tracker/object\_pose}. Moreover, the tracker is publishing constantly images of the camera with the axis at the origin of the object, if is found, and with a bar representing the confidence in \texttt{/object\_tracker/debug}. Finally, in order to change the model use to track, it is needed to call the \texttt{change\_tracking\_model} service with the path of the new model and after that start the recording again.
 
@@ -681,20 +689,6 @@ Firstly, describe every parameter loaded to ROS with the file \texttt{romeo\_gra
 \textbf{Parameter name} & \textbf{Default value} & \textbf{Description} \\ \hline
 \texttt{move\_group} & left\_arm & Defines which is the group of links and joints controlled, see Table \ref{tab:tree_group_links_joint} in Section \ref{sec:romeo_hardware}.\\ \hline
 \texttt{models\_directory} & \dots/data/models & Directory containing the modeled objects and their config files, see Section \ref{sec:model_object}\\  \hline
-\multicolumn{3}{|r|}{\small\sl continued on next page}\\
-\hline
-\end{tabulary}
-\end{center}
-\end{table}
-
-\break
-
-\begin{table}[!h]
-\begin{center}
-\begin{tabulary}{\textwidth}{|l|c|J|}
-\hline
-\multicolumn{3}{|l|}{\small\sl continued from previous page}\\ \hline
-\textbf{Parameter name} & \textbf{Default value} & \textbf{Description} \\ \hline
 \texttt{model\_object\_name} & tea\_box & Name of the modeled object which should be grasped.\\  \hline
 \texttt{model\_reference\_name} & ref\_tea\_box & Name of the modeled object which is used to position the reference link, explained in Section \ref{sec:visual-recognition}\\  \hline
 \texttt{pose\_threshold} & 0.05 & Minimum position difference, from the old position to the current one, needed to consider that the position has changed.\\ \hline
@@ -706,11 +700,6 @@ Firstly, describe every parameter loaded to ROS with the file \texttt{romeo\_gra
 \texttt{tolerance\_min} & 0.1 & Initial goal tolerance for planning and picking.\\ \hline
 \texttt{planning\_time} & 20 & Maximum planning time for each attempt.\\ \hline
 \texttt{attempts\_max} & 3 & Maximum number of attempts.\\ \hline
-\texttt{base\_link\_frame\_id} & base\_link & Base frame of the robot.\\ \hline
-\texttt{camera\_in\_front} & false & Boolean to know if the camera is in front of the robot or next to it. More information in Section \ref{sec:impl_camera_approach}\\ \hline
-\texttt{camera\_reference\_frame\_id} & l\_wrist & Frame of the link used as reference, see Section \ref{sec:visual-recognition}. \\ \hline
-\texttt{camera\_link} & camera\_link & Frame used to set the position of the camera.\\ \hline
-\texttt{object\_frame\_id} & object\_frame & Frame of the object that should be grasped.\\ \hline
 \multicolumn{3}{|r|}{\small\sl continued on next page}\\
 \hline
 \end{tabulary}
@@ -725,14 +714,33 @@ Firstly, describe every parameter loaded to ROS with the file \texttt{romeo\_gra
 \hline
 \multicolumn{3}{|l|}{\small\sl continued from previous page}\\ \hline
 \textbf{Parameter name} & \textbf{Default value} & \textbf{Description} \\ \hline
+\texttt{base\_link\_frame\_id} & base\_link & Base frame of the robot.\\ \hline
+\texttt{camera\_in\_front} & false & Boolean to know if the camera is in front of the robot or next to it. More information in Section \ref{sec:impl_camera_approach}\\ \hline
+\texttt{camera\_ref\_frame\_id} & l\_wrist & Frame of the link used as reference, see Section \ref{sec:visual-recognition}. \\ \hline
+\texttt{camera\_link} & camera\_link & Frame used to set the position of the camera.\\ \hline
+\texttt{object\_frame\_id} & object\_frame & Frame of the object that should be grasped.\\ \hline
 \multirow{1}{*}{\texttt{camera\_pose\_x}} & \multirow{1}{*}{-0.11} & \multirow{3}{\hsize}{Coords of the camera when camera position is pre-known, more in Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_y}} & \multirow{1}{*}{0.62} & \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_z}} & \multirow{1}{*}{0.14} & \\ \hline
-\texttt{camera\_frame\_id} & camera\_rgb\_optica\_frame & Frame of the camera following the ROS Enhancement Proposals (REPs) as an optical camera frame \cite{Foote}.\\ \hline
+\texttt{camera\_frame\_id} & camera\_rgb\_optical\_frame & Frame of the camera following the ROS Enhancement Proposals (REPs) as an optical camera frame \cite{Foote}.\\ \hline
 \end{tabulary}
 \caption{Description and default value of every parameter of \texttt{romeo\_grasper.yaml}\label{tab:param_romeo_grasper}}
+%\multicolumn{3}{|r|}{\small\sl continued on next page}\\
+%\hline
 \end{center}
 \end{table}
+
+%\break
+%
+%\begin{table}[!h]
+%\begin{center}
+%\begin{tabulary}{\textwidth}{|l|c|J|}
+%\hline
+%\multicolumn{3}{|l|}{\small\sl continued from previous page}\\ \hline
+%\textbf{Parameter name} & \textbf{Default value} & \textbf{Description} \\ \hline
+%
+%\end{center}
+%\end{table}
 
 Referring to the launching, in \texttt{romeo\_grasper} package, there is a main launch file which is named as \texttt{romeo\_grasper.launch}. This run the main node of the package loading the following parameter files:
 
@@ -774,9 +782,9 @@ Both launchers run \texttt{romeo\_grasper.launch}, the \texttt{romeo\_full\_py.l
 
 It needs to be stated that to use a real camera is necessary to launch another node. There are two possible cases: (1) use a RealSense camera or (2) use a camera through openNi.\footnote{Installation of the camera drivers explained in Appendix \ref{app:camera_instal}.} On one hand, the RealSense camera can be launch with the \texttt{use\_realsense} argument in the launchers. On the other hand, for the openNi case, should be run the following command on a new terminal:
 
-\begin{verbatim}
+\begin{lstlisting}[language=ROS]
 roslaunch openni_launch openni.launch depth_registration:=true
-\end{verbatim}
+\end{lstlisting}
 
 Finally, it should be mentioned that the Rviz configuration and launching files are copied from \texttt{romeo\_moveit\_config}, but modified to have a more adapted features for this package. 
 
@@ -802,10 +810,9 @@ At the initialization of this class, it should be associated with one of the mod
 
 \newpage
 Every modeled object that wants to be used must have the configuration file loaded in the launch file. So the following line should be used for every model in the node namespace \textit{MODEL\_NAME} for the name of the model.
-\begin{verbatim}
-<rosparam command="load" ns="models/MODEL_NAME" 
-file="$(find romeo_grasper)/data/models/MODEL_NAME/model_config.yaml" />
-\end{verbatim}
+\begin{lstlisting}[language=ROS]
+<rosparam command="load" ns="models/MODEL_NAME" file="$(find romeo_grasper)/data/models/MODEL_NAME/model_config.yaml" />
+\end{lstlisting}
 
 An overview of the processes done by this class is showed below, on Figure \ref{fig:flow_model_object}. Moreover, the last part of the flow sequence is explained in detail on Figure \ref{fig:model_object_transform}.
 
@@ -864,7 +871,7 @@ It should be stated that to let know the camera position to the simulator and ot
 
 \subsection{Use of pre-known distance}
 \label{sec:pre-known_distance}
-In an environment where we can know the position of the camera respect to a link of the robot, use this way is a good option. Therefore we only need to set the configuration in the \texttt{romeo\_grasper\_xxxx.yaml} file. So with the \texttt{camera\_reference\_frame\_id} parameter we set the link used as reference and with \texttt{camera\_pose\_x}/\texttt{y}/\texttt{z} specify the coordinates where is the camera. However, we have to take in account that the orientation for this parameters is the \texttt{base\_link} orientation. That is done in that way to facilitate the user to take the coordinates.
+In an environment where we can know the position of the camera respect to a link of the robot, use this way is a good option. Therefore we only need to set the configuration in the \texttt{romeo\_grasper\_xxxx.yaml} file. So with the \texttt{camera\_ref\_frame\_id} parameter we set the link used as reference and with \texttt{camera\_pose\_x}/\texttt{y}/\texttt{z} specify the coordinates where is the camera. However, we have to take in account that the orientation for this parameters is the \texttt{base\_link} orientation. That is done in that way to facilitate the user to take the coordinates.
 
 Therefore, the process to calculate the position of the camera is, as described in Equation \eqref{eq:calc_camera_pose_pre-known}, taking position of the reference link in \texttt{base\_link} coordinates and adding the values of the parameters \texttt{camera\_pose\_x}$/$\texttt{y}$/$\texttt{z}. Finally, the transformation between \texttt{camera\_link} and \texttt{base\_link} is expressed like Equation \eqref{eq:trans_base_camera_pre-known}
 
@@ -1095,27 +1102,85 @@ NAOqi & Romeo ROS & Data & All kind of data: joint state, camera images, variabl
 \end{itemize}
 
 \section{Implementation IKFast on Romeo}
-%Experiment 2:
-% Dir que es vol millorar el IK solver i per tant s'ha provat d'implementar IKFast, per això explicar tots els test que s'han arribat a fer. Tant els que son logics que van amb 6 DoF de torso a WristYaw com esta amb els grups especificat, com també fet des de torso fins a l_wrist posant un free joint (i s'ha provat amb tots els free joints). Posteriorment externament han canviat la nomenclatura i els origens de les joints i amb aquesta configuració s'ha tornat a provar. Finalment s'ha vist que nomes s'ha pogut aconseguir en el cas de Shoulder fins gripper (tant right com left) amb free joint al WristPitch. El que passa es que aquesta es inutil ja que primer es perd la joint ShoulderPitch ja que es troba entre torso i Shoulder i segon que una de les joints incloses es Hand que no dona moviment, per tant realment es tenen 5 DoF controlats que no permeten portar el gripper a determinada posició i orientació. Mencionar que aquesta solució es va aconseguir en els tests inicials abans de saber exactament que s'estava provant.
-% Posar links de ses discussions que s'han obert per dur a terme això
-\begin{itemize}
-\item A way to improve the IK solver is to implement IKFast which is faster and more precise.
-\item Firstly, explain how it is suppose to implement this. Like said before generating a C++ code. This is suppose to be automatically created running a specific program giving the Collada model.
-\item Due to be a 7 DoF arm can exist several combinations. Explain all the tested combinations and which combinations should be the best.
-\item After doing theses test, get some tips from Natalia Lyubova and Mikael Arguedas and Natalia rewrite the Romeo model to change the convention of the joints, it was all retest.
-% Refer to discusion https://github.com/ros-aldebaran/romeo_robot/issues/10
-\item It should be stated that every test last at least 1 or 2 hours. So a lot of time has been spent here.
-\end{itemize}
+\label{sec:exp_ikfast}
 
-Currently, the inverse kinematic solver used is from the KDL library, explained in Section \ref{sec:inverse_kinematic}. However, it gives bad results as shown above. Therefore, a solution for this problem could be implement the IKFast solver, also explained in Section \ref{sec:inverse_kinematic}, which is faster and more precise.
+Currently, the inverse kinematic solver used is from the KDL library, explained in Section \ref{sec:inverse_kinematic}. However, it gives bad results as shown above. Therefore, a solution for this problem could be implement the IKFast solver, also explained in Section \ref{sec:inverse_kinematic}, which is faster and more precise. 
 
-In order to implement the IKFast on the Romeo robot, first is needed to generate the C++ code which solve the inverse kinematics. However, this is created from a Collada model file which is not found in the \texttt{romeo\_description} package. Then, this could be created, using the command below, from an URDF model of Romeo which is contained in the previous package.
+In order to implement the IKFast on the Romeo robot, firstly is needed to generate the C++ code which solve the inverse kinematics. However, This OpenRAVE software has several dependencies to generate the C++ code, explained with the installation in Section \ref{app:ikfast}. Secondly, once the code is already generated, it should be create a package which provides the kinematic solver, based on the previous C++ code. Although, it is needed to have the \texttt{moveit\_ikfast} ROS package to create the kinematic solver package. 
 
-\begin{verbatim}
+Referring to the code, it is created from a Collada model file which is not found in the \texttt{romeo\_description} package. Then, this can be created, using the command below, from an URDF model of Romeo which is contained in the previous package.
+
+\begin{lstlisting}[language=ROS]
 rosrun collada_urdf urdf_to_collada romeo.urdf romeo_raw.dae
-\end{verbatim}
+\end{lstlisting}
 
-After that, as recommended by the author of \cite{Diankov2010}, it is good to round the values of the Collada model to make easier to find aligned axes.
+After that, as recommended by the author of IKFast  \cite{Diankov2010}, it is good to round at the fifth decimal the values of the Collada model to make easier to find aligned axes. The rounding program is found in the \texttt{moveit\_ikfast} package, more information in \cite{MoveIt2013}, and is run with the following command:
+
+\begin{lstlisting}[language=ROS]
+rosrun moveit_ikfast round_collada_numbers.py <myrobot_name>.dae <myrobot_name>.rounded.dae 5
+\end{lstlisting}
+
+Once the Collada model is ready, it is time to generate the IKFast solver code. As said in Section \ref{sec:romeo_hardware}, the Romeo arms have 7 DoF, so the inverse kinematic type should be \texttt{transform6d} with one redundancy to be able to go to a specific position and orientation. Moreover, has to be defined which is the base link and the end effector of the group. So between these are contained the joints of the arm, Table \ref{tab:tree_group_links_joint} can help to know parent and child link for every joint. The index of the arm links of Romeo are shown in Table \ref{tab:link_index_ikfast}. 
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Body}} \\ \hline
+\textbf{Link} & \textbf{index} \\ \hline
+base\_link & 0 \\
+torso & 1 \\
+\end{tabular}
+\\
+\begin{tabular}{|l|c|c|c|r|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Left arm}} & & \multicolumn{2}{|c|}{\textbf{Rigth arm}} \\ \cline{1-2}\cline{4-5}
+\textbf{Link} & \textbf{index} & & \textbf{index} & \textbf{Link} \\ \cline{1-2}\cline{4-5}
+LShoulder & 2 & & 43 & RShoulder \\
+LShoulderYaw\_link & 3 & & 44 & RShoulderYaw\_link \\
+LForeArm & 4 & & 45 & RForeArm \\
+LElbow & 5 & & 46 & RElbow \\                            
+LWristRoll\_link & 6 & & 47 & RWristRoll\_link \\                   
+LWristYaw\_link & 7 & & 48 & RWristYaw\_link \\ \cline{1-2}\cline{4-5}
+l\_wrist & 8 & & 49 & r\_wrist \\
+l\_gripper & 18 & & 59 & r\_gripper \\ \hline
+\end{tabular}
+\caption{Index of every link of the robot base and arms.\label{tab:link_index_ikfast}}
+\end{center}
+\end{table}
+
+Therefore, the generation process is executed with the command below. Finally, it should be stated that if for the configuration are contained 7 joints, it should be add the \texttt{freeindex} parameter defining which is a free joint.\footnote{The free joints are specified before the IK is run, these values are known at runtime, but not known at IK generation time \citep{Diankov2010}.} The index for the joints is shown in Table \ref{tab:joint_index_ikfast}.
+
+\begin{lstlisting}
+python `openrave-config --python-dir`/openravepy/_openravepy_/ikfast.py --robot=<myrobot_name>.rounded.dae --iktype=transform6d --baselink=<base_index> --eelink=<end_effector_index> --savefile=<ikfast_output_path>
+\end{lstlisting}
+
+\begin{table}[!h]
+\begin{center}
+\begin{tabular}{|l|c|c|c|r|}
+\hline
+\multicolumn{2}{|c|}{\textbf{Left arm}} & & \multicolumn{2}{|c|}{\textbf{Rigth arm}} \\ \cline{1-2}\cline{4-5}
+\textbf{Joint} & \textbf{index} & & \textbf{index} & \textbf{Joint} \\ \cline{1-2}\cline{4-5}
+LShoulderPitch & 0 & & 16 & RShoulderPitch \\
+LShoulderYaw & 1 & & 17 & RShoulderYaw \\
+LElbowRoll & 2 & & 18 & RElbowRoll \\
+LElbowYaw & 3 & & 19 & RElbowYaw \\                            
+LWristRoll & 4 & & 20 & RWristRoll \\                   
+LWristYaw & 5 & & 21 & RWristYaw \\ \cline{1-2}\cline{4-5}
+LWristPitch & 6 & & 22 & RWristPitch \\
+LHand & 7 & & 23 & RHand \\ \hline
+\end{tabular}
+\caption{Index of every joint of the robot arms.\label{tab:joint_index_ikfast}}
+\end{center}
+\end{table}
+
+After that, it is time to generate the IK solver code. As explained in Section \ref{sec:romeo_hardware}, the usually way of working is to split the arm in two group. So the right way is to take the first 6 joint of the arm in the main group which is the one controlling the position and orientation. Therefore, the logical configuration is with \texttt{--eelink} equal to 7 or 48 depending on the left or right arm and \texttt{--baselink} equal to 0 or 1.\footnote{It doesn't matter if is used \texttt{base\_link} or \texttt{torso} link because they are fixed, so there is only a fixed transformation between them.}
+
+Unfortunately any of this configuration can generate a C++ code with the Romeo model. The problem is that, after one or two hours of execution of the command above, the program, and sometime also the computer, is frozen. Then, it has to be tested others configuration which are less logical but also useful. Therefore, these are taking the 7 joints but adding the \texttt{freeindex} parameter. The most logical free joint is the \texttt{WristRoll} because is the one closest to the end effector, doing the same movement than \texttt{ElbowRoll} and it is the slowest joint of the arm. Finally, neither this configuration nor any other joint as the free joint can generate the IK solver code.
+
+Currently, there is a commit in the Natalia Lyubova repository\footnote{\url{https://github.com/nlyubova/romeo_robot/commit/05bf217b73c389c461414412fd43d84ecb0c4115}} where the URDF model has been changed to use a new convention of the joints. But, it also has the same result. 
+
+It should be stated that to be sure the installation it was well done, it has been tried to generate the IKFast for another robot and it worked. Moreover, there is a discussion in the official repository of Romeo package where all this IKFast issue is discussed \cite{romeoRobotIssue}. 
 
 \section{Get pre-known camera position}
 %Experiment 3:
@@ -1159,75 +1224,80 @@ After that, as recommended by the author of \cite{Diankov2010}, it is good to ro
 % Explicar coses que s'han fet que no han acabat de funcionar o que  Posar en una posició inicial seguint un path, d'aquesta manera s'assegura que no fer-hi la taula ja que a la simulació sembla que obvia el fet que hi hagi la taula.
 % Com també per on es podria tirar per millorar tot es conjunt
 \section{Implementation new inverse kinematics}
-% Entre aquestes s'explicaria es fet de mirar d'aconseguir IKFast.
-% Falta acabar de perfeccionar com seria la part del picking que ara mateix degut a que la cinematica inversa no funciona bé, no acaba d'aconseguir fer un picking.
-\begin{itemize}
-\item Reach to finally implement the IKFast so the inverse kinematic could work much better.
-\item If it seems that IKFast is not possible there is the option of the IK use in \cite{Pas}. Is also a numerical solver, so probably it will be similar to the KDL, but only trying can be known.
-\item After that it is supposed that the picking action will work well, because currently is not finding any picking due to the problems with the inverse kinematic.
-\end{itemize}
+
+As said before, the error produced by the inverse kinematic solver KDL to go to the position of the object is one of the most important. Therefore, the implementation of a new IK solver should be a great improvement for the work. Moreover, currently the picking action is not working well due to the IK solver doesn't find a good picking plan, so with this new solver it is supposed that this should be solved.
+
+The first recommendation would be to implement the IKFast from OpenRAVE, because it is a close form solver and so it very fast and precise. As seen in Section \ref{sec:exp_ikfast}, currently is not working, but may be can solve it editing the URDF model trying to make it easier or changing the initial pose. Also is recommended to read this issue \cite{romeoRobotIssue}, where there is a lot about it discussed.
+
+In case that the previous solver could not be used, there is an other option used in \cite{claudio:hal-01159882} named Metapod from LAAS, which is also a numerical solver. Therefore, probably it has almost the same problems as KDL, but at least has been already tested with Romeo.  
 
 \section{Improve use of V4R}
-% Mirar de fer que la Toolbox de modelatje de V4R funciones amb RealSense ja que la camera RGB que es la que fa la major part de la feina té molt millor resolució o es podria treballar amb una Xtion que suposadament també funciona amb openNi.
-% Fer que RealSense o en general qualsevol camera RGB-D pugui ser compatible amb la RTM-Toolbox, fent que faci com els altres packages i que cerqui per un tipus de topic determinat (en aquest cas el depth_registered/points i colcun més que s'ha de mirar a veure com va)
-% També hi ha l'opcio de mirar a veure si es pot arribar a executar d'alguna forma openNi a dins el robot de tal manera que pugui arribar a publicar els topics d'openNi a ROS utilitzant la Xtion que du incorporada. Tot i que no es pugui veure els braços del tot be al menys els objecte que estiguin dins un rang determinat podran ser identificats en principi i ens estalviem l'haver de posicionar la camera que es una font d'error.
-\begin{itemize}
-\item Currently Kinect is giving some problems, like after some seconds or minutes the RGB camera starts to send black images. Therefore the V4R software cannot be used. Moreover, the OpenNi nodes after a while usually fail and they are automatically shutdown.
-\item V4R works with SIFT on the RGB image, so having a good quality in the RGB image is important. If we compare Kinect with Xtion, this last one is better; and then comparing with RealSense is the best one.
-\item Options to solve these problems are:
-\begin{itemize}
-\item Use RealSense for everything. However, to do that it needs to improve RTM-Toolbox to be able of using any RGB-D camera.
-\item Use Xtion. Could be an external one, which during this work could not be used; or the one inside Romeo. With this last one, we have seen that you don't see the arms and only the objects in a specific and small range. Moreover, in order to solve the problem with dark images may be a possibility is to try to execute ROS with OpenNi inside the robot. This option will help to remove some error produced by the camera positioning.
-\end{itemize}
-\end{itemize}
+
+The V4R software is a very powerful tool to recognise objects and tracking them. However, it has to be complemented with the convenient camera to get the best performance. Currently, the Kinect camera, which sends the images to ROS through OpenNi framework, gives some problems. On one hand, after some seconds or minutes the RGB camera starts to send partial or full black images, example of it in Figure \ref{fig:kinect_black_problem}. Therefore, the V4R software cannot be used properly. On the other hand, the OpenNi nodes after a while usually fail due to memory or pointers errors and then they are automatically shut down.
 
 \begin{figure}[h]
 \begin{center}
-\begin{subfigure}[r]{0.7\textwidth}
+\begin{subfigure}[r]{0.65\textwidth}
 		\includegraphics[width=\textwidth]{images/kinect_problem_color}
         \caption{Normal performance}
 \end{subfigure}
 \\
-\begin{subfigure}[r]{0.7\textwidth}
+\begin{subfigure}[r]{0.65\textwidth}
 		\includegraphics[width=\textwidth]{images/kinect_problem_black}
         \caption{While is not working}
 \end{subfigure}
-\caption{Kinect problem, RGB camera sending black images}
+\caption{Kinect problem, RGB camera sending black images.\label{fig:kinect_black_problem}}
 \end{center}
 \end{figure}
 
-\section{Dependencies of packages}
-% També dir tema de que es codi miri de ser cada vegada més independent del software V4R 
-\begin{itemize}
-\item Try to have the code the most independent of the V4R software. So then the grasping could be used in other fields or at least with others software.
-\item Make the package as general as possible, in order to be able to be used for other robots. That could be made if the \texttt{romeo\_moveit\_actions} have the same functions of others robots, then it is supposed that it should not be very difficult.
-\end{itemize}
+Moreover, V4R process the images with a kind of SIFT on the RGB image, so having a good quality of the RGB camera it could lead to a better performance. Unfortunately, the Kinect used is the worst in terms of RGB camera in comparison with the Xtion and the RealSense, as shown in Table \ref{tab:camera_comparison}. Therefore, to improve the performance of the recognition would be great to use RealSense or Xtion. On one hand, currently, the use of RealSense is possible,\footnote{The \texttt{use\_realsense} argument enables to launch the \texttt{romeo\_grasper} using the RealSense camera.} but the object must be modeled with another camera because RealSense is not supported by RTM-Toolbox and that decrease dramatically the confidence of the tracking. Therefore, this option would be great if the RTM-Toolbox is improved and gives support to RealSense. On the other hand, for the Xtion there are two possibilities. First, with an external one as it has been done with Kinect in this work. Second, using the one on the Romeo cap. For this last one, only could work with objects on a specific and small range because of the camera range. However, it would remove some error produced by the camera positioning because the position of this camera is established in the model. Moreover, in order to solve the problem with dark images may be a possibility is to try to execute ROS with OpenNi inside the robot.  
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{Camera} & \textbf{RGB resolution} & \textbf{Depth resolution} & \textbf{Range} \\ \hline
+Microsoft Kinect v1 \cite{Smeenk}& 640x480 & 320x240 & 0.5-4.5 m \\
+ASUS Xtion PRO Live \cite{ASUSWeb}& 1280x1024 & 640x480 & 0.8-3.5 m \\
+RealSense SR300 \cite{IntelWeb}& 1920x1080 & 640x480 & 0.2-1.5 m \\ \hline
+\end{tabular}
+\caption{Comparison of the RGB-D cameras: Kinect, Xtion and RealSense.\label{tab:camera_comparison}}
+\end{center}
+\end{table}
 
 \section{Object identification}
-% Un posible treball futur podria ser en lloc de treballar amb l'object tracker, treballar amb l'identificador d'objectes de dins la base de dades del modelatjes que es facin, d'aquesta forma agafaria cadascun dels objectes, i per a cadascun tindria un offset determinat.
-% Altre treball és el fet de trobar la forma d'extreure informació de l'objecte modelat i treure l'offset del centre geometric respecte l'origen de coordenades establert per V4R. D'aquesta forma no hi hauria error en la mesura d'on es troba el centre de l'objecte.
-% La taula podria ser identificada per la camera, cosa que ja fan diferents softwares de per si, i si es necessari perque el software no du a terme la funció de posar-ho a la simulació, la informació que es treu del software es pot enviar al topic destinat a caracteritzar la taula en la simulació.
+\label{sec:object_ident}
+
+Although, it is not explained before, V4R has another feature which allows to recognise several objects at once. These objects should be in a specific database. A detailed description of this feature can be found in the tutorial of V4R ROS wrappers repository \cite{gitV4RWrappers}. There are several factors of the object recognition that can improve the performance of the \texttt{romeo\_grasper} package:
+
 \begin{itemize}
-\item Instead of working with the object tracker could be useful to use the object recognition. Recognise the objects which are in a database.
-\begin{itemize}
-\item That could be very useful
-\begin{itemize}
-\item Provides the centroid of the cluster which could be used to give to the package where it have to make the grasp
-\item Provides a bounding box of the object which is how the object is represent in the simulation by now, but this would make to don't need to use a custom bounding box made by the user.
-\item Provides a point cloud of the model transformed into camera coordinates. This information could be used for the AGILE grasp to grasp the desired object in the right way.
-\item Identifying several objects at one could be used to implement a better way to use the visual positioning of the camera. Using a different identifier for every element which will help to find the camera position and orientation. 
-\end{itemize}
-\item This one is used with service, so it should call the service periodically to know every time where are the objects.
-\end{itemize}
+\item Provides the centroid of the cluster, which could be used to give to the package where it have to make the grasp.
+\item Provides a bounding box of the object, which is how the object is represent in the simulation by now. So this would make to don't need to use a custom bounding box made by the user.
+\item Provides a point cloud of the model transformed into camera coordinates. This information could be used for the AGILE grasp to grasp the desired object in a better way.
+\item Identifying several objects at one could be used to implement a better way to use the visual positioning of the camera. Using a different identifier for every element could be possible to know the position of every link at once. Therefore, it makes the process more robust to find the camera position and orientation. 
 \end{itemize}
 
+The only problem of this way of get the position of the object is that it is not optimal for a real-time tracking. This feature works as a service, so in order to work with it, the service should be called periodically to know always where are the object.
+
 \section{Fix the Romeo model}
-% També es pot comentar es tema de que el gripper ara mateix esta colocat en una posició que no es l'adecuada. Que s'hauria de corregir. Si es vol es poden utilitzar els valors del romeo_grasp_data.yaml pero aquests realment son presos de forma empirica.
-\begin{itemize}
-\item Currently the gripper in the Romeo model is posed in a wrong position. 
-\item However, this pose is not used because for now is used the information in \texttt{romeo\_grasp\_data.yaml} of the \texttt{moveit\_simple\_grasps} which make an offset from the WristYaw\_link to pose the grasp. This information has been empirically set.
-\item Should be good to make the model more standard and have the gripper in the right place and set the grasp from the gripper itself. 
-\end{itemize}
+
+Currently, the grippers in the Romeo model are posed in a wrong position, see Figure \ref{fig:gripper_bad_position}. However, at the moment, this is not used because the grasp position is specified by \texttt{romeo\_grasp\_data.yaml} of the \texttt{moveit\_simple\_grasps} package. Then, the grasp position is set adding an offset from the WristYaw\_link position. Therefore, should be great to make the model more standard and have the gripper in the right place and set the grasp from the gripper itself. 
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{images/gripper_bad_position.png}
+\caption{Current position of grippers in Romeo model.\label{fig:gripper_bad_position}}
+\end{figure}
+
+\section{Implementation of AGILE grasp}
+
+Once the first approach of grasping works perfectly, it is time to implement a more advanced grasping process. As explained in Section \ref{sec:agile grasp}, the AGILE grasp use machine learning to detect a antipodal grasp pose on novel objects, using as input a point cloud and the geometric parameters of the robot hand. However, the implementation could be made in two different ways. First, it could use the general point cloud of the camera which it will have some occluded parts of the object. Second, if the recognition object, explained in Section \ref{sec:object_ident}, is implemented then use the point cloud of the model transformed into camera coordinates which it won't have occluded parts because it is a combination of the modeled object and the real object. 
+
+\section{Dependencies of packages}
+
+A package is more flexible and can be reused in other fields as independent is of other packages. On one hand, it would be great to make this package as general as possible, in order to be able to be used for other robots. That could be made if the \texttt{romeo\_moveit\_actions} have the same functions of the moveit actions of others robots, then it is supposed that it should not be very difficult with the right definitions for the building part. On the other hand, making the code be independent of the recognition software could lead to used this grasping package in a wider range of fields.
+
+
 \chapter{Conclusion}
 \label{cha:conclusions}
 % Explicar a les conclusions que s'arriben finalment i els posible futurs treballs que se'n poden derivar.
@@ -1280,7 +1350,8 @@ QtCreator & recent\footnote{As is said in NAO documentation \cite{AldebaranC++SD
 
 In order to install the Kinect camera with openNi has been used the following url \cite{Li}. For the RealSense camera has been used this repository \cite{gitRealSense} following the installation instructions. Unfortunately, the Asus Xtion camera has not been possible to use so here there is no description about the installation.
 
-
+\section{OpenRAVE installation}
+\label{app:ikfast}
  
 
 \end{document}

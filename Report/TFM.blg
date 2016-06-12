@@ -2,8 +2,8 @@ This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
 Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: TFM.aux
 The style file: plainnat.bst
-A level-1 auxiliary file: images/moveit_actions_reach_action.aux
 A level-1 auxiliary file: images/moveit_actions_grasp_plan.aux
+A level-1 auxiliary file: images/moveit_actions_reach_action.aux
 A level-1 auxiliary file: images/moveit_actions_pick_action.aux
 A level-1 auxiliary file: images/dcm_driver_flow.aux
 A level-1 auxiliary file: images/model_object_diagram.aux
@@ -12,63 +12,66 @@ A level-1 auxiliary file: images/pose_preknown.aux
 A level-1 auxiliary file: images/plan_execute_function_flow.aux
 A level-1 auxiliary file: images/setup_romeo_grasper.aux
 Database file #1: ./library/library.bib
-Repeated entry---line 1089 of file ./library/library.bib
+Repeated entry---line 1147 of file ./library/library.bib
  : @misc{ROS
  :          ,
 I'm skipping whatever remains of this entry
 Warning--to sort, need author or key in Aldebaran
+Warning--to sort, need author or key in romeoRobotIssue
 Warning--empty year in Aldebaran
 Warning--empty year in AldebaranC++SDK
 Warning--empty year in AldebaranQiBuild
 Warning--empty year in ros-aldebaran
 Warning--empty journal in ros-naoqi
 Warning--empty year in ros-naoqi
+Warning--empty year in ASUSWeb
 Warning--empty year in gitMoveitSimpleGrasp
 Warning--empty year in Diankov
+Warning--empty year in IntelWeb
 Warning--empty year in KhronosGroup
 Warning--empty year in Penton
 Warning--empty year in ROS
 Warning--empty year in KDL
 Warning--empty year in strands
-You've used 28 entries,
+You've used 33 entries,
             2773 wiz_defined-function locations,
-            761 strings with 9721 characters,
-and the built_in function-call counts, 10583 in all, are:
-= -- 929
-> -- 551
-< -- 21
-+ -- 200
-- -- 168
-* -- 739
-:= -- 1612
-add.period$ -- 95
-call.type$ -- 28
-change.case$ -- 140
-chr.to.int$ -- 24
-cite$ -- 71
-duplicate$ -- 478
-empty$ -- 942
-format.name$ -- 201
-if$ -- 2227
+            785 strings with 10323 characters,
+and the built_in function-call counts, 12010 in all, are:
+= -- 1055
+> -- 591
+< -- 25
++ -- 217
+- -- 180
+* -- 815
+:= -- 1810
+add.period$ -- 109
+call.type$ -- 33
+change.case$ -- 159
+chr.to.int$ -- 29
+cite$ -- 85
+duplicate$ -- 553
+empty$ -- 1105
+format.name$ -- 217
+if$ -- 2541
 int.to.chr$ -- 5
 int.to.str$ -- 1
 missing$ -- 8
-newline$ -- 159
-num.names$ -- 108
-pop$ -- 359
+newline$ -- 183
+num.names$ -- 124
+pop$ -- 422
 preamble$ -- 1
-purify$ -- 112
+purify$ -- 126
 quote$ -- 0
-skip$ -- 421
+skip$ -- 491
 stack$ -- 0
-substring$ -- 163
-swap$ -- 45
+substring$ -- 174
+swap$ -- 50
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 308
-warning$ -- 14
-while$ -- 90
+type$ -- 363
+warning$ -- 17
+while$ -- 102
 width$ -- 0
-write$ -- 362
+write$ -- 418
 (There was 1 error message)

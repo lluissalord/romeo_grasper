@@ -22,17 +22,18 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Overview of the \texttt {Romeo grasper} package \relax }}{28}{figure.caption.34}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Flow sequence of ModelObject class\relax }}{36}{figure.caption.39}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Position transformation from camera reference to base reference\relax }}{37}{figure.caption.40}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Orientations of the \texttt {camera\_link} respect to the robot \texttt {base\_link}\relax }}{38}{figure.caption.41}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Process of having camera position using pre-known distance \relax }}{39}{figure.caption.42}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Position change due to the offset of the modeled object.\relax }}{40}{figure.caption.43}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Flow sequence for function responsible of the robot planning and execution\relax }}{43}{figure.caption.47}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Flow sequence for \texttt {romeo\_grasper} setup\relax }}{45}{figure.caption.48}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Flow of data from object pose to commands to NAOqi\relax }}{46}{figure.caption.49}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Flow sequence of ModelObject class\relax }}{36}{figure.caption.38}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Position transformation from camera reference to base reference\relax }}{37}{figure.caption.39}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Orientations of the \texttt {camera\_link} respect to the robot \texttt {base\_link}\relax }}{38}{figure.caption.40}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Process of having camera position using pre-known distance \relax }}{39}{figure.caption.41}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Position change due to the offset of the modeled object.\relax }}{40}{figure.caption.42}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Flow sequence for function responsible of the robot planning and execution\relax }}{43}{figure.caption.46}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Flow sequence for \texttt {romeo\_grasper} setup\relax }}{45}{figure.caption.47}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Flow of data from object pose to commands to NAOqi\relax }}{46}{figure.caption.48}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Kinect problem, RGB camera sending black images\relax }}{56}{figure.caption.52}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Kinect problem, RGB camera sending black images.\relax }}{56}{figure.caption.53}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Current position of grippers in Romeo model.\relax }}{58}{figure.caption.55}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

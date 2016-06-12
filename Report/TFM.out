@@ -49,12 +49,14 @@
 \BOOKMARK [0][-]{chapter.8}{Future works}{}% 49
 \BOOKMARK [1][-]{section.8.1}{Implementation new inverse kinematics}{chapter.8}% 50
 \BOOKMARK [1][-]{section.8.2}{Improve use of V4R}{chapter.8}% 51
-\BOOKMARK [1][-]{section.8.3}{Dependencies of packages}{chapter.8}% 52
-\BOOKMARK [1][-]{section.8.4}{Object identification}{chapter.8}% 53
-\BOOKMARK [1][-]{section.8.5}{Fix the Romeo model}{chapter.8}% 54
-\BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 55
-\BOOKMARK [0][-]{chapter*.53}{References}{}% 56
-\BOOKMARK [0][-]{section*.54}{Appendices}{}% 57
-\BOOKMARK [0][-]{appendix.A}{Software requirements and installation}{}% 58
-\BOOKMARK [1][-]{section.A.1}{Software requirements}{appendix.A}% 59
-\BOOKMARK [1][-]{section.A.2}{Camera drivers installation}{appendix.A}% 60
+\BOOKMARK [1][-]{section.8.3}{Object identification}{chapter.8}% 52
+\BOOKMARK [1][-]{section.8.4}{Fix the Romeo model}{chapter.8}% 53
+\BOOKMARK [1][-]{section.8.5}{Implementation of AGILE grasp}{chapter.8}% 54
+\BOOKMARK [1][-]{section.8.6}{Dependencies of packages}{chapter.8}% 55
+\BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 56
+\BOOKMARK [0][-]{chapter*.56}{References}{}% 57
+\BOOKMARK [0][-]{section*.57}{Appendices}{}% 58
+\BOOKMARK [0][-]{appendix.A}{Software requirements and installation}{}% 59
+\BOOKMARK [1][-]{section.A.1}{Software requirements}{appendix.A}% 60
+\BOOKMARK [1][-]{section.A.2}{Camera drivers installation}{appendix.A}% 61
+\BOOKMARK [1][-]{section.A.3}{OpenRAVE installation}{appendix.A}% 62

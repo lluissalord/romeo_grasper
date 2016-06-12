@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -8,6 +8,10 @@
 \bibitem[Ald()]{Aldebaran}
 {Aldebaran 2.1.4.13 documentation}.
 \newblock URL \url{http://doc.aldebaran.com/2-1/}.
+
+\bibitem[rom(2016)]{romeoRobotIssue}
+{Romeo robot repository issue}, 2016.
+\newblock URL \url{https://github.com/ros-aldebaran/romeo_robot/issues/10}.
 
 \bibitem[Aldebaran({\natexlab{a}})]{AldebaranC++SDK}
 Aldebaran.
@@ -43,6 +47,12 @@ A.~Aldoma, F.~Tombari, J.~Prankl, A.~Richtsfeld, L.~{Di Stefano}, and
   Automation}, pages 2104--2111, 2013.
 \newblock ISSN 10504729.
 \newblock \doi{10.1109/ICRA.2013.6630859}.
+
+\bibitem[ASUS()]{ASUSWeb}
+ASUS.
+\newblock {ASUS Xtion PRO LIVE Spec}.
+\newblock URL
+  \url{https://www.asus.com/us/3D-Sensor/Xtion_PRO_LIVE/specifications/}.
 
 \bibitem[Claudio et~al.(2015)Claudio, Spindler, and
   Chaumette]{claudio:hal-01159882}
@@ -81,6 +91,11 @@ Tully Foote and Mike Purvis.
 \newblock {Romeo humanoid robot grasping demonstration v1}, 2014.
 \newblock URL \url{https://www.youtube.com/watch?v=kz1Ob0Ks554}.
 
+\bibitem[Intel(R)()]{IntelWeb}
+Intel(R).
+\newblock {Intel RealSense Camera}.
+\newblock URL \url{https://software.intel.com/en-us/realsense/devkit}.
+
 \bibitem[Intel(R) and Lemaignan(2016)]{gitRealSense}
 Intel(R) and S{\'{e}}verin Lemaignan.
 \newblock {Repository Intel{\textregistered} RealSense™ Technology - ROS
@@ -111,6 +126,13 @@ Natalia Lyubova.
 \newblock {Moveit Simple Grasp}, 2016.
 \newblock URL
   \url{https://github.com/nlyubova/moveit_simple_grasps/tree/romeo-dev}.
+
+\bibitem[MoveIt(2013)]{MoveIt2013}
+MoveIt.
+\newblock {Creating a custom IKFast Plugin - MoveIt IKFast documentation},
+  2013.
+\newblock URL
+  \url{http://docs.ros.org/hydro/api/moveit_ikfast/html/doc/ikfast_tutorial.html}.
 
 \bibitem[Penton()]{Penton}
 Penton.
@@ -156,6 +178,11 @@ Morgan Quigley, Brian Gerkey, Ken Conley, Josh Faust, Tully Foote, Jeremy
 \newblock {ROS.org}.
 \newblock URL \url{http://www.ros.org/core-components/}.
 
+\bibitem[Smeenk(2014)]{Smeenk}
+Roland Smeenk.
+\newblock {Kinect V1 and Kinect V2 fields of view compared}, 2014.
+\newblock URL \url{http://smeenk.com/kinect-field-of-view-comparison/}.
+
 \bibitem[Smits et~al.()Smits, Bruyninckx, and Aertbeli]{KDL}
 R.~Smits, H.~Bruyninckx, and E.~Aertbeli.
 \newblock {KDL: Kinematics and dynamics library | The Orocos Project}.
@@ -180,7 +207,7 @@ Andreas ten Pas.
 \bibitem[ten Pas and Platt(2015)]{DBLP:journals/corr/PasP15}
 Andreas ten Pas and Robert Platt.
 \newblock {Localizing antipodal grasps in point clouds}.
-\newblock \emph{CoRR}, abs/1501.03100, 2015.
+\newblock \emph{CoRR}, abs/1501.0, 2015.
 \newblock URL \url{http://arxiv.org/abs/1501.03100}.
 
 \end{thebibliography}

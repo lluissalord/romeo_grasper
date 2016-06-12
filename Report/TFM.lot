@@ -4,13 +4,16 @@
 \addvspace {10\p@ }
 \contentsline {table}{\numberline {3.1}{\ignorespaces Joints of Romeo left arm with parent and child links\relax }}{14}{table.caption.16}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Description and default value of every parameter of \texttt {romeo\_grasper.yaml}\relax }}{32}{table.caption.37}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Description and default value of \texttt {romeo\_grasper.launch} arguments.\relax }}{33}{table.caption.38}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Description and default value of every parameter of \texttt {romeo\_grasper.yaml}\relax }}{31}{table.caption.36}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Description and default value of \texttt {romeo\_grasper.launch} arguments.\relax }}{32}{table.caption.37}
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Information sent and received from and to the packages. \relax }}{47}{table.caption.51}
+\contentsline {table}{\numberline {5.1}{\ignorespaces Information sent and received from and to the packages. \relax }}{47}{table.caption.50}
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {6.1}{\ignorespaces Index of every link of the robot base and arms.\relax }}{50}{table.caption.51}
+\contentsline {table}{\numberline {6.2}{\ignorespaces Index of every joint of the robot arms.\relax }}{51}{table.caption.52}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces Comparison of the RGB-D cameras: Kinect, Xtion and RealSense.\relax }}{57}{table.caption.54}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Software required with his version\relax }}{67}{table.caption.55}
+\contentsline {table}{\numberline {A.1}{\ignorespaces Software required with his version\relax }}{69}{table.caption.58}
