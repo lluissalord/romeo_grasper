@@ -176,7 +176,7 @@ void RomeoGrasper::loadParams(int flag)
                   "/data/models/reference_name/tracking_model.ao",
                   PARAM_MODEL_REFERECE_NAME);
 
-        loadParam("camera_reference_frame_id",
+        loadParam("camera_ref_frame_id",
                   &camera_reference_frame_id_,
                   "/l_wrist",
                   PARAM_CAMERA_REFERENE_FRAME_ID);

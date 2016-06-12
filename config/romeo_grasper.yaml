@@ -19,7 +19,7 @@ attempts_max: 3
 
 base_link_frame_id: base_link
 camera_in_front: false
-camera_reference_frame_id: l_wrist
+camera_ref_frame_id: l_wrist
 camera_frame_id: camera_rgb_optical_frame
 camera_link: camera_link
 object_frame_id: object_frame
