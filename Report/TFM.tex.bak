@@ -128,6 +128,12 @@ Master Thesis Project\\
     },
     morekeywords = {command, ns, file}
 }
+\lstdefinelanguage{Git}{
+    keywords = {
+        git, clone
+    },
+    morekeywords = {cd,curl,sudo,mkdir,catkin_make,make,cmake}
+}
 
 % Used to make possible have matrix with format like [ccc|c]
 \makeatletter
@@ -722,7 +728,7 @@ Firstly, describe every parameter loaded to ROS with the file \texttt{romeo\_gra
 \multirow{1}{*}{\texttt{camera\_pose\_x}} & \multirow{1}{*}{-0.11} & \multirow{3}{\hsize}{Coords of the camera when camera position is pre-known, more in Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_y}} & \multirow{1}{*}{0.62} & \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_z}} & \multirow{1}{*}{0.14} & \\ \hline
-\multirow{1}{*}{\texttt{camera\_pose\_roll}} & \multirow{1}{*}{$-\frac{\pi}{12}$} & \multirow{3}{\hsize}{Orientation of the camera in RPY when camera position is pre-known, see Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
+\multirow{1}{*}{\texttt{camera\_pose\_roll}} & \multirow{1}{*}{$\frac{\pi}{18}$} & \multirow{3}{\hsize}{Orientation of the camera in RPY when camera position is pre-known, see Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_pitch}} & \multirow{1}{*}{0} & \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_yaw}} & \multirow{1}{*}{$-\frac{\pi}{2}$} & \\ \hline
 \texttt{camera\_frame\_id} & camera\_rgb\_optical\_frame & Frame of the camera following the ROS Enhancement Proposals (REPs) as an optical camera frame \cite{Foote}.\\ \hline
@@ -1284,6 +1290,10 @@ Although, it is not explained before, V4R has another feature which allows to re
 
 The only problem of this way of get the position of the object is that it is not optimal for a real-time tracking. This feature works as a service, so in order to work with it, the service should be called periodically to know always where are the object.
 
+\section{Improvement of visual camera positioning}
+
+As seen in the experiments, the positioning of the camera identifying parts of the robot doesn't give good results. Above has been explained an improvement for this, being able to identify every link at one. Therefore, implementing that and also QR-Codes, as in \cite{claudio:hal-01159882}, for every link, it could give a better result. These method has two main advantages: (1) a QR-Code is easy to recognise by SIFT because it has a lot of interesting points and (2) these QR-Codes are fixes respect to the robot, so they can have their own offset precisely measured. The main disadvantages are that the QR-Codes should be visible always when the package is launched and that after the initialization they are not used any more and may occlude part of the environment.
+
 \section{Fix the Romeo model}
 
 Currently, the grippers in the Romeo model are posed in a wrong position, see Figure \ref{fig:gripper_bad_position}. However, at the moment, this is not used because the grasp position is specified by \texttt{romeo\_grasp\_data.yaml} of the \texttt{moveit\_simple\_grasps} package. Then, the grasp position is set adding an offset from the WristYaw\_link position. Therefore, should be great to make the model more standard and have the gripper in the right place and set the grasp from the gripper itself. 
@@ -1350,13 +1360,121 @@ QtCreator & recent\footnote{As is said in NAO documentation \cite{AldebaranC++SD
 \end{table}
 \end{savenotes}
 
+\section{Romeo grasper installation}
+
+Make sure the following ROS dependencies are installed:
+
+\begin{itemize}
+\item \texttt{naoqi\_bridge\_msgs}
+\item \texttt{romeo\_bringup}
+\item \texttt{romeo\_moveit\_config}
+\item \texttt{romeo\_moveit\_actions} but should be installed from source from the following repository:
+\url{https://github.com/ros-aldebaran/romeo_moveit_config}
+\item \texttt{moveit\_ros\_planning\_interface}
+\item \texttt{moveit\_visual\_tools}
+\item \texttt{moveit\_simple\_grasps} but should be installed from source from the following repository:
+\url{https://github.com/davetcoleman/moveit_simple_grasps}
+\item \texttt{object\_tracker\_msg\_definitions}
+\item \texttt{object\_tracker\_srv\_definitions}
+\end{itemize}
+
+After install them and their dependencies clone the repository into a catkin workspace:
+
+\begin{lstlisting}[language=Git]
+cd my_catkin_ws/src
+git clone https://github.com/lluissalord/romeo_grasper.git
+cd ..
+catkin_make
+\end{lstlisting}
+
 \section{Camera drivers installation}
 \label{app:camera_instal}
 
 In order to install the Kinect camera with openNi has been used the following url \cite{Li}. For the RealSense camera has been used this repository \cite{gitRealSense} following the installation instructions. Unfortunately, the Asus Xtion camera has not been possible to use so here there is no description about the installation.
 
+\section{V4R installation}
+
+Before installing the V4R ROS wrappers \cite{gitV4RWrappers}, it has to be installed the V4R library \cite{gitV4R} which can be installed from ubuntu package or from source.
+
+\subsubsection{From ubuntu package}
+	
+Following these steps:
+
+\begin{itemize}
+\item Enable the STRANDS repositories:
+\begin{itemize}
+\item Add the STRANDS public key to verify packages: 
+\begin{lstlisting}[language=Git]
+curl -s http://lcas.lincoln.ac.uk/repos/public.key | sudo apt-key add -
+\end{lstlisting}
+\item Add the STRANDS repository:  
+\begin{lstlisting}[language=Git]
+sudo apt-add-repository http://lcas.lincoln.ac.uk/repos/release
+\end{lstlisting}
+\end{itemize}
+\item Update index:
+\begin{lstlisting}[language=Git]
+sudo apt-get update
+\end{lstlisting}
+\item Install:
+\begin{lstlisting}[language=Git]
+sudo apt-get install ros-indigo-v4r
+\end{lstlisting}
+\end{itemize}
+
+\subsubsection{From source}
+
+\begin{lstlisting}[language=Git]
+cd ~/somewhere
+git clone 'https://github.com/strands-project/v4r'
+cd v4r
+mkdir build
+cd build
+cmake ..
+make
+sudo make install (optional)
+\end{lstlisting}
+
+\subsubsection{V4R ROS wrappers}
+
+Finally, the wrappers should be installed from source because there are some features that are not yet implemented in the ubuntu package.
+
+\begin{lstlisting}[language=Git]
+cd my_catkin_ws/src
+git clone https://github.com/strands-project/v4r_ros_wrappers.git
+cd ..
+catkin_make
+\end{lstlisting}
+
 \section{OpenRAVE installation}
 \label{app:ikfast}
- 
+
+OpenRAVE is the software which allows to create the inverse kinematics solver IKFast. This software have some dependencies which should be installed from source and it is recommended in the same order:
+
+\begin{itemize}
+\item \texttt{libccd} which is a library for collision detection between two convex shapes
+
+\url{https://github.com/danfis/libccd}
+
+\item \texttt{octomap}, an efficient probabilistic 3D mapping framework based on octrees
+
+\url{https://github.com/OctoMap/octomap}
+
+\item \texttt{FCL} (Flexible Collision Library)
+
+\url{https://github.com/flexible-collision-library/fcl}
+
+\item \texttt{ODE} (Open Dynamics Engine)
+
+\url{https://sourceforge.net/projects/opende/}
+\end{itemize}
+
+After installing these dependencies, it should be installed \texttt{bullet-2.80}, the recommendation is to use the following \texttt{ppa} because is the version which works well with OpenRAVE. Another recommendation is to remember to enable shared libraries in the installations, because in some of them it is not enabled by default.
+
+\url{http://ppa.launchpad.net/joern-schoenyan/libbullet280/ubuntu/}
+
+Finally, the installation of OpenRAVE is also recommended to do it from source. Moreover, my installation I had to disable some plugins as 
+
+\url{https://github.com/rdiankov/openrave}
 
 \end{document}

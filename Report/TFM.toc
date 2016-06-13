@@ -65,13 +65,19 @@
 \contentsline {section}{\numberline {8.1}Implementation new inverse kinematics}{55}{section.8.1}
 \contentsline {section}{\numberline {8.2}Improve use of V4R}{55}{section.8.2}
 \contentsline {section}{\numberline {8.3}Object identification}{57}{section.8.3}
-\contentsline {section}{\numberline {8.4}Fix the Romeo model}{58}{section.8.4}
-\contentsline {section}{\numberline {8.5}Implementation of AGILE grasp}{58}{section.8.5}
-\contentsline {section}{\numberline {8.6}Dependencies of packages}{59}{section.8.6}
+\contentsline {section}{\numberline {8.4}Improvement of visual camera positioning}{58}{section.8.4}
+\contentsline {section}{\numberline {8.5}Fix the Romeo model}{58}{section.8.5}
+\contentsline {section}{\numberline {8.6}Implementation of AGILE grasp}{59}{section.8.6}
+\contentsline {section}{\numberline {8.7}Dependencies of packages}{59}{section.8.7}
 \contentsline {chapter}{\numberline {9}Conclusion}{61}{chapter.9}
 \contentsline {chapter}{References}{65}{chapter*.56}
 \contentsline {chapter}{Appendices}{66}{section*.57}
 \contentsline {chapter}{\numberline {A}Software requirements and installation}{69}{appendix.A}
 \contentsline {section}{\numberline {A.1}Software requirements}{69}{section.A.1}
-\contentsline {section}{\numberline {A.2}Camera drivers installation}{69}{section.A.2}
-\contentsline {section}{\numberline {A.3}OpenRAVE installation}{70}{section.A.3}
+\contentsline {section}{\numberline {A.2}Romeo grasper installation}{69}{section.A.2}
+\contentsline {section}{\numberline {A.3}Camera drivers installation}{70}{section.A.3}
+\contentsline {section}{\numberline {A.4}V4R installation}{70}{section.A.4}
+\contentsline {subsubsection}{From ubuntu package}{70}{section*.59}
+\contentsline {subsubsection}{From source}{71}{section*.60}
+\contentsline {subsubsection}{V4R ROS wrappers}{71}{section*.61}
+\contentsline {section}{\numberline {A.5}OpenRAVE installation}{71}{section.A.5}

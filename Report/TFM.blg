@@ -12,7 +12,7 @@ A level-1 auxiliary file: images/pose_preknown.aux
 A level-1 auxiliary file: images/plan_execute_function_flow.aux
 A level-1 auxiliary file: images/setup_romeo_grasper.aux
 Database file #1: ./library/library.bib
-Repeated entry---line 1147 of file ./library/library.bib
+Repeated entry---line 905 of file ./library/library.bib
  : @misc{ROS
  :          ,
 I'm skipping whatever remains of this entry
@@ -33,45 +33,45 @@ Warning--empty year in Penton
 Warning--empty year in ROS
 Warning--empty year in KDL
 Warning--empty year in strands
-You've used 33 entries,
+You've used 34 entries,
             2773 wiz_defined-function locations,
-            785 strings with 10323 characters,
-and the built_in function-call counts, 12010 in all, are:
-= -- 1055
-> -- 591
-< -- 25
-+ -- 217
-- -- 180
-* -- 815
-:= -- 1810
-add.period$ -- 109
-call.type$ -- 33
-change.case$ -- 159
+            789 strings with 10414 characters,
+and the built_in function-call counts, 12311 in all, are:
+= -- 1081
+> -- 601
+< -- 26
++ -- 222
+- -- 183
+* -- 834
+:= -- 1855
+add.period$ -- 112
+call.type$ -- 34
+change.case$ -- 163
 chr.to.int$ -- 29
-cite$ -- 85
-duplicate$ -- 553
-empty$ -- 1105
-format.name$ -- 217
-if$ -- 2541
-int.to.chr$ -- 5
+cite$ -- 87
+duplicate$ -- 568
+empty$ -- 1137
+format.name$ -- 221
+if$ -- 2605
+int.to.chr$ -- 6
 int.to.str$ -- 1
 missing$ -- 8
-newline$ -- 183
-num.names$ -- 124
-pop$ -- 422
+newline$ -- 188
+num.names$ -- 128
+pop$ -- 434
 preamble$ -- 1
-purify$ -- 126
+purify$ -- 129
 quote$ -- 0
-skip$ -- 491
+skip$ -- 502
 stack$ -- 0
-substring$ -- 174
-swap$ -- 50
+substring$ -- 176
+swap$ -- 53
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 363
+type$ -- 374
 warning$ -- 17
-while$ -- 102
+while$ -- 105
 width$ -- 0
-write$ -- 418
+write$ -- 430
 (There was 1 error message)
