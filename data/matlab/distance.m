@@ -15,8 +15,9 @@ tol = 0.05;
 r = 0;
 
 global on_side;
+global seed_num;
 
-[~,p_1_real,p_1_camera,p_2_real,p_2_camera,p_3_real,p_3_camera]=loadparams(on_side);
+[~,p_1_real,p_1_camera,p_2_real,p_2_camera,p_3_real,p_3_camera]=loadparams(on_side, seed_num);
 
 % if(abs(v_x(1)*v_y(1) + v_x(2)*v_y(2) + v_x(3)*v_y(3)) > tolerance)
 %     r = r + inf;
