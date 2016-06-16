@@ -19,3 +19,6 @@ Plb = [0.16042; 0.2048; -0.31142];
 Tlb = [Rlb Plb; 0 0 0 1]
 
 Tcb = Tlb * inv(Tlo) * inv(Toc)
+S = Tcb(1:3,1:3);
+[r1, r2, r3] = dcm2angle(S, 'ZYX')
+p_c = Tcb(1:3,4)
