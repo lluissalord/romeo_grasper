@@ -738,6 +738,8 @@ void RomeoGrasper::callbackObjectPose(object_tracker_msg_definitions::ObjectInfo
         pose_target_stamped_.header.frame_id = camera_frame_id_;
         pose_target_stamped_.header.stamp = ros::Time(0);
 
+        modeled_object_->setNotObjectPose(); //The modeled object pose is not yet updated
+
         has_pose_ = true;
         changed_pose_ = true;
         preGraspVsPick = true;
