@@ -49,7 +49,7 @@
 \pagestyle{fancy}
 \fancyhead{}
 \fancyhead[RO,LE]{\thepage}
-\fancyhead[RE,LO]{Grasping by Romeo robot using V4R}
+\fancyhead[RE,LO]{Approach to grasp with Romeo robot using RTM}
 \fancyfoot{}
 \fancyfoot[RO,LE]{\includegraphics[width=0.065\textwidth]{images/TU_small_logo.png}}
 
@@ -65,7 +65,7 @@
 \bibliographystyle{plainnat} 
 %Poso per ordre d'pració (així) o per ordre d'autors (plainnat)?
 
-\title{Grasping by Romeo robot using V4R}
+\title{Approach to grasp with Romeo robot using RTM}
 \author{Lluís Salord Quetglas\\
 		\texttt{l.salord.quetglas@gmail.com}\\}
 \date{Technischen Universität Wien (TU Wien)\\
@@ -100,6 +100,9 @@ Master Thesis Project\\
 \usepackage{epstopdf}
 
 \usepackage{footnote}
+\makeatletter %To refer footnotes already used
+\newcommand\footnoteref[1]{\protected@xdef\@thefnmark{\ref{#1}}\@footnotemark}
+\makeatother
 \usepackage{cleveref}[2012/02/15]% v0.18.4; 
 % 0.16.1 of May 2010 would be sufficient, but what is the exact day?
 
@@ -199,13 +202,27 @@ The main goal of this project is to achieve that the Romeo robot can recognise s
 
 Furthermore, this task is not only important for Romeo, a wide range of robots need to achieve that. Therefore, share the code and make it open source could help other research programs, and other people could help to continue and improve our work. So this work is not over when the master thesis is done, but it can be continued with any restrictions. Moreover, the code of this project should be put in a package, which should be as flexible as possible to be complemented with any kind of packages. Finally, another main goal of this project is to be explained in a way that other people can understand perfectly how it works and then improve the code.
 
-\section{Extent of project}
-
 Due to the nature of the project itself there are some limitations or requirements that it should be accomplish. Firstly, it needs to be stated that this work is a first approach to make Romeo capable to recognize and grasp objects. Due to be a master thesis, which it should be done in only a few months, and it is required some time to get used with the robot, it is probably that the final result won't be totally perfect.
 
-Furthermore, there are some software constraints which should be accomplished. On one hand, the use of an acknowledged software like ROS, explained in Section \ref{sec:ROS}, so it can be easily implemented with other packages and it is a perfect framework for a open-source robotic project. On the other hand, the use of the V4R software, explained in Section \ref{sec:V4R}, which is from our institute (ACIN), due to is a novel software for the recognition of objects. Finally, the packages from which this project depends should be used as they are officially. So if they need to be modify, the changes should be send to the maintainer of the package and updated.
+Moreover, there are some software constraints which should be accomplished. On one hand, the use of an acknowledged software like ROS, explained in Section \ref{sec:ROS}, so it can be easily implemented with other packages and it is a perfect framework for a open-source robotic project. On the other hand, the use of the RTM software, explained in Section \ref{sec:RTM}, which is from our institute (ACIN), due to is a novel software for the recognition of objects. Finally, the packages from which this project depends should be used as they are officially. So if they need to be modify, the changes should be send to the maintainer of the package and updated.
+
+Summarizing the main goals with their subgoals are the following:
+\begin{itemize}
+\item Approach to grasp an object recognised with the RTM software.
+\begin{itemize}
+\item Discern by parts where comes the possible error that can be in the approach.
+\item Grasp using a method coherent with the Romeo aim to help people.
+\end{itemize}
+\item Share the work in order to help the community and also they can help us.
+\begin{itemize}
+\item Share it in a ROS package.
+\item This dissertation should explain all the concepts in a way that makes easy to understand the code and so it can be improved by the community.
+\end{itemize}
+\end{itemize}
+%\section{Extent of project}
 
 \section{Repository}
+\label{sec:repository}
 
 One of the main ideas of this project is to be open source, so everybody can use and improve it. In order to accomplish this, all the code can be found in the following repository with also this document:
 
@@ -326,7 +343,7 @@ Furthermore, there is another interesting function named \texttt{publishPlanInfo
 \caption{Flow sequence for function \texttt{pickAction(...)}\label{fig:moveit_actions_pick_action}}
 \end{figure}
 
-\chapter{Preliminary studies}
+\chapter{Robot and camera system}
 \label{cha:pre_studies}
 % Idea de que es
 \section{Romeo robot}
@@ -582,18 +599,21 @@ In order to add the depth camera is used the same code structure as in \texttt{n
 
 Looking in the code one tested idea to solve it has been to change the camera index which currently is 2 (names \texttt{kDepthCamera}) which, according to \citep{Aldebaran}, to connect to ASUS Xtion should be 4 (named \texttt{kXTION}). After a lot of tests, changing the encoding and other features, it hasn't reach any good result. 
 
-\subsection{V4R (Vision for Robots)}
-\label{sec:V4R}
+\subsection{RTM (Recognition, Tracking and Modelling of Objects)}
+\label{sec:RTM}
 
-The V4R software is only a branch of a huge project named STRANDS \cite{strands} which has the aim to enable a robot to achieve robust and intelligent behaviour in human environments through adaptation to, and the exploitation of, long-term experience. Specifically V4R has the aim to provide the robot with life-long acquisition of object knowledge, incrementally extending its expertise over time.
+%The V4R software is only a branch of a huge project named STRANDS \cite{strands} which has the aim to enable a robot to achieve robust and intelligent behaviour in human environments through adaptation to, and the exploitation of, long-term experience. Specifically V4R has the aim to provide the robot with life-long acquisition of object knowledge, incrementally extending its expertise over time.
 
-In order to achieve this goal, V4R has several modules and apps going in that direction. Concerning to this project, two of the features which are the most interesting: (1) RGB-D object modelling for object recognition and tracking and (2) real-time object pose tracking.
+%In order to achieve this goal, V4R has several modules and apps going in that direction. Concerning to this project, two of the features which are the most interesting: (1) RGB-D object modelling for object recognition and tracking and (2) real-time object pose tracking.
 
-On one hand, V4R has RTM-Toolbox (Recognition, Tracking and Modelling Object) \cite{Prankl2015} which includes a flexible system to reconstruct 3D models of objects captured with an RGB-D sensor. A major advantage of the method is that unlike  other modelling tools, this reconstruction pipeline allows  the user to acquire a full 3D model of the object. This is  achieved by acquiring several partial 3D models in different sessions that are automatically merged together to reconstruct a full 3D model. 
+%On one hand, V4R has RTM-Toolbox (Recognition, Tracking and Modelling Object) \cite{Prankl2015} which includes a flexible system to reconstruct 3D models of objects captured with an RGB-D sensor. A major advantage of the method is that unlike  other modelling tools, this reconstruction pipeline allows  the user to acquire a full 3D model of the object. This is  achieved by acquiring several partial 3D models in different sessions that are automatically merged together to reconstruct a full 3D model. 
+RTM-Toolbox (Recognition, Tracking and Modelling of Object) \cite{Prankl2015} which is a software part of a global package named V4R (Vision for Robots). The RTM-Toolbox includes, as its names says, the three features: recognition, tracking and modelling of objects. However, concerning to this project, two of them are the most interesting: (1) RGB-D object modelling for object recognition and tracking and (2) real-time object pose tracking.
+
+On one hand, RTM-Toolbox includes a flexible system to reconstruct 3D models of objects captured with an RGB-D sensor. A major advantage of the method is that unlike  other modelling tools, this reconstruction pipeline allows  the user to acquire a full 3D model of the object. This is  achieved by acquiring several partial 3D models in different sessions that are automatically merged together to reconstruct a full 3D model. 
 
 On the other hand, the real-time object pose tracking \cite{Prankl2013} \cite{Aldoma2013}, combines complementary interest points, for textured objects and for uniformly colored objects, in a common tracking framework which allows to handle a broad variety of objects regardless of their appearance and shape. Then, the point cloud around the detected object is analysed to confirm that the depth of the object is the right one.
 
-Although, the V4R library is independent from ROS, there are wrappers for ROS \cite{gitV4RWrappers}. Therefore, the features described above can be used though ROS. However, there are some limitations. Even using a RGB-D sensor, to run RTM-Toolbox is necessary to have the sensor launched though OpenNi. The problem appears with some RGB-D cameras that are not supported by OpenNi like the Intel RealSense.\footnote{Installation of the camera drivers explained in Appendix \ref{app:camera_instal}} Therefore, it cannot use the RTM-Toolbox and only can use the modelling application the Microsoft Kinect and ASUS Xtion cameras. Except for this, in all the others features is possible to use any camera which can publish PointsClouds in a topic, see Figure \ref{fig:V4R-ROS}.
+Although, the V4R library is independent from ROS, there are wrappers for ROS \cite{gitV4RWrappers}. Therefore, the features described above can be used though ROS. However, there are some limitations. Even using a RGB-D sensor, to run RTM-Toolbox with the modelling tool is necessary to have the sensor launched though OpenNi. The problem appears with some RGB-D cameras that are not supported by OpenNi like the Intel RealSense.\footnote{Installation of the camera drivers explained in Appendix \ref{app:camera_instal}} Therefore, it cannot use the RTM-Toolbox with the modelling tool and only can use this application the Microsoft Kinect and ASUS Xtion cameras. Except for this, in all the others features is possible to use any camera which can publish PointsClouds in a topic, see Figure \ref{fig:V4R-ROS}.
 
 \begin{figure}[h]
 \centering
@@ -633,9 +653,9 @@ On the other hand, \textit{OpenRAVE} (Open Robotics Automation Virtual Environme
 
 The next stage introduces the general idea of the package here exposed. After this chapter, on the Implementation Chapter \ref{ch:implementation}, the package is explained in detail. 
 
-Before the overview of the package, it should be stated that the purpose of \texttt{romeo\_grasper} is to combine the different dependencies to achieve grasping an object recognised by the camera. There are several dependencies, such as: (1) ROS packages which communicates with Romeo; (2) simulator and kinematic solvers to move the robot to the desired position; (3) ROS packages which generates the grasps; (4) camera drivers and (5) V4R software which allow to know where is the object respect to the camera.
+Before the overview of the package, it should be stated that the purpose of \texttt{romeo\_grasper} is to combine the different dependencies to achieve that Romeo grasps an object recognised by the camera. There are several dependencies, such as: (1) ROS packages which communicates with Romeo; (2) simulator and kinematic solvers to move the robot to the desired position; (3) ROS packages which generates the grasps; (4) camera drivers and (5) RTM (Recognition, Tracking and Modelling of Objects) software which allow to know where is the object respect to the camera.
 
-A brief overview of this package can be understood by the Figure \ref{fig:overview_design}. First of all, the position of the object is got with the camera and V4R software. Then is time to compute a pre-grasping trajectory and a picking trajectory using inverse kinematics. The next stage is using the simulation to test these trajectories. After that, we send the joint commands to NAOqi through the Romeo ROS packages to finally move the robot joints and make the grasp.
+A brief overview of this package can be understood by the Figure \ref{fig:overview_design}. First of all, the position of the object is got with the camera and RTM software. Then is time to compute a pre-grasping trajectory and a picking trajectory using inverse kinematics. The next stage is using the simulation to test these trajectories. After that, we send the joint commands to NAOqi through the Romeo ROS packages to finally move the robot joints and make the grasp.
 
 
 \begin{figure}[h]
@@ -648,7 +668,7 @@ A brief overview of this package can be understood by the Figure \ref{fig:overvi
 
 In order to be able of grasping object which has been recognized by the camera, we need the position of the object on the robot reference. This position is got by the camera which should be positioned too. The ideal case would be using the Romeo RGB-D camera mentioned in Section \ref{sec:romeo_hardware}, because the relative position of the camera from the robot is known by the \texttt{romeo\_description} package and we don't need extra connections. But is not possible to get a good performance with it because, as mentioned in Section \ref{sec:romeo_ros}, the images of Romeo depth camera are useless. Moreover, the robot is not able to see its own arms till they are too far to work with because of the range of the camera. Seeing that we need to use an external camera to get the environment information.
 
-Although, we can use any camera that can publish \texttt{PointClouds}, explained in Section \ref{sec:V4R}, is better to use the same type of camera used for the modeling of the object. In that case, we obtain a better performance of the V4R software and so less error for the global system. Once we have the camera, we can start positioning the camera.
+Although, we can use any camera that can publish \texttt{PointClouds}, explained in Section \ref{sec:RTM}, is better to use the same type of camera used for the modeling of the object. In that case, we obtain a better performance of the RTM software and so less error for the global system. Once we have the camera, we can start positioning the camera.
 
 \vspace{-10pt}
 \subsection{Positioning the camera}
@@ -660,7 +680,7 @@ In \texttt{Romeo grasper} package there are different ways to make known to the 
 \item Use a reference object that the camera recognises and associates with a link of the robot.
 \end{enumerate}
 
-The first one, use the position of the link and then add the relative position to have the camera position on the robot reference and optionally can be set the RPY transformation for the camera. The second one uses the camera recognition software to know the position of the reference object. This object is associated with a link of the robot, so the position of the reference object is the position of the link. The ideal case would be that the reference object was itself the link robot. This case has been tested but without succeed because of the lack of \texttt{SIFT} points on the robot link surface, that makes difficult for the V4R software to detect the link. Because of that we use a reference object with an offset parameter to fix the error in the position, this offset parameter is explained in the following chapter, Section \ref{sec:model_object}.
+The first one, use the position of the link and then add the relative position to have the camera position on the robot reference and, optionally, can be set the RPY transformation for the camera. The second one uses the camera recognition software to know the position of the reference object. This object is associated with a link of the robot, so the position of the reference object is the position of the link. The ideal case would be that the reference object was itself the link robot. This case has been tested but without succeed because of the lack of \texttt{SIFT} points on the robot link surface, that makes difficult for the RTM software to detect the link. Because of that we use a reference object with an offset parameter to fix the error in the position, this offset parameter is explained in the following chapter, Section \ref{sec:model_object}.
 
 Once we have the position of the camera, this is published to ROS. So it can be used for the simulator and to get the position of the object relative to the robot.
 
@@ -668,7 +688,7 @@ Once we have the position of the camera, this is published to ROS. So it can be 
 \subsection{Calculate the object position}
 \label{sec:design_object_position}
 
-After having the position of the camera, we can start with the process of getting the position of the object. When the V4R software gives us the position, that is presented in camera coordinates. So we need to transform from this reference to robot reference. The way to do that is represented in the equation \eqref{eq:pos_robot_object}, so using the transform from camera reference to robot, got with the position and orientation of the camera on robot reference, and with the position on the camera reference results in the position on robot reference.
+After having the position of the camera, we can start with the process of getting the position of the object. When the RTM software gives us the position, that is presented in camera coordinates. So we need to transform from this reference to robot reference. The way to do that is represented in the equation \eqref{eq:pos_robot_object}, so using the transform from camera reference to robot, got with the position and orientation of the camera on robot reference, and with the position on the camera reference results in the position on robot reference.
 
 \begin{equation}
 P_{robot}^{object} = T_{robot}^{camera} \cdot P_{camera}^{object} \label{eq:pos_robot_object}
@@ -702,10 +722,10 @@ Firstly, describe every parameter loaded to ROS with the file \texttt{romeo\_gra
 \texttt{ref\_confidence\_threshold} & 0.35 & Minimum tracker confidence to use a position to set the reference link.\\ \hline
 \texttt{reachVsGrasp} & true & Boolean to set the way to do the planning of the pre-grasp, using \texttt{reachAction} or \texttt{graspPlan}. More information in Sections \ref{sec:romeo_moveit_actions} and \ref{sec:planning_pregrasp}\\ \hline
 \texttt{max\_velocity\_scaling\_factor} & 0.1 & Maximum factor of speed for the joints.\\ \hline
-\texttt{tolerance\_step} & 0.1 & Step which increments the goal tolerance for every attempt in \texttt{reachAction} and \texttt{pickAction} function.\\ \hline
-\texttt{tolerance\_min} & 0.1 & Initial goal tolerance for planning and picking.\\ \hline
-\texttt{planning\_time} & 20 & Maximum planning time for each attempt.\\ \hline
-\texttt{attempts\_max} & 3 & Maximum number of attempts.\\ \hline
+\texttt{tolerance\_step} & 0.01 & Step which increments the goal tolerance for every attempt in \texttt{reachAction} and \texttt{pickAction} function.\\ \hline
+\texttt{tolerance\_min} & 0.01 & Initial goal tolerance for planning and picking.\\ \hline
+\texttt{planning\_time} & 5 & Maximum planning time for each attempt.\\ \hline
+\texttt{attempts\_max} & 9 & Maximum number of attempts.\\ \hline
 \multicolumn{3}{|r|}{\small\sl continued on next page}\\
 \hline
 \end{tabulary}
@@ -722,13 +742,13 @@ Firstly, describe every parameter loaded to ROS with the file \texttt{romeo\_gra
 \textbf{Parameter name} & \textbf{Default value} & \textbf{Description} \\ \hline
 \texttt{base\_link\_frame\_id} & base\_link & Base frame of the robot.\\ \hline
 \texttt{camera\_in\_front} & false & Boolean to know if the camera is in front of the robot or next to it. More information in Section \ref{sec:impl_camera_approach}\\ \hline
-\texttt{camera\_ref\_frame\_id} & l\_wrist & Frame of the link used as reference, see Section \ref{sec:visual-recognition}. \\ \hline
+\texttt{camera\_ref\_frame\_id} & base\_link & Frame of the link used as reference, see Section \ref{sec:visual-recognition}. \\ \hline
 \texttt{camera\_link} & camera\_link & Frame used to set the position of the camera.\\ \hline
 \texttt{object\_frame\_id} & object\_frame & Frame of the object that should be grasped.\\ \hline
-\multirow{1}{*}{\texttt{camera\_pose\_x}} & \multirow{1}{*}{-0.11} & \multirow{3}{\hsize}{Coords of the camera when camera position is pre-known, more in Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
-\multirow{1}{*}{\texttt{camera\_pose\_y}} & \multirow{1}{*}{0.62} & \\ \cline{1-2}
-\multirow{1}{*}{\texttt{camera\_pose\_z}} & \multirow{1}{*}{0.14} & \\ \hline
-\multirow{1}{*}{\texttt{camera\_pose\_roll}} & \multirow{1}{*}{$\frac{\pi}{18}$} & \multirow{3}{\hsize}{Orientation of the camera in RPY when camera position is pre-known, see Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
+\multirow{1}{*}{\texttt{camera\_pose\_x}} & \multirow{1}{*}{0.0869} & \multirow{3}{\hsize}{Coords of the camera when camera position is pre-known, more in Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
+\multirow{1}{*}{\texttt{camera\_pose\_y}} & \multirow{1}{*}{0.73} & \\ \cline{1-2}
+\multirow{1}{*}{\texttt{camera\_pose\_z}} & \multirow{1}{*}{-0.1897} & \\ \hline
+\multirow{1}{*}{\texttt{camera\_pose\_roll}} & \multirow{1}{*}{$\frac{\pi}{12}$} & \multirow{3}{\hsize}{Orientation of the camera in RPY when camera position is pre-known, see Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_pitch}} & \multirow{1}{*}{0} & \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_yaw}} & \multirow{1}{*}{$-\frac{\pi}{2}$} & \\ \hline
 \texttt{camera\_frame\_id} & camera\_rgb\_optical\_frame & Frame of the camera following the ROS Enhancement Proposals (REPs) as an optical camera frame \cite{Foote}.\\ \hline
@@ -779,7 +799,7 @@ Moreover, the launcher has the following arguments which are loaded as parameter
 \end{center}
 \end{table}
 
-Although, a real camera were not used, so being \texttt{tracking} false, the position of the object can be given to \texttt{romeo\_grasper} though the \texttt{object\_tracker/object\_pose} topic as is done by the V4R software.
+Although, a real camera were not used, so being \texttt{tracking} false, the position of the object can be given to \texttt{romeo\_grasper} though the \texttt{object\_tracker/object\_pose} topic as it is done by the RTM software.
 
 However, the previously launcher cannot be run alone, it needs other nodes to work properly. Therefore, there are two more launchers which run these nodes automatically: 
 \begin{itemize}
@@ -806,12 +826,12 @@ At this stage the details of every process are explained. So the parts briefly e
 \section{Model Object class}
 \label{sec:model_object}
 
-This class represent, in the \texttt{Romeo grasper} package, an object that has been previously modeled with the V4R Toolbox. This class allow to create, remove and update every object independently in the simulator and to calculate its own position with the pertinent correction on the robot reference, given the position on camera reference. 
+This class represent, in the \texttt{Romeo grasper} package, an object that has been previously modeled with the RTM-Toolbox. This class allow to create, remove and update every object independently in the simulator and to calculate its own position with the pertinent correction on the robot reference, given the position on camera reference. 
 
 At the initialization of this class, it should be associated with one of the modeled object with the pertinent configuration file \texttt{model\_config.yaml} in the same folder of the modeled object.\footnote{In the package the folder for every model is placed at \texttt{data/models/MODEL\_NAME}.} The config file has the following parameters:
 
 \begin{itemize}
-\item \textbf{offset\_x$/$y$/$z}: the origin established by the V4R Toolbox may be is not the desired one for the grasp. This offset use the orientation provided by V4R Toolbox.
+\item \textbf{offset\_x$/$y$/$z}: the origin established by the RTM-Toolbox may be is not the desired one for the grasp. This offset use the orientation provided by RTM-Toolbox.
 \item \textbf{shapeType}: shape used in the simulator. For now only supports \texttt{cylinder}.
 \item \textbf{size}: set the radius of the cylinder.
 \item \textbf{size\_l}: set the longitude of the cylinder.
@@ -926,17 +946,17 @@ In order to be able to get the pose of the links of the robot is used a modeled 
 
 Below are explained the three different approaches done for this method. Although, only the first one is implemented in the package, the others are prepared in the Matlab files on the directory \texttt{data$/$matlab$/$}.
 
-\vspace{-10pt}
+%\vspace{-10pt}
 \subsubsection{(1) Using only one link}
 
 In this case, is used the assumption of having the camera next to or in front of the robot as a final orientation. Therefore, the only unknown variable is the camera position on base reference, $P_{base}^{cam}$. So as to solve this is needed the position of a link on camera reference, $P_{cam}^{link}$, that is known also on base reference, $P_{base}^{link}$. Finally the Equation \eqref{eq:camera_pose_visual_point} is the one to solve.
 
-\vspace{-10pt}
+%\vspace{-10pt}
 \begin{equation}\label{eq:camera_pose_visual_point}
 P_{base}^{cam} - P_{base}^{link} + S_{base}^{cam} \cdot P_{cam}^{link} = 0
 \end{equation}
 
-\vspace{-20pt}
+%\vspace{-20pt}
 \subsubsection{(2) Using three links}
 
 On the other hand, this case only used the assumption of the orientation to have a seed to solve the problem. The idea of this way is to implement the resolution of an optimisation problem with non-linear constraints to have an exact position and orientation of the camera.
@@ -957,12 +977,13 @@ The reason to use three link for this case is that a minimum of 12 equation are 
 
 As said previously, the fact of having the camera in front or next to the robot is used as a seed. So the depending of the case is used the matrix from Equation \eqref{eq:matrix_rot_side} or from Equation \eqref{eq:matrix_rot_front}. Furthermore, for the position there are also seeds, these are extracted experimentally.
 
-Finally mention that in Matlab is used the algorithm \texttt{GlobalSearch} because it allows non-linear constraints and also search in a big range of solutions and is not only trying from the given seed. 
+%Finally mention that in Matlab is used the algorithm \texttt{GlobalSearch} because it allows non-linear constraints and also search in a big range of solutions and is not only trying from the given seed. 
+Finally mention that in Matlab is used the optimization solver \texttt{GlobalSearch} because it allows non-linear constraints and also search in a big range of solutions. Therefore, apart from looking for the best solution from the given seed, it generates some trial points in all the space inside the constraints. These trial points are potential start points as the seed, so this method allow to not remain in a local minimum. 
 
-\vspace{-10pt}
+%\vspace{-10pt}
 \subsubsection{(3) Using multiples transformations}
 
-The V4R software, apart from giving the position of the object, gives the orientation. So instead of only using the position of the link placing the reference object at a certain place, we could use also the orientation of the object. Therefore, we could discover the position and orientation of the camera placing the object in a precise position and orientation from the known link. In order to do that we should know: (1) the transform from object to link reference, because of that reference object is placed by us; (2) the transform from link to base, provided by the model of the robot; (3) the transform from camera to object, known by using the information of the V4R software. With all this information we could have the transformation from camera to base, as showed in Equation \eqref{eq:camera_pose_trans}, so finally get position and orientation of the camera.
+The RTM software, apart from giving the position of the object, gives the orientation. So instead of only using the position of the link placing the reference object at a certain place, we could use also the orientation of the object. Therefore, we could discover the position and orientation of the camera placing the object in a precise position and orientation from the known link. In order to do that we should know: (1) the transform from object to link reference, because of that reference object is placed by us; (2) the transform from link to base, provided by the model of the robot; (3) the transform from camera to object, known by using the information of the RTM software. With all this information we could have the transformation from camera to base, as showed in Equation \eqref{eq:camera_pose_trans}, so finally get position and orientation of the camera.
 
 \begin{equation}\label{eq:camera_pose_trans}
 T_{base}^{cam} = T_{base}^{link} \cdot T_{link}^{obj} \cdot T_{obj}^{cam}
@@ -986,6 +1007,7 @@ After that, is time to start with the planning and execute function, an overview
 \caption{Flow sequence for function responsible of the robot planning and execution\label{fig:plan_execute_function_flow}}
 \end{figure}
 
+\vspace{-10pt}
 \subsection{Planning pre-grasp}
 \label{sec:planning_pregrasp}
 
@@ -1060,27 +1082,27 @@ Romeo grasper depends on other packages to work properly, so it needs to sent an
 \begin{tabulary}{0.95\textwidth}{|l|l|l|p{18.5em}|}
 \hline
 \textbf{Sender} & \textbf{Receiver} & \textbf{Data} & \textbf{Description}\\ \hline
-V4R & \specialcell{l}{Romeo\\grasper} & \specialcell{l}{Object\\pose} & Information of the object position and the confidence of the tracker \\ \hline 
+RTM & \specialcell{l}{Romeo\\grasper} & \specialcell{l}{Object\\pose} & Information of the object position and the confidence of the tracker \\ \hline 
 \specialcell{l}{Romeo\\grasper} & \specialcell{l}{MoveIt\\Actions} & Commands & Commands to plan, execute, pick or set parameters to the \texttt{move\_group}. \\ \hline
 \specialcell{l}{MoveIt\\Actions} & \specialcell{l}{Romeo\\grasper} & Results & Returns the results of the commands sent, like if it is succeeded, the trajectory planned or the final planned pose. \\ \hline
 \specialcell{l}{Rviz\\Simulator} & \specialcell{l}{Romeo\\grasper} & Link poses & Position of some elements like the wrist or the camera are sent to calculate the camera pose or the object pose.  \\ \hline
 \specialcell{l}{Romeo\\grasper} & \specialcell{l}{Rviz\\Simulator} & Link poses & Position of the camera and of the object. \\ \hline
 \specialcell{l}{NAOqi\\driver} & \specialcell{l}{Rviz\\Simulator} & Joint state & Simulator needs the joint state to have the simulated robot as the real one. \\ \hline
 \specialcell{l}{MoveIt\\Actions} & \specialcell{l}{Rviz\\Simulator} & Commands & Commands to calculate a plan and simulate to check collisions.  \\ \hline
-\multicolumn{4}{|r|}{\small\sl continued on next page}\\
-\hline
-\end{tabulary}
-\end{center}
-\end{table}
-
-\newpage
-
-\begin{table}[!h]
-\begin{center}
-\begin{tabulary}{0.95\textwidth}{|l|l|l|p{18.5em}|}
-\hline
-\multicolumn{4}{|l|}{\small\sl continued from previous page}\\ \hline
-\textbf{Sender} & \textbf{Receiver} & \textbf{Data} & \textbf{Description}\\ \hline
+%\multicolumn{4}{|r|}{\small\sl continued on next page}\\
+%\hline
+%\end{tabulary}
+%\end{center}
+%\end{table}
+%
+%\newpage
+%
+%\begin{table}[!h]
+%\begin{center}
+%\begin{tabulary}{0.95\textwidth}{|l|l|l|p{18.5em}|}
+%\hline
+%\multicolumn{4}{|l|}{\small\sl continued from previous page}\\ \hline
+%\textbf{Sender} & \textbf{Receiver} & \textbf{Data} & \textbf{Description}\\ \hline
 \specialcell{l}{Rviz\\Simulator} & \specialcell{l}{MoveIt\\Actions} & Results & Returns if it is succeeded or the trajectory planned.  \\ \hline
 \specialcell{l}{MoveIt\\Actions} & \specialcell{l}{Controller\\Manager} & \specialcell{l}{Execution\\Plan} & Sends the plan which should be execute on the real robot. \\ \hline
 \specialcell{l}{Controller\\Manager} & DCM driver & Commands & Commands with the right timing to have a real-time control with the Romeo robot. \\ \hline
@@ -1100,17 +1122,113 @@ NAOqi & Romeo ROS & Data & All kind of data: joint state, camera images, variabl
 % Un test que es pot fer es per comparar els dos IK, fent proves anant a les mateixes posicions veure quin error tenen cadascun. Si IKFast no arriba a poder ser implementat a nes experiments es pot posar ses diferents coses que s'han fet per mirar d'aconseguir-ho. Primer dir amb es urdf inicial que hi havia s'han fet proves de tots es tipus tant des de torso, base_link com des de L/RShoulder. Aquesta última fins a gripper ha sigut l'única que ha funcionat pero que no té molt de sentit perque el L/RShoulderPitch no esta inclos a dins i per tant es perd aquest grau de llibertat que dona un desplaçament molt important per arribar a diferents punts.
 
 \section{Movement in simulation}
+\label{sec:exp_move_simulation}
 %Experiment 1:
 % Moviment a llista de posicions determinades amb reachAction i provar mateixa llista amb graspPlan. Per això s'haura d'adaptar la forma com es calcula la diferencia amb el graspPlan. A més si es pogues tenir una referencia del temps que tarda millor (ja que el graspPlan tarda bastant). Amb aquest experiment es veu l'error que pot arribar a tenir el IK solver.
 % També pot ser que l'error es trobi en el forward kinematics que no doni exactament la posició que toca. Per això s'hauria de comprovar que el TF dona la mateixa posicio que el forward quan s'ha executat la trajectoria i veient que les joints estan en la mateixa posicio que la trajectoria. S'ha vist que l'error entre el FK i l'execució en simulació es nomes de decimes de milimetre, per tant despreciable.
 %Una posible solucio per no tenir problemes amb el graspPlan podria ser posar momentaneament que el romeo_grasp_data.yaml que no hi ha diferencia de posicio entre eef i grasp. D'aquesta forma la solució  seria exacte, l'únic problema es que no seria realista ja que Wrist aniria sobre l'objecte.
+%\begin{itemize}
+%\item Given a list of position where it is supposed to be the object. Test these with \texttt{reachAction} and \texttt{graspPlan}.
+%\item Try with different planning times.
+%\item The problem doesn't come from the forward kinematic that calculate the difference between pose target and pose plan because it has been test to see if the calculated and the real one, with the values of the joint as the trajectory, are in the same position and yes, the difference is about of the order of $10^{-4} m$.
+%\item To do this experiment is used the Python program named \texttt{experiment1.py}.
+%%TODO explaination of the program??
+%\end{itemize}
+
+% Comentar que degut a que la recolecta de dades sobretot al principi no s'havia fet de forma adecuada alguns fets no es poden mostrar en estadistiques pero que són observacions que s'han fet.
+
+%També comentar diferencies entre els ordinadors. Un es més potent que s'altre (meu més processador pero seu més grafica) i fet de que seu va amb simulador de choreograph i meu amb naoqi directament. Per la resta, s'ha mirat que el codi executat sigui el mateix per un i altre
+
+% Estadistiques de:
+% Distancies amb joints aproximades amb temps en trobar solució
+
+% Temps que tarda una amb tolerancies
+
+% Porcentatge de falls de graspPlan segons temps de planning.
+% Temps real de graspPlan
+
+On the following experiment has been tested how accurate is the movement in the simulation to go to the goal position. In order to do that has been created a program to automatically introduce new positions and catch the results of the process. The program can be found in the folder \texttt{src} with name \texttt{experiment1.py}. Unfortunately, not all the used information has been caught by the program and has been manually introduced looking to the terminal log. Moreover, initially the program didn't work well and a lot of tests doesn't have the data to confirm the observations made. Therefore, some information is given from the perception of the author of the dissertation. The main results used for this experiments are: (1) the success of the movement; (2) the distance from the goal position to the position where the trajectory calculated by the solver moves the hand; and (3) the planning time spent.
+
+Whereas the tests has been made all the time with the same goal positions, shown in Table \ref{tab:exp_move_sim_goals}. The goal is a cylinder with radius 3.5 cm and longitude of 15 cm put it in both orientation vertical and horizontal. Furthermore, it has been run on two different computers (\texttt{C0} and \texttt{C1}). On one hand, the computer named \texttt{C0} has a better graphic card and runs the simulator of the Choreograph software. On the other hand, the \texttt{C1} has a better processor and runs the simulator directly from the NAOqi SDK. It has been tried to execute the rest with the same software.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{|l|c|c|c|}
+\hline
+& \multicolumn{3}{|c|}{Position [m]} \\ \cline{2-4}
+& x & y & z \\ \hline
+Cylinder 1 & -0.3 & 0 & 0.5 \\ \hline
+Cylinder 2 & -0.25 & 0 & 0.45 \\ \hline
+Cylinder 3 & -0.20 & 0 & 0.40 \\ \hline
+Cylinder 4 & -0.15 & 0 & 0.35 \\ \hline
+Cylinder 5 & -0.05 & 0 & 0.35 \\ \hline
+Cylinder 6 & -0.3 & -0.1 & 0.5 \\ \hline
+Cylinder 7 & -0.25 & -0.1 & 0.45 \\ \hline
+Cylinder 8 & -0.20 & -0.1 & 0.40 \\ \hline
+Cylinder 9 & -0.15 & -0.1 & 0.35 \\ \hline
+Cylinder 10 & -0.05 & -0.1 & 0.35 \\ \hline
+\end{tabular}
+\caption{Positions in camera reference of the cylinders used for the tests.\label{tab:exp_move_sim_goals}}
+\end{center}
+\end{table}
+
+As explained in Section \ref{sec:romeo_moveit_actions}, there are two ways of calculate the trajectory for the grasp: (1) with \texttt{reachAction} function and (2) with \texttt{graspPlan} function.\footnote{To test graspPlan it is needed to put to zero the offsets of the \texttt{romeo\_grasp\_data.yaml} file from the \texttt{moveit\_simple\_grasps}. Otherwise it cannot know the error in the trajectory.} Therefore, in this experiment it is tested both ways to see their particularities. Moreover, as also described in Section \ref{sec:romeo_moveit_actions}, the \texttt{reachAction} function has two methods of solve the inverse kinematics: (1) looking for solutions inside a given goal tolerance and (2) solving with approximated solutions without taking in account the goal tolerance. 
+
+Besides, one of the other important factors is the maximum time for the planning. Therefore, it is tested different possibilities of planning time.
+
+Then, for this experiment has been made 178 different tests combining, \texttt{graspPlan}, \texttt{reachAction} (toleranced or approximated solutions), different planning time and with both computers. Even more which has not been introduced in the statistics but taken in account by me. Some observations of the results are the following ones:
+
 \begin{itemize}
-\item Given a list of position where it is supposed to be the object. Test theses with \texttt{reachAction} and \texttt{graspPlan}.
-\item Try with different planning times.
-\item The problem doesn't come from the forward kinematic that calculate the difference between pose target and pose plan because it has been test to see if the calculated and the real one, with the values of the joint as the trajectory, are in the same position and yes, the difference is about of the order of $10^-4 m$.
-\item To do this experiment is used the Python program named \texttt{experiment1.py}.
-%TODO explaination of the program??
+\item 32 solutions inside the tolerance found out of 77. The rest are solved with approximated solutions with computer \texttt{C1}.
+\begin{itemize}
+\item 10 out of 20 with 2 seconds of planning time.
+\item 12 out of 37 with 5 seconds of planning time.
+\item 10 out of 20 with 60 seconds of planning time.
 \end{itemize}
+
+\item 6 solutions inside the tolerance found out of 60. The rest are solved with approximated solutions with computer \texttt{C0}.
+\begin{itemize}
+\item 2 out of 20 with 2 seconds of planning time.
+\item 2 out of 20 with 5 seconds of planning time.
+\item 2 out of 20 with 20 seconds of planning time.
+\end{itemize}
+\item Average distance of \texttt{graspPlan} is 0.0916 m.
+\begin{itemize}
+\item 4 out of 14 solutions with \texttt{graspPlan} found with 2 seconds of planning time by computer \texttt{C1}. These solutions have a mean of 0.077 m.
+\item 6 out of 7 solutions with \texttt{graspPlan} found with 60 seconds of planning time by computer \texttt{C1}.These solutions have a mean of 0.136 m.
+\item 2 out of 16 solutions with \texttt{graspPlan} found with 2 seconds of planning time by computer \texttt{C0}.These solutions have a mean of 0.071 m.
+\item 10 out of 21 solutions with \texttt{graspPlan} found with 20 seconds of planning time by computer \texttt{C0}.These solutions have a mean of 0.075 m.
+\end{itemize}
+\item The \texttt{graspPlan} function after planning spend a lot of time doing something unknown (there is not any log in the terminal). Therefore, the real planning time is different and depends on the computer. Moreover, there is no differences changing the planning time. 
+\begin{itemize}
+\item Average real planning time of computer \texttt{C1} is 250 seconds. 
+\item Average real planning time of computer \texttt{C0} is 135 seconds.
+\end{itemize}
+\item Average times:
+\begin{itemize}
+\item Approximated solutions always last less than 1 second, usually with a mean around 0.1 seconds.
+\item Solutions inside tolerance are usually below 5 seconds, with a mean around 1.5 seconds and it has been two isolated cases of 20 seconds out of around 40 samples.
+\item \texttt{graspPlan} solutions with 20 seconds of planning time have a mean of 8.35 seconds and the ones with 60 seconds of planning time have a mean of 10.39 seconds.
+\end{itemize}
+\item It has been noticed it gets more solutions inside the goal tolerance if instead of large planning times uses small planning times but with a lot of attempts. The best way is starting in a low goal tolerance, using a low goal tolerance step and do a lot of attempts increasing the goal tolerance at each attempt.
+\end{itemize}
+
+After that, it should be shown a comparative of the resulting distance with the approximated solution between the two computers and with planning times of 2 and 5 seconds. That can be seen in Figure \ref{fig:exp_conf_int_dist_approx}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.85\textwidth]{images/dist_approx_sol_graph.png}
+\caption{Confidence interval of distance of the approximated solutions.\label{fig:exp_conf_int_dist_approx}}
+\end{figure}
+
+Finally, for this experiment has been used a maximum tolerance of 0.10 m. Below, the confidence interval of the distance for approximated solutions and for solutions inside tolerance are shown in Figure \ref{fig:exp_conf_int_dist_approx_tol}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[width=0.85\textwidth]{images/dist_graph.png}
+\caption{Confidence interval of distance for approximated and inside tolerance solutions. Only for solutions with computer \texttt{C1}\label{fig:exp_conf_int_dist_approx_tol}}
+\end{figure}
+
 
 \section{Implementation IKFast on Romeo}
 \label{sec:exp_ikfast}
@@ -1194,57 +1312,252 @@ Currently, there is a commit in the Natalia Lyubova repository\footnote{\url{htt
 It should be stated that to be sure the installation it was well done, it has been tried to generate the IKFast for another robot and it worked. Moreover, there is a discussion in the official repository of Romeo package where all this IKFast issue is discussed \cite{romeoRobotIssue}. 
 
 \section{Get pre-known camera position}
-%Experiment 3:
-% En vista que no es pot fiar de la posicio extreta a partir de la propia camera s'ha de mirar de treure la posicio de la camera de forma empirica. Mirar a veure com es pot ser es màxim d'exacte possible. Una manera podria ser com que lo més dificil de posicionar es respecte X i Z ja que esta inclinat, es podria mirar de fer que el l_wrist estigui alineat amb la camera en l'eix Y i per tant X i Z es mantenen iguals.
-\begin{itemize}
-\item Get the position of the camera respect to the robot empirically
-\item The difficulty is with X and Z axes (robot reference) because the robot is tilted. So if the Wrist is align with the camera on the Y axe, then knowing the position of Wrist (given by the simulator) we have the X and Z of the camera.
-\end{itemize}
+%TODO
+%ADD PHOTOS!!
+
+Another very important factor which can lead to have some deviation on the results is to get the right position of the camera. As said before, there are two ways to get it: (1) with a pre-known position, which is the one tested here; and (2) from the visual information got from the camera itself, tested in the next Section \ref{sec:exp_visual_camera}. So below is explained how is got the position of the camera respect to the robot empirically. However, it is only tested for the camera on the left side.
+
+Currently, the experiments are made with the Romeo robot secured with a support holding it without touching the floor. However, this makes that the robot is tilt forward. Therefore, the X and Z coordinates are difficult to measure due to the Romeo tilt. Moreover, the \texttt{base\_link} origin is inside the robot, so it is difficult to get where is it precisely. So the solution to be able to get a good estimation of the position is using a Romeo link as the \texttt{l\_wrist} which its origin is easy to find. Furthermore, this link can be moved easily in a position aligned with the Y axe to the camera, so the X and Z coordinates of the \texttt{l\_wrist}, which are given by the simulator in the \texttt{base\_link} reference, are the same as the camera. Then, the only needed measure is in the Y axe where the Y camera coordinate is the Y \texttt{l\_wrist} coordinate plus the offset from \texttt{l\_wrist} to the camera. However, it should be stated that this measure can have some error, which is estimated to be around $\pm$ 1.5 cm.
+
+Therefore, the experiment is done as explained above and result with the following Table \ref{tab:exp_camera_preknown}:
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline
+ & \specialcell{c}{\texttt{l\_wrist}\\position} & Offset & \specialcell{c}{Camera\\position} \\ \hline
+x & 0.0869 m& 0.0 m& 0.0869 m\\
+y & 0.470 m& 0.26 m& 0.730 m\\
+z & -0.1897 m& 0.0 m& -0.1897 m\\ \hline
+\end{tabular}
+\caption{Measures in \texttt{base\_link} reference to get camera position.\label{tab:exp_camera_preknown_postion}}
+\end{center}
+\end{table}
+
+After that, the next information to get is the orientation of the camera. As the robot is tilt forward and the camera is on next to the robot aligned with the Y axe of the robot, can be estimated that the Z axe of the optical camera frame is the Y robot axe, but with the sign changed.\footnote{Acoording to REP 103 \cite{Foote}, the convention of the optical frames of the cameras are: Z forward, X right and Y down.} 
+
+As the origin of the robot is fixed in the simulation, on the camera is where it has to be applied all the rotation. Then, it is needed to measure the tilt angle, with the experiments it has been worked with an approximate angle of 15º. So the final transformation of the camera is the one shown in Table \ref{tab:exp_camera_preknown}.
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+ & \multicolumn{3}{|c|}{Position [m]} & \multicolumn{3}{|c|}{Orientation [rad]} \\ \cline{2-7}
+ & x & y & z & roll & pitch & yaw \\ \hline
+\specialcell{c}{Camera from\\\texttt{base\_link} frame} & 0.0869 & 0.730 & -0.1897 & $\frac{11 \pi}{12}$ & 0 & $\frac{\pi}{2}$ \\ \hline
+\end{tabular}
+\end{center}
+\caption{Transformation from \texttt{base\_link} frame to camera.\label{tab:exp_camera_preknown}}
+\end{table}
 
 \section{Visual camera positioning}
-%Experiment 4:
-% Experiments sobre el posicionament de la camera. Pendre mesures aproximades d'on es troba la camera i orientació respecte el robot i provar els diferents algorismes a veure si funcionen. (ja es tenen es arxius amb ses dades, es mirar de treure algo en clar). Talvegada es pot jugar amb es seeds que es donen en plan provar 3 seeds un molt generic un altra mes proper i finalment es que es sa mesura que mus hauria de donar.
-% Talvegada s'hauria de repetir el testejat, ja que es cert que si esta sense Stiffness dona un cert error entre la realitat i el model
-% A més dir que les mesures que pren la camera d'on es troba cadascuna de les parts ha estat contrastada empiricament per veure que la mesura era correcte. I si era correcte amb un error de +-2cm.
-%Antes de fer aço millor mirar de tenir el valor exacte de la inclinació.
-\begin{itemize}
-\item Use the previous measures
-\item Compare this with the results of applying the proposed algorithm 
-\item Test with different seed, from a general seed to a specific one very close to the real solution.
-\item Possibles errors:
-\begin{itemize}
-\item When is measured where is the camera in robot reference (may be an error of $\pm$ 1.5 cm)
-\item Error in positioning the parts of the robot with the reference object (may be an error of $\pm$ 2 cm)
-\end{itemize}
-\end{itemize}
+\label{sec:exp_visual_camera}
+
+The method presented above is used to get the position of the camera precisely, but repeat this process every time that the robot or the camera has been moved may be is not the most comfortable way. Therefore, the process automation is the next step. In Section \ref{sec:visual-recognition}, is shown the three different possibilities to get the position of the camera using the visual information of the camera itself. Below this three ways are tested to see how good precise are they. Therefore, they have to be compared with the most accurate information which is the one got in the previous experiment. It should be stated that place the modeled object to get the position of the link has an error estimated around $\pm$ 2 cm.
+
+\subsubsection{(1) Using only one link}
+
+The first approach is based on the information of only one link and using the assumption of being perfectly oriented in front or on side of the robot. Therefore, given the position from camera of the link and the position of the link in robot reference (information extracted from the simulator), applying Equation \eqref{eq:camera_pose_visual_point} results on the position of the camera. Moreover, for the next approach it is needed this information also for other links, so it can be used to see if the final result is changing between different data. Therefore, the following Table \ref{tab:exp_visual_camera_first_approach} shows the information every link with the result with that information:
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{\specialcell{c}{Link\\used}} & \multirow{2}{*}{Coord} & \multicolumn{2}{|c|}{Position [m] from} & \multirow{2}{*}{\specialcell{c}{Camera\\position [m]}} \\ \cline{3-4}
+& & camera & \texttt{base\_link} & \\ \hline
+\multirow{3}{*}{\texttt{l\_wrist}} & x & -0.1297 & 0.1974 & 0.0677 \\
+& y & 0.1588 & 0.1763 & 0.7294 \\
+& z & 0.5081 & -0.2990 & -0.1401 \\ \hline
+\multirow{3}{*}{\texttt{LElbow}} & x & -0.1328 & 0.1180 & -0.0148 \\
+& y & -0.0116 & 0.1858 & 0.7387 \\
+& z & 0.5079 & -0.1259 & -0.1375 \\ \hline
+\multirow{3}{*}{\texttt{LShoulder}} & x & -0.1386 & 0.0502 & -0.0884 \\
+& y & -0.2637 & 0.1899 & 0.7862 \\
+& z & 0.5513 & 0.0739 & -0.1898 \\ \hline
+\end{tabular}
+\caption{Data and results for the first approach with visual positioning.\label{tab:exp_visual_camera_first_approach}}
+\end{center}
+\end{table}
+
+\subsubsection{(2) Using three links}
+
+The next experiment is on the second approach solves a non-linear problem which use the information of three links and then, given a seed, tries to minimise Equation \eqref{eq:camera_pose_visual_point}, for every link, and Equation 
+\eqref{eq:camera_pose_visual_vector}, using as constraints Equation \eqref{eq:camera_pose_visual_perpendicular}. The data used for this is the same as used above, and to calculate the solution it has been done with \texttt{Matlab}. Moreover, the Matlab code of this can be found in the \texttt{romeo\_grasper} repository, specified in Sectio \ref{sec:repository}, in the folder \texttt{/data/matlab}. 
+
+In order to make the experiment has been given three types of seeds: (1) with the exact position and orientation of the camera; (2) without the exact orientation, given as it is in the orientation assumption and (3) as before and also an imprecise position. Therefore, the seeds are as in the following Table \ref{tab:exp_visual_camera_second_approach_seed}:
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+ & \multicolumn{3}{|c|}{Position [m]} & \multicolumn{3}{|c|}{Orientation [rad]} \\ \cline{2-7}
+ & x & y & z & roll & pitch & yaw \\ \hline
+Seed 1 & 0.0869 & 0.730 & -0.1897 & $-\frac{\pi}{2}$ & 0 & $\frac{11 \pi}{12}$ \\ \hline 
+Seed 2 & 0.0869 & 0.730 & -0.1897 & $-\frac{\pi}{2}$ & 0 & $\pi$ \\ \hline 
+Seed 3 & 0.0 & 0.90 & -0.10 & $-\frac{\pi}{2}$ & 0 & $\pi$ \\ \hline 
+\end{tabular}
+\caption{Seeds used for the non-linear problem.\label{tab:exp_visual_camera_second_approach_seed}}
+\end{center}
+\end{table}
+
+Applying the positions of the links of the Table \ref{tab:exp_visual_camera_first_approach} and with the different seeds the final results are the ones in Table \ref{tab:exp_visual_pose_three_links_result}. Moreover, to approach the position of the camera has been tested to average the results of the Equation \eqref{eq:exp_camera_pose_one_link}, with all the link, giving as a result a average position of the camera.
+
+\begin{equation}\label{eq:exp_camera_pose_one_link}
+P_{base}^{cam} = P_{base}^{link} - S_{base}^{cam} \cdot P_{cam}^{link} 
+\end{equation} 
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+ & \multirow{2}{*}{Method} & \multicolumn{3}{|c|}{Position [m]} & \multicolumn{3}{|c|}{Orientation [rad]} \\ \cline{3-8}
+ & & x & y & z & roll & pitch & yaw \\ \hline
+\multirow{2}{*}{Seed 1} & Result & 0.1308 & 1.040 & 0.2141 & -1.8846 & 0.3717 & 1.9934 \\ \cline{2-8} 
+ & Average & 0.0845 & 0.7705 & -0.010 & & & \\ \hline 
+\multirow{2}{*}{Seed 2} & Result & -0.2659 & 0.9928 & 0.045 & -1.7483 & -0.5772 & 2.147 \\ \cline{2-8} 
+ & Average & -0.0281 & 0.7579 & -0.0615 & & & \\ \hline
+\multirow{2}{*}{Seed 3} & Result & -0.0264 & 1.0466 & 0.151 & -1.8424 & -0.2995 & 2.0552 \\ \cline{2-8} 
+ & Average & 0.055 & 0.7647 & -0.0446 & & & \\ \hline
+\end{tabular}
+\caption{Results from the optimization problem and the average camera position, for every seed.\label{tab:exp_visual_pose_three_links_result}}
+\end{center}
+\end{table}
+
+\subsubsection{(3) Using multiples transformations}
+
+Finally, the last approach which use all the information given by the camera, both position and orientation. So it has to use several transformations: (1) from \texttt{base\_link} to link; (2) from link to modeled object and (3) from modeled object to camera. The first one is given by the simulator. Then, the second one is estimated by the user placing the object on a specific position and orientation respect to the link. Finally, the last one is known from the information given by the camera. 
+
+Therefore, the information used is shown in Table \ref{tab:exp_visual_multi_initial_data} which should be convert to transformation matrix (rotation plus translation), as \cref{eq:exp_transform_1,eq:exp_transform_2,eq:exp_transform_3}.
+
+\begin{savenotes}
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|c|c|}
+\hline
+\multirow{2}{*}{Target} & \multirow{2}{*}{Reference} & \multicolumn{3}{|c|}{Position [m]} & \multicolumn{4}{|c|}{Quaternion} \\ \cline{3-9}
+ & & x & y & z & x & y & z & w \\ \hline
+\specialcell{l}{Modeled\\object} & Camera & -0.1461 & 0.1831 & 0.6645 & 0.5484 & 0.5190 & -0.4372 & 0.4886 \\ \hline
+\texttt{l\_wrist} & \specialcell{l}{Modeled\\object} \footnote{\label{foot:offset_modeled_object}The offset position of the link with modeled object is already applied when it is calculated the position of the object, see Section \ref{sec:model_object}} & 0 & 0 & 0 & 0 & 0.7071 & 0 & 0.7071 \\ \hline
+\texttt{l\_wrist} & \texttt{base\_link} & 0.1604 & 0.2048 & -0.3114 & -0.1014 & -0.7982 & -0.15579 & 0.5731 \\ \hline
+\end{tabular}
+\caption{Information used to approach the camera position using multiples transformations.\label{tab:exp_visual_multi_initial_data}}
+\end{center}
+\end{table}
+\end{savenotes}
+ 
+\begin{equation}\label{eq:exp_transform_1}
+T_{obj}^{cam} = \begin{pmatrix}[ccc|c]
+0.0790  &  0.9965 &   0.0275 &  -0.1461\\
+0.1420  &  0.0161  & -0.9897  &  0.1831\\
+-0.9867  &  0.0821  & -0.1402 &   0.6645\\ \hline
+0     &    0  &       0 &   1.0000
+\end{pmatrix}^{-1}
+\end{equation}
+
+\begin{equation}\label{eq:exp_transform_2}
+T_{link}^{obj} = \begin{pmatrix}[ccc|c]
+    0 &    1  &     0  &       0\\
+   0  &  0  &  1     &    0\\
+    1 &  0  & 0      &   0\\ \hline
+         0     &    0   &      0 &   1
+\end{pmatrix}^{-1}
+\end{equation}
+
+\begin{equation}\label{eq:exp_transform_3}
+T_{base}^{link} = \begin{pmatrix}[ccc|c]
+   -0.3227  &  0.3404 &  -0.8832 &   0.1604\\
+   -0.0167  &  0.9309  &  0.3649   & 0.2048\\
+    0.9464 &   0.1325 &  -0.2947  & -0.3114\\ \hline
+         0  &       0  &       0  &  1.0000
+\end{pmatrix}
+\end{equation}
+
+Finally, the multiplication of the three transformation matrix as in Equation \eqref{eq:camera_pose_trans}, give as a result the final transformation, Equation \eqref{eq:exp_camera_pose_trans}, which contains the position of the camera and its orientation. Therefore, the final result of camera position and orientation is the one shown in Table \ref{tab:exp_visual_camera_transform_result}.
+
+\begin{equation}\label{eq:exp_camera_pose_trans}
+T_{base}^{cam} = \begin{pmatrix}[ccc|c]
+   -0.8621  &  0.3535  & -0.3632   & 0.2110\\
+    0.4367 &   0.1545 &  -0.8862  &  0.8292\\
+   -0.2571  & -0.9226 &  -0.2876  &  0.0110\\ \hline
+        0    &     0     &    0  &  1.0000
+\end{pmatrix}
+\end{equation}
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+ & \multicolumn{3}{|c|}{Position [m]} & \multicolumn{3}{|c|}{Orientation [rad]} \\ \cline{2-7}
+ & x & y & z & roll & pitch & yaw \\ \hline
+Camera & 0.2110 & 0.8292 & 0.0110 & -1.8846 & 0.3717 & 2.7525 \\ \hline
+\end{tabular}
+\caption{Camera position and orientation using multiple transformations.\label{tab:exp_visual_camera_transform_result}}
+\end{center}
+\end{table}
 
 \section{Error produces by the camera positioning}
-%Experiment 5:
-% Per comprovar l'error que es té de la posició i orientació de la camera es pot mirar d'identificar un objecte en una posició determinada, veure el valor que dona de l'objecte i finalment dur el wrist del robot a la posició de tal manera que es pugui veure en quant s'ha equivocat la càmera.
-\begin{itemize}
-\item Identify an object in a specific position, see the result in robot reference. Then compare this result with the value given by the simulator putting there the Wrist of the robot.
-\end{itemize}
+%TODO
+%ADD PHOTOS!!
+
+Finally, the last experiment is made to know the influence of the precision positioning the camera has on the total error of the grasping. Therefore, here it is compared the position of the object calculated by the \texttt{romeo\_grasper} package with the position, given by the simulator, of a link moved to where the object was. Both position are in robot reference, so they should be the same. However, move the link to the specific place has an error which is estimated around $\pm$ 3 cm. In this case has been chosen the \texttt{l\_wrist} link because it is the easiest link to move. The following Table \ref{tab:exp_camera_positioning} shows the tests done:
+
+\begin{table}[h]
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|c|c|}
+\hline
+& \multicolumn{3}{|c|}{\specialcell{c}{Position [m]\\by \texttt{romeo\_grasper}}} & \multicolumn{3}{|c|}{\specialcell{c}{Position [m]\\by simulator}} & \multirow{2}{*}{Distance [m]} \\ \cline{2-7}
+& x & y & z & x & y & z & \\ \hline
+Case 1 & 0.225 & 0.296 & -0.141 & 0.270 & 0.243 & -0.154 & 0.0704\\
+Case 2 & 0.272 & 0.016 & -0.089 & 0.244 & -0.023 & -0.1517 & 0.0790\\
+Case 3 & 0.350 & 0.097 & 0.030 & 0.340 & 0.040 & 0.037 & 0.0583\\
+Case 4 & -0.033 & 0.168 & -0.246 & -0.078 & 0.19 & -0.298 & 0.0725\\ \hline
+\end{tabular}
+\caption{Results of error produced by the camera positioning.\label{tab:exp_camera_positioning}}
+\end{center}
+\end{table} 
 
 \chapter{Discussion}
 \label{cha:discussion}
 % Aqui s'expliquen quines interpretacions es fan des resultats obtinguts.
 % Com que es vol que es millori el conjunt per a que sigui més lliure pues s'han fet millores en els packages corresponents (NOSE ALGO).
 
+%(JA VURE SI HO DIC) Dir que es creu que es cert que el KDL no és el millor solver de cinematica inversa, al menys comparant amb el OpenRAVE que es de tipus close form. Pero això no es explica l'error tan gran que s'ha donat, sobretot en el que hauria d'influir un o altre solver és el temps, pero no l'error. Cal fixar-se en que s'ha tingut problemes en la creacio del IKFast, quedant-se atascat en alguns del calculs. Per tant, es possible que el que passi és que hi hagi algun problema amb el model del robot. Aquesta hipotesi guanya força al veure que l'error del solver KDL és tan gran. Algunes de les opcions que es contemplen de perque pot donar aquest problema és l'alineació d'eixos (mirar a veure aço que vol dir i tal) i el fet de que pot ser que en la posició que està determinat el robot sigui un punt singular (mirar si es possible una teoria com aquesta).
+
+
+%(COMMENT FOR USING ONE LINK)Therefore, comparing these results with the well approximated camera position shown in Table \ref{tab:exp_camera_preknown}, it seems like the only one which could be used it is the one using \texttt{l\_wrist} link. However, the error is around 5 cm which could lead an important error to the object position.
+
+On this Chapter it is discussed every experiment done before to figure out what is the meaning of the results.
+
+\section{Simulation results}
+
+Then, here it is discussed the experiment about the solutions given by the inverse kinematic solver to go to the goal positions. In order to see the results see Section \ref{sec:exp_move_simulation}.
+%has a mean of 0.0916 m, so an error that would make not so good grasp
+Firstly, about the \texttt{graspPlan} function, apart from the minor influence of the used computer, the success of this movement depends on the planning time. That can be seen observing that with a planning time of 60 seconds almost all the cases give a solution. However, these solutions have a big mean, may that it is caused by finding the way to solve the most difficult grasps. Moreover, the real planning time it seems to depend on the computer, where the one with better graphic card is faster. So probably the unknown task is using this component, may be to simulate the grasp in the simulator. An interesting point of this is that the real planning time it seems to not be related with the planning time set by the user. 
+
+Secondly, about the \texttt{reachAction} it seems like the approximated solutions are by far more easy to calculate, but they have a large variability and, in comparison with the solution inside tolerances, they are more imprecise. Therefore, the aim should be to always find a solution inside tolerances. As said in the experiment, it is better to use small planning times but with a lot of attempts. That's sounds logic seeing that the solutions are usually calculated with an small amount of time. Therefore, it has a low probability to get a solution after a few seconds, so it is better to make another attempts with a bit higher goal tolerance. Finally, remark that the influence of the computer is important here, because using one or another can lead to not have almost any success or the half of the tries. Moreover, this affects also the precision of the approximated solutions which gives a better performance with a better processor.
+
+   
+
+%Sobre el nombre de solucions de tolerancia sembla que no afecta el temps de planning al menys per a temps majors a 2 segons.
+
 \chapter{Future works}
 \label{cha:future_works}
-% Explicar coses que s'han fet que no han acabat de funcionar o que  Posar en una posició inicial seguint un path, d'aquesta manera s'assegura que no fer-hi la taula ja que a la simulació sembla que obvia el fet que hi hagi la taula.
-% Com també per on es podria tirar per millorar tot es conjunt
+%TODO
+%(JA VUREM) Es pot proposar també una millora del planning time de tal manera que fos progressiu i per tant que quan la tolerancia es minima prengui el total del planning time, pero a mesura que es s'avança en attempts anar-lo disminuint per no perdre tant temps quan no es necessari, ja que s'ha vist que el planning time alt només es requereix quan la tolerancia es baixa.
+
 \section{Implementation new inverse kinematics}
 
+%TODO
+%Corregir lo de que l'error es important
 As said before, the error produced by the inverse kinematic solver KDL to go to the position of the object is one of the most important. Therefore, the implementation of a new IK solver should be a great improvement for the work. Moreover, currently the picking action is not working well due to the IK solver doesn't find a good picking plan, so with this new solver it is supposed that this should be solved.
 
 The first recommendation would be to implement the IKFast from OpenRAVE, because it is a close form solver and so it very fast and precise. As seen in Section \ref{sec:exp_ikfast}, currently is not working, but may be can solve it editing the URDF model trying to make it easier or changing the initial pose. Also is recommended to read this issue \cite{romeoRobotIssue}, where there is a lot about it discussed.
 
 In case that the previous solver could not be used, there is an other option used in \cite{claudio:hal-01159882} named Metapod from LAAS, which is also a numerical solver. Therefore, probably it has almost the same problems as KDL, but at least has been already tested with Romeo.  
 
-\section{Improve use of V4R}
+\section{Improve use of RTM}
 
-The V4R software is a very powerful tool to recognise objects and tracking them. However, it has to be complemented with the convenient camera to get the best performance. Currently, the Kinect camera, which sends the images to ROS through OpenNi framework, gives some problems. On one hand, after some seconds or minutes the RGB camera starts to send partial or full black images, example of it in Figure \ref{fig:kinect_black_problem}. Therefore, the V4R software cannot be used properly. On the other hand, the OpenNi nodes after a while usually fail due to memory or pointers errors and then they are automatically shut down.
+The RTM software is a very powerful tool to recognise objects and tracking them. However, it has to be complemented with the convenient camera to get the best performance. Currently, the Kinect camera, which sends the images to ROS through OpenNi framework, gives some problems. On one hand, after some seconds or minutes the RGB camera starts to send partial or full black images, example of it in Figure \ref{fig:kinect_black_problem}. Therefore, the RTM software cannot be used properly. On the other hand, the OpenNi nodes after a while usually fail due to memory or pointers errors and then they are automatically shut down.
 
 \begin{figure}[h]
 \begin{center}
@@ -1261,7 +1574,7 @@ The V4R software is a very powerful tool to recognise objects and tracking them.
 \end{center}
 \end{figure}
 
-Moreover, V4R process the images with a kind of SIFT on the RGB image, so having a good quality of the RGB camera it could lead to a better performance. Unfortunately, the Kinect used is the worst in terms of RGB camera in comparison with the Xtion and the RealSense, as shown in Table \ref{tab:camera_comparison}. Therefore, to improve the performance of the recognition would be great to use RealSense or Xtion. On one hand, currently, the use of RealSense is possible,\footnote{The \texttt{use\_realsense} argument enables to launch the \texttt{romeo\_grasper} using the RealSense camera.} but the object must be modeled with another camera because RealSense is not supported by RTM-Toolbox and that decrease dramatically the confidence of the tracking. Therefore, this option would be great if the RTM-Toolbox is improved and gives support to RealSense. On the other hand, for the Xtion there are two possibilities. First, with an external one as it has been done with Kinect in this work. Second, using the one on the Romeo cap. For this last one, only could work with objects on a specific and small range because of the camera range. However, it would remove some error produced by the camera positioning because the position of this camera is established in the model. Moreover, in order to solve the problem with dark images may be a possibility is to try to execute ROS with OpenNi inside the robot.  
+Moreover, RTM process the images with a kind of SIFT on the RGB image, so having a good quality of the RGB camera it could lead to a better performance. Unfortunately, the Kinect used is the worst in terms of RGB camera in comparison with the Xtion and the RealSense, as shown in Table \ref{tab:camera_comparison}. Therefore, to improve the performance of the recognition would be great to use RealSense or Xtion. On one hand, currently, the use of RealSense is possible,\footnote{The \texttt{use\_realsense} argument enables to launch the \texttt{romeo\_grasper} using the RealSense camera.} but the object must be modeled with another camera because RealSense is not supported by RTM-Toolbox and that decrease dramatically the confidence of the tracking. Therefore, this option would be great if the RTM-Toolbox is improved and gives support to RealSense. On the other hand, for the Xtion there are two possibilities. First, with an external one as it has been done with Kinect in this work. Second, using the one on the Romeo cap. For this last one, only could work with objects on a specific and small range because of the camera range. However, it would remove some error produced by the camera positioning because the position of this camera is established in the model. Moreover, in order to solve the problem with dark images may be a possibility is to try to execute ROS with OpenNi inside the robot.  
 
 \begin{table}[h]
 \begin{center}
@@ -1279,7 +1592,7 @@ RealSense SR300 \cite{IntelWeb}& 1920x1080 & 640x480 & 0.2-1.5 m \\ \hline
 \section{Object identification}
 \label{sec:object_ident}
 
-Although, it is not explained before, V4R has another feature which allows to recognise several objects at once. These objects should be in a specific database. A detailed description of this feature can be found in the tutorial of V4R ROS wrappers repository \cite{gitV4RWrappers}. There are several factors of the object recognition that can improve the performance of the \texttt{romeo\_grasper} package:
+Although, it is not explained before how it works, RTM can recognise several objects at once with the Recognition feature. These objects should be in a specific database. A detailed description of this feature can be found in the tutorial of V4R ROS wrappers repository \cite{gitV4RWrappers}. There are several factors of the object recognition that can improve the performance of the \texttt{romeo\_grasper} package:
 
 \begin{itemize}
 \item Provides the centroid of the cluster, which could be used to give to the package where it have to make the grasp.
@@ -1394,7 +1707,7 @@ In order to install the Kinect camera with openNi has been used the following ur
 
 \section{V4R installation}
 
-Before installing the V4R ROS wrappers \cite{gitV4RWrappers}, it has to be installed the V4R library \cite{gitV4R} which can be installed from ubuntu package or from source.
+In order to use the RTM software it should be installed the full V4R library which can  be installed from ubuntu package or from source. After that, it should be installed the V4R ROS wrappers \cite{gitV4RWrappers}.
 
 \subsubsection{From ubuntu package}
 	
@@ -1473,7 +1786,7 @@ After installing these dependencies, it should be installed \texttt{bullet-2.80}
 
 \url{http://ppa.launchpad.net/joern-schoenyan/libbullet280/ubuntu/}
 
-Finally, the installation of OpenRAVE is also recommended to do it from source. Moreover, my installation I had to disable some plugins as 
+Finally, the installation of OpenRAVE is also recommended to do it from source. Moreover, my installation I had to disable some plugins as \texttt{qtosgrave} and \texttt{fclrave}. This can be done using the command \texttt{ccmake}.
 
 \url{https://github.com/rdiankov/openrave}
 

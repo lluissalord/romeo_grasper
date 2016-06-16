@@ -31,9 +31,11 @@
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Flow sequence for \texttt {romeo\_grasper} setup\relax }}{46}{figure.caption.47}
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Flow of data from object pose to commands to NAOqi\relax }}{46}{figure.caption.48}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Confidence interval of distance of the approximated solutions.\relax }}{52}{figure.caption.51}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Confidence interval of distance for approximated and inside tolerance solutions. Only for solutions with computer \texttt {C1}\relax }}{52}{figure.caption.52}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Kinect problem, RGB camera sending black images.\relax }}{56}{figure.caption.53}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Current position of grippers in Romeo model.\relax }}{58}{figure.caption.55}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Kinect problem, RGB camera sending black images.\relax }}{64}{figure.caption.66}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Current position of grippers in Romeo model.\relax }}{66}{figure.caption.68}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
