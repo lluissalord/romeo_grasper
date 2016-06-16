@@ -14,7 +14,7 @@
 
   <!-- By default, we are using the tracking of the object, so without knowing where is the camera exactly -->
   <arg name="tracking"				default="true" />
-  <arg name="pose_camera_preknown"  default="false" />
+  <arg name="pose_camera_preknown"  default="true" />
   <arg name="simulation"  			default="true" />
   <arg name="automatic_execution"  	default="false" />
   <arg name="use_realsense"  		default="false" />
