@@ -12,20 +12,20 @@ reachVsGrasp: true
 
 #max_acceleration_scaling_factor: 0.5
 max_velocity_scaling_factor: 0.1
-tolerance_step: 0.1
-tolerance_min: 0.1
-planning_time: 20
-attempts_max: 3
+tolerance_step: 0.01
+tolerance_min: 0.01
+planning_time: 5
+attempts_max: 9
 
 base_link_frame_id: base_link
 camera_in_front: false #For a pose pre-known this is only used if there is no camera_pose_roll/pitch/yaw
-camera_ref_frame_id: l_wrist
+camera_ref_frame_id: base_link #l_wrist
 camera_frame_id: camera_rgb_optical_frame
 camera_link: camera_link
 object_frame_id: object_frame
-camera_pose_x: -0.11
-camera_pose_y: 0.62
-camera_pose_z: 0.14
-camera_pose_roll: 0.174533 #(pi/18) -> 10 degree aprox to fix the tilt of the robot
+camera_pose_x: 0.0869
+camera_pose_y: 0.73
+camera_pose_z: -0.1897
+camera_pose_roll: 0.2618 #0.174533 #(pi/18) #0.2618 #(pi/12) -> 15 degree aprox to fix the tilt of the robot
 camera_pose_pitch: 0
 camera_pose_yaw: -1.570796
