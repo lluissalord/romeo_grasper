@@ -25,7 +25,7 @@
   </include>
 
   <!-- In simulation we need the pose_controller to move Romeo -->
-    <node if="$(arg simulation)" pkg="naoqi_pose" type="pose_controller.py" name="pose_controller" output="screen" respawn="true" />
+    <node if="$(arg simulation)" pkg="naoqi_pose" type="pose_controller.py" name="pose_controller" output="screen" respawn="false" />
 
   <include file="$(find romeo_grasper)/launch/rviz_demo.launch" >
 	<arg name="db" value="$(arg db)" />
