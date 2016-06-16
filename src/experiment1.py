@@ -19,7 +19,7 @@ import moveit_msgs.msg
 
 class Experiment1:
 
-	def __init__(self, reachVsGrasp, planningTime, list_object_info):
+	def __init__(self, reachVsGrasp, planningTime, list_object_info, min_tolerance, step_tolerance, max_attempts):
 		self.wait_pose_plan = True
 		self.wait_pose_target = True
 		self.pose_plan = PoseStamped()
@@ -29,8 +29,15 @@ class Experiment1:
 
 		self.reachVsGrasp = reachVsGrasp
 		rospy.set_param(self.ns + 'reachVsGrasp', self.reachVsGrasp)
+
 		self.planningTime = planningTime
 		rospy.set_param(self.ns + 'planning_time', planningTime)
+		self.step_tolerance = step_tolerance
+		rospy.set_param(self.ns + 'tolerance_step', step_tolerance)
+		self.min_tolerance = min_tolerance
+		rospy.set_param(self.ns + 'tolerance_min', min_tolerance)
+		self.max_attempts = max_attempts
+		rospy.set_param(self.ns + 'attempts_max', max_attempts)
 
 		rospy.set_param(self.ns + 'pose_threshold', 0.0) #To don't have problems if is the same position
 
@@ -41,7 +48,7 @@ class Experiment1:
 		else:
 			self.filename = "experiment1_grasp_data.txt"
 
-		string = "reachVsGrasp" + "," + "planningTime" + "," + "x_target" + "," + "y_target" + "," + "z_target" + "," + "x_pose" + "," + "y_pose" + "," + "z_pose" + "," + "orientation" + "," + "error"
+		string = "reachVsGrasp" + "," + "time" + "," + "x_target" + "," + "y_target" + "," + "z_target" + "," + "x_pose" + "," + "y_pose" + "," + "z_pose" + "," + "orientation" + "," + "error" + "," + "tolerance"
 		f = open(self.filename, 'w')
 		f.write(string + "\n")
 		f.close()
@@ -62,6 +69,7 @@ class Experiment1:
 		rospy.loginfo("Starts with reachVsGrasp: " + str(self.reachVsGrasp))
 		i = 0
 		while(i < len(self.list_object_info)):
+			self.initial_time = rospy.get_rostime()
 			obj_info = self.list_object_info[i]
 			rospy.loginfo("Publish ObjectInfo:")
 			rospy.loginfo(obj_info)
@@ -79,6 +87,10 @@ class Experiment1:
 				except rospy.ServiceException, e:
 					print "Service call failed: %s"%e
 				rospy.sleep(1)
+			if(not self.wait_pose_target and not self.wait_pose_plan):
+				self.writeToFileNoTrajectory()
+			self.wait_pose_target = True
+			self.wait_pose_plan = True
 			i = i + 1
 		rospy.loginfo("Finish with reachVsGrasp: " + str(self.reachVsGrasp))
 
@@ -132,7 +144,8 @@ class Experiment1:
 		else:
 			string = "0"
 
-		string += "," + str(self.planningTime)
+		time = rospy.get_rostime().secs - self.initial_time.secs
+		string += "," + str(time) #str(self.planningTime)
 
 		x_target = self.pose_target.pose.position.x;
 		y_target = self.pose_target.pose.position.y;
@@ -151,10 +164,43 @@ class Experiment1:
 
 		string += "," + str(distance)
 
+		attempts = math.floor(float(time)/self.planningTime) #round floor
+		tolerance = self.min_tolerance + attempts*self.step_tolerance
+		string += "," + str(tolerance)
+
 		with open(self.filename, 'a') as the_file:
 			the_file.write(string + "\n")
 			the_file.close()
 		return
+	def writeToFileNoTrajectory(self):
+		if(self.reachVsGrasp):
+			string = "1"
+		else:
+			string = "0"
+
+		time = rospy.get_rostime().secs - self.initial_time.secs
+		string += "," + str(time) #str(self.planningTime)
+
+		x_target = self.pose_target.pose.position.x;
+		y_target = self.pose_target.pose.position.y;
+		z_target = self.pose_target.pose.position.z;
+
+		string += "," + str(x_target) + "," + str(y_target) + "," + str(z_target) + "," + str(NaN) + "," + str(NaN) + "," + str(NaN)
+
+		if(self.pose_target.pose.orientation.w > 0.9): #Horizontal pose
+			string += "," + "1"
+		else:# Vertical pose
+			string += "," + "0"
+
+		string += "," + str(NaN)
+
+		attempts = math.floor(float(time)/self.planningTime) #round floor
+		tolerance = self.min_tolerance + attempts*self.step_tolerance
+		string += "," + str(tolerance)
+
+		with open(self.filename, 'a') as the_file:
+			the_file.write(string + "\n")
+			the_file.close()
 
 	def createDictForJoints(self):
 		self.dict_joints = {}
@@ -224,12 +270,12 @@ if __name__ == '__main__':
 
 	try:
 		rospy.init_node('experiment_1', anonymous=True)
-		experimentReach = Experiment1(True, 60, list_object_info)
+		experimentReach = Experiment1(True, 5, list_object_info, 0.01, 0.09/9.0, 9) #max 0.10 tol
 		experimentReach.main()
 
 		del list_object_info[0]
 
-		experimentGrasp = Experiment1(False, 60, list_object_info)
+		experimentGrasp = Experiment1(False, 20, list_object_info, 0.01, 0.09/9.0, 9) #max 0.10 tol
 		experimentGrasp.main()
 		
 	except rospy.ROSInterruptException:
