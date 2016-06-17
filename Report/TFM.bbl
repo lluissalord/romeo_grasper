@@ -1,4 +1,4 @@
-\begin{thebibliography}{34}
+\begin{thebibliography}{33}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
@@ -67,10 +67,15 @@ Dave Coleman.
 \newblock {MoveIt Simple Grasp}.
 \newblock URL \url{https://github.com/davetcoleman/moveit_simple_grasps}.
 
-\bibitem[Diankov()]{Diankov}
+\bibitem[Diankov({\natexlab{a}})]{Diankov}
 Rosen Diankov.
-\newblock {OpenRAVE | Home}.
+\newblock {OpenRAVE | Home}, {\natexlab{a}}.
 \newblock URL \url{http://openrave.org/}.
+
+\bibitem[Diankov({\natexlab{b}})]{Diankova}
+Rosen Diankov.
+\newblock {OpenRAVE Users List}, {\natexlab{b}}.
+\newblock URL \url{http://openrave-users-list.185357.n3.nabble.com/}.
 
 \bibitem[Diankov(2010)]{Diankov2010}
 Rosen Diankov.
@@ -188,21 +193,9 @@ R.~Smits, H.~Bruyninckx, and E.~Aertbeli.
 \newblock {KDL: Kinematics and dynamics library | The Orocos Project}.
 \newblock URL \url{http://www.orocos.org/kdl}.
 
-\bibitem[STRANDS()]{strands}
+\bibitem[STRANDS(2015)]{gitV4RWrappers}
 STRANDS.
-\newblock {Spatio-Temporal Representation and Activities for Cognitive Control
-  in Long-Term Scenarios}.
-\newblock URL \url{http://strands.acin.tuwien.ac.at/}.
-
-\bibitem[STRANDS(2015{\natexlab{a}})]{gitV4R}
-STRANDS.
-\newblock {V4R Wiki}, 2015{\natexlab{a}}.
-\newblock URL
-  \url{https://github.com/strands-project-releases/strands-releases/wiki}.
-
-\bibitem[STRANDS(2015{\natexlab{b}})]{gitV4RWrappers}
-STRANDS.
-\newblock {V4R ROS Wrapper repository}, 2015{\natexlab{b}}.
+\newblock {V4R ROS Wrapper repository}, 2015.
 \newblock URL \url{https://github.com/strands-project/v4r_ros_wrappers}.
 
 \bibitem[ten Pas(2015)]{Pas}

@@ -12,7 +12,7 @@ A level-1 auxiliary file: images/pose_preknown.aux
 A level-1 auxiliary file: images/plan_execute_function_flow.aux
 A level-1 auxiliary file: images/setup_romeo_grasper.aux
 Database file #1: ./library/library.bib
-Repeated entry---line 905 of file ./library/library.bib
+Repeated entry---line 965 of file ./library/library.bib
  : @misc{ROS
  :          ,
 I'm skipping whatever remains of this entry
@@ -27,51 +27,51 @@ Warning--empty year in ros-naoqi
 Warning--empty year in ASUSWeb
 Warning--empty year in gitMoveitSimpleGrasp
 Warning--empty year in Diankov
+Warning--empty year in Diankova
 Warning--empty year in IntelWeb
 Warning--empty year in KhronosGroup
 Warning--empty year in Penton
 Warning--empty year in ROS
 Warning--empty year in KDL
-Warning--empty year in strands
-You've used 34 entries,
+You've used 33 entries,
             2773 wiz_defined-function locations,
-            789 strings with 10414 characters,
-and the built_in function-call counts, 12311 in all, are:
-= -- 1081
-> -- 601
-< -- 26
-+ -- 222
-- -- 183
-* -- 834
-:= -- 1855
-add.period$ -- 112
-call.type$ -- 34
-change.case$ -- 163
-chr.to.int$ -- 29
-cite$ -- 87
-duplicate$ -- 568
-empty$ -- 1137
-format.name$ -- 221
-if$ -- 2605
+            786 strings with 10280 characters,
+and the built_in function-call counts, 12022 in all, are:
+= -- 1057
+> -- 591
+< -- 25
++ -- 218
+- -- 180
+* -- 821
+:= -- 1812
+add.period$ -- 109
+call.type$ -- 33
+change.case$ -- 159
+chr.to.int$ -- 28
+cite$ -- 85
+duplicate$ -- 553
+empty$ -- 1105
+format.name$ -- 217
+if$ -- 2543
 int.to.chr$ -- 6
 int.to.str$ -- 1
 missing$ -- 8
-newline$ -- 188
-num.names$ -- 128
-pop$ -- 434
+newline$ -- 183
+num.names$ -- 124
+pop$ -- 420
 preamble$ -- 1
-purify$ -- 129
+purify$ -- 126
 quote$ -- 0
-skip$ -- 502
+skip$ -- 488
 stack$ -- 0
-substring$ -- 176
-swap$ -- 53
+substring$ -- 174
+swap$ -- 52
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 374
+type$ -- 363
 warning$ -- 17
-while$ -- 105
+while$ -- 102
 width$ -- 0
-write$ -- 430
+write$ -- 420
 (There was 1 error message)

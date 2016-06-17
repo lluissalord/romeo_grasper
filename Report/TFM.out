@@ -49,20 +49,25 @@
 \BOOKMARK [1][-]{section.7.2}{IKFast on Romeo}{chapter.7}% 49
 \BOOKMARK [1][-]{section.7.3}{Camera positioning}{chapter.7}% 50
 \BOOKMARK [1][-]{section.7.4}{Error produced by the camera positioning}{chapter.7}% 51
-\BOOKMARK [0][-]{chapter.8}{Future works}{}% 52
-\BOOKMARK [1][-]{section.8.1}{Implementation new inverse kinematics}{chapter.8}% 53
-\BOOKMARK [1][-]{section.8.2}{Improve use of RTM}{chapter.8}% 54
-\BOOKMARK [1][-]{section.8.3}{Object identification}{chapter.8}% 55
-\BOOKMARK [1][-]{section.8.4}{Improvement of visual camera positioning}{chapter.8}% 56
-\BOOKMARK [1][-]{section.8.5}{Fix the Romeo model}{chapter.8}% 57
-\BOOKMARK [1][-]{section.8.6}{Implementation of AGILE grasp}{chapter.8}% 58
-\BOOKMARK [1][-]{section.8.7}{Dependencies of packages}{chapter.8}% 59
-\BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 60
-\BOOKMARK [0][-]{chapter*.69}{References}{}% 61
-\BOOKMARK [0][-]{section*.70}{Appendices}{}% 62
-\BOOKMARK [0][-]{appendix.A}{Software requirements and installation}{}% 63
-\BOOKMARK [1][-]{section.A.1}{Software requirements}{appendix.A}% 64
-\BOOKMARK [1][-]{section.A.2}{Romeo grasper installation}{appendix.A}% 65
-\BOOKMARK [1][-]{section.A.3}{Camera drivers installation}{appendix.A}% 66
-\BOOKMARK [1][-]{section.A.4}{V4R installation}{appendix.A}% 67
-\BOOKMARK [1][-]{section.A.5}{OpenRAVE installation}{appendix.A}% 68
+\BOOKMARK [1][-]{section.7.5}{Final global execution}{chapter.7}% 52
+\BOOKMARK [0][-]{chapter.8}{Future works}{}% 53
+\BOOKMARK [1][-]{section.8.1}{Implementation new inverse kinematics}{chapter.8}% 54
+\BOOKMARK [1][-]{section.8.2}{Improve use of RTM}{chapter.8}% 55
+\BOOKMARK [1][-]{section.8.3}{Object identification}{chapter.8}% 56
+\BOOKMARK [1][-]{section.8.4}{Improvement of visual camera positioning}{chapter.8}% 57
+\BOOKMARK [1][-]{section.8.5}{Fix the Romeo model}{chapter.8}% 58
+\BOOKMARK [1][-]{section.8.6}{Implementation of AGILE grasp}{chapter.8}% 59
+\BOOKMARK [1][-]{section.8.7}{Dependencies of packages}{chapter.8}% 60
+\BOOKMARK [0][-]{chapter.9}{Conclusion}{}% 61
+\BOOKMARK [1][-]{section.9.1}{Approach to grasp}{chapter.9}% 62
+\BOOKMARK [1][-]{section.9.2}{Improvements on other packages}{chapter.9}% 63
+\BOOKMARK [1][-]{section.9.3}{All in a ROS package}{chapter.9}% 64
+\BOOKMARK [1][-]{section.9.4}{Understanding of romeo\137moveit}{chapter.9}% 65
+\BOOKMARK [0][-]{chapter*.72}{References}{}% 66
+\BOOKMARK [0][-]{section*.73}{Appendices}{}% 67
+\BOOKMARK [0][-]{appendix.A}{Software requirements and installation}{}% 68
+\BOOKMARK [1][-]{section.A.1}{Software requirements}{appendix.A}% 69
+\BOOKMARK [1][-]{section.A.2}{Romeo grasper installation}{appendix.A}% 70
+\BOOKMARK [1][-]{section.A.3}{Camera drivers installation}{appendix.A}% 71
+\BOOKMARK [1][-]{section.A.4}{V4R installation}{appendix.A}% 72
+\BOOKMARK [1][-]{section.A.5}{OpenRAVE installation}{appendix.A}% 73

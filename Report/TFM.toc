@@ -29,7 +29,7 @@
 \contentsline {subsubsection}{NAOqi driver}{19}{section*.23}
 \contentsline {subsubsection}{NAOqi pose}{19}{section*.25}
 \contentsline {subsubsection}{DCM driver}{20}{section*.27}
-\contentsline {subsubsection}{Romeo sensor}{20}{section*.30}
+\contentsline {subsubsection}{Romeo sensor}{21}{section*.30}
 \contentsline {subsection}{\numberline {3.2.3}RTM (Recognition, Tracking and Modelling of Objects)}{22}{subsection.3.2.3}
 \contentsline {subsection}{\numberline {3.2.4}Inverse kinematic solvers}{24}{subsection.3.2.4}
 \contentsline {chapter}{\numberline {4}Design of Romeo grasper package}{27}{chapter.4}
@@ -57,33 +57,38 @@
 \contentsline {section}{\numberline {6.1}Movement in simulation}{49}{section.6.1}
 \contentsline {section}{\numberline {6.2}Implementation of IKFast on Romeo}{53}{section.6.2}
 \contentsline {section}{\numberline {6.3}Get pre-known camera position}{55}{section.6.3}
-\contentsline {section}{\numberline {6.4}Visual camera positioning}{56}{section.6.4}
-\contentsline {subsubsection}{(1) Using only one link}{57}{section*.57}
-\contentsline {subsubsection}{(2) Using three links}{57}{section*.59}
-\contentsline {subsubsection}{(3) Using multiples transformations}{58}{section*.62}
-\contentsline {section}{\numberline {6.5}Error produces by the camera positioning}{60}{section.6.5}
-\contentsline {chapter}{\numberline {7}Discussion}{61}{chapter.7}
-\contentsline {section}{\numberline {7.1}Simulation results}{61}{section.7.1}
-\contentsline {section}{\numberline {7.2}IKFast on Romeo}{62}{section.7.2}
-\contentsline {section}{\numberline {7.3}Camera positioning}{63}{section.7.3}
-\contentsline {section}{\numberline {7.4}Error produced by the camera positioning}{63}{section.7.4}
-\contentsline {chapter}{\numberline {8}Future works}{65}{chapter.8}
-\contentsline {section}{\numberline {8.1}Implementation new inverse kinematics}{65}{section.8.1}
-\contentsline {section}{\numberline {8.2}Improve use of RTM}{65}{section.8.2}
-\contentsline {section}{\numberline {8.3}Object identification}{67}{section.8.3}
-\contentsline {section}{\numberline {8.4}Improvement of visual camera positioning}{68}{section.8.4}
-\contentsline {section}{\numberline {8.5}Fix the Romeo model}{68}{section.8.5}
-\contentsline {section}{\numberline {8.6}Implementation of AGILE grasp}{69}{section.8.6}
-\contentsline {section}{\numberline {8.7}Dependencies of packages}{69}{section.8.7}
-\contentsline {chapter}{\numberline {9}Conclusion}{71}{chapter.9}
-\contentsline {chapter}{References}{75}{chapter*.69}
-\contentsline {chapter}{Appendices}{76}{section*.70}
-\contentsline {chapter}{\numberline {A}Software requirements and installation}{79}{appendix.A}
-\contentsline {section}{\numberline {A.1}Software requirements}{79}{section.A.1}
-\contentsline {section}{\numberline {A.2}Romeo grasper installation}{79}{section.A.2}
-\contentsline {section}{\numberline {A.3}Camera drivers installation}{80}{section.A.3}
-\contentsline {section}{\numberline {A.4}V4R installation}{80}{section.A.4}
-\contentsline {subsubsection}{From ubuntu package}{80}{section*.72}
-\contentsline {subsubsection}{From source}{81}{section*.73}
-\contentsline {subsubsection}{V4R ROS wrappers}{81}{section*.74}
-\contentsline {section}{\numberline {A.5}OpenRAVE installation}{82}{section.A.5}
+\contentsline {section}{\numberline {6.4}Visual camera positioning}{57}{section.6.4}
+\contentsline {subsubsection}{(1) Using only one link}{58}{section*.59}
+\contentsline {subsubsection}{(2) Using three links}{58}{section*.61}
+\contentsline {subsubsection}{(3) Using multiples transformations}{59}{section*.64}
+\contentsline {section}{\numberline {6.5}Error produces by the camera positioning}{61}{section.6.5}
+\contentsline {chapter}{\numberline {7}Discussion}{63}{chapter.7}
+\contentsline {section}{\numberline {7.1}Simulation results}{63}{section.7.1}
+\contentsline {section}{\numberline {7.2}IKFast on Romeo}{64}{section.7.2}
+\contentsline {section}{\numberline {7.3}Camera positioning}{65}{section.7.3}
+\contentsline {section}{\numberline {7.4}Error produced by the camera positioning}{65}{section.7.4}
+\contentsline {section}{\numberline {7.5}Final global execution}{66}{section.7.5}
+\contentsline {chapter}{\numberline {8}Future works}{67}{chapter.8}
+\contentsline {section}{\numberline {8.1}Implementation new inverse kinematics}{67}{section.8.1}
+\contentsline {section}{\numberline {8.2}Improve use of RTM}{67}{section.8.2}
+\contentsline {section}{\numberline {8.3}Object identification}{69}{section.8.3}
+\contentsline {section}{\numberline {8.4}Improvement of visual camera positioning}{70}{section.8.4}
+\contentsline {section}{\numberline {8.5}Fix the Romeo model}{70}{section.8.5}
+\contentsline {section}{\numberline {8.6}Implementation of AGILE grasp}{71}{section.8.6}
+\contentsline {section}{\numberline {8.7}Dependencies of packages}{71}{section.8.7}
+\contentsline {chapter}{\numberline {9}Conclusion}{73}{chapter.9}
+\contentsline {section}{\numberline {9.1}Approach to grasp}{73}{section.9.1}
+\contentsline {section}{\numberline {9.2}Improvements on other packages}{73}{section.9.2}
+\contentsline {section}{\numberline {9.3}All in a ROS package}{73}{section.9.3}
+\contentsline {section}{\numberline {9.4}Understanding of romeo\_moveit}{73}{section.9.4}
+\contentsline {chapter}{References}{77}{chapter*.72}
+\contentsline {chapter}{Appendices}{78}{section*.73}
+\contentsline {chapter}{\numberline {A}Software requirements and installation}{81}{appendix.A}
+\contentsline {section}{\numberline {A.1}Software requirements}{81}{section.A.1}
+\contentsline {section}{\numberline {A.2}Romeo grasper installation}{81}{section.A.2}
+\contentsline {section}{\numberline {A.3}Camera drivers installation}{82}{section.A.3}
+\contentsline {section}{\numberline {A.4}V4R installation}{82}{section.A.4}
+\contentsline {subsubsection}{From ubuntu package}{82}{section*.75}
+\contentsline {subsubsection}{From source}{83}{section*.76}
+\contentsline {subsubsection}{V4R ROS wrappers}{83}{section*.77}
+\contentsline {section}{\numberline {A.5}OpenRAVE installation}{84}{section.A.5}

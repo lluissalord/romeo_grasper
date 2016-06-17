@@ -33,9 +33,12 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Confidence interval of distance of the approximated solutions.\relax }}{52}{figure.caption.51}
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Confidence interval of distance for approximated and inside tolerance solutions. Only for solutions with computer \texttt {C1}\relax }}{52}{figure.caption.52}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Photos of the different points of view to pose the \texttt {l\_wrist}. The origin of the link is in the center of the blue spherical joint.\relax }}{56}{figure.caption.55}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Description of the position used for this experiment.\relax }}{57}{figure.caption.58}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Description of the experiment to know the error produced by the camera misposition.\relax }}{61}{figure.caption.67}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Kinect problem, RGB camera sending black images.\relax }}{66}{figure.caption.66}
-\contentsline {figure}{\numberline {8.2}{\ignorespaces Current position of grippers in Romeo model.\relax }}{68}{figure.caption.68}
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Kinect problem, RGB camera sending black images.\relax }}{68}{figure.caption.69}
+\contentsline {figure}{\numberline {8.2}{\ignorespaces Current position of grippers in Romeo model.\relax }}{70}{figure.caption.71}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -12,17 +12,17 @@
 \contentsline {table}{\numberline {6.1}{\ignorespaces Positions in camera reference of the cylinders used for the tests.\relax }}{50}{table.caption.50}
 \contentsline {table}{\numberline {6.2}{\ignorespaces Index of every link of the robot base and arms.\relax }}{54}{table.caption.53}
 \contentsline {table}{\numberline {6.3}{\ignorespaces Index of every joint of the robot arms.\relax }}{54}{table.caption.54}
-\contentsline {table}{\numberline {6.4}{\ignorespaces Measures in \texttt {base\_link} reference to get camera position.\relax }}{56}{table.caption.55}
-\contentsline {table}{\numberline {6.5}{\ignorespaces Transformation from \texttt {base\_link} frame to camera.\relax }}{56}{table.caption.56}
-\contentsline {table}{\numberline {6.6}{\ignorespaces Data and results for the first approach with visual positioning.\relax }}{57}{table.caption.58}
-\contentsline {table}{\numberline {6.7}{\ignorespaces Seeds used for the non-linear problem.\relax }}{58}{table.caption.60}
-\contentsline {table}{\numberline {6.8}{\ignorespaces Results from the optimization problem and the average camera position, for every seed.\relax }}{58}{table.caption.61}
-\contentsline {table}{\numberline {6.9}{\ignorespaces Information used to approach the camera position using multiples transformations.\relax }}{59}{table.caption.63}
-\contentsline {table}{\numberline {6.10}{\ignorespaces Camera position and orientation using multiple transformations.\relax }}{60}{table.caption.64}
-\contentsline {table}{\numberline {6.11}{\ignorespaces Results of error produced by the camera positioning.\relax }}{60}{table.caption.65}
+\contentsline {table}{\numberline {6.4}{\ignorespaces Measures in \texttt {base\_link} reference to get camera position.\relax }}{56}{table.caption.56}
+\contentsline {table}{\numberline {6.5}{\ignorespaces Transformation from \texttt {base\_link} frame to camera.\relax }}{57}{table.caption.57}
+\contentsline {table}{\numberline {6.6}{\ignorespaces Data and results for the first approach with visual positioning.\relax }}{58}{table.caption.60}
+\contentsline {table}{\numberline {6.7}{\ignorespaces Seeds used for the non-linear problem.\relax }}{59}{table.caption.62}
+\contentsline {table}{\numberline {6.8}{\ignorespaces Results from the optimization problem and the average camera position, for every seed.\relax }}{59}{table.caption.63}
+\contentsline {table}{\numberline {6.9}{\ignorespaces Information used to approach the camera position using multiples transformations.\relax }}{60}{table.caption.65}
+\contentsline {table}{\numberline {6.10}{\ignorespaces Camera position and orientation using multiple transformations.\relax }}{61}{table.caption.66}
+\contentsline {table}{\numberline {6.11}{\ignorespaces Results of error produced by the camera positioning.\relax }}{61}{table.caption.68}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {8.1}{\ignorespaces Comparison of the RGB-D cameras: Kinect, Xtion and RealSense.\relax }}{67}{table.caption.67}
+\contentsline {table}{\numberline {8.1}{\ignorespaces Comparison of the RGB-D cameras: Kinect, Xtion and RealSense.\relax }}{69}{table.caption.70}
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {A.1}{\ignorespaces Software required with his version\relax }}{79}{table.caption.71}
+\contentsline {table}{\numberline {A.1}{\ignorespaces Software required with his version\relax }}{81}{table.caption.74}

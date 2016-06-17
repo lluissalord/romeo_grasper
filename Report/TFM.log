@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.25)  17 JUN 2016 13:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2015.9.25)  17 JUN 2016 20:56
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1518,7 +1518,7 @@ File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2
 
 ] [1]
-<images/TU_small_logo.png, id=299, 759.638pt x 758.835pt>
+<images/TU_small_logo.png, id=319, 759.638pt x 758.835pt>
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
@@ -1533,36 +1533,33 @@ File: images/TU_small_logo.png Graphic file (type png)
 Package pdftex.def Info: images/TU_small_logo.png used on input line 40.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [3]
-Underfull \vbox (badness 1383) has occurred while \output is active []
-
 File: images/TU_small_logo.png Graphic file (type png)
-
-<use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 79.
+ <use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 81.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [4])
 \tf@toc=\write6
 \openout6 = `TFM.toc'.
 
 File: images/TU_small_logo.png Graphic file (type png)
- <use images/TU_small_logo.png>
+
+<use images/TU_small_logo.png>
 Package pdftex.def Info: images/TU_small_logo.png used on input line 163.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [5]
 File: images/TU_small_logo.png Graphic file (type png)
-
-<use images/TU_small_logo.png>
+ <use images/TU_small_logo.png>
 Package pdftex.def Info: images/TU_small_logo.png used on input line 164.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [6
 
-] (./TFM.lof
+]
+(./TFM.lof
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
 Package pdftex.def Info: images/TU_small_logo.png used on input line 35.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
-
-[7])
+ [7])
 \tf@lof=\write7
 \openout7 = `TFM.lof'.
 
@@ -1570,85 +1567,88 @@ File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
 Package pdftex.def Info: images/TU_small_logo.png used on input line 165.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [8] (./TFM.lot)
+
+[8] (./TFM.lot)
 \tf@lot=\write8
 \openout8 = `TFM.lot'.
 
 File: images/TU_small_logo.png Graphic file (type png)
-
-<use images/TU_small_logo.png>
+ <use images/TU_small_logo.png>
 Package pdftex.def Info: images/TU_small_logo.png used on input line 167.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [9
 
 ]
 File: images/TU_small_logo.png Graphic file (type png)
- <use images/TU_small_logo.png>
+
+<use images/TU_small_logo.png>
 Package pdftex.def Info: images/TU_small_logo.png used on input line 169.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [10
 
 ]
 File: images/TU_small_logo.png Graphic file (type png)
-
-<use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 175.
+ <use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 178.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [11]
 File: images/TU_small_logo.png Graphic file (type png)
- <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 175.
+
+<use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 178.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [12
 
 ]
 Chapter 1.
-<images/romeo_nao_pepper.jpg, id=530, 451.6875pt x 414.54875pt>
+<images/romeo_nao_pepper.jpg, id=563, 451.6875pt x 414.54875pt>
 File: images/romeo_nao_pepper.jpg Graphic file (type jpg)
 
 <use images/romeo_nao_pepper.jpg>
-Package pdftex.def Info: images/romeo_nao_pepper.jpg used on input line 191.
+Package pdftex.def Info: images/romeo_nao_pepper.jpg used on input line 194.
 (pdftex.def)             Requested size: 159.33821pt x 146.23914pt.
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 195.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 198.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.195 I
+l.198 I
        n order to be able to achieve this aim, Romeo has to be capable of do...
 [1]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 208.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 211.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
 pdfTeX warning (ext4): destination with the same identifier (name{page.2}) has 
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.208 
+l.211 
        [2 <./images/romeo_nao_pepper.jpg>]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 211.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 214.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 211.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 214.
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 234.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 242.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [3]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 235.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 242.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [4]
+ [4
+
+]
 Chapter 2.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -1656,17 +1656,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 255.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 257.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [5
-
-]
+ [5]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 272.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 271.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [6]
-Overfull \hbox (1.99153pt too wide) in paragraph at lines 281--282
+Overfull \hbox (1.99153pt too wide) in paragraph at lines 277--278
 []\T1/cmr/m/n/12 As the last one, the \T1/cmtt/m/n/12 romeo_moveit_action \T1/c
 mr/m/n/12 pack-age al-low to use \T1/cmtt/m/n/12 moveit_simple_grasps
  []
@@ -1680,24 +1678,24 @@ f>
 (epstopdf)                    size: 181898 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/moveit_internal-eps
 -converted-to.pdf images/moveit_internal.eps>
-(epstopdf)             \includegraphics on input line 285.
+(epstopdf)             \includegraphics on input line 281.
 Package epstopdf Info: Output file is already uptodate.
-<images/moveit_internal-eps-converted-to.pdf, id=593, 473.77pt x 178.6675pt>
+<images/moveit_internal-eps-converted-to.pdf, id=626, 473.77pt x 178.6675pt>
 File: images/moveit_internal-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/moveit_internal-eps-converted-to.pdf>
 Package pdftex.def Info: images/moveit_internal-eps-converted-to.pdf used on in
-put line 285.
+put line 281.
 (pdftex.def)             Requested size: 364.19667pt x 137.34811pt.
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 290.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 286.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [7 <./images/moveit_internal-eps-converted-to.pdf>]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 321.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 314.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [8]
 Package epstopdf Info: Source file: <images/moveit_actions_ROS.eps>
@@ -1709,15 +1707,15 @@ Package epstopdf Info: Source file: <images/moveit_actions_ROS.eps>
 (epstopdf)                    size: 52085 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/moveit_actions_ROS-
 eps-converted-to.pdf images/moveit_actions_ROS.eps>
-(epstopdf)             \includegraphics on input line 324.
+(epstopdf)             \includegraphics on input line 317.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/moveit_actions_ROS-eps-converted-to.pdf, id=616, 364.36125pt x 138.5175
+<images/moveit_actions_ROS-eps-converted-to.pdf, id=650, 364.36125pt x 138.5175
 pt>
 File: images/moveit_actions_ROS-eps-converted-to.pdf Graphic file (type pdf)
  <use images/moveit_actions_ROS-eps-converted-to.pdf>
 Package pdftex.def Info: images/moveit_actions_ROS-eps-converted-to.pdf used on
- input line 324.
+ input line 317.
 (pdftex.def)             Requested size: 364.19667pt x 138.46008pt.
 \openout2 = `images/moveit_actions_grasp_plan.aux'.
 
@@ -1729,7 +1727,7 @@ Package pdftex.def Info: images/moveit_actions_ROS-eps-converted-to.pdf used on
 
 
 (./images/moveit_actions_reach_action.tex)
-Overfull \hbox (10.12668pt too wide) in paragraph at lines 494--336
+Overfull \hbox (10.12668pt too wide) in paragraph at lines 494--329
  [][] 
  []
 
@@ -1741,7 +1739,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 (./images/moveit_actions_pick_action.tex)
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 346.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 339.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
 
 [9
@@ -1751,7 +1749,7 @@ Package pdftex.def Info: images/TU_small_logo.png used on input line 346.
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 346.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 339.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [10
 
@@ -1759,7 +1757,7 @@ Package pdftex.def Info: images/TU_small_logo.png used on input line 346.
 ]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 346.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 339.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [11
 
@@ -1768,7 +1766,7 @@ Package pdftex.def Info: images/TU_small_logo.png used on input line 346.
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 346.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 339.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [12
 
@@ -1782,14 +1780,14 @@ Package epstopdf Info: Source file: <images/Romeo.eps>
 (epstopdf)                    size: 102587 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/Romeo-eps-converted
 -to.pdf images/Romeo.eps>
-(epstopdf)             \includegraphics on input line 353.
+(epstopdf)             \includegraphics on input line 346.
 Package epstopdf Info: Output file is already uptodate.
-<images/Romeo-eps-converted-to.pdf, id=643, 477.785pt x 717.68124pt>
+<images/Romeo-eps-converted-to.pdf, id=676, 477.785pt x 717.68124pt>
 File: images/Romeo-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/Romeo-eps-converted-to.pdf>
 Package pdftex.def Info: images/Romeo-eps-converted-to.pdf used on input line 3
-53.
+46.
 (pdftex.def)             Requested size: 159.33821pt x 239.34329pt.
 Package epstopdf Info: Source file: <images/arm_link.eps>
 (epstopdf)                    date: 2016-05-27 12:33:18
@@ -1799,15 +1797,15 @@ Package epstopdf Info: Source file: <images/arm_link.eps>
 (epstopdf)                    size: 47109 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/arm_link-eps-conver
 ted-to.pdf images/arm_link.eps>
-(epstopdf)             \includegraphics on input line 384.
+(epstopdf)             \includegraphics on input line 377.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/arm_link-eps-converted-to.pdf, id=647, 467.7475pt x 160.6pt>
+<images/arm_link-eps-converted-to.pdf, id=680, 467.7475pt x 160.6pt>
 File: images/arm_link-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/arm_link-eps-converted-to.pdf>
 Package pdftex.def Info: images/arm_link-eps-converted-to.pdf used on input lin
-e 384.
+e 377.
 (pdftex.def)             Requested size: 364.19667pt x 125.05183pt.
 
 
@@ -1815,35 +1813,35 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 389.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 382.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [13 <./images/Romeo-eps-converted-to.pdf>]
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 414.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 407.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [14 <./images/arm_link-eps-converted-to.pdf>]
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 437.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 430.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [15]
-<images/dcm_overview.png, id=680, 406.51875pt x 219.82124pt>
+<images/dcm_overview.png, id=713, 406.51875pt x 219.82124pt>
 File: images/dcm_overview.png Graphic file (type png)
 
 <use images/dcm_overview.png>
-Package pdftex.def Info: images/dcm_overview.png used on input line 440.
+Package pdftex.def Info: images/dcm_overview.png used on input line 433.
 (pdftex.def)             Requested size: 364.19667pt x 196.94171pt.
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 461.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 454.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [16 <./images/dcm_overview.png>]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 489.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 480.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [17]
 Package epstopdf Info: Source file: <images/Romeo-ROS.eps>
@@ -1854,15 +1852,15 @@ Package epstopdf Info: Source file: <images/Romeo-ROS.eps>
 (epstopdf)                    size: 164162 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/Romeo-ROS-eps-conve
 rted-to.pdf images/Romeo-ROS.eps>
-(epstopdf)             \includegraphics on input line 518.
+(epstopdf)             \includegraphics on input line 509.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/Romeo-ROS-eps-converted-to.pdf, id=709, 595.22375pt x 156.585pt>
+<images/Romeo-ROS-eps-converted-to.pdf, id=742, 595.22375pt x 156.585pt>
 File: images/Romeo-ROS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/Romeo-ROS-eps-converted-to.pdf>
 Package pdftex.def Info: images/Romeo-ROS-eps-converted-to.pdf used on input li
-ne 518.
+ne 509.
 (pdftex.def)             Requested size: 386.96027pt x 101.79576pt.
 
 
@@ -1874,7 +1872,7 @@ Underfull \vbox (badness 1817) has occurred while \output is active []
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 525.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 516.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [18]
 Package epstopdf Info: Source file: <images/naoqi_driver.eps>
@@ -1885,19 +1883,19 @@ Package epstopdf Info: Source file: <images/naoqi_driver.eps>
 (epstopdf)                    size: 96351 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/naoqi_driver-eps-co
 nverted-to.pdf images/naoqi_driver.eps>
-(epstopdf)             \includegraphics on input line 528.
+(epstopdf)             \includegraphics on input line 519.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/naoqi_driver-eps-converted-to.pdf, id=717, 363.3575pt x 132.495pt>
+<images/naoqi_driver-eps-converted-to.pdf, id=750, 363.3575pt x 132.495pt>
 File: images/naoqi_driver-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/naoqi_driver-eps-converted-to.pdf>
 Package pdftex.def Info: images/naoqi_driver-eps-converted-to.pdf used on input
- line 528.
+ line 519.
 (pdftex.def)             Requested size: 364.19667pt x 132.80397pt.
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 537.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 528.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
 
 [19 <./images/Romeo-ROS-eps-converted-to.pdf> <./images/naoqi_driver-eps-conver
@@ -1911,15 +1909,15 @@ f>
 (epstopdf)                    size: 152979 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/pose_controller-eps
 -converted-to.pdf images/pose_controller.eps>
-(epstopdf)             \includegraphics on input line 552.
+(epstopdf)             \includegraphics on input line 543.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/pose_controller-eps-converted-to.pdf, id=734, 398.48875pt x 235.88126pt
+<images/pose_controller-eps-converted-to.pdf, id=767, 398.48875pt x 235.88126pt
 >
 File: images/pose_controller-eps-converted-to.pdf Graphic file (type pdf)
  <use images/pose_controller-eps-converted-to.pdf>
 Package pdftex.def Info: images/pose_controller-eps-converted-to.pdf used on in
-put line 552.
+put line 543.
 (pdftex.def)             Requested size: 364.19667pt x 215.59167pt.
 Package epstopdf Info: Source file: <images/dcm_driver.eps>
 (epstopdf)                    date: 2016-05-28 15:26:51
@@ -1929,15 +1927,15 @@ Package epstopdf Info: Source file: <images/dcm_driver.eps>
 (epstopdf)                    size: 128000 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/dcm_driver-eps-conv
 erted-to.pdf images/dcm_driver.eps>
-(epstopdf)             \includegraphics on input line 564.
+(epstopdf)             \includegraphics on input line 555.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/dcm_driver-eps-converted-to.pdf, id=738, 398.48875pt x 140.525pt>
+<images/dcm_driver-eps-converted-to.pdf, id=771, 398.48875pt x 140.525pt>
 File: images/dcm_driver-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/dcm_driver-eps-converted-to.pdf>
 Package pdftex.def Info: images/dcm_driver-eps-converted-to.pdf used on input l
-ine 564.
+ine 555.
 (pdftex.def)             Requested size: 364.19667pt x 128.43758pt.
 
 
@@ -1946,7 +1944,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 \openout2 = `images/dcm_driver_flow.aux'.
 
 (./images/dcm_driver_flow.tex)
-Overfull \hbox (6.55904pt too wide) in paragraph at lines 307--570
+Overfull \hbox (6.55904pt too wide) in paragraph at lines 307--561
  [][] 
  []
 
@@ -1955,39 +1953,39 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 582.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 566.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [20 <./images/pose_controller-eps-converted-to.pdf>]
-Overfull \hbox (3.1469pt too wide) in paragraph at lines 583--584
+Overfull \hbox (3.1469pt too wide) in paragraph at lines 574--575
 []\T1/cmr/m/n/12 In or-der to add the depth cam-era is used the same code struc
 -ture as in \T1/cmtt/m/n/12 naoqi_sensor_py\T1/cmr/m/n/12 ,
  []
 
-<images/depth_camera_monitor.png, id=749, 349.305pt x 281.05pt>
+<images/depth_camera_monitor.png, id=782, 349.305pt x 281.05pt>
 File: images/depth_camera_monitor.png Graphic file (type png)
 
 <use images/depth_camera_monitor.png>
-Package pdftex.def Info: images/depth_camera_monitor.png used on input line 588
+Package pdftex.def Info: images/depth_camera_monitor.png used on input line 579
 .
 (pdftex.def)             Requested size: 218.51521pt x 175.81877pt.
 
-<images/depth_camera_ROS.jpg, id=750, 321.2pt x 240.9pt>
+<images/depth_camera_ROS.jpg, id=783, 321.2pt x 240.9pt>
 File: images/depth_camera_ROS.jpg Graphic file (type jpg)
 
 <use images/depth_camera_ROS.jpg>
-Package pdftex.def Info: images/depth_camera_ROS.jpg used on input line 594.
+Package pdftex.def Info: images/depth_camera_ROS.jpg used on input line 585.
 (pdftex.def)             Requested size: 218.51521pt x 163.89069pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 7273) has occurred while \output is active []
 
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 611.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 592.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [21
 
@@ -1996,7 +1994,7 @@ Package pdftex.def Info: images/TU_small_logo.png used on input line 611.
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 617.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 609.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [22 <./images/depth_camera_monitor.png> <./images/depth_camera_ROS.jpg>]
 Package epstopdf Info: Source file: <images/V4R-ROS.eps>
@@ -2007,19 +2005,19 @@ Package epstopdf Info: Source file: <images/V4R-ROS.eps>
 (epstopdf)                    size: 327192 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/V4R-ROS-eps-convert
 ed-to.pdf images/V4R-ROS.eps>
-(epstopdf)             \includegraphics on input line 620.
+(epstopdf)             \includegraphics on input line 613.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/V4R-ROS-eps-converted-to.pdf, id=778, 417.56pt x 248.93pt>
+<images/V4R-ROS-eps-converted-to.pdf, id=810, 417.56pt x 248.93pt>
 File: images/V4R-ROS-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/V4R-ROS-eps-converted-to.pdf>
 Package pdftex.def Info: images/V4R-ROS-eps-converted-to.pdf used on input line
- 620.
+ 613.
 (pdftex.def)             Requested size: 364.19667pt x 217.1295pt.
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 632.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 622.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
 
 [23 <./images/V4R-ROS-eps-converted-to.pdf>]
@@ -2032,37 +2030,37 @@ Package epstopdf Info: Source file: <images/object_tracker.eps>
 (epstopdf)                    size: 68736 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/object_tracker-eps-
 converted-to.pdf images/object_tracker.eps>
-(epstopdf)             \includegraphics on input line 635.
+(epstopdf)             \includegraphics on input line 628.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/object_tracker-eps-converted-to.pdf, id=805, 417.56pt x 180.675pt>
+<images/object_tracker-eps-converted-to.pdf, id=835, 417.56pt x 180.675pt>
 File: images/object_tracker-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/object_tracker-eps-converted-to.pdf>
 Package pdftex.def Info: images/object_tracker-eps-converted-to.pdf used on inp
-ut line 635.
+ut line 628.
 (pdftex.def)             Requested size: 386.96027pt x 167.44429pt.
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 649.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 642.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [24 <./images/object_tracker-eps-converted-to.pdf>]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 651.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 644.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [25]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 651.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 644.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [26
 
 ]
 Chapter 4.
 
-Overfull \hbox (8.90034pt too wide) in paragraph at lines 656--657
+Overfull \hbox (8.90034pt too wide) in paragraph at lines 649--650
 []\T1/cmr/m/n/12 Before the overview of the pack-age, it should be stated that 
 the pur-pose of \T1/cmtt/m/n/12 romeo_grasper
  []
@@ -2076,15 +2074,15 @@ Package epstopdf Info: Source file: <images/package_design.eps>
 (epstopdf)                    size: 411013 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/package_design-eps-
 converted-to.pdf images/package_design.eps>
-(epstopdf)             \includegraphics on input line 663.
+(epstopdf)             \includegraphics on input line 656.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/package_design-eps-converted-to.pdf, id=838, 528.97626pt x 218.8175pt>
+<images/package_design-eps-converted-to.pdf, id=871, 528.97626pt x 218.8175pt>
 File: images/package_design-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/package_design-eps-converted-to.pdf>
 Package pdftex.def Info: images/package_design-eps-converted-to.pdf used on inp
-ut line 663.
+ut line 656.
 (pdftex.def)             Requested size: 386.96027pt x 160.07266pt.
 
 
@@ -2092,59 +2090,59 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 670.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 663.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [27]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 685.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 676.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [28 <./images/package_design-eps-converted-to.pdf>]
-Underfull \hbox (badness 1515) in paragraph at lines 731--731
+Underfull \hbox (badness 1515) in paragraph at lines 722--722
 \T1/cmr/m/n/12 eled ob-jects and their con-fig
  []
 
 
-Underfull \hbox (badness 1460) in paragraph at lines 731--731
+Underfull \hbox (badness 1460) in paragraph at lines 722--722
 []\T1/cmr/m/n/12 Name of the mod-eled ob-ject
  []
 
 
-Underfull \hbox (badness 1460) in paragraph at lines 731--731
+Underfull \hbox (badness 1460) in paragraph at lines 722--722
 []\T1/cmr/m/n/12 Name of the mod-eled ob-ject
  []
 
 
-Underfull \hbox (badness 5077) in paragraph at lines 731--731
+Underfull \hbox (badness 5077) in paragraph at lines 722--722
 []\T1/cmr/m/n/12 Min-i-mum po-si-tion dif-fer-ence,
  []
 
 
-Underfull \hbox (badness 3826) in paragraph at lines 731--731
+Underfull \hbox (badness 3826) in paragraph at lines 722--722
 []\T1/cmr/m/n/12 Max-i-mum plan-ning time for
  []
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 734.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 725.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [29]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 735.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 726.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [30]
-Underfull \hbox (badness 4872) in paragraph at lines 755--755
+Underfull \hbox (badness 4872) in paragraph at lines 746--746
 []\T1/cmr/m/n/12 Frame of the ob-ject that
  []
 
 
-Underfull \hbox (badness 3417) in paragraph at lines 797--797
+Underfull \hbox (badness 3417) in paragraph at lines 789--789
 \T1/cmr/m/n/12 to-gether \T1/cmtt/m/n/12 romeo_grasper \T1/cmr/m/n/12 waits
  []
 
 
-Underfull \hbox (badness 1577) in paragraph at lines 797--797
+Underfull \hbox (badness 1577) in paragraph at lines 789--789
 []\T1/cmr/m/n/12 En-able use of the pa-ram-e-ters
  []
 
@@ -2153,10 +2151,10 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 804.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 797.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [31]
-Overfull \hbox (5.58922pt too wide) in paragraph at lines 810--811
+Overfull \hbox (5.58922pt too wide) in paragraph at lines 802--803
 []\T1/cmr/m/n/12 Both launch-ers run \T1/cmtt/m/n/12 romeo_grasper.launch\T1/cm
 r/m/n/12 , the \T1/cmtt/m/n/12 romeo_full_py.launch \T1/cmr/m/n/12 launcher whi
 ch
@@ -2164,18 +2162,18 @@ ch
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 818.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 811.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [32]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 821.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 813.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [33]
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 821.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 813.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [34
 
@@ -2183,13 +2181,13 @@ Package pdftex.def Info: images/TU_small_logo.png used on input line 821.
 Chapter 5.
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 840.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 832.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [35]
 \openout2 = `images/model_object_diagram.aux'.
 
  (./images/model_object_diagram.tex)
-Overfull \hbox (17.80772pt too wide) in paragraph at lines 370--850
+Overfull \hbox (17.80772pt too wide) in paragraph at lines 370--842
  [][] 
  []
 
@@ -2201,7 +2199,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 869.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 861.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [36
 
@@ -2215,15 +2213,15 @@ Package epstopdf Info: Source file: <images/camera_side.eps>
 (epstopdf)                    size: 143158 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/camera_side-eps-con
 verted-to.pdf images/camera_side.eps>
-(epstopdf)             \includegraphics on input line 887.
+(epstopdf)             \includegraphics on input line 879.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/camera_side-eps-converted-to.pdf, id=949, 216.81pt x 122.4575pt>
+<images/camera_side-eps-converted-to.pdf, id=982, 216.81pt x 122.4575pt>
 File: images/camera_side-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/camera_side-eps-converted-to.pdf>
 Package pdftex.def Info: images/camera_side-eps-converted-to.pdf used on input 
-line 887.
+line 879.
 (pdftex.def)             Requested size: 218.51521pt x 123.42696pt.
 Package epstopdf Info: Source file: <images/camera_front.eps>
 (epstopdf)                    date: 2016-05-17 13:43:26
@@ -2233,15 +2231,15 @@ Package epstopdf Info: Source file: <images/camera_front.eps>
 (epstopdf)                    size: 96644 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/camera_front-eps-co
 nverted-to.pdf images/camera_front.eps>
-(epstopdf)             \includegraphics on input line 893.
+(epstopdf)             \includegraphics on input line 885.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/camera_front-eps-converted-to.pdf, id=950, 183.68625pt x 104.39pt>
+<images/camera_front-eps-converted-to.pdf, id=983, 183.68625pt x 104.39pt>
 File: images/camera_front-eps-converted-to.pdf Graphic file (type pdf)
 
 <use images/camera_front-eps-converted-to.pdf>
 Package pdftex.def Info: images/camera_front-eps-converted-to.pdf used on input
- line 893.
+ line 885.
 (pdftex.def)             Requested size: 218.51521pt x 124.19217pt.
 
 
@@ -2249,7 +2247,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 904.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 896.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [37
 
@@ -2257,7 +2255,7 @@ Package pdftex.def Info: images/TU_small_logo.png used on input line 904.
 ]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 927.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 919.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [38 <./images/camera_side-eps-converted-to.pdf> <./images/camera_front-eps-con
 verted-to.pdf>]
@@ -2266,7 +2264,7 @@ verted-to.pdf>]
  (./images/pose_preknown.tex)
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 940.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 932.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [39
 
@@ -2281,33 +2279,33 @@ Package epstopdf Info: Source file: <images/modeled_object_offset.eps>
 (epstopdf)                    size: 538496 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/modeled_object_offs
 et-eps-converted-to.pdf images/modeled_object_offset.eps>
-(epstopdf)             \includegraphics on input line 943.
+(epstopdf)             \includegraphics on input line 935.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/modeled_object_offset-eps-converted-to.pdf, id=982, 163.61125pt x 217.8
-1375pt>
+<images/modeled_object_offset-eps-converted-to.pdf, id=1015, 163.61125pt x 217.
+81375pt>
 File: images/modeled_object_offset-eps-converted-to.pdf Graphic file (type pdf)
 
  <use images/modeled_object_offset-eps-converted-to.pdf>
 Package pdftex.def Info: images/modeled_object_offset-eps-converted-to.pdf used
- on input line 943.
+ on input line 935.
 (pdftex.def)             Requested size: 163.61084pt x 217.8132pt.
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 966.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 958.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [40 <./images/modeled_object_offset-eps-converted-to.pdf>]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 987.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 979.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [41]
 \openout2 = `images/plan_execute_function_flow.aux'.
 
 
 (./images/plan_execute_function_flow.tex)
-Overfull \hbox (10.48694pt too wide) in paragraph at lines 595--1006
+Overfull \hbox (10.48694pt too wide) in paragraph at lines 595--998
  [][] 
  []
 
@@ -2316,7 +2314,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1021.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1013.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [42]
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2324,7 +2322,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1026.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1018.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [43
 
@@ -2332,7 +2330,7 @@ Package pdftex.def Info: images/TU_small_logo.png used on input line 1026.
 ]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1044.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1036.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [44]
 \openout2 = `images/setup_romeo_grasper.aux'.
@@ -2344,7 +2342,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1067.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1059.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [45]
 Package epstopdf Info: Source file: <images/move_control_overview.eps>
@@ -2356,27 +2354,27 @@ Package epstopdf Info: Source file: <images/move_control_overview.eps>
 (epstopdf)                    size: 199392 bytes
 (epstopdf)             Command: <repstopdf --outfile=images/move_control_overvi
 ew-eps-converted-to.pdf images/move_control_overview.eps>
-(epstopdf)             \includegraphics on input line 1075.
+(epstopdf)             \includegraphics on input line 1067.
 Package epstopdf Info: Output file is already uptodate.
 
-<images/move_control_overview-eps-converted-to.pdf, id=1052, 438.63875pt x 232.
+<images/move_control_overview-eps-converted-to.pdf, id=1085, 438.63875pt x 232.
 87pt>
 File: images/move_control_overview-eps-converted-to.pdf Graphic file (type pdf)
 
  <use images/move_control_overview-eps-converted-to.pdf>
 Package pdftex.def Info: images/move_control_overview-eps-converted-to.pdf used
- on input line 1075.
+ on input line 1067.
 (pdftex.def)             Requested size: 364.19667pt x 193.3531pt.
 
-Underfull \hbox (badness 1924) in paragraph at lines 1114--1114
+Underfull \hbox (badness 1924) in paragraph at lines 1106--1106
 \T1/cmr/m/n/12 like if it is suc-ceeded, the tra-jec-tory
  []
 
 
-Package tabulary Warning: No suitable columns! on input line 1114.
+Package tabulary Warning: No suitable columns! on input line 1106.
 
 
-Underfull \hbox (badness 1924) in paragraph at lines 1114--1114
+Underfull \hbox (badness 1924) in paragraph at lines 1106--1106
 \T1/cmr/m/n/12 like if it is suc-ceeded, the tra-jec-tory
  []
 
@@ -2385,7 +2383,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1119.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1111.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [46
 
@@ -2393,12 +2391,12 @@ Package pdftex.def Info: images/TU_small_logo.png used on input line 1119.
  <./images/move_control_overview-eps-converted-to.pdf>]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1119.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1111.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [47]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1119.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1111.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
 
 [48
@@ -2407,42 +2405,39 @@ Package pdftex.def Info: images/TU_small_logo.png used on input line 1119.
 Chapter 6.
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1159.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1148.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [49]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1181.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1167.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [50]
-<images/dist_approx_sol_graph.png, id=1086, 535.2497pt x 374.14781pt>
+<images/dist_approx_sol_graph.png, id=1119, 535.2497pt x 374.14781pt>
 File: images/dist_approx_sol_graph.png Graphic file (type png)
 
 <use images/dist_approx_sol_graph.png>
-Package pdftex.def Info: images/dist_approx_sol_graph.png used on input line 12
-03.
+Package pdftex.def Info: images/dist_approx_sol_graph.png used on input line 11
+93.
 (pdftex.def)             Requested size: 386.96027pt x 270.50517pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/dist_graph.png, id=1088, 562.35094pt x 368.87813pt>
+File: images/TU_small_logo.png Graphic file (type png)
+<use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1198.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [51]
+<images/dist_graph.png, id=1125, 562.35094pt x 368.87813pt>
 File: images/dist_graph.png Graphic file (type png)
 
 <use images/dist_graph.png>
-Package pdftex.def Info: images/dist_graph.png used on input line 1211.
+Package pdftex.def Info: images/dist_graph.png used on input line 1201.
 (pdftex.def)             Requested size: 386.96027pt x 253.82822pt.
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1213.
-(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [51]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-File: images/TU_small_logo.png Graphic file (type png)
-
-<use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1220.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1210.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [52 <./images/dist_approx_sol_graph.png> <./images/dist_graph.png>]
 
@@ -2450,44 +2445,51 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1267.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1257.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [53]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1292.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1282.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [54]
-Overfull \hbox (19.39pt too wide) in paragraph at lines 1293--1293
+Overfull \hbox (19.39pt too wide) in paragraph at lines 1283--1283
 [][][]$\T1/cmtt/m/n/10 https : / / github . com / nlyubova / romeo _ robot / co
 mmit / 05bf217b73c389c461414412fd43d84ecb0c4115$[]| 
  []
 
+<images/DSC_0005.JPG, id=1168, 3934.7pt x 2212.265pt>
+File: images/DSC_0005.JPG Graphic file (type jpg)
+
+<use images/DSC_0005.JPG>
+Package pdftex.def Info: images/DSC_0005.JPG used on input line 1297.
+(pdftex.def)             Requested size: 204.85846pt x 115.17683pt.
+
+<images/DSC_0006.JPG, id=1169, 3934.7pt x 2212.265pt>
+File: images/DSC_0006.JPG Graphic file (type jpg)
+
+<use images/DSC_0006.JPG>
+Package pdftex.def Info: images/DSC_0006.JPG used on input line 1302.
+(pdftex.def)             Requested size: 204.85846pt x 115.17683pt.
+
+<images/DSC_0007.JPG, id=1170, 3934.7pt x 2212.265pt>
+File: images/DSC_0007.JPG Graphic file (type jpg)
+
+<use images/DSC_0007.JPG>
+Package pdftex.def Info: images/DSC_0007.JPG used on input line 1307.
+(pdftex.def)             Requested size: 204.85846pt x 115.17683pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1322.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1329.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [55]
-File: images/TU_small_logo.png Graphic file (type png)
- <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1345.
-(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [56]
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-File: images/TU_small_logo.png Graphic file (type png)
-<use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1391.
-(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [57]
-Overfull \hbox (14.56296pt too wide) in paragraph at lines 1419--1427
- [] 
- []
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -2497,9 +2499,55 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1439.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1348.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [56 <./images/DSC_0005.JPG> <./images/DSC_0006.JPG> <./images/DSC_0007.JPG>]
+<images/DSC_0002.JPG, id=1188, 3934.7pt x 2212.265pt>
+File: images/DSC_0002.JPG Graphic file (type jpg)
+
+<use images/DSC_0002.JPG>
+Package pdftex.def Info: images/DSC_0002.JPG used on input line 1352.
+(pdftex.def)             Requested size: 227.62206pt x 127.97052pt.
+
+<images/initial_pose.png, id=1189, 447.6725pt x 512.91624pt>
+File: images/initial_pose.png Graphic file (type png)
+
+<use images/initial_pose.png>
+Package pdftex.def Info: images/initial_pose.png used on input line 1357.
+(pdftex.def)             Requested size: 182.09486pt x 208.6378pt.
+
+Underfull \vbox (badness 6961) has occurred while \output is active []
+
+File: images/TU_small_logo.png Graphic file (type png)
+
+<use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1366.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [57 <./images/DSC_0002.JPG> <./images/initial_pose.png>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 5504) has occurred while \output is active []
+
+File: images/TU_small_logo.png Graphic file (type png)
+
+<use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1410.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [58]
+Overfull \hbox (14.56296pt too wide) in paragraph at lines 1443--1451
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: images/TU_small_logo.png Graphic file (type png)
+<use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1463.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [59]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -2509,103 +2557,119 @@ Underfull \vbox (badness 1377) has occurred while \output is active []
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1487.
-(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [59]
-File: images/TU_small_logo.png Graphic file (type png)
- <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1503.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1511.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [60]
+<images/DSC_0003.JPG, id=1238, 3934.7pt x 2212.265pt>
+File: images/DSC_0003.JPG Graphic file (type jpg)
+
+<use images/DSC_0003.JPG>
+Package pdftex.def Info: images/DSC_0003.JPG used on input line 1515.
+(pdftex.def)             Requested size: 204.85846pt x 115.17683pt.
+
+<images/DSC_0004.JPG, id=1239, 3934.7pt x 2212.265pt>
+File: images/DSC_0004.JPG Graphic file (type jpg)
+
+<use images/DSC_0004.JPG>
+Package pdftex.def Info: images/DSC_0004.JPG used on input line 1520.
+(pdftex.def)             Requested size: 204.85846pt x 115.17683pt.
+File: images/TU_small_logo.png Graphic file (type png)
+ <use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1543.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [61 <./images/DSC_0003.JPG> <./images/DSC_0004.JPG>]
+File: images/TU_small_logo.png Graphic file (type png)
+ <use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1543.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [62
+
+]
 Chapter 7.
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1523.
-(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [61
-
-]
-
-Package natbib Warning: Citation `Diankova' on page 62 undefined on input line 
-1539.
-
-
-Underfull \vbox (badness 1102) has occurred while \output is active []
-
-File: images/TU_small_logo.png Graphic file (type png)
-
-<use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1544.
-(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [62]
-File: images/TU_small_logo.png Graphic file (type png)
- <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1553.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1564.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [63]
 File: images/TU_small_logo.png Graphic file (type png)
+ <use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1587.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [64]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1553.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1601.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [64
-
-]
+ [65]
+File: images/TU_small_logo.png Graphic file (type png)
+ <use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1604.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [66]
 Chapter 8.
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1571.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1622.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [65]
-<images/kinect_problem_color.png, id=1227, 1206.5075pt x 746.79pt>
+ [67
+
+]
+<images/kinect_problem_color.png, id=1282, 1206.5075pt x 746.79pt>
 File: images/kinect_problem_color.png Graphic file (type png)
 
 <use images/kinect_problem_color.png>
-Package pdftex.def Info: images/kinect_problem_color.png used on input line 157
-5.
+Package pdftex.def Info: images/kinect_problem_color.png used on input line 162
+6.
 (pdftex.def)             Requested size: 295.90588pt x 183.15317pt.
 
-<images/kinect_problem_black.png, id=1228, 1205.50375pt x 743.77875pt>
+<images/kinect_problem_black.png, id=1283, 1205.50375pt x 743.77875pt>
 File: images/kinect_problem_black.png Graphic file (type png)
 
 <use images/kinect_problem_black.png>
-Package pdftex.def Info: images/kinect_problem_black.png used on input line 158
-0.
+Package pdftex.def Info: images/kinect_problem_black.png used on input line 163
+1.
 (pdftex.def)             Requested size: 295.90588pt x 182.56218pt.
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1588.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1639.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [66 <./images/kinect_problem_color.png> <./images/kinect_problem_black.png>]
+ [68 <./images/kinect_problem_color.png> <./images/kinect_problem_black.png>]
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1616.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1671.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [67]
-<images/gripper_bad_position.png, id=1252, 325.215pt x 309.155pt>
+ [69]
+<images/gripper_bad_position.png, id=1306, 325.215pt x 309.155pt>
 File: images/gripper_bad_position.png Graphic file (type png)
 
 <use images/gripper_bad_position.png>
-Package pdftex.def Info: images/gripper_bad_position.png used on input line 162
-6.
+Package pdftex.def Info: images/gripper_bad_position.png used on input line 167
+8.
 (pdftex.def)             Requested size: 227.62206pt x 216.38814pt.
-File: images/TU_small_logo.png Graphic file (type png)
- <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1633.
-(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [68 <./images/gripper_bad_position.png>]
-File: images/TU_small_logo.png Graphic file (type png)
- <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1639.
-(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [69]
+
+Underfull \vbox (badness 1721) has occurred while \output is active []
+
 File: images/TU_small_logo.png Graphic file (type png)
 
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1639.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1685.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [70
+ [70 <./images/gripper_bad_position.png>]
+File: images/TU_small_logo.png Graphic file (type png)
+
+<use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1691.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [71]
+File: images/TU_small_logo.png Graphic file (type png)
+ <use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1691.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [72
 
 ]
 Chapter 9.
@@ -2614,13 +2678,13 @@ File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
 Package pdftex.def Info: images/TU_small_logo.png used on input line 1.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [71]
+ [73]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
 Package pdftex.def Info: images/TU_small_logo.png used on input line 1.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
 
-[72
+[74
 
 ]
 Underfull \hbox (badness 6396) in paragraph at lines 30--33
@@ -2630,111 +2694,102 @@ Underfull \hbox (badness 6396) in paragraph at lines 30--33
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 83.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 87.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [73]
-Underfull \hbox (badness 5696) in paragraph at lines 112--117
+ [75]
+Underfull \hbox (badness 5696) in paragraph at lines 117--122
 []\T1/cmr/m/n/12 Sophie Li.  In-stalling Kinect drivers on Ubuntu 14.04 and ROS
  In-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 112--117
+Underfull \hbox (badness 10000) in paragraph at lines 117--122
 \T1/cmr/m/n/12 digo ^^U so-phie's blog, 2015.  URL []$\T1/cmtt/m/n/12 http : / 
 / blog . justsophie . com /
  []
 
 
-Underfull \hbox (badness 1997) in paragraph at lines 119--123
+Underfull \hbox (badness 1997) in paragraph at lines 124--128
 []\T1/cmr/m/n/12 Par Paul Loubière.  Alde-baran a fini de jouer avec Nao le pe-
 tit robot,
  []
 
 
-Underfull \hbox (badness 1199) in paragraph at lines 119--123
+Underfull \hbox (badness 1199) in paragraph at lines 124--128
 \T1/cmr/m/n/12 apr 2015.  URL []$\T1/cmtt/m/n/12 http : / / www . challenges . 
 fr / entreprise / 20150402 . CHA4548 /
  []
 
 
-Underfull \hbox (badness 1097) in paragraph at lines 138--142
+Underfull \hbox (badness 1097) in paragraph at lines 143--147
 []\T1/cmr/m/n/12 Penton.  Mo-tors and Drives Lead-ing the Way for Robots.  URL 
 []$\T1/cmtt/m/n/12 http : / /
  []
 
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 159.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 157.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [74]
-Underfull \hbox (badness 10000) in paragraph at lines 198--202
-[]\T1/cmr/m/n/12 STRANDS.  V4R Wiki, 2015.  URL []$\T1/cmtt/m/n/12 https : / / 
-github . com /
- []
-
-)
+ [76])
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1648.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1731.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [75]
+ [77]
 File: images/TU_small_logo.png Graphic file (type png)
- <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1650.
+
+<use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1733.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [76
+ [78
 
 
-]
-[77] [78]
+] [79] [80]
 Appendix A.
 File: images/TU_small_logo.png Graphic file (type png)
 <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1694.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1777.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [79
+ [81
 
 ]
 File: images/TU_small_logo.png Graphic file (type png)
  <use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1730.
-(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [80]
-File: images/TU_small_logo.png Graphic file (type png)
-
-<use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1776.
-(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
- [81]
-
-Package natbib Warning: There were undefined citations.
-
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1803.
-File: images/TU_small_logo.png Graphic file (type png)
-<use images/TU_small_logo.png>
-Package pdftex.def Info: images/TU_small_logo.png used on input line 1803.
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1813.
 (pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
  [82]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1803.
- (./TFM.aux
-(./images/moveit_actions_grasp_plan.aux)
+File: images/TU_small_logo.png Graphic file (type png)
+
+<use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1859.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [83]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1886.
+File: images/TU_small_logo.png Graphic file (type png)
+ <use images/TU_small_logo.png>
+Package pdftex.def Info: images/TU_small_logo.png used on input line 1886.
+(pdftex.def)             Requested size: 29.59196pt x 29.54929pt.
+ [84]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1886.
+
+(./TFM.aux (./images/moveit_actions_grasp_plan.aux)
 (./images/moveit_actions_reach_action.aux)
 (./images/moveit_actions_pick_action.aux) (./images/dcm_driver_flow.aux)
 (./images/model_object_diagram.aux) (./images/model_object_transform.aux)
 (./images/pose_preknown.aux) (./images/plan_execute_function_flow.aux)
 (./images/setup_romeo_grasper.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1803.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1803.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1886.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1886.
 
 Package rerunfilecheck Info: File `TFM.out' has not changed.
-(rerunfilecheck)             Checksum: 0EE2A8DCCA91BAB860A402309EE27487;4668.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1803.
+(rerunfilecheck)             Checksum: 4D52F5E8FF632E554FD921B2B21CFB62;5024.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1886.
  ) 
 Here is how much of TeX's memory you used:
- 28759 strings out of 493304
- 510786 string characters out of 6139871
+ 28811 strings out of 493304
+ 511908 string characters out of 6139871
  647738 words of memory out of 5000000
- 31257 multiletter control sequences out of 15000+600000
+ 31292 multiletter control sequences out of 15000+600000
  26903 words of font info for 69 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  56i,16n,75p,10464b,1885s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2812,10 +2867,10 @@ cm-super/sfti1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pf
 b></usr/share/texmf/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texmf/
 fonts/type1/public/cm-super/sftt1200.pfb></usr/share/texmf/fonts/type1/public/c
 m-super/sftt1440.pfb>
-Output written on TFM.pdf (96 pages, 4151412 bytes).
+Output written on TFM.pdf (98 pages, 18680580 bytes).
 PDF statistics:
- 1587 PDF objects out of 1728 (max. 8388607)
- 1371 compressed objects within 14 object streams
- 353 named destinations out of 1000 (max. 500000)
- 682 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1643 PDF objects out of 1728 (max. 8388607)
+ 1416 compressed objects within 15 object streams
+ 362 named destinations out of 1000 (max. 500000)
+ 757 words of extra memory for PDF output out of 10000 (max. 10000000)
 
