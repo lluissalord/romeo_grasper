@@ -47,6 +47,5 @@
 		<!-- Configuration of the models -->
 		<rosparam command="load" ns="models/tea_box" file="$(find romeo_grasper)/data/models/tea_box/model_config.yaml" />
 		<rosparam command="load" ns="models/ref_tea_box" file="$(find romeo_grasper)/data/models/ref_tea_box/model_config.yaml" />
-		<rosparam command="load" ns="models/dino" file="$(find romeo_grasper)/data/models/dino/model_config.yaml" />
   </node>
 </launch>
