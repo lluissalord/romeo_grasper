@@ -445,6 +445,10 @@ void RomeoGrasper::planningAndExecutePoseGoal()
 
     bool success;
 
+    //TODO: Test on picking
+    //success = true;
+    //preGraspVsPick = false;
+
     // TODO: Use a surface to avoid collision with table
     string surface_name_ = SUPPORT_SURFACE3_NAME;
 
