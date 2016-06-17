@@ -200,6 +200,8 @@ void RomeoGrasper::setup()
 
     //Done in the Action class on topic /trajectory
     //plan_pub_ = node_handle_.advertise<moveit_msgs::RobotTrajectory>("trajectory", 1000);
+    trajectory_sub_ = node_handle_.subscribe("/trajectory", 10, &RomeoGrasper::callbackTrajectory, this);
+
     execute_service_ = node_handle_.advertiseService("execute_plan", &RomeoGrasper::executePlan, this);
     replan_service_ = node_handle_.advertiseService("replan", &RomeoGrasper::rePlan, this);
     abort_service_ = node_handle_.advertiseService("abort_plan", &RomeoGrasper::abortPlan, this);
@@ -515,11 +517,10 @@ void RomeoGrasper::planningAndExecutePoseGoal()
     case ANSWER_SRV_MOVE:
         ROS_INFO("Starting movement...");
 
-        // TODO: Look for trajectory publisher and then have the timings
-        // DONE partially: There is a topic where we can pick the trajectory
-        //num_points = my_plan.trajectory_.joint_trajectory.points.size();
-        //duration = my_plan.trajectory_.joint_trajectory.points[num_points-1].time_from_start;
-        //movement_time = duration.toSec();
+        // Get the movement time from the trajectory published by the Action
+        num_points = trajectory_.joint_trajectory.points.size();
+        duration = trajectory_.joint_trajectory.points[num_points-1].time_from_start;
+        movement_time = duration.toSec();
 
         if(preGraspVsPick && success)
         {
@@ -528,12 +529,25 @@ void RomeoGrasper::planningAndExecutePoseGoal()
             if(!simulation_)
             {
                 current_action->setFlag(FLAG_MOVE);
+                current_action->poseHandOpen();
                 success = current_action->executeAction();
+
+                //Wait the movement time
+                sleep(movement_time);
+
                 ROS_INFO_STREAM("Pregrasping " << success ? "SUCCESS" : "FAILED");
+
+                //TODO: This is done because the picking is not working
+                current_action->poseHandClose();
             }else
             {
+                //TODO: Implement open and close hand for simulation
                 success = romeo_simulator_->executeTrajectory("/joint_trajectory");
+
+                //Wait the movement time
+                sleep(movement_time);
             }
+
             // Now restart function to do the picking
             preGraspVsPick = false;
             planningAndExecutePoseGoal();
@@ -541,13 +555,13 @@ void RomeoGrasper::planningAndExecutePoseGoal()
         {
             if (verbose_)
                 ROS_INFO("Start pick action");
+            current_action->poseHandOpen();
             success = current_action->pickAction(modeled_object_->block_, surface_name_, attempts_max_, planning_time_, tolerance_min_);
             ROS_INFO_STREAM("Picking " << success ? "SUCCESS" : "FAILED");
         }else{
             ROS_INFO("Cannot execute plan if the plan has failed");
             break;
         }
-        //sleep(movement_time);
 
         changed_pose_ = false;
         break;
@@ -713,6 +727,10 @@ void RomeoGrasper::changedParam(int param_flag)
     }
 }
 
+void RomeoGrasper::callbackTrajectory(moveit_msgs::RobotTrajectory data)
+{
+    trajectory_ = data;
+}
 
 void RomeoGrasper::callbackObjectPose(object_tracker_msg_definitions::ObjectInfo data)
 {

@@ -95,6 +95,7 @@ private:
     ros::Subscriber obj_pose_sub_;
     ros::Subscriber tracker_confidence_sub_;    
     ros::Subscriber visual_table_sub_;
+    ros::Subscriber trajectory_sub_;
     ros::ServiceServer execute_service_;
     ros::ServiceServer replan_service_;
     ros::ServiceServer abort_service_;
@@ -103,6 +104,7 @@ private:
     //moveit_msgs::DisplayTrajectory display_trajectory_;
     geometry_msgs::PoseStamped pose_target_stamped_;
     geometry_msgs::PoseStamped camera_pose_;
+    moveit_msgs::RobotTrajectory trajectory_;
 
     boost::shared_ptr<boost::thread> transform_thread_;
 
@@ -167,6 +169,7 @@ private:
     void setupVisualTools();
     void setActionParams(moveit_simple_actions::Action* current_action);
 
+    void callbackTrajectory(moveit_msgs::RobotTrajectory data);
     void callbackObjectPose(object_tracker_msg_definitions::ObjectInfo data);
     void callbackVisualTable(romeo_grasper::VisualTable data);
 
