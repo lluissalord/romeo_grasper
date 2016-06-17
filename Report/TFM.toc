@@ -55,7 +55,7 @@
 \contentsline {section}{\numberline {5.5}Communication between packages}{46}{section.5.5}
 \contentsline {chapter}{\numberline {6}Experiments}{49}{chapter.6}
 \contentsline {section}{\numberline {6.1}Movement in simulation}{49}{section.6.1}
-\contentsline {section}{\numberline {6.2}Implementation IKFast on Romeo}{53}{section.6.2}
+\contentsline {section}{\numberline {6.2}Implementation of IKFast on Romeo}{53}{section.6.2}
 \contentsline {section}{\numberline {6.3}Get pre-known camera position}{55}{section.6.3}
 \contentsline {section}{\numberline {6.4}Visual camera positioning}{56}{section.6.4}
 \contentsline {subsubsection}{(1) Using only one link}{57}{section*.57}
@@ -64,23 +64,26 @@
 \contentsline {section}{\numberline {6.5}Error produces by the camera positioning}{60}{section.6.5}
 \contentsline {chapter}{\numberline {7}Discussion}{61}{chapter.7}
 \contentsline {section}{\numberline {7.1}Simulation results}{61}{section.7.1}
-\contentsline {chapter}{\numberline {8}Future works}{63}{chapter.8}
-\contentsline {section}{\numberline {8.1}Implementation new inverse kinematics}{63}{section.8.1}
-\contentsline {section}{\numberline {8.2}Improve use of RTM}{63}{section.8.2}
-\contentsline {section}{\numberline {8.3}Object identification}{65}{section.8.3}
-\contentsline {section}{\numberline {8.4}Improvement of visual camera positioning}{66}{section.8.4}
-\contentsline {section}{\numberline {8.5}Fix the Romeo model}{66}{section.8.5}
-\contentsline {section}{\numberline {8.6}Implementation of AGILE grasp}{67}{section.8.6}
-\contentsline {section}{\numberline {8.7}Dependencies of packages}{67}{section.8.7}
-\contentsline {chapter}{\numberline {9}Conclusion}{69}{chapter.9}
-\contentsline {chapter}{References}{73}{chapter*.69}
-\contentsline {chapter}{Appendices}{74}{section*.70}
-\contentsline {chapter}{\numberline {A}Software requirements and installation}{77}{appendix.A}
-\contentsline {section}{\numberline {A.1}Software requirements}{77}{section.A.1}
-\contentsline {section}{\numberline {A.2}Romeo grasper installation}{77}{section.A.2}
-\contentsline {section}{\numberline {A.3}Camera drivers installation}{78}{section.A.3}
-\contentsline {section}{\numberline {A.4}V4R installation}{78}{section.A.4}
-\contentsline {subsubsection}{From ubuntu package}{78}{section*.72}
-\contentsline {subsubsection}{From source}{79}{section*.73}
-\contentsline {subsubsection}{V4R ROS wrappers}{79}{section*.74}
-\contentsline {section}{\numberline {A.5}OpenRAVE installation}{80}{section.A.5}
+\contentsline {section}{\numberline {7.2}IKFast on Romeo}{62}{section.7.2}
+\contentsline {section}{\numberline {7.3}Camera positioning}{63}{section.7.3}
+\contentsline {section}{\numberline {7.4}Error produced by the camera positioning}{63}{section.7.4}
+\contentsline {chapter}{\numberline {8}Future works}{65}{chapter.8}
+\contentsline {section}{\numberline {8.1}Implementation new inverse kinematics}{65}{section.8.1}
+\contentsline {section}{\numberline {8.2}Improve use of RTM}{65}{section.8.2}
+\contentsline {section}{\numberline {8.3}Object identification}{67}{section.8.3}
+\contentsline {section}{\numberline {8.4}Improvement of visual camera positioning}{68}{section.8.4}
+\contentsline {section}{\numberline {8.5}Fix the Romeo model}{68}{section.8.5}
+\contentsline {section}{\numberline {8.6}Implementation of AGILE grasp}{69}{section.8.6}
+\contentsline {section}{\numberline {8.7}Dependencies of packages}{69}{section.8.7}
+\contentsline {chapter}{\numberline {9}Conclusion}{71}{chapter.9}
+\contentsline {chapter}{References}{75}{chapter*.69}
+\contentsline {chapter}{Appendices}{76}{section*.70}
+\contentsline {chapter}{\numberline {A}Software requirements and installation}{79}{appendix.A}
+\contentsline {section}{\numberline {A.1}Software requirements}{79}{section.A.1}
+\contentsline {section}{\numberline {A.2}Romeo grasper installation}{79}{section.A.2}
+\contentsline {section}{\numberline {A.3}Camera drivers installation}{80}{section.A.3}
+\contentsline {section}{\numberline {A.4}V4R installation}{80}{section.A.4}
+\contentsline {subsubsection}{From ubuntu package}{80}{section*.72}
+\contentsline {subsubsection}{From source}{81}{section*.73}
+\contentsline {subsubsection}{V4R ROS wrappers}{81}{section*.74}
+\contentsline {section}{\numberline {A.5}OpenRAVE installation}{82}{section.A.5}

@@ -304,8 +304,8 @@ The main differences between one and other are:
 \begin{enumerate}
 \item How to calculate the target pose 
 \begin{enumerate}
-\item \texttt{reachAction} use the geometry of the gripper given by \texttt{romeo\_moveit\_config} and put the target pose in a way that the gripper will be close to the object, but without touching it.
-\item \texttt{graspPlan} use \texttt{moveit\_simple\_grasps} to generate all the possible grasps and choose one of them to make a plan.
+\item \texttt{reachAction} use the geometry of the gripper given by \texttt{romeo\_moveit\_config} and put the target pose in a way that the gripper will be close to the object applying the offset of the \texttt{romeo\_grasp\_data.yaml} from \texttt{moveit\_simple\_grasps}. 
+\item \texttt{graspPlan} use \texttt{moveit\_simple\_grasps} to generate all the possible grasps for the object and choose one of them to make a plan. Therefore, this way, also using the \texttt{romeo\_grasp\_data.yaml} file, but it adapts to the orientation of the object. 
 \end{enumerate}
 
 \item Attempts and approximate solutions
@@ -1020,6 +1020,7 @@ On the other hand, for the \texttt{graspPlan} case, using the block from the mod
 Finally, both ways ask to the \texttt{move\_group} class for a plan. This plan contain the information of: (1) the starting state of the robot used for planning; (2) the planned trajectory for the joints of the group and (3) the amount of time it took to generate the plan.
 
 \subsection{User answer service}
+\label{sec:user_service}
 \vspace{-10pt}
 Before executing the movement there is a loop waiting for the user interaction with the package. This interaction is accomplish by a service call requesting for: (1) move the arm, (2) make the plan again, (3) abort plan. Therefore, this allows the user to see the planning trajectory before executing the movement. Moreover, the pose of the object is updated in another thread and while the loop is running it loads constantly the runtime parameters. As a result of this, the parameters or goal can be modify and then make the plan again. However, there is also the option of don't have this loop and execute directly the plan putting the parameter \texttt{automatic\_execution} to true. 
 
@@ -1124,32 +1125,14 @@ NAOqi & Romeo ROS & Data & All kind of data: joint state, camera images, variabl
 \section{Movement in simulation}
 \label{sec:exp_move_simulation}
 %Experiment 1:
-% Moviment a llista de posicions determinades amb reachAction i provar mateixa llista amb graspPlan. Per això s'haura d'adaptar la forma com es calcula la diferencia amb el graspPlan. A més si es pogues tenir una referencia del temps que tarda millor (ja que el graspPlan tarda bastant). Amb aquest experiment es veu l'error que pot arribar a tenir el IK solver.
+
 % També pot ser que l'error es trobi en el forward kinematics que no doni exactament la posició que toca. Per això s'hauria de comprovar que el TF dona la mateixa posicio que el forward quan s'ha executat la trajectoria i veient que les joints estan en la mateixa posicio que la trajectoria. S'ha vist que l'error entre el FK i l'execució en simulació es nomes de decimes de milimetre, per tant despreciable.
-%Una posible solucio per no tenir problemes amb el graspPlan podria ser posar momentaneament que el romeo_grasp_data.yaml que no hi ha diferencia de posicio entre eef i grasp. D'aquesta forma la solució  seria exacte, l'únic problema es que no seria realista ja que Wrist aniria sobre l'objecte.
-%\begin{itemize}
-%\item Given a list of position where it is supposed to be the object. Test these with \texttt{reachAction} and \texttt{graspPlan}.
-%\item Try with different planning times.
-%\item The problem doesn't come from the forward kinematic that calculate the difference between pose target and pose plan because it has been test to see if the calculated and the real one, with the values of the joint as the trajectory, are in the same position and yes, the difference is about of the order of $10^{-4} m$.
-%\item To do this experiment is used the Python program named \texttt{experiment1.py}.
-%%TODO explaination of the program??
-%\end{itemize}
 
-% Comentar que degut a que la recolecta de dades sobretot al principi no s'havia fet de forma adecuada alguns fets no es poden mostrar en estadistiques pero que són observacions que s'han fet.
-
-%També comentar diferencies entre els ordinadors. Un es més potent que s'altre (meu més processador pero seu més grafica) i fet de que seu va amb simulador de choreograph i meu amb naoqi directament. Per la resta, s'ha mirat que el codi executat sigui el mateix per un i altre
-
-% Estadistiques de:
-% Distancies amb joints aproximades amb temps en trobar solució
-
-% Temps que tarda una amb tolerancies
-
-% Porcentatge de falls de graspPlan segons temps de planning.
-% Temps real de graspPlan
+%The problem doesn't come from the forward kinematic that calculate the difference between pose target and pose plan because it has been test to see if the calculated and the real one, with the values of the joint as the trajectory, are in the same position and yes, the difference is about of the order of $10^{-4} m$.
 
 On the following experiment has been tested how accurate is the movement in the simulation to go to the goal position. In order to do that has been created a program to automatically introduce new positions and catch the results of the process. The program can be found in the folder \texttt{src} with name \texttt{experiment1.py}. Unfortunately, not all the used information has been caught by the program and has been manually introduced looking to the terminal log. Moreover, initially the program didn't work well and a lot of tests doesn't have the data to confirm the observations made. Therefore, some information is given from the perception of the author of the dissertation. The main results used for this experiments are: (1) the success of the movement; (2) the distance from the goal position to the position where the trajectory calculated by the solver moves the hand; and (3) the planning time spent.
 
-Whereas the tests has been made all the time with the same goal positions, shown in Table \ref{tab:exp_move_sim_goals}. The goal is a cylinder with radius 3.5 cm and longitude of 15 cm put it in both orientation vertical and horizontal. Furthermore, it has been run on two different computers (\texttt{C0} and \texttt{C1}). On one hand, the computer named \texttt{C0} has a better graphic card and runs the simulator of the Choreograph software. On the other hand, the \texttt{C1} has a better processor and runs the simulator directly from the NAOqi SDK. It has been tried to execute the rest with the same software.
+Whereas the tests has been made all the time with the same goal positions, shown in Table \ref{tab:exp_move_sim_goals}. The goal is a cylinder with radius 3.5 cm and longitude of 15 cm put it in both orientation vertical and horizontal. Furthermore, it has been run on two different computers (\texttt{C0} and \texttt{C1}). On one hand, the computer named \texttt{C0} has a better graphic card the \texttt{C1} has a better processor. About the software it has been tried to execute the same on both computers.
 
 \begin{table}
 \begin{center}
@@ -1230,10 +1213,10 @@ Finally, for this experiment has been used a maximum tolerance of 0.10 m. Below,
 \end{figure}
 
 
-\section{Implementation IKFast on Romeo}
+\section{Implementation of IKFast on Romeo}
 \label{sec:exp_ikfast}
 
-Currently, the inverse kinematic solver used is from the KDL library, explained in Section \ref{sec:inverse_kinematic}. However, it gives bad results as shown above. Therefore, a solution for this problem could be implement the IKFast solver, also explained in Section \ref{sec:inverse_kinematic}, which is faster and more precise. 
+Currently, the inverse kinematic solver used is from the KDL library, explained in Section \ref{sec:inverse_kinematic}. However, it gives some results that could be better and the planning time is an important factor as shown above. Therefore, a solution for this problem could be implement the IKFast solver, also explained in Section \ref{sec:inverse_kinematic}, which is more precise and faster, usually it last around 4 ms to calculate the operations \cite{Diankov2010}. 
 
 In order to implement the IKFast on the Romeo robot, firstly is needed to generate the C++ code which solve the inverse kinematics. However, This OpenRAVE software has several dependencies to generate the C++ code, explained with the installation in Section \ref{app:ikfast}. Secondly, once the code is already generated, it should be create a package which provides the kinematic solver, based on the previous C++ code. Although, it is needed to have the \texttt{moveit\_ikfast} ROS package to create the kinematic solver package. 
 
@@ -1307,11 +1290,12 @@ After that, it is time to generate the IK solver code. As explained in Section \
 
 Unfortunately any of this configuration can generate a C++ code with the Romeo model. The problem is that, after one or two hours of execution of the command above, the program, and sometime also the computer, is frozen. Then, it has to be tested others configuration which are less logical but also useful. Therefore, these are taking the 7 joints but adding the \texttt{freeindex} parameter. The most logical free joint is the \texttt{WristRoll} because is the one closest to the end effector, doing the same movement than \texttt{ElbowRoll} and it is the slowest joint of the arm. Finally, neither this configuration nor any other joint as the free joint can generate the IK solver code.
 
-Currently, there is a commit in the Natalia Lyubova repository\footnote{\url{https://github.com/nlyubova/romeo_robot/commit/05bf217b73c389c461414412fd43d84ecb0c4115}} where the URDF model has been changed to use a new convention of the joints. But, it also has the same result. 
+Currently, there is a commit in the Natalia Lyubova repository\footnote{\url{https://github.com/nlyubova/romeo_robot/commit/05bf217b73c389c461414412fd43d84ecb0c4115}} where the URDF model has been changed to use a new convention of the joints. But, it also gives the same results. 
 
 It should be stated that to be sure the installation it was well done, it has been tried to generate the IKFast for another robot and it worked. Moreover, there is a discussion in the official repository of Romeo package where all this IKFast issue is discussed \cite{romeoRobotIssue}. 
 
 \section{Get pre-known camera position}
+\label{sec:exp_camera_preknown}
 %TODO
 %ADD PHOTOS!!
 
@@ -1344,7 +1328,7 @@ As the origin of the robot is fixed in the simulation, on the camera is where it
 \hline
  & \multicolumn{3}{|c|}{Position [m]} & \multicolumn{3}{|c|}{Orientation [rad]} \\ \cline{2-7}
  & x & y & z & roll & pitch & yaw \\ \hline
-\specialcell{c}{Camera from\\\texttt{base\_link} frame} & 0.0869 & 0.730 & -0.1897 & $\frac{11 \pi}{12}$ & 0 & $\frac{\pi}{2}$ \\ \hline
+\specialcell{c}{Camera from\\\texttt{base\_link} frame} & 0.0869 & 0.730 & -0.1897 & $\frac{\pi}{2}$ & 0 & $\frac{11 \pi}{12}$ \\ \hline
 \end{tabular}
 \end{center}
 \caption{Transformation from \texttt{base\_link} frame to camera.\label{tab:exp_camera_preknown}}
@@ -1353,7 +1337,7 @@ As the origin of the robot is fixed in the simulation, on the camera is where it
 \section{Visual camera positioning}
 \label{sec:exp_visual_camera}
 
-The method presented above is used to get the position of the camera precisely, but repeat this process every time that the robot or the camera has been moved may be is not the most comfortable way. Therefore, the process automation is the next step. In Section \ref{sec:visual-recognition}, is shown the three different possibilities to get the position of the camera using the visual information of the camera itself. Below this three ways are tested to see how good precise are they. Therefore, they have to be compared with the most accurate information which is the one got in the previous experiment. It should be stated that place the modeled object to get the position of the link has an error estimated around $\pm$ 2 cm.
+The method presented above is used to get the position of the camera precisely, but repeat this process every time that the robot or the camera has been moved may be is not the most comfortable way. Therefore, the process automation is the next step. In Section \ref{sec:visual-recognition}, is shown the three different possibilities to get the position of the camera using the visual information of the camera itself. Below this three ways are tested to see how good precise are they. Therefore, they have to be compared with the most accurate information which is the one got in the previous experiment. It should be stated that place the modeled object to get the position of the links has an error estimated around $\pm$ 2 cm. However, the most precisely estimated link position is for the \texttt{l\_wrist}, then the \texttt{LElbow} due to use the same offset for both but it is optimised for the \texttt{l\_wrist}, and the \texttt{LShoulder} can have less precision due to it was to apply an extra offset because the camera didn't recognise the modeled object in the right place.
 
 \subsubsection{(1) Using only one link}
 
@@ -1425,7 +1409,7 @@ P_{base}^{cam} = P_{base}^{link} - S_{base}^{cam} \cdot P_{cam}^{link}
 
 \subsubsection{(3) Using multiples transformations}
 
-Finally, the last approach which use all the information given by the camera, both position and orientation. So it has to use several transformations: (1) from \texttt{base\_link} to link; (2) from link to modeled object and (3) from modeled object to camera. The first one is given by the simulator. Then, the second one is estimated by the user placing the object on a specific position and orientation respect to the link. Finally, the last one is known from the information given by the camera. 
+Finally, the last approach which use all the information given by the camera, both position and orientation. So it has to use several transformations: (1) from \texttt{base\_link} to link; (2) from link to modeled object and (3) from modeled object to camera. The first one is given by the simulator. Then, the second one is estimated by the user placing the object on a specific position and orientation respect to the link. Finally, the last one is known from the information given by the camera. It should be stated that for this test has been used the \texttt{l\_wrist} link which is the one placed more precisely. 
 
 Therefore, the information used is shown in Table \ref{tab:exp_visual_multi_initial_data} which should be convert to transformation matrix (rotation plus translation), as \cref{eq:exp_transform_1,eq:exp_transform_2,eq:exp_transform_3}.
 
@@ -1499,7 +1483,7 @@ Camera & 0.2110 & 0.8292 & 0.0110 & -1.8846 & 0.3717 & 2.7525 \\ \hline
 %TODO
 %ADD PHOTOS!!
 
-Finally, the last experiment is made to know the influence of the precision positioning the camera has on the total error of the grasping. Therefore, here it is compared the position of the object calculated by the \texttt{romeo\_grasper} package with the position, given by the simulator, of a link moved to where the object was. Both position are in robot reference, so they should be the same. However, move the link to the specific place has an error which is estimated around $\pm$ 3 cm. In this case has been chosen the \texttt{l\_wrist} link because it is the easiest link to move. The following Table \ref{tab:exp_camera_positioning} shows the tests done:
+Finally, the last experiment is made to know the influence of the precision positioning the camera has on the total error of the grasping. Therefore, here it is compared the position of the object calculated by the \texttt{romeo\_grasper} package with the position, given by the simulator, of a link moved to where the object was. Both position are in robot reference, so they should be the same. However, move the link to the specific place has an error which is estimated around $\pm$ 3 cm. In this case has been chosen the \texttt{l\_wrist} link because it is the easiest link to move. Moreover, to be as precise as possible has been used the camera position, as pre-known, result of the experiment in Section \ref{sec:exp_camera_preknown}. The following Table \ref{tab:exp_camera_positioning} shows the tests done:
 
 \begin{table}[h]
 \begin{center}
@@ -1531,14 +1515,40 @@ On this Chapter it is discussed every experiment done before to figure out what 
 \section{Simulation results}
 
 Then, here it is discussed the experiment about the solutions given by the inverse kinematic solver to go to the goal positions. In order to see the results see Section \ref{sec:exp_move_simulation}.
+
 %has a mean of 0.0916 m, so an error that would make not so good grasp
-Firstly, about the \texttt{graspPlan} function, apart from the minor influence of the used computer, the success of this movement depends on the planning time. That can be seen observing that with a planning time of 60 seconds almost all the cases give a solution. However, these solutions have a big mean, may that it is caused by finding the way to solve the most difficult grasps. Moreover, the real planning time it seems to depend on the computer, where the one with better graphic card is faster. So probably the unknown task is using this component, may be to simulate the grasp in the simulator. An interesting point of this is that the real planning time it seems to not be related with the planning time set by the user. 
+Firstly, about the \texttt{graspPlan} function, apart from the minor influence of the used computer, the success of this movement depends on the planning time. That can be seen observing that with a planning time of 60 seconds almost all the cases give a solution. However, these solutions have a big mean, may be that it is caused by the fact of finding the way to solve the most difficult grasps. Moreover, the real planning time it seems to depend on the computer, where the one with better graphic card is faster. So probably the unknown task is using this component, may be to simulate the grasp in the simulator. An interesting point of this is that the real planning time it seems to not be related with the planning time set by the user. 
 
 Secondly, about the \texttt{reachAction} it seems like the approximated solutions are by far more easy to calculate, but they have a large variability and, in comparison with the solution inside tolerances, they are more imprecise. Therefore, the aim should be to always find a solution inside tolerances. As said in the experiment, it is better to use small planning times but with a lot of attempts. That's sounds logic seeing that the solutions are usually calculated with an small amount of time. Therefore, it has a low probability to get a solution after a few seconds, so it is better to make another attempts with a bit higher goal tolerance. Finally, remark that the influence of the computer is important here, because using one or another can lead to not have almost any success or the half of the tries. Moreover, this affects also the precision of the approximated solutions which gives a better performance with a better processor.
 
-   
+Furthermore, as described in Section \ref{sec:romeo_moveit_actions}, the \texttt{graspPlan} is a more complete functionality because it adapts to the object orientation. However, it last so much time and is less accurate than the \texttt{reachAction} with solutions inside tolerances. Therefore, for a typical use of not complicated orientations it should be used \texttt{reachAction} and for the rest \texttt{graspPlan}. Moreover, if the result doesn't have the desired precision the plan can be remade and give another result with the user service if it is not in automatic execution, see Section \ref{sec:user_service}.
 
-%Sobre el nombre de solucions de tolerancia sembla que no afecta el temps de planning al menys per a temps majors a 2 segons.
+Finally, summarising the main points of this experiments are:
+
+\begin{itemize}
+\item The \texttt{graspPlan} needs a large planning time to succeed.
+\item It should try to get solutions inside tolerances, so use low planning times and high amount of attempts, but the success rate can depend on the computer.
+\item It is better to use \texttt{reachAction} for simple orientation (vertical) and \texttt{graspPlan} for the rest.
+\item If the result is not enough accurate remake the plan with the user service.
+\end{itemize}
+
+\section{IKFast on Romeo}
+
+Below are explained the results and possible causes of this results. Unfortunately, at least by now it has not been possible to implement the IKFast solver on Romeo. The reason is because when the C++ code has been tried to generate, it failed. However, it should look for the reason of this fail problem.
+
+Reading the OpenRAVE forum \cite{Diankova} and the home page \cite{Diankov}, I figure out that an important thing to make easier to the program to generate the code is to find the intersecting and non-intersecting axes. That's done looking on the robot model, but if it has some deviation, too much decimals or may be the orientation of the joint, among some possible causes, it is more difficult to find these axes. Therefore, a way to be able to implement the IKFast solver on Romeo is to try to make easier to the code generator its work.
+
+\section{Camera positioning}
+
+The experimental way of getting the camera position in Section \ref{sec:exp_camera_preknown} is somehow accurate, at least it seems to not have a huge precision error. However, the visual positioning has in general a huge difference with the initially got. 
+
+Looking at the results it seems like the lack of precision of the \texttt{LElbow} and \texttt{LShoulder} affects to the final result. Because in the first approach using only one link the closest to the real camera position is the one from \texttt{l\_wrist} which may be using the right orientation could lead to a more accurate result. However, the approaches with this method from \texttt{LElbow} and \texttt{LShoulder} are too far to be used. 
+
+Moreover, the error is even worse for the method using the optimization problem which non of the results could be used. Although, the precision error could have some of the responsibility for this result, it is important to state that another factor is the weights for the minimising function which currently are all the function with the same weight, but the results change drastically with other weights.
+
+Finally, the last one, using multiple transformations, is the most logical one to use, for it simplicity and the use of all the information with only recognising an object. Unfortunately, the position that gives as a result is not enough accurate, but at least the orientation is close to be the right one. Summarising, the visual positioning if it is wanted to be used has to be improved, between the three methods the one which is more worth to make an effort to improve is the last one.
+
+\section{Error produced by the camera positioning} 
 
 \chapter{Future works}
 \label{cha:future_works}
@@ -1548,8 +1558,8 @@ Secondly, about the \texttt{reachAction} it seems like the approximated solution
 \section{Implementation new inverse kinematics}
 
 %TODO
-%Corregir lo de que l'error es important
-As said before, the error produced by the inverse kinematic solver KDL to go to the position of the object is one of the most important. Therefore, the implementation of a new IK solver should be a great improvement for the work. Moreover, currently the picking action is not working well due to the IK solver doesn't find a good picking plan, so with this new solver it is supposed that this should be solved.
+%Comprovar lo de que es picking es degut a IK solver
+Currently, there is some variability in the error produced by the inverse kinematic solver KDL to go to the position of the object. Moreover, it depends a lot on the planning time which is too big to allow to properly interact with the robot. Therefore, the implementation of a new IK solver should be a great improvement for the work. Moreover, currently the picking action is not working well due to the IK solver doesn't find a good picking plan, so with this new solver it is supposed that this should be solved.
 
 The first recommendation would be to implement the IKFast from OpenRAVE, because it is a close form solver and so it very fast and precise. As seen in Section \ref{sec:exp_ikfast}, currently is not working, but may be can solve it editing the URDF model trying to make it easier or changing the initial pose. Also is recommended to read this issue \cite{romeoRobotIssue}, where there is a lot about it discussed.
 
