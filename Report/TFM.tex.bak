@@ -61,8 +61,17 @@
 \textheight = 690pt %Col·locació de l'escut a distancia que quedi be
 \footskip = 60pt
 
-\usepackage[numbers]{natbib}
-\bibliographystyle{plainnat} 
+%\usepackage[numbers]{natbib} 
+\usepackage{csquotes}
+\usepackage[backend=biber,
+style=numeric,
+citestyle=numeric,
+natbib=true
+]{biblatex}
+%\bibliography{./library/library.bib}
+\addbibresource{./library/library.bib}
+
+
 %Poso per ordre d'pració (així) o per ordre d'autors (plainnat)?
 
 \title{Approach to grasp with Romeo robot using RTM}
@@ -157,6 +166,13 @@ Master Thesis Project\\
 \begin{abstract}
 %\addcontentsline{toc}{chapter}{Abstract}
 
+Romeo as humanoid robot, which has for main goal help people who has some kind of disability, needs to be capable to grasp objects. Considering that it has led to do this first approach to grasp with Romeo. Moreover, it is wanted to grasp object which has been recognised by the RTM software (Recognition, Tracking and Modelling Objects) with a Romeo camera or an external one. This approach is included in the ROS framework as an independent package named \texttt{romeo\_grasper} whose code is free to be shared or improved.
+
+The general idea of the approach starts with the RTM software getting the position, on camera reference, of the object, which has to be previously modelled or at least in the database. Then, this pose is transformed on robot reference and sent to MoveIt, that combined with the Rviz simulator and some ROS packages for Romeo, moves the arm of the robot to an optimal position for the grasp. Currently, it is used the IK solver from the KDL library, but here it is also explained how has been tried to implement the IKFast solver on Romeo, but without success.
+
+Finally, it is achieved to make work together all the systems, but the grasp has a some imprecision, producing that sometime it cannot be accomplish. However, in the experiments, it has been discerned where this inaccuracy comes from and it has been proposed some ways to reduce it. Furthermore, some guidelines has been set to lead Romeo to achieve a grasp using machine learning and allowing it to accomplish its goal, help the ones who need it.
+
+
 \end{abstract}
 
 \tableofcontents
@@ -169,8 +185,7 @@ Master Thesis Project\\
 \chapter*{Acknowledgements}
 \addcontentsline{toc}{chapter}{Acknowledgements}
 
-% (MIRAR NOMS)
-% Agrair al doctor Markus Vincze el haver-me permés fer el treball amb ell al seu laboratori i per l'ajuda que m'ha aportat juntament amb altres companys del departament com el doctor Michzael Zillich i Dimi Podorou. A més també m'agradaria agrair a Natalia Lyubova i Miguel l'ajuda que m'han donat durant el transcurs del treball. Finalment agrair a la meva novia, familia i amics pel support, anims i en algun cas reflexions que m'han ajudat a avançar en el treball.
+I would like to thank to Dr. Markus Vincze for the support and give me the chance to work with him in the Automation and Control Institute (ACIN) at TU Wien. Also acknowledge to others members of the ACIN as Dr. Michael Zillich and Dimitros Prodromou. Moreover, appreciate the help received from Natalia Lyubova and Mikael Arguedas during the semester. Finally, thank to my girlfriend, family and friend for the support when I had needed.
 
 %\chapter*{Preface}
 %\addcontentsline{toc}{chapter}{Preface}
@@ -192,7 +207,7 @@ Romeo is an humanoid robot from Aldebaran Robotics company. Nao and Pepper are o
 \begin{wrapfigure}[10]{r}{0.4\textwidth}
 	    \centering
 		\includegraphics[width=0.35\textwidth]{images/romeo_nao_pepper.jpg}
-         \caption{Aldebaran's robot family. Pepper on the left; Romeo on the right and Nao in the middle \cite{ParPaul}. \label{fig:aldebaran_family}}
+         \caption{Aldebaran's robot family. Pepper on the left; Romeo on the right and Nao in the middle \autocite{ParPaul}. \label{fig:aldebaran_family}}
 \end{wrapfigure}
 
 In order to be able to achieve this aim, Romeo has to be capable of doing several tasks, which a lot of them requires to recognize objects and grasping them. Therefore, recognition and grasp objects is a huge step forward for the development of Romeo. 
@@ -200,6 +215,7 @@ In order to be able to achieve this aim, Romeo has to be capable of doing severa
 Currently, exists some approaches to grasp objects with several robots, but there is only one for Romeo  \cite{claudio:hal-01159882}, which is explained in Section \ref{sec:grasping_romeo_visual_servoing}, but it can not be used to achieve the main aim of Romeo. Therefore, it should be done a grasp approach in a way which consider this main goal.  
 
 \section{Aim of the project}
+\label{sec:aim_project}
 
 The main goal of this project is to achieve that the Romeo robot can recognise some specific objects and, if they are inside its workspace, then grasp them. It is known that this task is difficult to accomplish, due to the wide range of parts that are involve, as recognition, movement of the robot, interaction with the environment, etc. So another goal is to discern from where it comes the main error and solve it or at least propose possible solutions. Moreover, another important goal of this project is to do the task of grasping in the way of the aim of Romeo. Therefore, it has to be coherent with the idea of helping people.
 
@@ -207,7 +223,7 @@ Furthermore, this task is not only important for Romeo, a wide range of robots n
 
 Due to the nature of the project itself there are some limitations or requirements that it should be accomplish. Firstly, it needs to be stated that this work is a first approach to make Romeo capable to recognize and grasp objects. Due to be a master thesis, which it should be done in only a few months, and it is required some time to get used with the robot, it is probably that the final result won't be totally perfect.
 
-Moreover, there are some software constraints which should be accomplished. On one hand, the use of an acknowledged software like ROS, explained in Section \ref{sec:ROS}, so it can be easily implemented with other packages and it is a perfect framework for a open-source robotic project. On the other hand, the use of the RTM software, explained in Section \ref{sec:RTM}, which is from our institute (ACIN), due to is a novel software for the recognition of objects. Finally, the packages from which this project depends should be used as they are officially. So if they need to be modify, the changes should be send to the maintainer of the package and updated.
+Moreover, there are some software constraints which should be accomplished. On one hand, the use of an acknowledged software like ROS, explained in Section \ref{sec:ROS}, so it can be easily implemented with other packages and it is a perfect framework for an open-source robotic project. On the other hand, the use of the RTM software, explained in Section \ref{sec:RTM}, which is from our institute (ACIN), due to is a novel software for the recognition of objects. Finally, the packages from which this project depends should be used as they are officially. So if they need to be modify, the changes should be send to the maintainer of the package and updated.
 
 Summarizing the main goals with their subgoals are the following:
 \begin{itemize}
@@ -409,7 +425,7 @@ Referring to the ASUS Xtion camera, according to \cite{Aldebaran}, it has a colo
 \subsection{NAOqi}
 \label{sec:naoqi}
 
-NAOqi is the name of the main software that runs on the robots control it. The NAOqi framework is \texttt{Cross plataform} and \texttt{Cross language}. Therefore, it is possible to develop in Windows, Linux or Mac and using C++ or Python. Although, below it is only explained a brief description about NAOqi proxies and NAOqi modules, more information about the framework can be found at \citep{Aldebaran}. 
+NAOqi is the name of the main software that runs on the robots control it. The NAOqi framework is \texttt{Cross plataform} and \texttt{Cross language}. Therefore, it is possible to develop in Windows, Linux or Mac and using C++ or Python. Although, below it is only explained a brief description about NAOqi proxies and NAOqi modules, more information about the framework can be found at \cite{Aldebaran}. 
 
 On one hand, the NAOqi modules are classes within libraries that contain various methods. Every module has a particular subject which it is controlling. On the other hand, the NAOqi proxies is an object that has the behaviour of the NAOqi module that represents. Therefore, the proxy from a module contain the methods of the pertinent module.
 
@@ -590,7 +606,7 @@ In order to add the depth camera is used the same code structure as in \texttt{n
 
 %TODO use break
 \break
-Looking in the code one tested idea to solve it has been to change the camera index which currently is 2 (names \texttt{kDepthCamera}) which, according to \citep{Aldebaran}, to connect to ASUS Xtion should be 4 (named \texttt{kXTION}). After a lot of tests, changing the encoding and other features, it hasn't reach any good result. 
+Looking in the code one tested idea to solve it has been to change the camera index which currently is 2 (names \texttt{kDepthCamera}) which, according to \cite{Aldebaran}, to connect to ASUS Xtion should be 4 (named \texttt{kXTION}). After a lot of tests, changing the encoding and other features, it hasn't reach any good result. 
 
 \subsection{RTM (Recognition, Tracking and Modelling of Objects)}
 \label{sec:RTM}
@@ -636,7 +652,7 @@ It should be stated that the way to identify an object is done transforming the 
 
 For solving inverse kinematics problems there are two main approaches: (1) numerical solution and (2) analytical (closed forms) solutions. 
 
-On one hand, \textit{KDL} (Kinematics and Dynamics Library)\citep{KDL} is a library for computing forward and inverse kinematic queries with numeric recursive solving. This library is included in the MoveIt packages and it is the default solver if another one is not specified. However, it might be very slow or trap in local maximums due to recursive nature of numerical solutions for solving IK problems. 
+On one hand, \textit{KDL} (Kinematics and Dynamics Library)\cite{KDL} is a library for computing forward and inverse kinematic queries with numeric recursive solving. This library is included in the MoveIt packages and it is the default solver if another one is not specified. However, it might be very slow or trap in local maximums due to recursive nature of numerical solutions for solving IK problems. 
 
 On the other hand, \textit{OpenRAVE} (Open Robotics Automation Virtual Environment)\cite{Diankov2010} is a software for simulating and deploying planning algorithm. It provides a tool called IKFast which can generate C++ code (independent of any library) representing the model of the manipulator for solving forward and inverse kinematic queries. The generated code is able  to solve the request on the order of 4 microseconds \cite{Diankov}. In order to generate the C++ code for the robot, it should be provided a Collada model \cite{KhronosGroup} of the robot. Besides, as stated in Section \ref{sec:romeo_hardware}, the arms have one redundancy so for the C++ code generation is needed to specify which should be the free joint. Therefore, to solve IK queries with IKFast some of the key issues is to find proper values for this free joint and which joint should be selected. 
 
@@ -1034,10 +1050,10 @@ On one hand, when the \texttt{executeAction} function from Action class is calle
 
 The aim of \texttt{RomeoSimulator} class is a way to move the simulated Romeo on your computer as the trajectory previously created. In order to do this, it is subscribed to the topic \texttt{/trajectory}, where the Action class publish the trajectory, see Section \ref{sec:romeo_moveit_actions}. Then, every time a new trajectory is published, \texttt{RomeoSimulator} update its internal trajectory variable. Therefore, when the \texttt{executeTrajectory} function is called, the class can use the trajectory with the most recent version. Finally, the \texttt{executeTrajectory} call the action service  \texttt{/joint\_trajectory} from \texttt{pose\_controller} node, explained in Section \ref{sec:romeo_ros}.
 
-\vspace{-20pt}
+
 \section{Setup of romeo grasper}
 \label{sec:impl_setup}
-\vspace{-10pt}
+
 Once the main idea of the \texttt{romeo\_grasper} package is described, it should be explained the required setup, an overview is shown in Figure \ref{fig:setup_romeo_grasper}. Firstly, the services for user choice after planning and the parameters detailed in Section \ref{sec:design_config} are loaded. Then the \texttt{RomeoSimulator} class is initialized. After this, two new thread are created to make the process faster. Therefore at this stage there are three threads at the same time:
 
 \begin{enumerate}
@@ -1140,7 +1156,7 @@ Cylinder 8 & -0.20 & -0.1 & 0.40 \\ \hline
 Cylinder 9 & -0.15 & -0.1 & 0.35 \\ \hline
 Cylinder 10 & -0.05 & -0.1 & 0.35 \\ \hline
 \end{tabular}
-\caption{Positions in camera reference of the cylinders used for the tests.\label{tab:exp_move_sim_goals}}
+\caption{Positions on camera reference of the cylinders used for the tests.\label{tab:exp_move_sim_goals}}
 \end{center}
 \end{table}
 
@@ -1251,7 +1267,7 @@ l\_gripper & 18 & & 59 & r\_gripper \\ \hline
 \end{center}
 \end{table}
 
-Therefore, the generation process is executed with the command below. Finally, it should be stated that if for the configuration are contained 7 joints, it should be add the \texttt{freeindex} parameter defining which is a free joint.\footnote{The free joints are specified before the IK is run, these values are known at runtime, but not known at IK generation time \citep{Diankov2010}.} The index for the joints is shown in Table \ref{tab:joint_index_ikfast}.
+Therefore, the generation process is executed with the command below. Finally, it should be stated that if for the configuration are contained 7 joints, it should be add the \texttt{freeindex} parameter defining which is a free joint.\footnote{The free joints are specified before the IK is run, these values are known at runtime, but not known at IK generation time \cite{Diankov2010}.} The index for the joints is shown in Table \ref{tab:joint_index_ikfast}.
 
 \begin{lstlisting}
 python `openrave-config --python-dir`/openravepy/_openravepy_/ikfast.py --robot=<myrobot_name>.rounded.dae --iktype=transform6d --baselink=<base_index> --eelink=<end_effector_index> --savefile=<ikfast_output_path>
@@ -1593,7 +1609,7 @@ Finally, the last one, using multiple transformations, is the most logical one t
 
 \section{Error produced by the camera positioning} 
 
-The last experiment shows how affects the misposition of the camera on the grasping process. After the four tests, it seems that the mean of distance between where is positioned the \texttt{l\_wrist} by the \texttt{romeo\_package} and by the simulator is around 7 cm. It has to be stated that it is difficult to estimate that and the experiment it is not so much accurate, but even so this is a significant error. Therefore, this should be a issue to improve to get a better precision.
+The last experiment shows how affects the misposition of the camera on the grasping process. After the four tests, it seems that the mean of distance between where is positioned the \texttt{l\_wrist} by the \texttt{romeo\_package} and by the simulator is around 7 cm. It has to be stated that it is difficult to estimate that and the experiment it is not so much accurate, but even so this is a significant error. Therefore, this should be an issue to improve to get a better precision.
 
 \section{Final global execution}
 
@@ -1644,7 +1660,7 @@ Moreover, RTM process the images with a kind of SIFT on the RGB image, so having
 \textbf{Camera} & \textbf{RGB resolution} & \textbf{Depth resolution} & \textbf{Range} \\ \hline
 Microsoft Kinect v1 \cite{Smeenk}& 640x480 & 320x240 & 0.5-4.5 m \\
 ASUS Xtion PRO Live \cite{ASUSWeb}& 1280x1024 & 640x480 & 0.8-3.5 m \\
-RealSense SR300 \cite{IntelWeb}& 1920x1080 & 640x480 & 0.2-1.5 m \\ \hline
+RealSense SR300 \cite{intelWeb}& 1920x1080 & 640x480 & 0.2-1.5 m \\ \hline
 \end{tabular}
 \caption{Comparison of the RGB-D cameras: Kinect, Xtion and RealSense.\label{tab:camera_comparison}}
 \end{center}
@@ -1681,7 +1697,7 @@ Currently, the grippers in the Romeo model are posed in a wrong position, see Fi
 
 \section{Implementation of AGILE grasp}
 
-Once the first approach of grasping works perfectly, it is time to implement a more advanced grasping process. As explained in Section \ref{sec:agile grasp}, the AGILE grasp use machine learning to detect a antipodal grasp pose on novel objects, using as input a point cloud and the geometric parameters of the robot hand. However, the implementation could be made in two different ways. First, it could use the general point cloud of the camera which it will have some occluded parts of the object. Second, if the recognition object, explained in Section \ref{sec:object_ident}, is implemented then use the point cloud of the model transformed into camera coordinates which it won't have occluded parts because it is a combination of the modeled object and the real object. 
+Once the first approach of grasping works perfectly, it is time to implement a more advanced grasping process. As explained in Section \ref{sec:agile grasp}, the AGILE grasp use machine learning to detect an antipodal grasp pose on novel objects, using as input a point cloud and the geometric parameters of the robot hand. However, the implementation could be made in two different ways. First, it could use the general point cloud of the camera which it will have some occluded parts of the object. Second, if the recognition object, explained in Section \ref{sec:object_ident}, is implemented then use the point cloud of the model transformed into camera coordinates which it won't have occluded parts because it is a combination of the modeled object and the real object. 
 
 \section{Dependencies of packages}
 
@@ -1690,40 +1706,50 @@ A package is more flexible and can be reused in other fields as independent is o
 
 \chapter{Conclusion}
 \label{cha:conclusions}
-% Explicar a les conclusions que s'arriben finalment
+
+The work done during this months is reflected in the achieved results, which can be considered to be succeed, in the terms of being a first approach. However, there is still work to do to improve \texttt{romeo\_grasper}, so it is needed to follow, as the next steps, the guidelines set in Future works, Chapter \ref{cha:future_works}. For this work had been set some goals in Section \ref{sec:aim_project} which are analysed if they have been or not accomplish and in which grade. 
 
 \section{Approach to grasp}
-% S'ha fet sent coherents amb l'objectiu d'ajudar a les persones ja que s'ha intentat que el package pugui ser complementari amb la tasca d'ajudar a la gent. Amb això es vol dir que no es requereix que el robot tengui un comportament fora del normal per fer el grasp. L'únic punt conflictiu actualment amb això és el fet de requerir d'una camera externa que vegi l'objecte. Fet que com es explicat en el treballs futur té varies vies per a solucionar-se.
 
-% Per altra banda s'ha aconseguit fer un primer approach a un grasp, al menys aconseguit que tot el conjunt funciona de forma global. Tot i la manca de temps per dur a terme un projecte tan gran s'ha aconseguit un resultat suficientment satisfactori. Ara bé es cert que es té un cert error que provoca que certes cops no s'agafi l'objecte. 
+Firstly the main goal of the work is to make a first approach to grasp with Romeo. Moreover, the grasp has to be accomplish on objects that have been previously recognised by Romeo using the RTM (Recognition, Tracking and Modelling Objects) software. It has been attained to make the global system (Romeo, camera, ROS, RTM and computer) to work all together, so the process is working well. Despite the lack of time for this kind of work, it has achieve enough good results. However, it is true that due to the inaccuracy sometimes Romeo doesn't grasp the object. 
 
-% Pero per altra banda, s'ha aconseguit desxifrar d'on prové l'error havent aillat cadascuna de les possibles causes d'error. Veient així que els dos punts on s'ha de fer especial envasi en millorar és el posicionament extern de la camera i la millora del solver per tal de donar uns valors més acurats. Però per això s'han plantejat diverses formes de reduir l'error i que aquesta solució global millori poc a poc. 
+Although, this imprecision is logical to happen in a first approach, it leads us to the next goal, discern from where comes the error in the grasping process. In order to accomplish that it has been made different experiments which allow to isolate the error to know what is causing the problem. From this experiments has been seen that the process where it has to put more effort to improve are the improvement of the inverse kinematic solver and the camera positioning. Furthermore, it has been proposed some guidelines in the Future works to solve this.
+
+%TODO use break
+\break
+Moreover, on the Introduction it has been set to achieve that being coherent with the main aim of Romeo, which is help old people or people who has some kind of disability. Then, to accomplish that the process of grasping has to be able to complement all kind of other tasks without imposing constraints. That has been accomplish partially, because right now it is needed to use an external camera which have to see the grasping object and it has to be known the position of it in robot reference. However, there are several ways to solve it explained in Future works.
+
+Concluding this main goal seems to has been accomplish, in a good way and making easier for who wants to continue the work to achieve even better results.
 
 \section{Improvements on other packages}
 
-% Al llarg d'aquest treball, amb el fet d'haver-se proposat utilitzar RTM i ROS, s'ha hagut de fer tot el possible per fer que el conjunt pugui funcionar amb aquestes limitacions. Es per això que en alguns casos s'han hagut de millorar els packages externs que s'oferien inicials. Entre aquestes millores se'n destaquen el fet al romeo_moveit_actions i el de millora d'object tracker del RTM. Mencionar que les explicacions fetes durant el treball son sobre la versió final d'aquests packages.
+As explained in the Introduction, this work has been set inside some constraints as using ROS and RTM software. Therefore, it had to do all the possible efforts to make the global system works with this. Moreover, in order to make the package as good as possible, it has been tried to implement some powerful and recent software. Because of that in some cases it has been needed to improve the external package from the version found at the first stages of the work. Among this improvements highlight two of them: (1) on the \texttt{romeo\_moveit\_actions} package and (2) on the object tracker from the RTM software. It should be stated that the descriptions made in the dissertation are on the final version of these packages.
 
-%La millora al romeo_moveit_actions comporta el permetre modificar parametres com planning time, tolerance step, minimum tolerance, factor maxim d'escalat de velocitat, numero maxims d'attempts i si es desitja estar en modo verbose o no. A més també el control d'un flag que controla si quan es du a terme un plan és du a terme només el plan o si també s'executa. A banda d'altres petites correccions del codi, finalment s'ha implementat un publicador de la trajectoria planejada i un altre publicador de la posició final deguda al pla creat de l'últim link del group de joints i links controlats.
+Firstly, the improvement on \texttt{romeo\_moveit\_actions} has faced several frontlines. On one hand, it allows to modify externally parameters such as: planning time, minimum tolerance, tolerance step, maximum scale factor of velocity, maximum attempts and if it is wanted to use or not verbose mode. On the other side, the use of a flag that controls when the plan is done to execute or not automatically the movement. Finally, apart from other minor code fixes, it has been implemented two different publishers: (1) for the planned trajectory and (2) for the planned final position of the end effector of the controlled group of joints and links.  
 
-% Per altra banda, la millora en l'object tracker del software RTM és l'implementació d'un missatje \texttt{ObjectInfo} que inclou tota la informació necessaria en un sol missatje, en lloc del sistema anterior que publicava per una banda la posició de l'objecte i per l'altra la fiabilitat del tracker sobre aquella posició. D'aquesta forma es pot dur un control molt més robust de la posició de l'object, sabent en tot moment si es confiable o no.
+Secondly, the improvement on the object tracker from RTM software implement the use of the \texttt{ObjectInfo} ROS message which include all the information in one. Instead of the old method which it was publishing the object pose on a topic and the confidence of the tracker in another topic. The new way
+leads to a more robust control of the position knowing all the time if it is or not a reliable information.
 
-% A més d'aquestes millores, també s'ha permés avançar en la implementació de IKFast en Romeo, fet que permetria una millora drastica en la cinematica inversa del robot i per tant la simulació d'aquest en tot tipus d'ambients, entre d'altres millores que s'han permés parlant i discutint amb persones com la Natalia o el Miguel. Per tant es pot dir que de per si només el dur a terme aquest treball ja ha permés una millora global de l'entorn al voltant de Romeo en ROS i del RTM software.
+%TODO use break
+\break
+Moreover, although IKFast has not been implemented, there is a huge improvement in knowing what is happening and the tests already done. Therefore, the use of IKFast on Romeo now it is a bit closer which it will make a huge improvement on the Romeo inverse kinematics and so being possible to simulate the robot in all kind of environments. Therefore, it can be said that only because of doing this works it has been a global improvement around Romeo with ROS and the RTM software.
 
 \section{All in a ROS package}
 
-% Des del començament s'ha fet feina directament amb diferents packages de ROS, es per això que el més logic és acabar creant un package per englobar totes les funcions que es desitjen. Ara bé s'ha intentat que aquest seguís en tot moment les directrius de ROS, fent cas de les REP, mirant que el codi fos el més independent i flexible dins les limitacions. Per tal de facilitar que es pugui reutilitzar el codi per altres robots o finalitats.
+From the beginning it has been working directly with different ROS packages, so the most logical is also to create one to include all the desired functionalities. However, the creation of this packages has followed the ROS guidelines, being a code as independent and flexible as possible inside the constraints and attending to the REPs (ROS Enhancement Proposals). Therefore, facilitating to reuse the code on other robots or propose. It is supposed that installing the \texttt{romeo\_grasper} dependencies, specified in the same package, it should work perfectly. However, there was a problem linking \texttt{romeo\_grasper} to the \texttt{romeo\_moveit\_actions} package, so a temporally fix is to integrate this package inside \texttt{romeo\_grasper}.
 
-% Per tant instalant les dependencies que s'especifiquen en el propi package, aquest hauria de funcionar perfectament. However, s'ha topat amb un problema que és el fet del package romeo moveit actions no es pot enllaçar de forma externa, per tant s'ha hagut d'integrar el package dins romeo_grasper.
+Moreover, all the code and this dissertation have been uploaded on the GitHub below. Therefore, that makes the code easily to be shared and improved it by the community. Finally, it has been achieve to create a ROS package which allows to accomplish the tasks of the work. Furthermore, this work is now a tool which can be easily implemented for other robotics researchers.
 
-% Per tant, finalment s'ha aconseguit crear un package de ROS que permet dur a terme la tasca principal del treball, sent així una eina facil d'implementar per altres investigacions.
+\url{https://github.com/lluissalord/romeo_grasper}
 
-\section{Understanding of romeo\_moveit}
+\section{Understanding of romeo\_grasper}
 
-% La forma com s'ha enfocat l'escriptura d'aquest treball ha sigut per facilitar entendre el codi tant a nivell general que seria llegint la introducció i el design, com a un nivell molt més profund que es dona al llegir el treball complert en que si es va comparant directament amb el codi s'arriben a entendre totes les accions que es duen a terme. A més, com a forma responsable d'escriure codi s'ha intentat utilitzar nom de variables i funcions que selfexplaining el seu significat juntament amb contants comentaris de que fa cada part o perque és fa d'aquella forma, juntament amb les parts que haurien de ser millorades amb TODO.
+The way how the dissertation has been written is focused on make the code easy to understand both at general point of view, reading the Introduction and the Design chapters, and at deep level reading all the work. Even reading it and comparing with the code, one understand all the things done. Moreover, as a responsible code, the name of functions and variable are self-explanatory and comments are used constantly to make explain what is done there or way in that way. Therefore, whoever wants to improve the code or understand it in a deep way can do it reading this work and also won't have any misunderstanding problem looking at the code.
 
-%Finalment dir que s'han aconseguit arribar a tots els objectius que s'havien plantejat, cert que el grasp no està del tot optimitzat, però per ser un primer approach s'ha considerat suficient. Fent autocritica s'hauria de mencionar que talvegada s'havessin duit a terme els experiments més aviat utilitzant l'ordinador que m'ha facilitat la universitat podria haver ajudat a estalviar temps ja que quan s'executaven segons quines tasques (sobretot amb el IKFast) no es podia treballar amb l'ordinador, i ha sigut una gran quantitat de temps que no s'ha pogut aprofitar, entre d'altres factors.s
+Finally, say that all the work goals have been achieve, it is true that the grasp is not yet fully optimised, but for being a first approach it is just good. Making self-criticism, it should be stated that maybe the time has not been well optimised, as for example I should ask for the university computer earlier to be able to work while the experiments were doing, like the IKFast experiments which slowed too much the computer and I couldn't work during the experiments. Moreover, there are some parts of the work like the visual positioning or the IKFast implementation where I spent a lot of time and then it has not worked and may be I should had focus on improving the grasping instead.
 
-\bibliography{./library/library}
+%\bibliography{./library/library}
+\printbibliography
 \addcontentsline{toc}{chapter}{References}
 \label{cha:references}
 
@@ -1802,6 +1828,7 @@ In order to install the Kinect camera with openNi has been used the following ur
 
 In order to use the RTM software it should be installed the full V4R library which can  be installed from ubuntu package or from source. After that, it should be installed the V4R ROS wrappers \cite{gitV4RWrappers}.
 
+\newpage
 \subsubsection{From ubuntu package}
 	
 Following these steps:

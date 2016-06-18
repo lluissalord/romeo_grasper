@@ -41,7 +41,7 @@
   >
 ]>
 <requests version="1.0">
-  <internal package="biblatex" priority="9" active="1">
+  <internal package="biblatex" priority="9" active="0">
     <generic>latex</generic>
     <provides type="dynamic">
       <file>TFM.bcf</file>
@@ -53,15 +53,15 @@
       <file>blx-dm.def</file>
       <file>blx-compat.def</file>
       <file>biblatex.def</file>
-      <file>verbose.bbx</file>
-      <file>authortitle.bbx</file>
+      <file>blx-natbib.def</file>
+      <file>numeric.bbx</file>
       <file>standard.bbx</file>
-      <file>verbose.cbx</file>
+      <file>numeric.cbx</file>
       <file>biblatex.cfg</file>
       <file>english.lbx</file>
     </requires>
   </internal>
-  <external package="biblatex" priority="5" active="1">
+  <external package="biblatex" priority="5" active="0">
     <generic>biber</generic>
     <cmdline>
       <binary>biber</binary>
@@ -78,6 +78,9 @@
     </provides>
     <requires type="dynamic">
       <file>TFM.bcf</file>
+    </requires>
+    <requires type="editable">
+      <file>./library/library.bib</file>
     </requires>
   </external>
 </requests>

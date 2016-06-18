@@ -1,212 +1,741 @@
-\begin{thebibliography}{33}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 2.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem[Ald()]{Aldebaran}
-{Aldebaran 2.1.4.13 documentation}.
-\newblock URL \url{http://doc.aldebaran.com/2-1/}.
 
-\bibitem[rom(2016)]{romeoRobotIssue}
-{Romeo robot repository issue}, 2016.
-\newblock URL \url{https://github.com/ros-aldebaran/romeo_robot/issues/10}.
+\refsection{0}
+  \sortlist{entry}{nty}
+    \entry{AldebaranC++SDK}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=73a29bff6617309196e01a9281c8230f}{Aldebaran}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=73a29bff6617309196e01a9281c8230f}{Aldebaran}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{73a29bff6617309196e01a9281c8230f}
+      \strng{fullhash}{73a29bff6617309196e01a9281c8230f}
+      \field{sortinit}{A}
+      \field{labeltitle}{{C++ SDK Installation — NAO Software 1.14.5 documentation}}
+      \field{title}{{C++ SDK Installation — NAO Software 1.14.5 documentation}}
+      \field{urlday}{17}
+      \field{urlmonth}{02}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://doc.aldebaran.com/1-14/dev/cpp/install_guide.html#requirements
+      \endverb
+    \endentry
+    \entry{AldebaranQiBuild}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=73a29bff6617309196e01a9281c8230f}{Aldebaran}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=73a29bff6617309196e01a9281c8230f}{Aldebaran}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{73a29bff6617309196e01a9281c8230f}
+      \strng{fullhash}{73a29bff6617309196e01a9281c8230f}
+      \field{sortinit}{A}
+      \field{labeltitle}{{Getting Started — qiBuild 3.11.3 documentation}}
+      \field{title}{{Getting Started — qiBuild 3.11.3 documentation}}
+      \field{urlday}{21}
+      \field{urlmonth}{03}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://doc.aldebaran.com/qibuild/beginner/getting_started.html
+      \endverb
+    \endentry
+    \entry{ros-aldebaran}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=73a29bff6617309196e01a9281c8230f}{Aldebaran}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=73a29bff6617309196e01a9281c8230f}{Aldebaran}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{73a29bff6617309196e01a9281c8230f}
+      \strng{fullhash}{73a29bff6617309196e01a9281c8230f}
+      \field{sortinit}{A}
+      \field{labeltitle}{{ROS-Aldebaran repository}}
+      \field{title}{{ROS-Aldebaran repository}}
+      \field{urlday}{27}
+      \field{urlmonth}{05}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://github.com/ros-aldebaran/
+      \endverb
+    \endentry
+    \entry{ros-naoqi}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=73a29bff6617309196e01a9281c8230f}{Aldebaran}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=73a29bff6617309196e01a9281c8230f}{Aldebaran}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{73a29bff6617309196e01a9281c8230f}
+      \strng{fullhash}{73a29bff6617309196e01a9281c8230f}
+      \field{sortinit}{A}
+      \field{labeltitle}{{ROS-NAOqi repository}}
+      \field{title}{{ROS-NAOqi repository}}
+      \field{urlday}{27}
+      \field{urlmonth}{05}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://github.com/ros-naoqi
+      \endverb
+    \endentry
+    \entry{Aldebaran}{online}{}
+      \field{sortinit}{A}
+      \field{labeltitle}{{Aldebaran 2.1.4.13 documentation}}
+      \field{title}{{Aldebaran 2.1.4.13 documentation}}
+      \field{urlday}{15}
+      \field{urlmonth}{05}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://doc.aldebaran.com/2-1/
+      \endverb
+    \endentry
+    \entry{Aldoma2013}{article}{}
+      \name{labelname}{6}{}{%
+        {{hash=3b837d36ec9852fa8ea0050bfdaa433a}{Aldoma}{A\bibinitperiod}{A.}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=04ea61b6d8efbf2e39f6b4710da725b0}{Tombari}{T\bibinitperiod}{F.}{F\bibinitperiod}{}{}{}{}}%
+        {{hash=17779f8c018162fef515a68d0e723b0b}{Prankl}{P\bibinitperiod}{J.}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=d67cf9d305d6353404b210fec07d9330}{Richtsfeld}{R\bibinitperiod}{A.}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=229e0e080dd5e19e46b628a77f04032b}{{Di\bibnamedelimb Stefano}}{D\bibinitperiod}{L.}{L\bibinitperiod}{}{}{}{}}%
+        {{hash=4e83c90981887706b3c9233c74b24952}{Vincze}{V\bibinitperiod}{M.}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{6}{}{%
+        {{hash=3b837d36ec9852fa8ea0050bfdaa433a}{Aldoma}{A\bibinitperiod}{A.}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=04ea61b6d8efbf2e39f6b4710da725b0}{Tombari}{T\bibinitperiod}{F.}{F\bibinitperiod}{}{}{}{}}%
+        {{hash=17779f8c018162fef515a68d0e723b0b}{Prankl}{P\bibinitperiod}{J.}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=d67cf9d305d6353404b210fec07d9330}{Richtsfeld}{R\bibinitperiod}{A.}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=229e0e080dd5e19e46b628a77f04032b}{{Di\bibnamedelimb Stefano}}{D\bibinitperiod}{L.}{L\bibinitperiod}{}{}{}{}}%
+        {{hash=4e83c90981887706b3c9233c74b24952}{Vincze}{V\bibinitperiod}{M.}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{dfa2bba3e31af3a50559f37d611fb854}
+      \strng{fullhash}{61cc676c1abf1d19d10b7559870bac64}
+      \field{sortinit}{A}
+      \field{labeltitle}{{Multimodal cue integration through Hypotheses Verification for RGB-D object recognition and 6DOF pose estimation}}
+      \field{abstract}{At the core of every object recognition system lies the development and integration of distinct feature descriptors to create object representations robust against varying perspec- tives or lightning conditions. Recent work has primarily focused on the development of distinct point features. While these features achieve impressive recognition results, point features fail to capture the shape and appearance of an object with less or even without texture. This paper proposes a novel method for the rapid and dense computation of 2D and 3D image cues from RGB-D data to target the recognition of objects without rich texture and a global histogram-based descriptor for the distinct description of object models.}
+      \field{isbn}{9781467356411}
+      \field{issn}{10504729}
+      \field{journaltitle}{Proceedings - IEEE International Conference on Robotics and Automation}
+      \field{title}{{Multimodal cue integration through Hypotheses Verification for RGB-D object recognition and 6DOF pose estimation}}
+      \field{year}{2013}
+      \field{pages}{2104\bibrangedash 2111}
+      \verb{doi}
+      \verb 10.1109/ICRA.2013.6630859
+      \endverb
+      \verb{file}
+      \verb :home/lluis/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Aldoma et al. - 2013 - Multimodal cue integration through Hypotheses Verification for RGB-D object recognition and 6DOF pose estimation.pdf:pdf
+      \endverb
+    \endentry
+    \entry{ASUSWeb}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=5ed0b5f41b21804e51e82664dc24e2dd}{ASUS}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=5ed0b5f41b21804e51e82664dc24e2dd}{ASUS}{A\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{5ed0b5f41b21804e51e82664dc24e2dd}
+      \strng{fullhash}{5ed0b5f41b21804e51e82664dc24e2dd}
+      \field{sortinit}{A}
+      \field{labeltitle}{{ASUS Xtion PRO LIVE Spec}}
+      \field{title}{{ASUS Xtion PRO LIVE Spec}}
+      \field{urlday}{12}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://www.asus.com/us/3D-Sensor/Xtion_PRO_LIVE/specifications/
+      \endverb
+    \endentry
+    \entry{claudio:hal-01159882}{inproceedings}{}
+      \name{labelname}{3}{}{%
+        {{hash=6676f4d03775070499b83c3beddadbb1}{Claudio}{C\bibinitperiod}{Giovanni}{G\bibinitperiod}{}{}{}{}}%
+        {{hash=87189a010330e143b030df1ef5df2a8c}{Spindler}{S\bibinitperiod}{Fabien}{F\bibinitperiod}{}{}{}{}}%
+        {{hash=c411c5fc2e856c5798beac39ee2fcb79}{Chaumette}{C\bibinitperiod}{François}{F\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=6676f4d03775070499b83c3beddadbb1}{Claudio}{C\bibinitperiod}{Giovanni}{G\bibinitperiod}{}{}{}{}}%
+        {{hash=87189a010330e143b030df1ef5df2a8c}{Spindler}{S\bibinitperiod}{Fabien}{F\bibinitperiod}{}{}{}{}}%
+        {{hash=c411c5fc2e856c5798beac39ee2fcb79}{Chaumette}{C\bibinitperiod}{François}{F\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {Nantes, France}%
+      }
+      \strng{namehash}{6bfa384be0a4d9eb244845a088c8b0e2}
+      \strng{fullhash}{6bfa384be0a4d9eb244845a088c8b0e2}
+      \field{sortinit}{C}
+      \field{labeltitle}{{Grasping by Romeo with visual servoing}}
+      \field{booktitle}{Journ{é}es Nationales de la Robotique Humano{ï}de, JNRH}
+      \field{title}{{Grasping by Romeo with visual servoing}}
+      \field{year}{2015}
+      \verb{url}
+      \verb https://hal.inria.fr/hal-01159882
+      \endverb
+    \endentry
+    \entry{gitMoveitSimpleGrasp}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=c1cd9b64f98a3208d7ffe34c692bc313}{Coleman}{C\bibinitperiod}{Dave}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=c1cd9b64f98a3208d7ffe34c692bc313}{Coleman}{C\bibinitperiod}{Dave}{D\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{c1cd9b64f98a3208d7ffe34c692bc313}
+      \strng{fullhash}{c1cd9b64f98a3208d7ffe34c692bc313}
+      \field{sortinit}{C}
+      \field{labeltitle}{{MoveIt Simple Grasp}}
+      \field{title}{{MoveIt Simple Grasp}}
+      \field{urlday}{24}
+      \field{urlmonth}{05}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://github.com/davetcoleman/moveit_simple_grasps
+      \endverb
+    \endentry
+    \entry{Diankov2010}{article}{}
+      \name{labelname}{1}{}{%
+        {{hash=493b236fce82772b5ab765c82cc0db88}{Diankov}{D\bibinitperiod}{Rosen}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=493b236fce82772b5ab765c82cc0db88}{Diankov}{D\bibinitperiod}{Rosen}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{493b236fce82772b5ab765c82cc0db88}
+      \strng{fullhash}{493b236fce82772b5ab765c82cc0db88}
+      \field{sortinit}{D}
+      \field{labeltitle}{{Automated Construction of Robotic Manipulation Programs}}
+      \field{abstract}{Society is becoming more automated with robots beginning to perform most tasks in facto- ries and starting to help out in home and office environments. One of the most important functions of robots is the ability to manipulate objects in their environment. Because the space of possible robot designs, sensor modalities, and target tasks is huge, researchers end up having to manually create many models, databases, and programs for their specific task, an effort that is repeated whenever the task changes. Given a specification for a robot and a task, the presented framework automatically constructs the necessary databases and pro- grams required for the robot to reliably execute manipulation tasks. It includes contributions in three major components that are critical for manipulation tasks. The first is a geometric-based planning system that analyzes all necessary modalities of manipulation planning and offers efficient algorithms to formulate and solve them. This allows identification of the necessary information needed from the task and robot specifica- tions. Using this set of analyses, we build a planning knowledge-base that allows informative geometric reasoning about the structure of the scene and the robots goals. We show how to efficiently generate and query the information for planners. The second is a set of efficient algorithms considering the visibility of objects in cameras when choosing manipulation goals. We show results with several robot platforms using grippers cameras to boost accuracy of the detected objects and to reliably complete the tasks. Furthermore, we use the presented planning and visibility infrastructure to develop a completely automated extrinsic camera calibration method and a method for detecting insufficient calibration data. The third is a vision-centric database that can analyze a rigid objects surface for stable and discriminable features to be used in pose extraction programs. Furthermore, we show work towards a new voting-based object pose extraction algorithm that does not rely on 2D/3D feature correspondences and thus reduces the early-commitment problem plaguing the generality of traditional vision-based pose extraction algorithms. In order to reinforce our theoric contributions with a solid implementation basis, we discuss the open-source planning environment OpenRAVE, which began and evolved as a result of the work done in this thesis. We present an analysis of its architecture and provide insight for successful robotics software environments.}
+      \field{issn}{978-1-124-53547-0}
+      \field{journaltitle}{Architecture}
+      \field{title}{{Automated Construction of Robotic Manipulation Programs}}
+      \field{volume}{Ph.D.}
+      \field{year}{2010}
+      \field{pages}{1\bibrangedash 263}
+      \verb{doi}
+      \verb isbn 9781124535470
+      \endverb
+      \verb{url}
+      \verb http://www.programmingvision.com/rosen_diankov_thesis.pdf
+      \endverb
+    \endentry
+    \entry{Diankov}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=493b236fce82772b5ab765c82cc0db88}{Diankov}{D\bibinitperiod}{Rosen}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=493b236fce82772b5ab765c82cc0db88}{Diankov}{D\bibinitperiod}{Rosen}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{493b236fce82772b5ab765c82cc0db88}
+      \strng{fullhash}{493b236fce82772b5ab765c82cc0db88}
+      \field{sortinit}{D}
+      \field{labeltitle}{{OpenRAVE | Home}}
+      \field{title}{{OpenRAVE | Home}}
+      \field{urlday}{02}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://openrave.org/
+      \endverb
+      \keyw{c++,motion planning,open-source,openrave,python,robotics}
+    \endentry
+    \entry{Diankova}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=493b236fce82772b5ab765c82cc0db88}{Diankov}{D\bibinitperiod}{Rosen}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=493b236fce82772b5ab765c82cc0db88}{Diankov}{D\bibinitperiod}{Rosen}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{493b236fce82772b5ab765c82cc0db88}
+      \strng{fullhash}{493b236fce82772b5ab765c82cc0db88}
+      \field{sortinit}{D}
+      \field{labeltitle}{{OpenRAVE Users List}}
+      \field{title}{{OpenRAVE Users List}}
+      \field{urlday}{17}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://openrave-users-list.185357.n3.nabble.com/
+      \endverb
+    \endentry
+    \entry{Foote}{online}{}
+      \name{labelname}{2}{}{%
+        {{hash=0d11ace6e44e4742ea1692d7ddf4819e}{Foote}{F\bibinitperiod}{Tully}{T\bibinitperiod}{}{}{}{}}%
+        {{hash=d53b7d1d00a3b761fd092aa388996c7d}{Purvis}{P\bibinitperiod}{Mike}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=0d11ace6e44e4742ea1692d7ddf4819e}{Foote}{F\bibinitperiod}{Tully}{T\bibinitperiod}{}{}{}{}}%
+        {{hash=d53b7d1d00a3b761fd092aa388996c7d}{Purvis}{P\bibinitperiod}{Mike}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{7a94bab0f7107d3ba22b7dc29d653208}
+      \strng{fullhash}{7a94bab0f7107d3ba22b7dc29d653208}
+      \field{sortinit}{F}
+      \field{labeltitle}{{REP 103 -- Standard Units of Measure and Coordinate Conventions (ROS.org)}}
+      \field{title}{{REP 103 -- Standard Units of Measure and Coordinate Conventions (ROS.org)}}
+      \field{urlday}{30}
+      \field{urlmonth}{05}
+      \field{urlyear}{2016}
+      \field{year}{2010}
+      \verb{url}
+      \verb http://www.ros.org/reps/rep-0103.html#suffix-frames
+      \endverb
+    \endentry
+    \entry{InriaLagadicgroup}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=18e9be6cc6ea52ca8dc64231577ddb75}{{Inria\bibnamedelimb Lagadic\bibnamedelimb group}}{I\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=18e9be6cc6ea52ca8dc64231577ddb75}{{Inria\bibnamedelimb Lagadic\bibnamedelimb group}}{I\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{18e9be6cc6ea52ca8dc64231577ddb75}
+      \strng{fullhash}{18e9be6cc6ea52ca8dc64231577ddb75}
+      \field{sortinit}{I}
+      \field{labeltitle}{{Romeo humanoid robot grasping demonstration v1}}
+      \field{title}{{Romeo humanoid robot grasping demonstration v1}}
+      \field{urlday}{06}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \field{year}{2014}
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=kz1Ob0Ks554
+      \endverb
+      \keyw{Inria,Romeo,humanoid robot,lagadic,visual servoing}
+    \endentry
+    \entry{intelWeb}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=cb55c612dbd0fdf1389b1350bba8e0c6}{Intel(R)}{I\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=cb55c612dbd0fdf1389b1350bba8e0c6}{Intel(R)}{I\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{cb55c612dbd0fdf1389b1350bba8e0c6}
+      \strng{fullhash}{cb55c612dbd0fdf1389b1350bba8e0c6}
+      \field{sortinit}{I}
+      \field{labeltitle}{{Intel RealSense Camera}}
+      \field{title}{{Intel RealSense Camera}}
+      \field{urlday}{12}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://software.intel.com/en-us/realsense/devkit
+      \endverb
+    \endentry
+    \entry{gitRealSense}{online}{}
+      \name{labelname}{2}{}{%
+        {{hash=cb55c612dbd0fdf1389b1350bba8e0c6}{Intel(R)}{I\bibinitperiod}{}{}{}{}{}{}}%
+        {{hash=0863b623f7777186d1e9f267656e6123}{Lemaignan}{L\bibinitperiod}{Séverin}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=cb55c612dbd0fdf1389b1350bba8e0c6}{Intel(R)}{I\bibinitperiod}{}{}{}{}{}{}}%
+        {{hash=0863b623f7777186d1e9f267656e6123}{Lemaignan}{L\bibinitperiod}{Séverin}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{9268964c21200ee2ff0721290ef50e2d}
+      \strng{fullhash}{9268964c21200ee2ff0721290ef50e2d}
+      \field{sortinit}{I}
+      \field{labeltitle}{{Repository Intel® RealSense™ Technology - ROS Integration}}
+      \field{title}{{Repository Intel® RealSense™ Technology - ROS Integration}}
+      \field{urlday}{31}
+      \field{urlmonth}{05}
+      \field{urlyear}{2016}
+      \field{year}{2016}
+      \verb{url}
+      \verb https://github.com/severin-lemaignan/realsense/tree/indigo-devel/camera
+      \endverb
+    \endentry
+    \entry{KhronosGroup}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=0faf2bb66d311b66c3177e318f91f551}{{Khronos\bibnamedelimb Group}}{K\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=0faf2bb66d311b66c3177e318f91f551}{{Khronos\bibnamedelimb Group}}{K\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{0faf2bb66d311b66c3177e318f91f551}
+      \strng{fullhash}{0faf2bb66d311b66c3177e318f91f551}
+      \field{sortinit}{K}
+      \field{labeltitle}{{COLLADA - 3D Asset Exchange Schema}}
+      \field{title}{{COLLADA - 3D Asset Exchange Schema}}
+      \field{urlday}{02}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb https://www.khronos.org/collada/
+      \endverb
+    \endentry
+    \entry{Li}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=430f49b177270c800e7e003352860abf}{Li}{L\bibinitperiod}{Sophie}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=430f49b177270c800e7e003352860abf}{Li}{L\bibinitperiod}{Sophie}{S\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{430f49b177270c800e7e003352860abf}
+      \strng{fullhash}{430f49b177270c800e7e003352860abf}
+      \field{sortinit}{L}
+      \field{labeltitle}{{Installing Kinect drivers on Ubuntu 14.04 and ROS Indigo – sophie's blog}}
+      \field{title}{{Installing Kinect drivers on Ubuntu 14.04 and ROS Indigo – sophie's blog}}
+      \field{urlday}{31}
+      \field{urlmonth}{05}
+      \field{urlyear}{2016}
+      \field{year}{2015}
+      \verb{url}
+      \verb http://blog.justsophie.com/installing-kinect-nite-drivers-on-ubuntu-14-04-and-ros-indigo/
+      \endverb
+    \endentry
+    \entry{ParPaul}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=31ea16bcf43f59af3453add4962840d7}{Loubière}{L\bibinitperiod}{Par\bibnamedelima Paul}{P\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=31ea16bcf43f59af3453add4962840d7}{Loubière}{L\bibinitperiod}{Par\bibnamedelima Paul}{P\bibinitperiod\bibinitdelim P\bibinitperiod}{}{}{}{}}%
+      }
+      \list{location}{1}{%
+        {France}%
+      }
+      \strng{namehash}{31ea16bcf43f59af3453add4962840d7}
+      \strng{fullhash}{31ea16bcf43f59af3453add4962840d7}
+      \field{sortinit}{L}
+      \field{labeltitle}{{Aldebaran a fini de jouer avec Nao le petit robot}}
+      \field{booktitle}{Challenges.fr}
+      \field{month}{04}
+      \field{title}{{Aldebaran a fini de jouer avec Nao le petit robot}}
+      \field{year}{2015}
+      \verb{url}
+      \verb http://www.challenges.fr/entreprise/20150402.CHA4548/aldebaran-a-fini-de-jouer-avec-nao-le-petit-robot.html
+      \endverb
+    \endentry
+    \entry{gitNlyubovaGrasp}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=5b206156af48e6b2c02dad3a487e101a}{Lyubova}{L\bibinitperiod}{Natalia}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=5b206156af48e6b2c02dad3a487e101a}{Lyubova}{L\bibinitperiod}{Natalia}{N\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{5b206156af48e6b2c02dad3a487e101a}
+      \strng{fullhash}{5b206156af48e6b2c02dad3a487e101a}
+      \field{sortinit}{L}
+      \field{labeltitle}{{Moveit Simple Grasp}}
+      \field{title}{{Moveit Simple Grasp}}
+      \field{urlday}{31}
+      \field{urlmonth}{05}
+      \field{urlyear}{2016}
+      \field{year}{2016}
+      \verb{url}
+      \verb https://github.com/nlyubova/moveit_simple_grasps/tree/romeo-dev
+      \endverb
+    \endentry
+    \entry{MoveIt2013}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=904d4eb6660dafaaa68cb6f1d8e9e6cf}{MoveIt}{M\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=904d4eb6660dafaaa68cb6f1d8e9e6cf}{MoveIt}{M\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{904d4eb6660dafaaa68cb6f1d8e9e6cf}
+      \strng{fullhash}{904d4eb6660dafaaa68cb6f1d8e9e6cf}
+      \field{sortinit}{M}
+      \field{labeltitle}{{Creating a custom IKFast Plugin - MoveIt IKFast documentation}}
+      \field{title}{{Creating a custom IKFast Plugin - MoveIt IKFast documentation}}
+      \field{urlday}{11}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \field{year}{2013}
+      \verb{url}
+      \verb http://docs.ros.org/hydro/api/moveit_ikfast/html/doc/ikfast_tutorial.html
+      \endverb
+    \endentry
+    \entry{Pas}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=232fdff9214acab089245d457c2263b8}{Pas}{P\bibinitperiod}{Andreas}{A\bibinitperiod}{ten}{t\bibinitperiod}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=232fdff9214acab089245d457c2263b8}{Pas}{P\bibinitperiod}{Andreas}{A\bibinitperiod}{ten}{t\bibinitperiod}{}{}}%
+      }
+      \strng{namehash}{232fdff9214acab089245d457c2263b8}
+      \strng{fullhash}{232fdff9214acab089245d457c2263b8}
+      \field{sortinit}{P}
+      \field{labeltitle}{{AGILE grasp - ROS Wiki}}
+      \field{title}{{AGILE grasp - ROS Wiki}}
+      \field{urlday}{06}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \field{year}{2015}
+      \verb{url}
+      \verb http://wiki.ros.org/agile_grasp
+      \endverb
+    \endentry
+    \entry{DBLP:journals/corr/PasP15}{article}{}
+      \name{labelname}{2}{}{%
+        {{hash=232fdff9214acab089245d457c2263b8}{Pas}{P\bibinitperiod}{Andreas}{A\bibinitperiod}{ten}{t\bibinitperiod}{}{}}%
+        {{hash=120cda53f8fa9f9bc3c38e9936701fd7}{Platt}{P\bibinitperiod}{Robert}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{2}{}{%
+        {{hash=232fdff9214acab089245d457c2263b8}{Pas}{P\bibinitperiod}{Andreas}{A\bibinitperiod}{ten}{t\bibinitperiod}{}{}}%
+        {{hash=120cda53f8fa9f9bc3c38e9936701fd7}{Platt}{P\bibinitperiod}{Robert}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{0cafa611afff29fce7071243e3c51460}
+      \strng{fullhash}{0cafa611afff29fce7071243e3c51460}
+      \field{sortinit}{P}
+      \field{labeltitle}{{Localizing antipodal grasps in point clouds}}
+      \field{journaltitle}{CoRR}
+      \field{title}{{Localizing antipodal grasps in point clouds}}
+      \field{volume}{abs/1501.0}
+      \field{year}{2015}
+      \verb{url}
+      \verb http://arxiv.org/abs/1501.03100
+      \endverb
+    \endentry
+    \entry{Penton}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=4dbc4232a58eaa787d153149cf401b6e}{Penton}{P\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=4dbc4232a58eaa787d153149cf401b6e}{Penton}{P\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{4dbc4232a58eaa787d153149cf401b6e}
+      \strng{fullhash}{4dbc4232a58eaa787d153149cf401b6e}
+      \field{sortinit}{P}
+      \field{labeltitle}{{Motors and Drives Leading the Way for Robots}}
+      \field{title}{{Motors and Drives Leading the Way for Robots}}
+      \field{urlday}{27}
+      \field{urlmonth}{05}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://machinedesign.com/motorsdrives/motors-and-drives-leading-way-robots
+      \endverb
+      \keyw{Motors/Drives,components,drive,motor,robotics,robots}
+    \endentry
+    \entry{Prankl2015b}{online}{}
+      \name{labelname}{4}{}{%
+        {{hash=334ab0abd7d3f45568e81c6a486f0a9e}{Prankl}{P\bibinitperiod}{Johann}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=3b837d36ec9852fa8ea0050bfdaa433a}{Aldoma}{A\bibinitperiod}{A.}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=7fe4728513c5a88112ed9e281f99a5ea}{Svejda}{S\bibinitperiod}{Alexander}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=d92691846c0aa716d6f814788a488be9}{Vincze}{V\bibinitperiod}{Markus}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{hash=334ab0abd7d3f45568e81c6a486f0a9e}{Prankl}{P\bibinitperiod}{Johann}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=3b837d36ec9852fa8ea0050bfdaa433a}{Aldoma}{A\bibinitperiod}{A.}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=7fe4728513c5a88112ed9e281f99a5ea}{Svejda}{S\bibinitperiod}{Alexander}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=d92691846c0aa716d6f814788a488be9}{Vincze}{V\bibinitperiod}{Markus}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{ab42b1e27fd2a1d91bc58c49f9a538b7}
+      \strng{fullhash}{383088d734f18609e8dc8bc47e27e22e}
+      \field{sortinit}{P}
+      \field{labeltitle}{{Multi-session Object Modelling with an RGB-D Sensor}}
+      \field{title}{{Multi-session Object Modelling with an RGB-D Sensor}}
+      \field{urlday}{01}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \field{year}{2015}
+      \verb{url}
+      \verb https://www.youtube.com/watch?v=UMZJQqxHF98
+      \endverb
+      \keyw{3D models,RGBD,Recognition,Tracking and Modelling of Objects}
+    \endentry
+    \entry{Prankl2013}{article}{}
+      \name{labelname}{4}{}{%
+        {{hash=334ab0abd7d3f45568e81c6a486f0a9e}{Prankl}{P\bibinitperiod}{Johann}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=35771b4ec7716e76106452e07296e3d5}{Mörwald}{M\bibinitperiod}{Thomas}{T\bibinitperiod}{}{}{}{}}%
+        {{hash=8412c50eb8e14748ab95a1e7d26e43ad}{Zillich}{Z\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=d92691846c0aa716d6f814788a488be9}{Vincze}{V\bibinitperiod}{Markus}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{hash=334ab0abd7d3f45568e81c6a486f0a9e}{Prankl}{P\bibinitperiod}{Johann}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=35771b4ec7716e76106452e07296e3d5}{Mörwald}{M\bibinitperiod}{Thomas}{T\bibinitperiod}{}{}{}{}}%
+        {{hash=8412c50eb8e14748ab95a1e7d26e43ad}{Zillich}{Z\bibinitperiod}{Michael}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=d92691846c0aa716d6f814788a488be9}{Vincze}{V\bibinitperiod}{Markus}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{ab42b1e27fd2a1d91bc58c49f9a538b7}
+      \strng{fullhash}{bef3a1d4e27203b45b1343d7e2d6e5f2}
+      \field{sortinit}{P}
+      \field{labeltitle}{{Probabilistic cue integration for real-time object pose tracking}}
+      \field{isbn}{9783642394010}
+      \field{issn}{03029743}
+      \field{journaltitle}{Lecture Notes in Computer Science (including subseries Lecture Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)}
+      \field{number}{600623}
+      \field{title}{{Probabilistic cue integration for real-time object pose tracking}}
+      \field{volume}{7963 LNCS}
+      \field{year}{2013}
+      \field{pages}{254\bibrangedash 263}
+      \verb{doi}
+      \verb 10.1007/978-3-642-39402-7_26
+      \endverb
+      \verb{file}
+      \verb :home/lluis/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Prankl et al. - 2013 - Probabilistic cue integration for real-time object pose tracking.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Prankl2015}{article}{}
+      \name{labelname}{4}{}{%
+        {{hash=334ab0abd7d3f45568e81c6a486f0a9e}{Prankl}{P\bibinitperiod}{Johann}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=f256cb375749fc14422f4cd670462770}{Aldoma}{A\bibinitperiod}{Aitor}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=7fe4728513c5a88112ed9e281f99a5ea}{Svejda}{S\bibinitperiod}{Alexander}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=d92691846c0aa716d6f814788a488be9}{Vincze}{V\bibinitperiod}{Markus}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{4}{}{%
+        {{hash=334ab0abd7d3f45568e81c6a486f0a9e}{Prankl}{P\bibinitperiod}{Johann}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=f256cb375749fc14422f4cd670462770}{Aldoma}{A\bibinitperiod}{Aitor}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=7fe4728513c5a88112ed9e281f99a5ea}{Svejda}{S\bibinitperiod}{Alexander}{A\bibinitperiod}{}{}{}{}}%
+        {{hash=d92691846c0aa716d6f814788a488be9}{Vincze}{V\bibinitperiod}{Markus}{M\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{ab42b1e27fd2a1d91bc58c49f9a538b7}
+      \strng{fullhash}{6c16b3b6750eb2824540f28455df4a8f}
+      \field{sortinit}{P}
+      \field{labeltitle}{{RGB-D object modelling for object recognition and tracking}}
+      \field{isbn}{9781479999941}
+      \field{issn}{21530866}
+      \field{journaltitle}{IEEE International Conference on Intelligent Robots and Systems}
+      \field{title}{{RGB-D object modelling for object recognition and tracking}}
+      \field{volume}{2015-Decem}
+      \field{year}{2015}
+      \field{pages}{96\bibrangedash 103}
+      \verb{doi}
+      \verb 10.1109/IROS.2015.7353360
+      \endverb
+      \verb{file}
+      \verb :home/lluis/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Prankl et al. - 2015 - RGB-D object modelling for object recognition and tracking.pdf:pdf
+      \endverb
+    \endentry
+    \entry{Quigley}{article}{}
+      \name{labelname}{9}{}{%
+        {{hash=9404eebbe5c52f5580a6f6515ebcbb80}{Quigley}{Q\bibinitperiod}{Morgan}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=a8ad4a5f43253f69552460c946e34e49}{Gerkey}{G\bibinitperiod}{Brian}{B\bibinitperiod}{}{}{}{}}%
+        {{hash=03be3bc097356f7d1ec26652c7045241}{Conley}{C\bibinitperiod}{Ken}{K\bibinitperiod}{}{}{}{}}%
+        {{hash=960c70f75f497debf10c247f8076241e}{Faust}{F\bibinitperiod}{Josh}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=0d11ace6e44e4742ea1692d7ddf4819e}{Foote}{F\bibinitperiod}{Tully}{T\bibinitperiod}{}{}{}{}}%
+        {{hash=fae0a680822c97400d0807bb44b87838}{Leibs}{L\bibinitperiod}{Jeremy}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=05ef16e9b1890a54a9c97ac2b1be9f80}{Berger}{B\bibinitperiod}{Eric}{E\bibinitperiod}{}{}{}{}}%
+        {{hash=1afca7d350a45f78259bb8af3f168e7d}{Wheeler}{W\bibinitperiod}{Rob}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=bdb4d740fc9548d1c32a62103c30169d}{Ng}{N\bibinitperiod}{Andrew}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{9}{}{%
+        {{hash=9404eebbe5c52f5580a6f6515ebcbb80}{Quigley}{Q\bibinitperiod}{Morgan}{M\bibinitperiod}{}{}{}{}}%
+        {{hash=a8ad4a5f43253f69552460c946e34e49}{Gerkey}{G\bibinitperiod}{Brian}{B\bibinitperiod}{}{}{}{}}%
+        {{hash=03be3bc097356f7d1ec26652c7045241}{Conley}{C\bibinitperiod}{Ken}{K\bibinitperiod}{}{}{}{}}%
+        {{hash=960c70f75f497debf10c247f8076241e}{Faust}{F\bibinitperiod}{Josh}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=0d11ace6e44e4742ea1692d7ddf4819e}{Foote}{F\bibinitperiod}{Tully}{T\bibinitperiod}{}{}{}{}}%
+        {{hash=fae0a680822c97400d0807bb44b87838}{Leibs}{L\bibinitperiod}{Jeremy}{J\bibinitperiod}{}{}{}{}}%
+        {{hash=05ef16e9b1890a54a9c97ac2b1be9f80}{Berger}{B\bibinitperiod}{Eric}{E\bibinitperiod}{}{}{}{}}%
+        {{hash=1afca7d350a45f78259bb8af3f168e7d}{Wheeler}{W\bibinitperiod}{Rob}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=bdb4d740fc9548d1c32a62103c30169d}{Ng}{N\bibinitperiod}{Andrew}{A\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{b774a9d43f5be3e4c87661f157618116}
+      \strng{fullhash}{0f9a5bb9cc2736bbc6efcf11c1e2f968}
+      \field{sortinit}{Q}
+      \field{labeltitle}{{ROS: an open-source Robot Operating System}}
+      \field{journaltitle}{ICRA Workshop on Open Source Software}
+      \field{title}{{ROS: an open-source Robot Operating System}}
+      \field{year}{2009}
+      \verb{file}
+      \verb :home/lluis/.local/share/data/Mendeley Ltd./Mendeley Desktop/Downloaded/Quigley et al. - 2009 - ROS an open-source Robot Operating System.pdf:pdf
+      \endverb
+      \keyw{middleware open robot ros source}
+    \endentry
+    \entry{ROS}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=c59e9f4342d99d9fd917eb1637a9ca0d}{{Robot\bibnamedelimb Operating\bibnamedelimb System}}{R\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=c59e9f4342d99d9fd917eb1637a9ca0d}{{Robot\bibnamedelimb Operating\bibnamedelimb System}}{R\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{c59e9f4342d99d9fd917eb1637a9ca0d}
+      \strng{fullhash}{c59e9f4342d99d9fd917eb1637a9ca0d}
+      \field{sortinit}{R}
+      \field{labeltitle}{{ROS.org}}
+      \field{annotation}{Data de consulta: 22 de febrer de 2014}
+      \field{title}{{ROS.org}}
+      \field{urlday}{10}
+      \field{urlmonth}{03}
+      \field{urlyear}{2014}
+      \verb{url}
+      \verb http://www.ros.org/core-components/
+      \endverb
+      \keyw{ROS}
+    \endentry
+    \entry{romeoRobotIssue}{online}{}
+      \field{sortinit}{R}
+      \field{labeltitle}{{Romeo robot repository issue}}
+      \field{title}{{Romeo robot repository issue}}
+      \field{urlday}{11}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \field{year}{2016}
+      \verb{url}
+      \verb https://github.com/ros-aldebaran/romeo_robot/issues/10
+      \endverb
+    \endentry
+    \entry{Smeenk}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=3dc3ebc039e398fbbcf61aa25caf3ccc}{Smeenk}{S\bibinitperiod}{Roland}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=3dc3ebc039e398fbbcf61aa25caf3ccc}{Smeenk}{S\bibinitperiod}{Roland}{R\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{3dc3ebc039e398fbbcf61aa25caf3ccc}
+      \strng{fullhash}{3dc3ebc039e398fbbcf61aa25caf3ccc}
+      \field{sortinit}{S}
+      \field{labeltitle}{{Kinect V1 and Kinect V2 fields of view compared}}
+      \field{title}{{Kinect V1 and Kinect V2 fields of view compared}}
+      \field{urlday}{12}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \field{year}{2014}
+      \verb{url}
+      \verb http://smeenk.com/kinect-field-of-view-comparison/
+      \endverb
+    \endentry
+    \entry{KDL}{online}{}
+      \name{labelname}{3}{}{%
+        {{hash=ea3ef518b8173940763400c649731fbb}{Smits}{S\bibinitperiod}{R.}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=addbe8c8d2953a33bb5f8318519607d9}{Bruyninckx}{B\bibinitperiod}{H.}{H\bibinitperiod}{}{}{}{}}%
+        {{hash=aef4be99f94992a498beb291f2898ae3}{Aertbeli}{A\bibinitperiod}{E.}{E\bibinitperiod}{}{}{}{}}%
+      }
+      \name{author}{3}{}{%
+        {{hash=ea3ef518b8173940763400c649731fbb}{Smits}{S\bibinitperiod}{R.}{R\bibinitperiod}{}{}{}{}}%
+        {{hash=addbe8c8d2953a33bb5f8318519607d9}{Bruyninckx}{B\bibinitperiod}{H.}{H\bibinitperiod}{}{}{}{}}%
+        {{hash=aef4be99f94992a498beb291f2898ae3}{Aertbeli}{A\bibinitperiod}{E.}{E\bibinitperiod}{}{}{}{}}%
+      }
+      \strng{namehash}{202f8ff7130fb39bd63258ed264a2599}
+      \strng{fullhash}{202f8ff7130fb39bd63258ed264a2599}
+      \field{sortinit}{S}
+      \field{labeltitle}{{KDL: Kinematics and dynamics library | The Orocos Project}}
+      \field{title}{{KDL: Kinematics and dynamics library | The Orocos Project}}
+      \field{urlday}{02}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \verb{url}
+      \verb http://www.orocos.org/kdl
+      \endverb
+    \endentry
+    \entry{gitV4RWrappers}{online}{}
+      \name{labelname}{1}{}{%
+        {{hash=4da3ba4907d0e207c09190cd13575cda}{STRANDS}{S\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \name{author}{1}{}{%
+        {{hash=4da3ba4907d0e207c09190cd13575cda}{STRANDS}{S\bibinitperiod}{}{}{}{}{}{}}%
+      }
+      \strng{namehash}{4da3ba4907d0e207c09190cd13575cda}
+      \strng{fullhash}{4da3ba4907d0e207c09190cd13575cda}
+      \field{sortinit}{S}
+      \field{labeltitle}{{V4R ROS Wrapper repository}}
+      \field{title}{{V4R ROS Wrapper repository}}
+      \field{urlday}{01}
+      \field{urlmonth}{06}
+      \field{urlyear}{2016}
+      \field{year}{2015}
+      \verb{url}
+      \verb https://github.com/strands-project/v4r_ros_wrappers
+      \endverb
+    \endentry
+  \endsortlist
+\endrefsection
+\endinput
 
-\bibitem[Aldebaran({\natexlab{a}})]{AldebaranC++SDK}
-Aldebaran.
-\newblock {C++ SDK Installation — NAO Software 1.14.5 documentation},
-  {\natexlab{a}}.
-\newblock URL
-  \url{http://doc.aldebaran.com/1-14/dev/cpp/install_guide.html#requirements}.
-
-\bibitem[Aldebaran({\natexlab{b}})]{AldebaranQiBuild}
-Aldebaran.
-\newblock {Getting Started — qiBuild 3.11.3 documentation}, {\natexlab{b}}.
-\newblock URL
-  \url{http://doc.aldebaran.com/qibuild/beginner/getting_started.html}.
-
-\bibitem[Aldebaran({\natexlab{c}})]{ros-aldebaran}
-Aldebaran.
-\newblock {ROS-Aldebaran repository}, {\natexlab{c}}.
-\newblock URL \url{https://github.com/ros-aldebaran/}.
-
-\bibitem[Aldebaran({\natexlab{d}})]{ros-naoqi}
-Aldebaran.
-\newblock {ROS-NAOqi repository}.
-\newblock {\natexlab{d}}.
-\newblock URL \url{https://github.com/ros-naoqi}.
-
-\bibitem[Aldoma et~al.(2013)Aldoma, Tombari, Prankl, Richtsfeld, {Di Stefano},
-  and Vincze]{Aldoma2013}
-A.~Aldoma, F.~Tombari, J.~Prankl, A.~Richtsfeld, L.~{Di Stefano}, and
-  M.~Vincze.
-\newblock {Multimodal cue integration through Hypotheses Verification for RGB-D
-  object recognition and 6DOF pose estimation}.
-\newblock \emph{Proceedings - IEEE International Conference on Robotics and
-  Automation}, pages 2104--2111, 2013.
-\newblock ISSN 10504729.
-\newblock \doi{10.1109/ICRA.2013.6630859}.
-
-\bibitem[ASUS()]{ASUSWeb}
-ASUS.
-\newblock {ASUS Xtion PRO LIVE Spec}.
-\newblock URL
-  \url{https://www.asus.com/us/3D-Sensor/Xtion_PRO_LIVE/specifications/}.
-
-\bibitem[Claudio et~al.(2015)Claudio, Spindler, and
-  Chaumette]{claudio:hal-01159882}
-Giovanni Claudio, Fabien Spindler, and Fran{\c{c}}ois Chaumette.
-\newblock {Grasping by Romeo with visual servoing}.
-\newblock In \emph{Journ{{\'{e}}}es Nationales de la Robotique
-  Humano{{\"{i}}}de, JNRH}, Nantes, France, 2015.
-\newblock URL \url{https://hal.inria.fr/hal-01159882}.
-
-\bibitem[Coleman()]{gitMoveitSimpleGrasp}
-Dave Coleman.
-\newblock {MoveIt Simple Grasp}.
-\newblock URL \url{https://github.com/davetcoleman/moveit_simple_grasps}.
-
-\bibitem[Diankov({\natexlab{a}})]{Diankov}
-Rosen Diankov.
-\newblock {OpenRAVE | Home}, {\natexlab{a}}.
-\newblock URL \url{http://openrave.org/}.
-
-\bibitem[Diankov({\natexlab{b}})]{Diankova}
-Rosen Diankov.
-\newblock {OpenRAVE Users List}, {\natexlab{b}}.
-\newblock URL \url{http://openrave-users-list.185357.n3.nabble.com/}.
-
-\bibitem[Diankov(2010)]{Diankov2010}
-Rosen Diankov.
-\newblock {Automated Construction of Robotic Manipulation Programs}.
-\newblock \emph{Architecture}, Ph.D.:\penalty0 1--263, 2010.
-\newblock ISSN 978-1-124-53547-0.
-\newblock \doi{isbn 9781124535470}.
-\newblock URL \url{http://www.programmingvision.com/rosen_diankov_thesis.pdf}.
-
-\bibitem[Foote and Purvis(2010)]{Foote}
-Tully Foote and Mike Purvis.
-\newblock {REP 103 -- Standard Units of Measure and Coordinate Conventions
-  (ROS.org)}, 2010.
-\newblock URL \url{http://www.ros.org/reps/rep-0103.html#suffix-frames}.
-
-\bibitem[{Inria Lagadic group}(2014)]{InriaLagadicgroup}
-{Inria Lagadic group}.
-\newblock {Romeo humanoid robot grasping demonstration v1}, 2014.
-\newblock URL \url{https://www.youtube.com/watch?v=kz1Ob0Ks554}.
-
-\bibitem[Intel(R)()]{IntelWeb}
-Intel(R).
-\newblock {Intel RealSense Camera}.
-\newblock URL \url{https://software.intel.com/en-us/realsense/devkit}.
-
-\bibitem[Intel(R) and Lemaignan(2016)]{gitRealSense}
-Intel(R) and S{\'{e}}verin Lemaignan.
-\newblock {Repository Intel{\textregistered} RealSense™ Technology - ROS
-  Integration}, 2016.
-\newblock URL
-  \url{https://github.com/severin-lemaignan/realsense/tree/indigo-devel/camera}.
-
-\bibitem[{Khronos Group}()]{KhronosGroup}
-{Khronos Group}.
-\newblock {COLLADA - 3D Asset Exchange Schema}.
-\newblock URL \url{https://www.khronos.org/collada/}.
-
-\bibitem[Li(2015)]{Li}
-Sophie Li.
-\newblock {Installing Kinect drivers on Ubuntu 14.04 and ROS Indigo –
-  sophie's blog}, 2015.
-\newblock URL
-  \url{http://blog.justsophie.com/installing-kinect-nite-drivers-on-ubuntu-14-04-and-ros-indigo/}.
-
-\bibitem[Loubi{\`{e}}re(2015)]{ParPaul}
-Par~Paul Loubi{\`{e}}re.
-\newblock {Aldebaran a fini de jouer avec Nao le petit robot}, apr 2015.
-\newblock URL
-  \url{http://www.challenges.fr/entreprise/20150402.CHA4548/aldebaran-a-fini-de-jouer-avec-nao-le-petit-robot.html}.
-
-\bibitem[Lyubova(2016)]{gitNlyubovaGrasp}
-Natalia Lyubova.
-\newblock {Moveit Simple Grasp}, 2016.
-\newblock URL
-  \url{https://github.com/nlyubova/moveit_simple_grasps/tree/romeo-dev}.
-
-\bibitem[MoveIt(2013)]{MoveIt2013}
-MoveIt.
-\newblock {Creating a custom IKFast Plugin - MoveIt IKFast documentation},
-  2013.
-\newblock URL
-  \url{http://docs.ros.org/hydro/api/moveit_ikfast/html/doc/ikfast_tutorial.html}.
-
-\bibitem[Penton()]{Penton}
-Penton.
-\newblock {Motors and Drives Leading the Way for Robots}.
-\newblock URL
-  \url{http://machinedesign.com/motorsdrives/motors-and-drives-leading-way-robots}.
-
-\bibitem[Prankl et~al.(2013)Prankl, M{\"{o}}rwald, Zillich, and
-  Vincze]{Prankl2013}
-Johann Prankl, Thomas M{\"{o}}rwald, Michael Zillich, and Markus Vincze.
-\newblock {Probabilistic cue integration for real-time object pose tracking}.
-\newblock \emph{Lecture Notes in Computer Science (including subseries Lecture
-  Notes in Artificial Intelligence and Lecture Notes in Bioinformatics)}, 7963
-  LNCS\penalty0 (600623):\penalty0 254--263, 2013.
-\newblock ISSN 03029743.
-\newblock \doi{10.1007/978-3-642-39402-7_26}.
-
-\bibitem[Prankl et~al.(2015{\natexlab{a}})Prankl, Aldoma, Svejda, and
-  Vincze]{Prankl2015b}
-Johann Prankl, A.~Aldoma, Alexander Svejda, and Markus Vincze.
-\newblock {Multi-session Object Modelling with an RGB-D Sensor},
-  2015{\natexlab{a}}.
-\newblock URL \url{https://www.youtube.com/watch?v=UMZJQqxHF98}.
-
-\bibitem[Prankl et~al.(2015{\natexlab{b}})Prankl, Aldoma, Svejda, and
-  Vincze]{Prankl2015}
-Johann Prankl, Aitor Aldoma, Alexander Svejda, and Markus Vincze.
-\newblock {RGB-D object modelling for object recognition and tracking}.
-\newblock \emph{IEEE International Conference on Intelligent Robots and
-  Systems}, 2015-Decem:\penalty0 96--103, 2015{\natexlab{b}}.
-\newblock ISSN 21530866.
-\newblock \doi{10.1109/IROS.2015.7353360}.
-
-\bibitem[Quigley et~al.(2009)Quigley, Gerkey, Conley, Faust, Foote, Leibs,
-  Berger, Wheeler, and Ng]{Quigley}
-Morgan Quigley, Brian Gerkey, Ken Conley, Josh Faust, Tully Foote, Jeremy
-  Leibs, Eric Berger, Rob Wheeler, and Andrew Ng.
-\newblock {ROS: an open-source Robot Operating System}.
-\newblock \emph{ICRA Workshop on Open Source Software}, 2009.
-
-\bibitem[{Robot Operating System}()]{ROS}
-{Robot Operating System}.
-\newblock {ROS.org}.
-\newblock URL \url{http://www.ros.org/core-components/}.
-
-\bibitem[Smeenk(2014)]{Smeenk}
-Roland Smeenk.
-\newblock {Kinect V1 and Kinect V2 fields of view compared}, 2014.
-\newblock URL \url{http://smeenk.com/kinect-field-of-view-comparison/}.
-
-\bibitem[Smits et~al.()Smits, Bruyninckx, and Aertbeli]{KDL}
-R.~Smits, H.~Bruyninckx, and E.~Aertbeli.
-\newblock {KDL: Kinematics and dynamics library | The Orocos Project}.
-\newblock URL \url{http://www.orocos.org/kdl}.
-
-\bibitem[STRANDS(2015)]{gitV4RWrappers}
-STRANDS.
-\newblock {V4R ROS Wrapper repository}, 2015.
-\newblock URL \url{https://github.com/strands-project/v4r_ros_wrappers}.
-
-\bibitem[ten Pas(2015)]{Pas}
-Andreas ten Pas.
-\newblock {AGILE grasp - ROS Wiki}, 2015.
-\newblock URL \url{http://wiki.ros.org/agile_grasp}.
-
-\bibitem[ten Pas and Platt(2015)]{DBLP:journals/corr/PasP15}
-Andreas ten Pas and Robert Platt.
-\newblock {Localizing antipodal grasps in point clouds}.
-\newblock \emph{CoRR}, abs/1501.0, 2015.
-\newblock URL \url{http://arxiv.org/abs/1501.03100}.
-
-\end{thebibliography}

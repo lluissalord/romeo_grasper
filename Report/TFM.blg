@@ -1,77 +1,38 @@
-This is BibTeX, Version 0.99d (TeX Live 2013/Debian)
-Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
-The top-level auxiliary file: TFM.aux
-The style file: plainnat.bst
-A level-1 auxiliary file: images/moveit_actions_grasp_plan.aux
-A level-1 auxiliary file: images/moveit_actions_reach_action.aux
-A level-1 auxiliary file: images/moveit_actions_pick_action.aux
-A level-1 auxiliary file: images/dcm_driver_flow.aux
-A level-1 auxiliary file: images/model_object_diagram.aux
-A level-1 auxiliary file: images/model_object_transform.aux
-A level-1 auxiliary file: images/pose_preknown.aux
-A level-1 auxiliary file: images/plan_execute_function_flow.aux
-A level-1 auxiliary file: images/setup_romeo_grasper.aux
-Database file #1: ./library/library.bib
-Repeated entry---line 965 of file ./library/library.bib
- : @misc{ROS
- :          ,
-I'm skipping whatever remains of this entry
-Warning--to sort, need author or key in Aldebaran
-Warning--to sort, need author or key in romeoRobotIssue
-Warning--empty year in Aldebaran
-Warning--empty year in AldebaranC++SDK
-Warning--empty year in AldebaranQiBuild
-Warning--empty year in ros-aldebaran
-Warning--empty journal in ros-naoqi
-Warning--empty year in ros-naoqi
-Warning--empty year in ASUSWeb
-Warning--empty year in gitMoveitSimpleGrasp
-Warning--empty year in Diankov
-Warning--empty year in Diankova
-Warning--empty year in IntelWeb
-Warning--empty year in KhronosGroup
-Warning--empty year in Penton
-Warning--empty year in ROS
-Warning--empty year in KDL
-You've used 33 entries,
-            2773 wiz_defined-function locations,
-            786 strings with 10280 characters,
-and the built_in function-call counts, 12022 in all, are:
-= -- 1057
-> -- 591
-< -- 25
-+ -- 218
-- -- 180
-* -- 821
-:= -- 1812
-add.period$ -- 109
-call.type$ -- 33
-change.case$ -- 159
-chr.to.int$ -- 28
-cite$ -- 85
-duplicate$ -- 553
-empty$ -- 1105
-format.name$ -- 217
-if$ -- 2543
-int.to.chr$ -- 6
-int.to.str$ -- 1
-missing$ -- 8
-newline$ -- 183
-num.names$ -- 124
-pop$ -- 420
-preamble$ -- 1
-purify$ -- 126
-quote$ -- 0
-skip$ -- 488
-stack$ -- 0
-substring$ -- 174
-swap$ -- 52
-text.length$ -- 1
-text.prefix$ -- 0
-top$ -- 0
-type$ -- 363
-warning$ -- 17
-while$ -- 102
-width$ -- 0
-write$ -- 420
-(There was 1 error message)
+[1] Config.pm:318> INFO - This is Biber 1.8
+[1] Config.pm:321> INFO - Logfile is 'TFM.blg'
+[104] biber:275> INFO - === sÃ¡b jun 18, 2016, 18:59:56
+[104] Biber.pm:333> INFO - Reading 'TFM.bcf'
+[172] Biber.pm:630> INFO - Found 33 citekeys in bib section 0
+[186] Biber.pm:3053> INFO - Processing section 0
+[199] Biber.pm:3190> INFO - Looking for bibtex format file './library/library.bib' for section 0
+[214] bibtex.pm:933> INFO - Decoding LaTeX character macros into UTF-8
+[236] bibtex.pm:808> INFO - Found BibTeX data source './library/library.bib'
+[238] Utils.pm:169> WARN - Duplicate entry key: 'Tellez2006' in file './library/library.bib', skipping ...
+[239] Utils.pm:169> WARN - Duplicate entry key: 'Fujita2000' in file './library/library.bib', skipping ...
+[239] Utils.pm:169> WARN - Duplicate entry key: 'Tellez2004' in file './library/library.bib', skipping ...
+[240] Utils.pm:169> WARN - Duplicate entry key: 'ROS' in file './library/library.bib', skipping ...
+[240] Utils.pm:169> WARN - Duplicate entry key: 'iec-dlc' in file './library/library.bib', skipping ...
+[240] Utils.pm:169> WARN - Duplicate entry key: 'Tekkotsu' in file './library/library.bib', skipping ...
+[241] Utils.pm:169> WARN - Duplicate entry key: 'TFG_Carlos_Ramos' in file './library/library.bib', skipping ...
+[241] Utils.pm:169> WARN - Duplicate entry key: 'Tellez2005a' in file './library/library.bib', skipping ...
+[242] Utils.pm:169> WARN - Duplicate entry key: 'Sanchez2009' in file './library/library.bib', skipping ...
+[243] Utils.pm:169> WARN - Duplicate entry key: 'Fujita2000' in file './library/library.bib', skipping ...
+[243] Utils.pm:169> WARN - Duplicate entry key: 'Ruckert2013' in file './library/library.bib', skipping ...
+[244] Utils.pm:169> WARN - Duplicate entry key: 'Cano2013' in file './library/library.bib', skipping ...
+[244] Utils.pm:169> WARN - Duplicate entry key: 'Hirai1998' in file './library/library.bib', skipping ...
+[245] Utils.pm:169> WARN - Duplicate entry key: 'Vukobratovic2004' in file './library/library.bib', skipping ...
+[245] Utils.pm:169> WARN - Duplicate entry key: 'Rofer2013' in file './library/library.bib', skipping ...
+[246] Utils.pm:169> WARN - Duplicate entry key: 'Xavier2010' in file './library/library.bib', skipping ...
+[246] Utils.pm:169> WARN - Duplicate entry key: 'Blueprint' in file './library/library.bib', skipping ...
+[246] Utils.pm:169> WARN - Duplicate entry key: 'Ruckert2012' in file './library/library.bib', skipping ...
+[247] Utils.pm:169> WARN - Duplicate entry key: 'REEM_C' in file './library/library.bib', skipping ...
+[247] Utils.pm:169> WARN - Duplicate entry key: 'Rico2004' in file './library/library.bib', skipping ...
+[247] Utils.pm:169> WARN - Duplicate entry key: 'Menendez2011' in file './library/library.bib', skipping ...
+[247] Utils.pm:169> WARN - Duplicate entry key: 'Sancho2011' in file './library/library.bib', skipping ...
+[248] Utils.pm:169> WARN - Duplicate entry key: 'Makimoto2002' in file './library/library.bib', skipping ...
+[280] Utils.pm:169> WARN - BibTeX subsystem: /tmp/ZzwGdCbB13/library.bib_14942.utf8, line 6, warning: 172 characters of junk seen at toplevel
+[346] Biber.pm:2939> INFO - Overriding locale 'es_ES.UTF-8' default tailoring 'variable = shifted' with 'variable = non-ignorable'
+[346] Biber.pm:2945> INFO - Sorting 'entry' list 'nty' keys
+[445] bbl.pm:482> INFO - Writing 'TFM.bbl' with encoding 'UTF-8'
+[449] bbl.pm:555> INFO - Output to TFM.bbl
+[449] Biber.pm:105> INFO - WARNINGS: 24

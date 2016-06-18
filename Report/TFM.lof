@@ -1,44 +1,89 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
 \select@language {english}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {1.1}{\ignorespaces Aldebaran's robot family. Pepper on the left; Romeo on the right and Nao in the middle \cite {ParPaul}. \relax }}{2}{figure.caption.7}
+\defcounter {refsection}{0}\relax 
+\contentsline {figure}{\numberline {1.1}{\ignorespaces Aldebaran's robot family. Pepper on the left; Romeo on the right and Nao in the middle \autocite {ParPaul}. \relax }}{2}{figure.caption.7}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Main functions of the necessary packages for Romeo MoveIt Actions\relax }}{7}{figure.caption.8}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Topics and service of the package \texttt {romeo\_moveit\_actions}\relax }}{9}{figure.caption.9}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Flow sequence for function \texttt {graspPlan(...)}\relax }}{9}{figure.caption.10}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Flow sequence for function \texttt {reachAction(...)}\relax }}{10}{figure.caption.11}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Flow sequence for function \texttt {pickAction(...)}\relax }}{11}{figure.caption.12}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.1}{\ignorespaces Romeo robot \cite {Penton}\relax }}{13}{figure.caption.13}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.2}{\ignorespaces Links of Romeo left arm \cite {Aldebaran}\relax }}{14}{figure.caption.15}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Behaviour of DCM module \cite {Aldebaran}\relax }}{16}{figure.caption.19}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.4}{\ignorespaces Communication between Romeo and ROS\relax }}{19}{figure.caption.22}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Overview NAOqi driver package\relax }}{19}{figure.caption.24}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.6}{\ignorespaces Overview Pose controller node\relax }}{20}{figure.caption.26}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Overview Romeo DCM package\relax }}{21}{figure.caption.28}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Flow sequence of Romeo DCM package\relax }}{21}{figure.caption.29}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Comparative images from the depth camera.\relax }}{22}{figure.caption.31}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Communication between V4R - ROS - Cameras RGB-D\relax }}{23}{figure.caption.32}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Topics and services of the module Object Tracker\relax }}{24}{figure.caption.33}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Overview of the \texttt {Romeo grasper} package \relax }}{28}{figure.caption.34}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Flow sequence of ModelObject class\relax }}{36}{figure.caption.38}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Position transformation from camera reference to base reference\relax }}{37}{figure.caption.39}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.3}{\ignorespaces Orientations of the \texttt {camera\_link} respect to the robot \texttt {base\_link}\relax }}{38}{figure.caption.40}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.4}{\ignorespaces Process of having camera position using pre-known distance \relax }}{39}{figure.caption.41}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.5}{\ignorespaces Position change due to the offset of the modeled object.\relax }}{40}{figure.caption.42}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Flow sequence for function responsible of the robot planning and execution\relax }}{43}{figure.caption.46}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.7}{\ignorespaces Flow sequence for \texttt {romeo\_grasper} setup\relax }}{46}{figure.caption.47}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {5.8}{\ignorespaces Flow of data from object pose to commands to NAOqi\relax }}{46}{figure.caption.48}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {6.1}{\ignorespaces Confidence interval of distance of the approximated solutions.\relax }}{52}{figure.caption.51}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {6.2}{\ignorespaces Confidence interval of distance for approximated and inside tolerance solutions. Only for solutions with computer \texttt {C1}\relax }}{52}{figure.caption.52}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {6.3}{\ignorespaces Photos of the different points of view to pose the \texttt {l\_wrist}. The origin of the link is in the center of the blue spherical joint.\relax }}{56}{figure.caption.55}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {6.4}{\ignorespaces Description of the position used for this experiment.\relax }}{57}{figure.caption.58}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {6.5}{\ignorespaces Description of the experiment to know the error produced by the camera misposition.\relax }}{61}{figure.caption.67}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {8.1}{\ignorespaces Kinect problem, RGB camera sending black images.\relax }}{68}{figure.caption.69}
+\defcounter {refsection}{0}\relax 
 \contentsline {figure}{\numberline {8.2}{\ignorespaces Current position of grippers in Romeo model.\relax }}{70}{figure.caption.71}
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
+\defcounter {refsection}{0}\relax 
 \addvspace {10\p@ }
