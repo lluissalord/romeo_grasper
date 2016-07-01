@@ -156,7 +156,27 @@ Master Thesis Project\\
 \makeatother
 
 \begin{document}
-\maketitle
+
+%\maketitle
+
+\begin{titlepage}
+	\centering
+	{\scshape\LARGE Technischen Universität Wien (TU Wien)\\
+Automation and Control Institute (ACIN) \par}
+	\vspace{1cm}
+	{\scshape\Large Master Thesis Project\par}
+	\vspace{1.5cm}
+	{\huge\bfseries Approach to grasp with Romeo robot using RTM\par}
+	\vspace{2cm}
+	{\Large\itshape Lluís Salord Quetglas\\
+		\texttt{l.salord.quetglas@gmail.com}\par}
+
+	\vfill
+
+% Bottom of the page
+	{\large \today\par}
+\end{titlepage}
+
 \thispagestyle{empty}
 
 \cleardoublepage
@@ -750,6 +770,7 @@ Firstly, describe every parameter loaded to ROS with the file \texttt{romeo\_gra
 \texttt{base\_link\_frame\_id} & base\_link & Base frame of the robot.\\ \hline
 \texttt{camera\_in\_front} & false & Boolean to know if the camera is in front of the robot or next to it. More information in Section \ref{sec:impl_camera_approach}\\ \hline
 \texttt{camera\_ref\_frame\_id} & base\_link & Frame of the link used as reference, see Section \ref{sec:visual-recognition}. \\ \hline
+\texttt{camera\_frame\_id} & camera\_rgb\_optical\_frame & Frame of the camera following the ROS Enhancement Proposals (REPs) as an optical camera frame \cite{Foote}.\\ \hline
 \texttt{camera\_link} & camera\_link & Frame used to set the position of the camera.\\ \hline
 \texttt{object\_frame\_id} & object\_frame & Frame of the object that should be grasped.\\ \hline
 \multirow{1}{*}{\texttt{camera\_pose\_x}} & \multirow{1}{*}{0.0869} & \multirow{3}{\hsize}{Coords of the camera when camera position is pre-known, more in Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
@@ -758,7 +779,6 @@ Firstly, describe every parameter loaded to ROS with the file \texttt{romeo\_gra
 \multirow{1}{*}{\texttt{camera\_pose\_roll}} & \multirow{1}{*}{$\frac{\pi}{12}$} & \multirow{3}{\hsize}{Orientation of the camera in RPY when camera position is pre-known, see Section \ref{sec:pre-known_distance}} \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_pitch}} & \multirow{1}{*}{0} & \\ \cline{1-2}
 \multirow{1}{*}{\texttt{camera\_pose\_yaw}} & \multirow{1}{*}{$-\frac{\pi}{2}$} & \\ \hline
-\texttt{camera\_frame\_id} & camera\_rgb\_optical\_frame & Frame of the camera following the ROS Enhancement Proposals (REPs) as an optical camera frame \cite{Foote}.\\ \hline
 \end{tabulary}
 \caption{Description and default value of every parameter of \texttt{romeo\_grasper.yaml}\label{tab:param_romeo_grasper}}
 %\multicolumn{3}{|r|}{\small\sl continued on next page}\\
@@ -1520,8 +1540,6 @@ Camera & 0.2110 & 0.8292 & 0.0110 & -1.8846 & 0.3717 & 2.7525 \\ \hline
 \end{table}
 
 \section{Error produces by the camera positioning}
-%TODO
-%ADD PHOTOS!!
 
 Finally, the last experiment is made to know the influence of the camera positioning on the total error of the grasping. Therefore, here it is compared the position of the object calculated by the \texttt{romeo\_grasper} package with the position, given by the simulator, of a link moved to where the object was. Both position are in robot reference, so they should be the same. However, move the link to the specific place has an error which is estimated around $\pm$ 3 cm. In this case has been chosen the \texttt{l\_wrist} link because it is the easiest link to move. Moreover, to be as precise as possible has been used the camera position, as pre-known, result of the experiment in Section \ref{sec:exp_camera_preknown}. The photos in Figure \ref{fig:exp_camera_positioning_error_photos} can help to understand the process.
 
@@ -1624,8 +1642,6 @@ Therefore, this final result shows that as said in the introduction, the \texttt
 
 \section{Implementation new inverse kinematics}
 
-%TODO
-%Comprovar lo de que es picking es degut a IK solver
 Currently, there is some variability in the error produced by the inverse kinematic solver KDL to go to the position of the object. Moreover, it depends a lot on the planning time which is too big to allow to properly interact with the robot. Therefore, the implementation of a new IK solver should be a great improvement for the work. Moreover, currently the picking action is not working well due to the IK solver doesn't find a good picking plan, so with this new solver it is supposed that this should be solved.
 
 The first recommendation would be to implement the IKFast from OpenRAVE, because it is a close form solver and so it very fast and precise. As seen in Section \ref{sec:exp_ikfast}, currently is not working, but may be can solve it editing the URDF model trying to make it easier or changing the initial pose. Also is recommended to read this issue \cite{romeoRobotIssue}, where there is a lot about it discussed.

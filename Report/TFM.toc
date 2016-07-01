@@ -2,11 +2,7 @@
 \defcounter {refsection}{0}\relax 
 \select@language {english}
 \defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{}{1}{section*.1}
-\defcounter {refsection}{0}\relax 
-\contentsline {paragraph}{}{1}{section*.2}
-\defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Acknowledgements}{xi}{chapter*.6}
+\contentsline {chapter}{Acknowledgements}{xi}{chapter*.4}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
 \defcounter {refsection}{0}\relax 
@@ -38,17 +34,17 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.1}Hardware}{13}{subsection.3.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Romeo arms}{13}{section*.14}
+\contentsline {subsubsection}{Romeo arms}{13}{section*.12}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Romeo 3D vision hardware}{14}{section*.17}
+\contentsline {subsubsection}{Romeo 3D vision hardware}{14}{section*.15}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.1.2}NAOqi}{15}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{DCM}{15}{section*.18}
+\contentsline {subsubsection}{DCM}{15}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{ALMotion}{16}{section*.20}
+\contentsline {subsubsection}{ALMotion}{16}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{ALVideoDevice}{16}{section*.21}
+\contentsline {subsubsection}{ALVideoDevice}{16}{section*.19}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {3.2}Software required}{17}{section.3.2}
 \defcounter {refsection}{0}\relax 
@@ -56,13 +52,13 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.2}Ros packages for Romeo}{17}{subsection.3.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{NAOqi driver}{19}{section*.23}
+\contentsline {subsubsection}{NAOqi driver}{19}{section*.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{NAOqi pose}{19}{section*.25}
+\contentsline {subsubsection}{NAOqi pose}{19}{section*.23}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{DCM driver}{20}{section*.27}
+\contentsline {subsubsection}{DCM driver}{20}{section*.25}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Romeo sensor}{21}{section*.30}
+\contentsline {subsubsection}{Romeo sensor}{21}{section*.28}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {3.2.3}RTM (Recognition, Tracking and Modelling of Objects)}{22}{subsection.3.2.3}
 \defcounter {refsection}{0}\relax 
@@ -90,11 +86,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {5.2.2}Use of visual recognition}{39}{subsection.5.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{(1) Using only one link}{40}{section*.43}
+\contentsline {subsubsection}{(1) Using only one link}{40}{section*.41}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{(2) Using three links}{40}{section*.44}
+\contentsline {subsubsection}{(2) Using three links}{40}{section*.42}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{(3) Using multiples transformations}{41}{section*.45}
+\contentsline {subsubsection}{(3) Using multiples transformations}{41}{section*.43}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {5.3}Planning and execution of trajectory}{42}{section.5.3}
 \defcounter {refsection}{0}\relax 
@@ -120,11 +116,11 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.4}Visual camera positioning}{57}{section.6.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{(1) Using only one link}{58}{section*.59}
+\contentsline {subsubsection}{(1) Using only one link}{58}{section*.57}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{(2) Using three links}{58}{section*.61}
+\contentsline {subsubsection}{(2) Using three links}{58}{section*.59}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{(3) Using multiples transformations}{59}{section*.64}
+\contentsline {subsubsection}{(3) Using multiples transformations}{59}{section*.62}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {6.5}Error produces by the camera positioning}{61}{section.6.5}
 \defcounter {refsection}{0}\relax 
@@ -166,9 +162,9 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {9.4}Understanding of romeo\_grasper}{75}{section.9.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{References}{79}{chapter*.72}
+\contentsline {chapter}{References}{79}{chapter*.70}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{Appendices}{80}{section*.73}
+\contentsline {chapter}{Appendices}{80}{section*.71}
 \defcounter {refsection}{0}\relax 
 \contentsline {chapter}{\numberline {A}Software requirements and installation}{83}{appendix.A}
 \defcounter {refsection}{0}\relax 
@@ -180,10 +176,10 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {A.4}V4R installation}{84}{section.A.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{From ubuntu package}{85}{section*.75}
+\contentsline {subsubsection}{From ubuntu package}{85}{section*.73}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{From source}{85}{section*.76}
+\contentsline {subsubsection}{From source}{85}{section*.74}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{V4R ROS wrappers}{85}{section*.77}
+\contentsline {subsubsection}{V4R ROS wrappers}{85}{section*.75}
 \defcounter {refsection}{0}\relax 
 \contentsline {section}{\numberline {A.5}OpenRAVE installation}{86}{section.A.5}
